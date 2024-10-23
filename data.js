@@ -2,8 +2,8 @@ const modelData = [
     {
         "model": "Gemini-1.5-Pro-Exp-0801",
         "provider": "Google AI",
-        "smartsElo": 1299,
-        "codingElo": 1274,
+        "smartsElo": 1305, // Updated to Gemini-1.5-Pro-002 value
+        "codingElo": 1287,
         "speed": 52,
         "context": 2000,
         "inputPrice": 3.5,
@@ -15,8 +15,8 @@ const modelData = [
     {
         "model": "gpt-4o-2024-08-06",
         "provider": "openAI",
-        "smartsElo": 1287,
-        "codingElo": 1296,
+        "smartsElo": 1339, // Updated to ChatGPT-4o-latest value
+        "codingElo": 1338,
         "speed": 69,
         "context": 128,
         "inputPrice": 2.5,
@@ -28,8 +28,8 @@ const modelData = [
     {
         "model": "GPT-4o-mini-2024-07-18",
         "provider": "openAI",
-        "smartsElo": 1277,
-        "codingElo": 1283,
+        "smartsElo": 1274,
+        "codingElo": 1284,
         "speed": null,
         "context": 128,
         "inputPrice": 0.15,
@@ -41,8 +41,8 @@ const modelData = [
     {
         "model": "Claude 3.5 Sonnet",
         "provider": "anthropic",
-        "smartsElo": 1271,
-        "codingElo": 1302,
+        "smartsElo": 1268,
+        "codingElo": 1295,
         "speed": null,
         "context": 200,
         "inputPrice": 3,
@@ -54,8 +54,8 @@ const modelData = [
     {
         "model": "gpt-4-turbo-2024-04-09",
         "provider": "openAI",
-        "smartsElo": 1258,
-        "codingElo": 1266,
+        "smartsElo": 1250, // Updated to GPT-4-1106-preview value
+        "codingElo": 1254,
         "speed": 17,
         "context": 128,
         "inputPrice": 10,
@@ -68,7 +68,7 @@ const modelData = [
         "model": "Claude 3 Opus",
         "provider": "anthropic",
         "smartsElo": 1248,
-        "codingElo": 1251,
+        "codingElo": 1250,
         "speed": 26,
         "context": 200,
         "inputPrice": 15,
@@ -80,8 +80,8 @@ const modelData = [
     {
         "model": "llama-3-70b-instruct",
         "provider": "Groq",
-        "smartsElo": 1208,
-        "codingElo": 1201,
+        "smartsElo": 1206,
+        "codingElo": 1200,
         "speed": 280,
         "context": 8,
         "inputPrice": 0.59,
@@ -93,8 +93,8 @@ const modelData = [
     {
         "model": "llama-3-70b-instruct",
         "provider": "together.ai",
-        "smartsElo": 1208,
-        "codingElo": 1201,
+        "smartsElo": 1206,
+        "codingElo": 1200,
         "speed": 52,
         "context": 8,
         "inputPrice": 0.9,
@@ -106,8 +106,8 @@ const modelData = [
     {
         "model": "Claude 3 Sonnet",
         "provider": "anthropic",
-        "smartsElo": 1200,
-        "codingElo": 1215,
+        "smartsElo": 1201,
+        "codingElo": 1213,
         "speed": 59,
         "context": 200,
         "inputPrice": 3,
@@ -119,8 +119,8 @@ const modelData = [
     {
         "model": "Command R+",
         "provider": "Cohere",
-        "smartsElo": 1189,
-        "codingElo": 1167,
+        "smartsElo": 1214,
+        "codingElo": 1180,
         "speed": 109,
         "context": 128,
         "inputPrice": 3,
@@ -132,8 +132,8 @@ const modelData = [
     {
         "model": "Reka-Core",
         "provider": "Reka AI",
-        "smartsElo": 1199,
-        "codingElo": 1193,
+        "smartsElo": 1230,
+        "codingElo": 1208,
         "speed": null,
         "context": 128,
         "inputPrice": 10,
@@ -145,8 +145,8 @@ const modelData = [
     {
         "model": "Claude 3 Haiku",
         "provider": "anthropic",
-        "smartsElo": 1180,
-        "codingElo": 1191,
+        "smartsElo": 1179,
+        "codingElo": 1189,
         "speed": 89,
         "context": 200,
         "inputPrice": 0.25,
@@ -158,8 +158,8 @@ const modelData = [
     {
         "model": "Gemini 1.5 Flash",
         "provider": "Google AI",
-        "smartsElo": 1160,
-        "codingElo": null,
+        "smartsElo": 1269, // Updated to Gemini-1.5-Flash-002 value
+        "codingElo": 1249,
         "speed": 156,
         "context": 1000,
         "inputPrice": 0.35,
@@ -171,8 +171,8 @@ const modelData = [
     {
         "model": "llama-3-8b-instruct",
         "provider": "Groq",
-        "smartsElo": 1154,
-        "codingElo": 1147,
+        "smartsElo": 1152,
+        "codingElo": 1146,
         "speed": 870,
         "context": 8,
         "inputPrice": 0.05,
@@ -184,8 +184,8 @@ const modelData = [
     {
         "model": "llama-3-8b-instruct",
         "provider": "cloudflare",
-        "smartsElo": 1154,
-        "codingElo": 1147,
+        "smartsElo": 1152,
+        "codingElo": 1146,
         "speed": 215,
         "context": 8,
         "inputPrice": 0,
@@ -197,8 +197,8 @@ const modelData = [
     {
         "model": "Llama-3.1-8b-Instruct",
         "provider": "Groq",
-        "smartsElo": 1152,
-        "codingElo": null,
+        "smartsElo": 1173,
+        "codingElo": 1182,
         "speed": null,
         "context": 128,
         "inputPrice": 0,
@@ -210,8 +210,8 @@ const modelData = [
     {
         "model": "Phi-3-medium",
         "provider": "Azure AI",
-        "smartsElo": 1120,
-        "codingElo": null,
+        "smartsElo": 1123,
+        "codingElo": 1125,
         "speed": null,
         "context": 128,
         "inputPrice": 0.5,
@@ -223,8 +223,8 @@ const modelData = [
     {
         "model": "gpt-3.5-turbo-0125",
         "provider": "openAI",
-        "smartsElo": 1109,
-        "codingElo": 1137,
+        "smartsElo": 1106,
+        "codingElo": 1124,
         "speed": 56,
         "context": 16,
         "inputPrice": 0.5,
@@ -232,18 +232,5 @@ const modelData = [
         "hasVision": false,
         "hasFreeTier": false,
         "notes": ""
-    },
-    {
-        "model": "StarCoder 7B",
-        "provider": "fireworks.ai",
-        "smartsElo": null,
-        "codingElo": null,
-        "speed": null,
-        "context": 8,
-        "inputPrice": 0.2,
-        "outputPrice": 0.2,
-        "hasVision": false,
-        "hasFreeTier": true,
-        "notes": "fill-in-the-middle model, good for code autocomplete"
     }
 ];
