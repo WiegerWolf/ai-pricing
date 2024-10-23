@@ -9,6 +9,17 @@
 <body>
     <div class="container">
         <h1>LLM Model Comparison</h1>
+        <div class="controls">
+            <div class="slider-container">
+                <label for="inputTokens">Monthly Input Tokens: <span id="inputTokensValue">87,000</span></label>
+                <input type="range" id="inputTokens" min="0" max="1000000" value="87000" step="1000">
+            </div>
+            <div class="slider-container">
+                <label for="outputTokens">Monthly Output Tokens: <span id="outputTokensValue">74,000</span></label>
+                <input type="range" id="outputTokens" min="0" max="1000000" value="74000" step="1000">
+            </div>
+        </div>
+        
         <table id="modelTable">
             <thead>
                 <tr>
