@@ -80,52 +80,58 @@ function initializeSliders() {
 let sortDirections = {}; // To keep track of sort direction for each column
 
 function sortTable(column) {
-    const tbody = document.querySelector('#modelTable tbody');
-    const rows = Array.from(tbody.querySelectorAll('tr'));
-    
-    // Toggle sort direction for the column
-    sortDirections[column] = !sortDirections[column];
-    
-    rows.sort((a, b) => {
-        let aVal = a.cells[column].textContent.replace('$', '').replace('✓', '1').replace('-', '0');
-        let bVal = b.cells[column].textContent.replace('$', '').replace('✓', '1').replace('-', '0');
-        
-        // Convert to numbers if possible
-        if (!isNaN(aVal) && !isNaN(bVal)) {
-            aVal = Number(aVal);
-            bVal = Number(bVal);
-            return sortDirections[column] ? aVal - bVal : bVal - aVal;
-        }
-        
-        // Handle null/empty values
-        if (aVal === '') return 1;
-        if (bVal === '') return -1;
-        
-        // String comparison
-        return sortDirections[column] 
-            ? aVal.localeCompare(bVal) 
-            : bVal.localeCompare(aVal);
-    });
-    
-    // Clear and repopulate tbody
-    tbody.innerHTML = '';
-    rows.forEach(row => tbody.appendChild(row));
-    
-    // Update sort indicators
-    updateSortIndicators(column);
+  const tbody = document.querySelector("#modelTable tbody");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+
+  // Toggle sort direction for the column
+  sortDirections[column] = !sortDirections[column];
+
+  rows.sort((a, b) => {
+    let aVal = a.cells[column].textContent
+      .replace("$", "")
+      .replace("✓", "1")
+      .replace("-", "0");
+    let bVal = b.cells[column].textContent
+      .replace("$", "")
+      .replace("✓", "1")
+      .replace("-", "0");
+
+    // Convert to numbers if possible
+    if (!isNaN(aVal) && !isNaN(bVal)) {
+      aVal = Number(aVal);
+      bVal = Number(bVal);
+      return sortDirections[column] ? aVal - bVal : bVal - aVal;
+    }
+
+    // Handle null/empty values
+    if (aVal === "") return 1;
+    if (bVal === "") return -1;
+
+    // String comparison
+    return sortDirections[column]
+      ? aVal.localeCompare(bVal)
+      : bVal.localeCompare(aVal);
+  });
+
+  // Clear and repopulate tbody
+  tbody.innerHTML = "";
+  rows.forEach((row) => tbody.appendChild(row));
+
+  // Update sort indicators
+  updateSortIndicators(column);
 }
 
 function updateSortIndicators(activeColumn) {
-    const headers = document.querySelectorAll('#modelTable th');
-    headers.forEach((header, index) => {
-        // Remove existing indicators
-        header.textContent = header.textContent.replace(' ▲', '').replace(' ▼', '');
-        
-        // Add indicator to active column
-        if (index === activeColumn) {
-            header.textContent += sortDirections[activeColumn] ? ' ▲' : ' ▼';
-        }
-    });
+  const headers = document.querySelectorAll("#modelTable th");
+  headers.forEach((header, index) => {
+    // Remove existing indicators
+    header.textContent = header.textContent.replace(" ▲", "").replace(" ▼", "");
+
+    // Add indicator to active column
+    if (index === activeColumn) {
+      header.textContent += sortDirections[activeColumn] ? " ▲" : " ▼";
+    }
+  });
 }
 
 // Initialize everything when the page loads
