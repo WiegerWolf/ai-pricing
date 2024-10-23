@@ -90,3 +90,31 @@ th:hover {
 th {
     transition: background-color 0.2s ease;
 }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #24292e;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #d1d5da;
+    background-color: #fafbfc;
+    transition: background-color 0.2s ease;
+}
+
+.github-link:hover {
+    background-color: #f3f4f6;
+}
+
+.github-link svg {
+    fill: currentColor;
+}
