@@ -72,3 +72,21 @@ input[type="range"] {
 .cost {
     font-family: monospace;
 }
+/* Add to your existing styles.css */
+th {
+    background-color: #f5f5f5;
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+    user-select: none;
+    padding-right: 20px; /* Make room for sort indicator */
+}
+
+th:hover {
+    background-color: #e0e0e0;
+}
+
+/* Optional: Add a subtle transition effect */
+th {
+    transition: background-color 0.2s ease;
+}
