@@ -1,21 +1,8 @@
 const modelData = [
     {
-        "model": "Gemini-1.5-Pro-Exp-0801",
-        "provider": "Google AI",
-        "smartsElo": 1305, // Updated to Gemini-1.5-Pro-002 value
-        "codingElo": 1287,
-        "speed": 52,
-        "context": 2000,
-        "inputPrice": 3.5,
-        "outputPrice": 10.5,
-        "hasVision": true,
-        "hasFreeTier": false,
-        "notes": "these prices are for <128k context, for more see pricing page, no free tier in EU"
-    },
-    {
-        "model": "gpt-4o-2024-08-06",
-        "provider": "openAI",
-        "smartsElo": 1339, // Updated to ChatGPT-4o-latest value
+        "model": "ChatGPT-4o-latest",  // Updated name
+        "provider": "OpenAI",
+        "smartsElo": 1339,
         "codingElo": 1338,
         "speed": 69,
         "context": 128,
@@ -26,8 +13,73 @@ const modelData = [
         "notes": "can be 50% cheaper using batch processing"
     },
     {
+        "model": "o1-preview",  // New entry
+        "provider": "OpenAI",
+        "smartsElo": 1335,
+        "codingElo": 1354,
+        "speed": null,
+        "context": 128,
+        "inputPrice": 2.5,
+        "outputPrice": 10,
+        "hasVision": true,
+        "hasFreeTier": false,
+        "notes": "Preview model"
+    },
+    {
+        "model": "o1-mini",  // New entry
+        "provider": "OpenAI",
+        "smartsElo": 1313,
+        "codingElo": 1373,
+        "speed": null,
+        "context": 128,
+        "inputPrice": 0.15,
+        "outputPrice": 0.6,
+        "hasVision": true,
+        "hasFreeTier": false,
+        "notes": ""
+    },
+    {
+        "model": "Gemini-1.5-Pro-002",  // Updated name
+        "provider": "Google AI",
+        "smartsElo": 1305,
+        "codingElo": 1287,
+        "speed": 52,
+        "context": 2000,
+        "inputPrice": 3.5,
+        "outputPrice": 10.5,
+        "hasVision": true,
+        "hasFreeTier": false,
+        "notes": "these prices are for <128k context, for more see pricing page, no free tier in EU"
+    },
+    {
+        "model": "Grok-2-08-13",  // New entry
+        "provider": "xAI",
+        "smartsElo": 1291,
+        "codingElo": 1287,
+        "speed": null,
+        "context": 128,
+        "inputPrice": null,
+        "outputPrice": null,
+        "hasVision": false,
+        "hasFreeTier": false,
+        "notes": "Not yet publicly available"
+    },
+    {
+        "model": "Yi-Lightning",  // New entry
+        "provider": "01 AI",
+        "smartsElo": 1287,
+        "codingElo": 1300,
+        "speed": null,
+        "context": 128,
+        "inputPrice": null,
+        "outputPrice": null,
+        "hasVision": false,
+        "hasFreeTier": false,
+        "notes": ""
+    },
+    {
         "model": "GPT-4o-mini-2024-07-18",
-        "provider": "openAI",
+        "provider": "OpenAI",
         "smartsElo": 1274,
         "codingElo": 1284,
         "speed": null,
@@ -35,6 +87,19 @@ const modelData = [
         "inputPrice": 0.15,
         "outputPrice": 0.6,
         "hasVision": true,
+        "hasFreeTier": false,
+        "notes": ""
+    },
+    {
+        "model": "GLM-4-Plus",  // New entry
+        "provider": "Zhipu AI",
+        "smartsElo": 1274,
+        "codingElo": 1284,
+        "speed": null,
+        "context": 128,
+        "inputPrice": null,
+        "outputPrice": null,
+        "hasVision": false,
         "hasFreeTier": false,
         "notes": ""
     },
