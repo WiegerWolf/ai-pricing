@@ -96,6 +96,10 @@ function sortTable(column) {
       .replace("✓", "1")
       .replace("-", "0");
 
+    // Convert empty/null values to 0
+    if (aVal === "" || aVal === "null") aVal = "0";
+    if (bVal === "" || bVal === "null") bVal = "0";
+
     // Convert to numbers if possible
     if (!isNaN(aVal) && !isNaN(bVal)) {
       aVal = Number(aVal);
@@ -103,11 +107,7 @@ function sortTable(column) {
       return sortDirections[column] ? aVal - bVal : bVal - aVal;
     }
 
-    // Handle null/empty values
-    if (aVal === "") return 1;
-    if (bVal === "") return -1;
-
-    // String comparison
+    // String comparison for non-numeric values
     return sortDirections[column]
       ? aVal.localeCompare(bVal)
       : bVal.localeCompare(aVal);
