@@ -37,10 +37,10 @@ async function updatePrices() {
         const orModel = openRouterData.data.find((m) => m.id === openRouterId);
         if (orModel) {
           model.inputPrice = Number(
-            (orModel.pricing.prompt * 1000000).toFixed(1)
+            (orModel.pricing.prompt * 1000000).toFixed(2)
           );
           model.outputPrice = Number(
-            (orModel.pricing.completion * 1000000).toFixed(1)
+            (orModel.pricing.completion * 1000000).toFixed(2)
           );
         }
       }
