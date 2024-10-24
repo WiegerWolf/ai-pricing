@@ -151,6 +151,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("#modelTable th").forEach((header, index) => {
     header.addEventListener("click", () => sortTable(index));
   });
+
+  // Sort by coding ELO (column index 3) in descending order on page load
+  sortDirections[3] = true; // Set to false for ascending order
+  sortTable(3); // 3 is the index of the coding ELO column
 });
 
 // Add to existing script.js
