@@ -163,6 +163,32 @@ const modelData = [
     pricingUrl: "https://groq.com/pricing/",
   },
   {
+    model: "llama-3.2-1b-preview",
+    provider: "Groq",
+    smartsElo: 1050, // Estimated lower due to small model size
+    codingElo: 1040, // Estimated lower due to small model size
+    speed: 3100, // Fastest in the lineup
+    context: 8,
+    inputPrice: 0.04,
+    outputPrice: 0.04,
+    hasVision: false,
+    hasFreeTier: false,
+    notes: "8k context window, preview version, fastest model available",
+  },
+  {
+    model: "llama-3.2-3b-preview",
+    provider: "Groq",
+    smartsElo: 1100, // Estimated based on model size
+    codingElo: 1090, // Estimated based on model size
+    speed: 1600,
+    context: 8,
+    inputPrice: 0.06,
+    outputPrice: 0.06,
+    hasVision: false,
+    hasFreeTier: false,
+    notes: "8k context window, preview version",
+  },
+  {
     model: "llama-3.1-70b-versatile",
     provider: "Groq",
     smartsElo: 1206, // Using same as llama-3-70b as baseline
@@ -215,7 +241,8 @@ const modelData = [
     outputPrice: 0.2,
     hasVision: false,
     hasFreeTier: false,
-    notes: "specialized for content moderation to work in pair with other llamas",
+    notes:
+      "specialized for content moderation to work in pair with other llamas",
     pricingUrl: "https://groq.com/pricing/",
   },
 
