@@ -139,39 +139,84 @@ const modelData = [
     provider: "Groq",
     smartsElo: 1206,
     codingElo: 1200,
-    speed: 280,
+    speed: 330, // Updated from pricing page
     context: 8,
-    inputPrice: 0.59,
-    outputPrice: 0.79,
+    inputPrice: 0.59, // Verified correct
+    outputPrice: 0.79, // Verified correct
     hasVision: false,
-    hasFreeTier: true,
-    notes: "free tier, subject to 7k t/min limit",
+    hasFreeTier: false,
+    notes: "8k context window",
+    pricingUrl: "https://groq.com/pricing/",
   },
   {
     model: "llama-3-8b-instruct",
     provider: "Groq",
     smartsElo: 1152,
     codingElo: 1146,
-    speed: 870,
+    speed: 1250, // Updated from pricing page
     context: 8,
-    inputPrice: 0.05,
-    outputPrice: 0.1,
+    inputPrice: 0.05, // Verified correct
+    outputPrice: 0.08, // Updated from pricing page
     hasVision: false,
-    hasFreeTier: true,
-    notes: "free tier, subject to 15k t/min limit",
+    hasFreeTier: false,
+    notes: "",
+    pricingUrl: "https://groq.com/pricing/",
   },
   {
-    model: "Llama-3.1-8b-Instruct",
+    model: "llama-3.1-70b-versatile",
     provider: "Groq",
-    smartsElo: 1173,
-    codingElo: 1182,
-    speed: null,
+    smartsElo: 1206, // Using same as llama-3-70b as baseline
+    codingElo: 1200, // Using same as llama-3-70b as baseline
+    speed: 250,
     context: 128,
-    inputPrice: 0,
-    outputPrice: 0,
+    inputPrice: 0.59,
+    outputPrice: 0.79,
     hasVision: false,
-    hasFreeTier: true,
-    notes: "free tier, subject to 121k t/min limit",
+    hasFreeTier: false,
+    notes: "",
+    pricingUrl: "https://groq.com/pricing/",
+  },
+  {
+    model: "llama-3.1-8b-instant",
+    provider: "Groq",
+    smartsElo: 1152, // Using same as llama-3-8b as baseline
+    codingElo: 1146, // Using same as llama-3-8b as baseline
+    speed: 750,
+    context: 128,
+    inputPrice: 0.05,
+    outputPrice: 0.08,
+    hasVision: false,
+    hasFreeTier: false,
+    notes: "",
+    pricingUrl: "https://groq.com/pricing/",
+  },
+  {
+    model: "llama-3-70b-tool-use",
+    provider: "Groq",
+    smartsElo: 1210, // Estimated slightly higher than base due to tool use
+    codingElo: 1205, // Estimated slightly higher than base due to tool use
+    speed: 335,
+    context: 8,
+    inputPrice: 0.89,
+    outputPrice: 0.89,
+    hasVision: false,
+    hasFreeTier: false,
+    notes: "preview version with tool use capabilities",
+    pricingUrl: "https://groq.com/pricing/",
+  },
+  {
+    model: "llama-guard-3-8b",
+    provider: "Groq",
+    smartsElo: 1140, // Estimated based on model size and specialized nature
+    codingElo: 1130, // Estimated based on model size and specialized nature
+    speed: 765,
+    context: 8,
+    inputPrice: 0.2,
+    outputPrice: 0.2,
+    hasVision: false,
+    hasFreeTier: false,
+    notes: "specialized for content moderation to work in pair with other llamas",
+    pricingUrl: "https://groq.com/pricing/",
   },
 
   // xAI
