@@ -104,19 +104,6 @@ const modelData = [
         "notes": ""
     },
     {
-        "model": "Claude 3.5 Sonnet",
-        "provider": "anthropic",
-        "smartsElo": 1268,
-        "codingElo": 1295,
-        "speed": null,
-        "context": 200,
-        "inputPrice": 3,
-        "outputPrice": 15,
-        "hasVision": true,
-        "hasFreeTier": false,
-        "notes": ""
-    },
-    {
         "model": "gpt-4-turbo-2024-04-09",
         "provider": "OpenAI",
         "smartsElo": 1250,
@@ -130,17 +117,69 @@ const modelData = [
         "notes": "can be 50% cheaper using batch processing"
     },
     {
+        "model": "gpt-3.5-turbo-0125",
+        "provider": "OpenAI",
+        "smartsElo": 1106,
+        "codingElo": 1124,
+        "speed": 56,
+        "context": 16,
+        "inputPrice": 0.50,  // Verified correct
+        "outputPrice": 1.50,  // Verified correct
+        "hasVision": false,
+        "hasFreeTier": false,
+        "notes": ""
+    },
+    {
+        "model": "Claude 3.5 Sonnet",
+        "provider": "Anthropic",
+        "smartsElo": 1268,
+        "codingElo": 1295,
+        "speed": null,
+        "context": 200,
+        "inputPrice": 3.00,  // Verified correct
+        "outputPrice": 15.00,  // Verified correct
+        "hasVision": true,
+        "hasFreeTier": false,
+        "notes": "50% discount available with Batches API"
+    },
+    {
+        "model": "Claude 3.5 Haiku",
+        "provider": "Anthropic",
+        "smartsElo": 1179,
+        "codingElo": 1189,
+        "speed": 89,
+        "context": 200,
+        "inputPrice": 0.25,  // Updated
+        "outputPrice": 1.25,  // Updated
+        "hasVision": true,
+        "hasFreeTier": false,
+        "notes": "Fastest model, 50% discount available with Batches API"
+    },
+    {
         "model": "Claude 3 Opus",
-        "provider": "anthropic",
+        "provider": "Anthropic",
         "smartsElo": 1248,
         "codingElo": 1250,
         "speed": 26,
         "context": 200,
-        "inputPrice": 15,
-        "outputPrice": 75,
+        "inputPrice": 15.00,  // Updated
+        "outputPrice": 75.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": ""
+        "notes": "Most powerful model, 50% discount available with Batches API"
+    },
+    {
+        "model": "Claude 3 Sonnet",
+        "provider": "Anthropic",
+        "smartsElo": 1201,
+        "codingElo": 1213,
+        "speed": 59,
+        "context": 200,
+        "inputPrice": 3.00,  // Verified correct
+        "outputPrice": 15.00,  // Verified correct
+        "hasVision": true,
+        "hasFreeTier": false,
+        "notes": "Good balance of speed and performance"
     },
     {
         "model": "llama-3-70b-instruct",
@@ -169,19 +208,6 @@ const modelData = [
         "notes": ""
     },
     {
-        "model": "Claude 3 Sonnet",
-        "provider": "anthropic",
-        "smartsElo": 1201,
-        "codingElo": 1213,
-        "speed": 59,
-        "context": 200,
-        "inputPrice": 3,
-        "outputPrice": 15,
-        "hasVision": true,
-        "hasFreeTier": false,
-        "notes": ""
-    },
-    {
         "model": "Command R+",
         "provider": "Cohere",
         "smartsElo": 1214,
@@ -203,19 +229,6 @@ const modelData = [
         "context": 128,
         "inputPrice": 10,
         "outputPrice": 25,
-        "hasVision": true,
-        "hasFreeTier": false,
-        "notes": ""
-    },
-    {
-        "model": "Claude 3 Haiku",
-        "provider": "anthropic",
-        "smartsElo": 1179,
-        "codingElo": 1189,
-        "speed": 89,
-        "context": 200,
-        "inputPrice": 0.25,
-        "outputPrice": 1.25,
         "hasVision": true,
         "hasFreeTier": false,
         "notes": ""
@@ -285,17 +298,4 @@ const modelData = [
         "hasFreeTier": false,
         "notes": "There's also Phi-3-vision but it's not yet on Model-as-a-Service offering"
     },
-    {
-        "model": "gpt-3.5-turbo-0125",
-        "provider": "OpenAI",
-        "smartsElo": 1106,
-        "codingElo": 1124,
-        "speed": 56,
-        "context": 16,
-        "inputPrice": 0.50,  // Verified correct
-        "outputPrice": 1.50,  // Verified correct
-        "hasVision": false,
-        "hasFreeTier": false,
-        "notes": ""
-    }
 ];
