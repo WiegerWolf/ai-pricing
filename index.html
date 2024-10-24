@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LLM Model Comparison</title>
+    <title>AI Model Pricing Comparison</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>LLM Model Comparison</h1>
+            <h1>LLM Model Pricing Comparison</h1>
             <a href="https://github.com/WiegerWolf/ai-pricing" class="github-link" target="_blank" rel="noopener noreferrer">
                 <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32">
                     <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
@@ -17,32 +17,51 @@
                 View on GitHub
             </a>
         </div>
-        
-        <div class="controls">
-            <div class="slider-container">
-                <label for="inputTokens">Monthly Input Tokens: <span id="inputTokensValue">87,000</span></label>
-                <input type="range" id="inputTokens" min="0" max="1000000" value="87000" step="1000">
-            </div>
-            <div class="slider-container">
-                <label for="outputTokens">Monthly Output Tokens: <span id="outputTokensValue">74,000</span></label>
-                <input type="range" id="outputTokens" min="0" max="1000000" value="74000" step="1000">
+
+        <div class="info-section">
+            <h2>About This Comparison</h2>
+            <p>This table compares various AI language models across different metrics:</p>
+            <ul>
+                <li><strong>Arena ELO:</strong> A comparative score measuring model performance (higher is better)</li>
+                <li><strong>Coding ELO:</strong> Specific performance score for coding tasks (higher is better)</li>
+                <li><strong>Speed:</strong> Tokens processed per second</li>
+                <li><strong>Context:</strong> Maximum input size in thousands of tokens</li>
+                <li><strong>Pricing:</strong> Cost per million tokens for input and output separately</li>
+            </ul>
+            <button id="showCalculator" class="calculator-toggle">Show Usage Calculator</button>
+        </div>
+
+        <div id="calculatorSection" class="calculator-section" style="display: none;">
+            <h3>Monthly Cost Calculator</h3>
+            <p>Adjust these values to estimate your monthly costs based on usage:</p>
+            <div class="controls">
+                <div class="slider-container">
+                    <label for="inputTokens">Monthly Input Tokens: <span id="inputTokensValue">87,000</span></label>
+                    <input type="range" id="inputTokens" min="0" max="1000000" value="87000" step="1000">
+                    <span class="helper-text">Typical chat message is ~500 tokens</span>
+                </div>
+                <div class="slider-container">
+                    <label for="outputTokens">Monthly Output Tokens: <span id="outputTokensValue">74,000</span></label>
+                    <input type="range" id="outputTokens" min="0" max="1000000" value="74000" step="1000">
+                    <span class="helper-text">Typical response is ~1500 tokens</span>
+                </div>
             </div>
         </div>
-        
+
         <table id="modelTable">
             <thead>
                 <tr>
                     <th>Model</th>
                     <th>Provider</th>
-                    <th>Smarts ELO</th>
-                    <th>Coding ELO</th>
-                    <th>Speed (t/s)</th>
-                    <th>Context (k)</th>
-                    <th>Input Price (/1M tokens)</th>
-                    <th>Output Price (/1M tokens)</th>
-                    <th>Cost/Month</th>
-                    <th>Vision</th>
-                    <th>Free Tier</th>
+                    <th title="General performance score from Arena leaderboard">Arena ELO ℹ️</th>
+                    <th title="Coding-specific performance score">Coding ELO ℹ️</th>
+                    <th title="Tokens processed per second">Speed ℹ️</th>
+                    <th title="Maximum context window size in thousands of tokens">Context (k) ℹ️</th>
+                    <th title="Cost per million input tokens">Input Price ℹ️</th>
+                    <th title="Cost per million output tokens">Output Price ℹ️</th>
+                    <th title="Monthly cost based on specified usage (default: 87k input + 74k output tokens)">Est. Monthly Cost ℹ️</th>
+                    <th title="Supports image analysis">Vision ℹ️</th>
+                    <th title="Offers a free tier">Free Tier ℹ️</th>
                     <th>Notes</th>
                 </tr>
             </thead>

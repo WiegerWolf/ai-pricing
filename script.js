@@ -144,3 +144,26 @@ document.addEventListener("DOMContentLoaded", () => {
     header.addEventListener("click", () => sortTable(index));
   });
 });
+
+// Add to existing script.js
+document.getElementById('showCalculator').addEventListener('click', function() {
+  const calculatorSection = document.getElementById('calculatorSection');
+  const button = document.getElementById('showCalculator');
+  
+  if (calculatorSection.style.display === 'none') {
+      calculatorSection.style.display = 'block';
+      button.textContent = 'Hide Usage Calculator';
+  } else {
+      calculatorSection.style.display = 'none';
+      button.textContent = 'Show Usage Calculator';
+  }
+});
+
+// Add helpful tooltips for mobile users (where hover doesn't work)
+if ('ontouchstart' in window) {
+  document.querySelectorAll('th[title]').forEach(th => {
+      th.addEventListener('click', function(e) {
+          alert(this.getAttribute('title'));
+      });
+  });
+}

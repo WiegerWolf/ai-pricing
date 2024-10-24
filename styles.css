@@ -118,3 +118,62 @@ th {
 .github-link svg {
     fill: currentColor;
 }
+/* Add to existing styles */
+.info-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.info-section ul {
+    margin-left: 20px;
+}
+
+.calculator-toggle {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.calculator-toggle:hover {
+    background-color: #0056b3;
+}
+
+.calculator-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.helper-text {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 4px;
+}
+
+th[title] {
+    cursor: help;
+}
+
+/* Tooltip styles */
+th[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
