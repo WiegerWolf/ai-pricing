@@ -1,42 +1,42 @@
 const modelData = [
     {
-        "model": "ChatGPT-4o-latest",  // Updated name
+        "model": "ChatGPT-4o-latest",
         "provider": "OpenAI",
         "smartsElo": 1339,
         "codingElo": 1338,
         "speed": 69,
         "context": 128,
-        "inputPrice": 2.5,
-        "outputPrice": 10,
+        "inputPrice": 5.00,  // Updated
+        "outputPrice": 15.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
         "notes": "can be 50% cheaper using batch processing"
     },
     {
-        "model": "o1-preview",  // New entry
+        "model": "o1-preview",
         "provider": "OpenAI",
         "smartsElo": 1335,
         "codingElo": 1354,
         "speed": null,
         "context": 128,
-        "inputPrice": 2.5,
-        "outputPrice": 10,
+        "inputPrice": 15.00,  // Updated
+        "outputPrice": 60.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "Preview model"
+        "notes": "Output includes internal reasoning tokens"
     },
     {
-        "model": "o1-mini",  // New entry
+        "model": "o1-mini",
         "provider": "OpenAI",
         "smartsElo": 1313,
         "codingElo": 1373,
         "speed": null,
         "context": 128,
-        "inputPrice": 0.15,
-        "outputPrice": 0.6,
+        "inputPrice": 3.00,  // Updated
+        "outputPrice": 12.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": ""
+        "notes": "Output includes internal reasoning tokens"
     },
     {
         "model": "Gemini-1.5-Pro-002",  // Updated name
@@ -84,11 +84,11 @@ const modelData = [
         "codingElo": 1284,
         "speed": null,
         "context": 128,
-        "inputPrice": 0.15,
-        "outputPrice": 0.6,
+        "inputPrice": 0.15,  // Verified correct
+        "outputPrice": 0.60,  // Verified correct
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": ""
+        "notes": "can be 50% cheaper using batch processing"
     },
     {
         "model": "GLM-4-Plus",  // New entry
@@ -118,13 +118,13 @@ const modelData = [
     },
     {
         "model": "gpt-4-turbo-2024-04-09",
-        "provider": "openAI",
-        "smartsElo": 1250, // Updated to GPT-4-1106-preview value
+        "provider": "OpenAI",
+        "smartsElo": 1250,
         "codingElo": 1254,
         "speed": 17,
         "context": 128,
-        "inputPrice": 10,
-        "outputPrice": 30,
+        "inputPrice": 10.00,  // Verified correct
+        "outputPrice": 30.00,  // Verified correct
         "hasVision": true,
         "hasFreeTier": false,
         "notes": "can be 50% cheaper using batch processing"
@@ -287,13 +287,13 @@ const modelData = [
     },
     {
         "model": "gpt-3.5-turbo-0125",
-        "provider": "openAI",
+        "provider": "OpenAI",
         "smartsElo": 1106,
         "codingElo": 1124,
         "speed": 56,
         "context": 16,
-        "inputPrice": 0.5,
-        "outputPrice": 1.5,
+        "inputPrice": 0.50,  // Verified correct
+        "outputPrice": 1.50,  // Verified correct
         "hasVision": false,
         "hasFreeTier": false,
         "notes": ""
