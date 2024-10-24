@@ -1,3 +1,5 @@
+// At the top of script.js, add:
+let modelData = []; // Will hold our data
 let currentInputTokens = 87000;
 let currentOutputTokens = 74000;
 
@@ -140,23 +142,31 @@ function updateSortIndicators(activeColumn) {
     }
   });
 }
+// Wrap the initialization in an async function
+async function initialize() {
+  try {
+    const response = await fetch('data.json');
+    modelData = await response.json();
+    
+    initializeSliders();
+    populateTable();
 
-// Initialize everything when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-  initializeSliders();
-  populateTable();
+    // Add click handlers for sorting
+    document.querySelectorAll("#modelTable th").forEach((header, index) => {
+      header.addEventListener("click", () => sortTable(index));
+    });
 
-  // Add click handlers for sorting
-  document.querySelectorAll("#modelTable th").forEach((header, index) => {
-    header.addEventListener("click", () => sortTable(index));
-  });
+    // Sort by coding ELO initially
+    sortDirections[3] = true;
+    sortTable(3);
+  } catch (error) {
+    console.error('Error loading model data:', error);
+  }
+}
 
-  // Sort by coding ELO (column index 3) in descending order on page load
-  sortDirections[3] = true; // Set to false for ascending order
-  sortTable(3); // 3 is the index of the coding ELO column
-});
+// Replace the DOMContentLoaded event listener with:
+document.addEventListener("DOMContentLoaded", initialize);
 
-// Add to existing script.js
 document
   .getElementById("showCalculator")
   .addEventListener("click", function () {
