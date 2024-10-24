@@ -10,7 +10,8 @@ const modelData = [
         "outputPrice": 15.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "can be 50% cheaper using batch processing"
+        "notes": "can be 50% cheaper using batch processing",
+        "pricingUrl": "https://openai.com/api/pricing/"
     },
     {
         "model": "o1-preview",
@@ -23,7 +24,8 @@ const modelData = [
         "outputPrice": 60.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "Output includes internal reasoning tokens"
+        "notes": "Output includes internal reasoning tokens",
+        "pricingUrl": "https://openai.com/api/pricing/"
     },
     {
         "model": "o1-mini",
@@ -36,7 +38,8 @@ const modelData = [
         "outputPrice": 12.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "Output includes internal reasoning tokens"
+        "notes": "Output includes internal reasoning tokens",
+        "pricingUrl": "https://openai.com/api/pricing/"
     },
     {
         "model": "Gemini-1.5-Pro-002",  // Updated name
@@ -88,7 +91,8 @@ const modelData = [
         "outputPrice": 0.60,  // Verified correct
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "can be 50% cheaper using batch processing"
+        "notes": "can be 50% cheaper using batch processing",
+        "pricingUrl": "https://openai.com/api/pricing/"
     },
     {
         "model": "GLM-4-Plus",  // New entry
@@ -114,7 +118,8 @@ const modelData = [
         "outputPrice": 30.00,  // Verified correct
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "can be 50% cheaper using batch processing"
+        "notes": "can be 50% cheaper using batch processing",
+        "pricingUrl": "https://openai.com/api/pricing/"
     },
     {
         "model": "gpt-3.5-turbo-0125",
@@ -127,7 +132,8 @@ const modelData = [
         "outputPrice": 1.50,  // Verified correct
         "hasVision": false,
         "hasFreeTier": false,
-        "notes": ""
+        "notes": "",
+        "pricingUrl": "https://openai.com/api/pricing/"
     },
     {
         "model": "Claude 3.5 Sonnet",
@@ -140,7 +146,8 @@ const modelData = [
         "outputPrice": 15.00,  // Verified correct
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "50% discount available with Batches API"
+        "notes": "50% discount available with Batches API",
+        "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
     },
     {
         "model": "Claude 3.5 Haiku",
@@ -153,7 +160,8 @@ const modelData = [
         "outputPrice": 1.25,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "Fastest model, 50% discount available with Batches API"
+        "notes": "Fastest model, 50% discount available with Batches API",
+        "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
     },
     {
         "model": "Claude 3 Opus",
@@ -166,7 +174,8 @@ const modelData = [
         "outputPrice": 75.00,  // Updated
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "Most powerful model, 50% discount available with Batches API"
+        "notes": "Most powerful model, 50% discount available with Batches API",
+        "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
     },
     {
         "model": "Claude 3 Sonnet",
@@ -179,7 +188,8 @@ const modelData = [
         "outputPrice": 15.00,  // Verified correct
         "hasVision": true,
         "hasFreeTier": false,
-        "notes": "Good balance of speed and performance"
+        "notes": "Good balance of speed and performance",
+        "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
     },
     {
         "model": "llama-3-70b-instruct",

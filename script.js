@@ -22,29 +22,37 @@ function updateCosts() {
 
 function populateTable() {
   const tbody = document.querySelector("#modelTable tbody");
-  tbody.innerHTML = ""; // Clear existing rows
 
   modelData.forEach((model) => {
     const row = document.createElement("tr");
-    const monthlyCost = calculateMonthlyCost(
-      model,
-      currentInputTokens,
-      currentOutputTokens
-    );
     row.innerHTML = `
-            <td class="model-name">${model.model}</td>
-            <td>${model.provider}</td>
-            <td class="number">${model.smartsElo}</td>
-            <td class="number">${model.codingElo}</td>
-            <td class="number">${model.speed || "-"}</td>
-            <td class="number">${model.context}</td>
-            <td class="number">$${model.inputPrice}</td>
-            <td class="number">$${model.outputPrice}</td>
-            <td class="number cost">$${monthlyCost.toFixed(2)}</td>
-            <td>${model.hasVision ? "✓" : "-"}</td>
-            <td>${model.hasFreeTier ? "✓" : "-"}</td>
-            <td>${model.notes || ""}</td>
-        `;
+          <td class="model-name">
+              <a href="${
+                model.pricingUrl
+              }" target="_blank" rel="noopener noreferrer" class="model-link">
+                  ${model.model}
+                  <svg class="external-link-icon" width="12" height="12" viewBox="0 0 12 12">
+                      <path fill="currentColor" d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"/>
+                      <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z"/>
+                  </svg>
+              </a>
+          </td>
+          <td>${model.provider}</td>
+          <td class="number">${model.smartsElo || "-"}</td>
+          <td class="number">${model.codingElo || "-"}</td>
+          <td class="number">${model.speed || "-"}</td>
+          <td class="number">${model.context}</td>
+          <td class="number">$${model.inputPrice || "null"}</td>
+          <td class="number">$${model.outputPrice || "null"}</td>
+          <td class="number">$${calculateMonthlyCost(
+            model,
+            currentInputTokens,
+            currentOutputTokens
+          ).toFixed(2)}</td>
+          <td>${model.hasVision ? "✓" : "-"}</td>
+          <td>${model.hasFreeTier ? "✓" : "-"}</td>
+          <td>${model.notes || ""}</td>
+      `;
     tbody.appendChild(row);
   });
 }

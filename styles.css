@@ -126,3 +126,28 @@ th[title]:hover::after {
     transform: translateX(-50%);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+.model-link {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.model-link:hover {
+    color: #0366d6;
+}
+
+.external-link-icon {
+    opacity: 0.6;
+    visibility: hidden;
+}
+
+.model-link:hover .external-link-icon {
+    visibility: visible;
+    opacity: 1;
+}
+
+.model-name {
+    white-space: nowrap;
+}
