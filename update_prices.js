@@ -23,66 +23,31 @@ const modelMapping = {
 
 async function updatePrices() {
   try {
-    // Read existing data.js as string
-    const existingData = fs.readFileSync("data.js", "utf8");
+    // Read current data
+    const data = JSON.parse(fs.readFileSync("data.json", "utf8"));
 
-    // Fetch OpenRouter data
+    // Fetch new prices
     const response = await fetch("https://openrouter.ai/api/v1/models");
     const openRouterData = await response.json();
 
-    // Create a map of OpenRouter models for easy lookup
-    const openRouterModels = {};
-    openRouterData.data.forEach((model) => {
-      openRouterModels[model.id] = model;
-    });
-
-    // Update prices using regex to preserve formatting and comments
-    let updatedContent = existingData;
-
-    Object.entries(modelMapping).forEach(([ourModel, openRouterId]) => {
-      if (openRouterModels[openRouterId]) {
-        const orModel = openRouterModels[openRouterId];
-        const inputPrice = (orModel.pricing.prompt * 1000000).toFixed(1);
-        const outputPrice = (orModel.pricing.completion * 1000000).toFixed(1);
-
-        console.log(`Updating ${ourModel}:`);
-        console.log(`  Input price: ${inputPrice}`);
-        console.log(`  Output price: ${outputPrice}`);
-
-        // Update input price
-        updatedContent = updatedContent.replace(
-          new RegExp(
-            `(model:\\s*"${ourModel}"[\\s\\S]*?inputPrice:)\\s*[\\d\\.]+`
-          ),
-          `$1 ${inputPrice}`
-        );
-
-        // Update output price
-        updatedContent = updatedContent.replace(
-          new RegExp(
-            `(model:\\s*"${ourModel}"[\\s\\S]*?outputPrice:)\\s*[\\d\\.]+`
-          ),
-          `$1 ${outputPrice}`
-        );
-
-        // Update context if available
-        if (orModel.context_length) {
-          const contextK = Math.floor(orModel.context_length / 1000);
-          updatedContent = updatedContent.replace(
-            new RegExp(`(model:\\s*"${ourModel}"[\\s\\S]*?context:)\\s*[\\d]+`),
-            `$1 ${contextK}`
+    // Update prices
+    data.forEach((model) => {
+      const openRouterId = modelMapping[model.model];
+      if (openRouterId) {
+        const orModel = openRouterData.data.find((m) => m.id === openRouterId);
+        if (orModel) {
+          model.inputPrice = Number(
+            (orModel.pricing.prompt * 1000000).toFixed(1)
+          );
+          model.outputPrice = Number(
+            (orModel.pricing.completion * 1000000).toFixed(1)
           );
         }
-      } else {
-        console.warn(
-          `Warning: No OpenRouter data found for ${ourModel} (${openRouterId})`
-        );
       }
     });
 
-    // Write updated content back to file
-    fs.writeFileSync("data.js", updatedContent);
-
+    // Write updated data
+    fs.writeFileSync("data.json", JSON.stringify(data, null, 2));
     console.log("Prices updated successfully!");
   } catch (error) {
     console.error("Error updating prices:", error);
