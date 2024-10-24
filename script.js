@@ -50,7 +50,6 @@ function populateTable() {
             currentOutputTokens
           ).toFixed(2)}</td>
           <td>${model.hasVision ? "✓" : "-"}</td>
-          <td>${model.hasFreeTier ? "✓" : "-"}</td>
           <td>${model.notes || ""}</td>
       `;
     tbody.appendChild(row);

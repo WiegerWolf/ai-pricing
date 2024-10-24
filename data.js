@@ -10,7 +10,6 @@ const modelData = [
     inputPrice: 5.0, // Updated
     outputPrice: 15.0, // Updated
     hasVision: true,
-    hasFreeTier: false,
     notes: "can be 50% cheaper using batch processing",
     pricingUrl: "https://openai.com/api/pricing/",
   },
@@ -24,7 +23,6 @@ const modelData = [
     inputPrice: 15.0, // Updated
     outputPrice: 60.0, // Updated
     hasVision: true,
-    hasFreeTier: false,
     notes: "Output includes internal reasoning tokens",
     pricingUrl: "https://openai.com/api/pricing/",
   },
@@ -38,7 +36,6 @@ const modelData = [
     inputPrice: 3.0, // Updated
     outputPrice: 12.0, // Updated
     hasVision: true,
-    hasFreeTier: false,
     notes: "Output includes internal reasoning tokens",
     pricingUrl: "https://openai.com/api/pricing/",
   },
@@ -52,7 +49,6 @@ const modelData = [
     inputPrice: 0.15, // Verified correct
     outputPrice: 0.6, // Verified correct
     hasVision: true,
-    hasFreeTier: false,
     notes: "can be 50% cheaper using batch processing",
     pricingUrl: "https://openai.com/api/pricing/",
   },
@@ -66,7 +62,6 @@ const modelData = [
     inputPrice: 10.0, // Verified correct
     outputPrice: 30.0, // Verified correct
     hasVision: true,
-    hasFreeTier: false,
     notes: "can be 50% cheaper using batch processing",
     pricingUrl: "https://openai.com/api/pricing/",
   },
@@ -82,7 +77,6 @@ const modelData = [
     inputPrice: 3.0, // Verified correct
     outputPrice: 15.0, // Verified correct
     hasVision: true,
-    hasFreeTier: false,
     notes: "50% discount available with Batches API",
     pricingUrl: "https://www.anthropic.com/pricing#anthropic-api",
   },
@@ -96,7 +90,6 @@ const modelData = [
     inputPrice: 0.25, // Updated
     outputPrice: 1.25, // Updated
     hasVision: true,
-    hasFreeTier: false,
     notes: "Fastest model, 50% discount available with Batches API",
     pricingUrl: "https://www.anthropic.com/pricing#anthropic-api",
   },
@@ -112,7 +105,6 @@ const modelData = [
     inputPrice: 3.5,
     outputPrice: 10.5,
     hasVision: true,
-    hasFreeTier: false,
     notes:
       "these prices are for <128k context, for more see pricing page, no free tier in EU",
     pricingUrl: "https://ai.google.dev/pricing",
@@ -127,7 +119,6 @@ const modelData = [
     inputPrice: 0.35,
     outputPrice: 0.53,
     hasVision: true,
-    hasFreeTier: false,
     notes:
       "these prices are for <128k context, for more see pricing page, no free tier in EU",
     pricingUrl: "https://ai.google.dev/pricing",
@@ -144,7 +135,6 @@ const modelData = [
     inputPrice: 0.59, // Verified correct
     outputPrice: 0.79, // Verified correct
     hasVision: false,
-    hasFreeTier: false,
     notes: "8k context window",
     pricingUrl: "https://groq.com/pricing/",
   },
@@ -158,7 +148,6 @@ const modelData = [
     inputPrice: 0.05, // Verified correct
     outputPrice: 0.08, // Updated from pricing page
     hasVision: false,
-    hasFreeTier: false,
     notes: "",
     pricingUrl: "https://groq.com/pricing/",
   },
@@ -172,7 +161,6 @@ const modelData = [
     inputPrice: 0.04,
     outputPrice: 0.04,
     hasVision: false,
-    hasFreeTier: false,
     notes: "8k context window, preview version, fastest model available",
   },
   {
@@ -185,7 +173,6 @@ const modelData = [
     inputPrice: 0.06,
     outputPrice: 0.06,
     hasVision: false,
-    hasFreeTier: false,
     notes: "8k context window, preview version",
   },
   {
@@ -198,7 +185,6 @@ const modelData = [
     inputPrice: 0.59,
     outputPrice: 0.79,
     hasVision: false,
-    hasFreeTier: false,
     notes: "",
     pricingUrl: "https://groq.com/pricing/",
   },
@@ -212,7 +198,6 @@ const modelData = [
     inputPrice: 0.05,
     outputPrice: 0.08,
     hasVision: false,
-    hasFreeTier: false,
     notes: "",
     pricingUrl: "https://groq.com/pricing/",
   },
@@ -226,7 +211,6 @@ const modelData = [
     inputPrice: 0.89,
     outputPrice: 0.89,
     hasVision: false,
-    hasFreeTier: false,
     notes: "preview version with tool use capabilities",
     pricingUrl: "https://groq.com/pricing/",
   },
@@ -240,7 +224,6 @@ const modelData = [
     inputPrice: 0.2,
     outputPrice: 0.2,
     hasVision: false,
-    hasFreeTier: false,
     notes:
       "specialized for content moderation to work in pair with other llamas",
     pricingUrl: "https://groq.com/pricing/",
@@ -257,7 +240,6 @@ const modelData = [
     inputPrice: null,
     outputPrice: null,
     hasVision: false,
-    hasFreeTier: false,
     notes: "Not yet publicly available",
     pricingUrl: "https://x.ai/blog/grok-2",
   },
@@ -273,7 +255,6 @@ const modelData = [
     inputPrice: 0.14,
     outputPrice: 0.14,
     hasVision: false,
-    hasFreeTier: false,
     notes:
       "Latest high-performance model with significantly improved inference speed while maintaining high-quality output",
     pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
@@ -288,7 +269,6 @@ const modelData = [
     inputPrice: 0.14,
     outputPrice: 0.14,
     hasVision: false,
-    hasFreeTier: false,
     notes: "Lightning model's lite version",
     pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
   },
@@ -302,7 +282,6 @@ const modelData = [
     inputPrice: 2.8,
     outputPrice: 2.8,
     hasVision: false,
-    hasFreeTier: false,
     notes:
       "Trillion-parameter large-scale model providing powerful Q&A and text generation capabilities",
     pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
@@ -317,7 +296,6 @@ const modelData = [
     inputPrice: 2.8,
     outputPrice: 2.8,
     hasVision: false,
-    hasFreeTier: false,
     notes: "Preview version of Yi-Large",
     pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
   },
@@ -333,7 +311,6 @@ const modelData = [
     inputPrice: null,
     outputPrice: null,
     hasVision: false,
-    hasFreeTier: false,
     notes: "",
   },
 
@@ -348,7 +325,6 @@ const modelData = [
     inputPrice: 3,
     outputPrice: 15,
     hasVision: false,
-    hasFreeTier: false,
     notes: "",
   },
 
@@ -363,7 +339,6 @@ const modelData = [
     inputPrice: 10,
     outputPrice: 25,
     hasVision: true,
-    hasFreeTier: false,
     notes: "",
   },
 
@@ -378,7 +353,6 @@ const modelData = [
     inputPrice: 0,
     outputPrice: 0,
     hasVision: false,
-    hasFreeTier: true,
     notes: "currently in free beta",
   },
 ];
