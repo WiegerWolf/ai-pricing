@@ -68,7 +68,20 @@ const modelData = [
 
   // Anthropic
   {
-    model: "Claude 3.5 Sonnet",
+    model: "Claude-3-5-Sonnet-20241022",
+    provider: "Anthropic",
+    smartsElo: null,
+    codingElo: null,
+    speed: null,
+    context: 200,
+    inputPrice: 3.0, // Verified correct
+    outputPrice: 15.0, // Verified correct
+    hasVision: true,
+    notes: "50% discount available with Batches API",
+    pricingUrl: "https://www.anthropic.com/pricing#anthropic-api",
+  },
+  {
+    model: "Claude-3-5-Sonnet-20240620",
     provider: "Anthropic",
     smartsElo: 1268,
     codingElo: 1295,
@@ -81,10 +94,10 @@ const modelData = [
     pricingUrl: "https://www.anthropic.com/pricing#anthropic-api",
   },
   {
-    model: "Claude 3.5 Haiku",
+    model: "Claude-3-5-Haiku-20241022",
     provider: "Anthropic",
-    smartsElo: 1179,
-    codingElo: 1189,
+    smartsElo: 1248,
+    codingElo: 1250,
     speed: 89,
     context: 200,
     inputPrice: 0.25, // Updated
@@ -240,7 +253,7 @@ const modelData = [
     inputPrice: null,
     outputPrice: null,
     hasVision: false,
-    notes: "Not yet publicly available",
+    notes: "Not yet publicly available in EU",
     pricingUrl: "https://x.ai/blog/grok-2",
   },
 
@@ -256,8 +269,9 @@ const modelData = [
     outputPrice: 0.14,
     hasVision: false,
     notes:
-      "Latest high-performance model with significantly improved inference speed while maintaining high-quality output",
-    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
+      "Latest high-performance model with significantly improved inference speed",
+    pricingUrl:
+      "https://platform.lingyiwanwu.com/docs#%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%AE%A1%E8%B4%B9",
   },
   {
     model: "yi-lightning-lite",
@@ -270,7 +284,8 @@ const modelData = [
     outputPrice: 0.14,
     hasVision: false,
     notes: "Lightning model's lite version",
-    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
+    pricingUrl:
+      "https://platform.lingyiwanwu.com/docs#%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%AE%A1%E8%B4%B9",
   },
   {
     model: "yi-large",
@@ -284,7 +299,8 @@ const modelData = [
     hasVision: false,
     notes:
       "Trillion-parameter large-scale model providing powerful Q&A and text generation capabilities",
-    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
+    pricingUrl:
+      "https://platform.lingyiwanwu.com/docs#%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%AE%A1%E8%B4%B9",
   },
   {
     model: "yi-large-preview",
@@ -297,7 +313,8 @@ const modelData = [
     outputPrice: 2.8,
     hasVision: false,
     notes: "Preview version of Yi-Large",
-    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
+    pricingUrl:
+      "https://platform.lingyiwanwu.com/docs#%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%AE%A1%E8%B4%B9",
   },
 
   // Zhipu

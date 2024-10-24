@@ -44,7 +44,7 @@ function populateTable() {
           <td class="number">${model.context}</td>
           <td class="number">$${model.inputPrice || "null"}</td>
           <td class="number">$${model.outputPrice || "null"}</td>
-          <td class="number">$${calculateMonthlyCost(
+          <td class="number cost">$${calculateMonthlyCost(
             model,
             currentInputTokens,
             currentOutputTokens
