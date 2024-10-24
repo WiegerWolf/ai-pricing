@@ -151,3 +151,49 @@ th[title]:hover::after {
 .model-name {
     white-space: nowrap;
 }
+/* Add hover effect for table rows */
+tbody tr {
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+tbody tr:hover {
+    background-color: #f0f7ff !important; /* Override even/odd row colors */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transform: scale(1.002);
+    z-index: 1;
+}
+
+/* Highlight cells in hovered row */
+tbody tr:hover td {
+    background-color: #f0f7ff;
+    border-color: #0366d6;
+}
+
+/* Special highlight for the model name on hover */
+tbody tr:hover .model-name {
+    background-color: #e6f0fa;
+}
+
+/* Add a subtle left border indicator */
+tbody tr {
+    border-left: 3px solid transparent;
+}
+
+tbody tr:hover {
+    border-left: 3px solid #0366d6;
+}
+
+/* Make sure the table cells don't have gaps during hover */
+td {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Ensure even/odd row styling doesn't conflict */
+tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+tr:nth-child(even):hover {
+    background-color: #f0f7ff !important;
+}
