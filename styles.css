@@ -71,54 +71,58 @@ body {
     flex: 1;
 }
 
+/* Replace the existing table and header styles with these */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;  /* Changed from collapse */
+    border-spacing: 0;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-th, td {
-    padding: 0.75rem;
-    border: 1px solid #eee;
-    font-size: 0.9rem;
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 th {
     background: #f8f9fa;
     font-weight: 600;
     text-align: left;
-    position: sticky;
-    top: 0;
+    padding: 0.75rem;
+    border: 1px solid #eee;
+    border-bottom: 2px solid #ddd;  /* Make bottom border more visible */
 }
 
-tr:nth-child(even) {
-    background: #f8f9fa;
+td {
+    padding: 0.75rem;
+    border: 1px solid #eee;
+    font-size: 0.9rem;
 }
 
 .number {
     text-align: right;
 }
 
-/* Tooltip styles */
+/* Update tooltip styles */
 th[title] {
     cursor: help;
-    position: relative;
 }
 
 th[title]:hover::after {
     content: attr(title);
-    position: absolute;
+    position: fixed;  /* Changed from absolute */
     background: #333;
     color: white;
     padding: 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
     white-space: nowrap;
-    z-index: 1;
-    top: 100%;
+    z-index: 20;  /* Higher than header */
+    margin-top: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
