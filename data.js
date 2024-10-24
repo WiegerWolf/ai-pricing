@@ -259,21 +259,67 @@ const modelData = [
     hasVision: false,
     hasFreeTier: false,
     notes: "Not yet publicly available",
+    pricingUrl: "https://x.ai/blog/grok-2",
   },
 
   // 01 AI
   {
-    model: "Yi-Lightning", // New entry
+    model: "yi-lightning",
     provider: "01 AI",
-    smartsElo: 1287,
-    codingElo: 1300,
+    smartsElo: 1287, // Confirmed from data
+    codingElo: 1300, // Confirmed from data
     speed: null,
-    context: 128,
-    inputPrice: null,
-    outputPrice: null,
+    context: 16,
+    inputPrice: 0.14,
+    outputPrice: 0.14,
     hasVision: false,
     hasFreeTier: false,
-    notes: "",
+    notes:
+      "Latest high-performance model with significantly improved inference speed while maintaining high-quality output",
+    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
+  },
+  {
+    model: "yi-lightning-lite",
+    provider: "01 AI",
+    smartsElo: 1265, // Added from data
+    codingElo: 1267, // Added from data
+    speed: null,
+    context: 16,
+    inputPrice: 0.14,
+    outputPrice: 0.14,
+    hasVision: false,
+    hasFreeTier: false,
+    notes: "Lightning model's lite version",
+    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
+  },
+  {
+    model: "yi-large",
+    provider: "01 AI",
+    smartsElo: 1213, // Updated from data
+    codingElo: 1219, // Updated from data
+    speed: null,
+    context: 32,
+    inputPrice: 2.8,
+    outputPrice: 2.8,
+    hasVision: false,
+    hasFreeTier: false,
+    notes:
+      "Trillion-parameter large-scale model providing powerful Q&A and text generation capabilities",
+    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
+  },
+  {
+    model: "yi-large-preview",
+    provider: "01 AI",
+    smartsElo: 1240, // Added from data
+    codingElo: 1245, // Added from data
+    speed: null,
+    context: 32,
+    inputPrice: 2.8,
+    outputPrice: 2.8,
+    hasVision: false,
+    hasFreeTier: false,
+    notes: "Preview version of Yi-Large",
+    pricingUrl: "https://platform.lingyiwanwu.com/docs/guide/model-pricing",
   },
 
   // Zhipu
