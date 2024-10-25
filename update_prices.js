@@ -14,8 +14,6 @@ const modelMapping = {
   "Gemini-1.5-Flash-002": "google/gemini-flash-1.5",
   // no info on groq llama
   "Grok-2-08-13": "x-ai/grok-beta",
-  // no info on 01 AI
-  // no info on Zhipu
   "Command R+": "cohere/command-r-plus-08-2024",
   // no info on Reka
   // no info on Cloudflare
