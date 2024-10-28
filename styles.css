@@ -70,10 +70,36 @@ body {
     flex: 1;
 }
 
-/* Replace the existing table and header styles with these */
+/* Tabs Styles */
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    background: #f0f0f0;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.tab-button.active {
+    background: #007bff;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Table Styles */
 table {
     width: 100%;
-    border-collapse: separate;  /* Changed from collapse */
+    border-collapse: separate;
     border-spacing: 0;
     background: #fff;
     border-radius: 8px;
@@ -92,7 +118,7 @@ th {
     text-align: left;
     padding: 0.75rem;
     border: 1px solid #eee;
-    border-bottom: 2px solid #ddd;  /* Make bottom border more visible */
+    border-bottom: 2px solid #ddd;
 }
 
 td {
@@ -105,26 +131,26 @@ td {
     text-align: right;
 }
 
-/* Update tooltip styles */
 th[title] {
     cursor: help;
 }
 
 th[title]:hover::after {
     content: attr(title);
-    position: fixed;  /* Changed from absolute */
+    position: fixed;
     background: #333;
     color: white;
     padding: 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
     white-space: nowrap;
-    z-index: 20;  /* Higher than header */
+    z-index: 20;
     margin-top: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
 .model-link {
     color: inherit;
     text-decoration: none;
@@ -150,45 +176,34 @@ th[title]:hover::after {
 .model-name {
     white-space: nowrap;
 }
-/* Add hover effect for table rows */
+
 tbody tr {
     transition: all 0.2s ease-in-out;
     position: relative;
+    border-left: 3px solid transparent;
 }
 
 tbody tr:hover {
-    background-color: #f0f7ff !important; /* Override even/odd row colors */
+    background-color: #f0f7ff !important;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transform: scale(1.002);
     z-index: 1;
+    border-left: 3px solid #0366d6;
 }
 
-/* Highlight cells in hovered row */
 tbody tr:hover td {
     background-color: #f0f7ff;
     border-color: #0366d6;
 }
 
-/* Special highlight for the model name on hover */
 tbody tr:hover .model-name {
     background-color: #e6f0fa;
 }
 
-/* Add a subtle left border indicator */
-tbody tr {
-    border-left: 3px solid transparent;
-}
-
-tbody tr:hover {
-    border-left: 3px solid #0366d6;
-}
-
-/* Make sure the table cells don't have gaps during hover */
 td {
     transition: all 0.2s ease-in-out;
 }
 
-/* Ensure even/odd row styling doesn't conflict */
 tr:nth-child(even) {
     background: #f8f9fa;
 }

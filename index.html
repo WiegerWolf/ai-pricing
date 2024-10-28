@@ -52,7 +52,13 @@
         </div>
       </div>
 
-      <div
+      <div class="tabs">
+        <button class="tab-button active" data-tab="llm">LLM Models</button>
+        <button class="tab-button" data-tab="stt">Speech-to-Text</button>
+      </div>
+
+      <div class="tab-content active" id="llm-content">
+        <div
         id="calculatorSection"
         class="calculator-section"
         style="display: none"
@@ -113,6 +119,23 @@
           <!-- Data rows will be populated by JavaScript -->
         </tbody>
       </table>
+    </div>
+
+      <div class="tab-content" id="stt-content">
+        <table id="sttTable">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Provider</th>
+              <th>Price/Minute</th>
+              <th>Real-time</th>
+              <th>Languages</th>
+              <th>Monthly Cost</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
     <script src="script.js" type="module"></script>
   </body>

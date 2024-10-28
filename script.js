@@ -85,7 +85,23 @@ function initializeSliders() {
   updateSliderDisplay(currentOutputTokens, outputValue);
 }
 
-// Add sorting functionality (keep your existing sort function)
+// Add this near your other initialization code
+function initializeTabs() {
+  const tabs = document.querySelectorAll('.tab-button');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and content
+      document.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      // Add active class to clicked tab and corresponding content
+      tab.classList.add('active');
+      const contentId = `${tab.dataset.tab}-content`;
+      document.getElementById(contentId).classList.add('active');
+    });
+  });
+}
 let sortDirections = {}; // To keep track of sort direction for each column
 
 function sortTable(column) {
@@ -142,13 +158,13 @@ function updateSortIndicators(activeColumn) {
     }
   });
 }
-// Wrap the initialization in an async function
 async function initialize() {
   try {
     const response = await fetch('data.json');
     modelData = await response.json();
-    
+
     initializeSliders();
+    initializeTabs(); // Added this line
     populateTable();
 
     // Add click handlers for sorting
@@ -164,7 +180,6 @@ async function initialize() {
   }
 }
 
-// Replace the DOMContentLoaded event listener with:
 document.addEventListener("DOMContentLoaded", initialize);
 
 document
