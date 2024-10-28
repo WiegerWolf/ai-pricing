@@ -261,15 +261,35 @@ table td {
   vertical-align: top;
 }
 
-/* Add tooltip styles for the info icons */
+/* Replace the existing tooltip styles with these */
 th[title] {
   cursor: help;
+  position: relative;
 }
 
-th[title]::after {
-  content: " ℹ️";
+/* Optional: Add tooltip hover effect */
+th[title]:hover::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: normal;
+  width: max-content;
+  max-width: 300px;
+  z-index: 1000;
+}
+
+/* Add these improved tooltip styles */
+.info-icon {
   font-size: 0.8em;
   opacity: 0.7;
+  margin-left: 4px;
 }
 
 .number {
