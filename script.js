@@ -122,36 +122,43 @@ function populateSTTTable() {
     }
   });
 }
-// Add this function to handle calculator visibility
-function updateCalculatorVisibility() {
-  const currentTab = document.querySelector(".tab-button.active").dataset.tab;
-  const llmCalculator = document.getElementById("calculatorSection");
-  const sttCalculator = document.getElementById("stt-calculator");
-  const button = document.getElementById("showCalculator");
 
-  if (currentTab === "llm") {
-    // Handle LLM calculator
-    if (llmCalculator.style.display === "none") {
-      llmCalculator.style.display = "block";
-      button.textContent = "Hide LLM Calculator";
-    } else {
-      llmCalculator.style.display = "none";
-      button.textContent = "Show LLM Calculator";
-    }
-    // Always hide STT calculator when on LLM tab
-    sttCalculator.style.display = "none";
-  } else {
-    // Handle STT calculator
-    if (sttCalculator.style.display === "none") {
-      sttCalculator.style.display = "block";
-      button.textContent = "Hide STT Calculator";
-    } else {
+// Replace both updateCalculatorVisibility and initializeCalculators with this single function
+function initializeCalculators() {
+  const showCalculatorBtn = document.getElementById("showCalculator");
+  
+  // Remove any existing event listeners
+  showCalculatorBtn.replaceWith(showCalculatorBtn.cloneNode(true));
+  
+  // Get the new button reference after replacement
+  const newShowCalculatorBtn = document.getElementById("showCalculator");
+  
+  // Add the single event listener
+  newShowCalculatorBtn.addEventListener("click", () => {
+    const currentTab = document.querySelector(".tab-button.active").dataset.tab;
+    const llmCalculator = document.getElementById("calculatorSection");
+    const sttCalculator = document.getElementById("stt-calculator");
+    
+    if (currentTab === "llm") {
+      const isHidden = llmCalculator.style.display === "none";
+      llmCalculator.style.display = isHidden ? "block" : "none";
+      newShowCalculatorBtn.textContent = `${isHidden ? "Hide" : "Show"} LLM Calculator`;
       sttCalculator.style.display = "none";
-      button.textContent = "Show STT Calculator";
+      
+      if (isHidden) {
+        llmCalculator.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    } else {
+      const isHidden = sttCalculator.style.display === "none";
+      sttCalculator.style.display = isHidden ? "block" : "none";
+      newShowCalculatorBtn.textContent = `${isHidden ? "Hide" : "Show"} STT Calculator`;
+      llmCalculator.style.display = "none";
+      
+      if (isHidden) {
+        sttCalculator.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     }
-    // Always hide LLM calculator when on STT tab
-    llmCalculator.style.display = "none";
-  }
+  });
 }
 
 function createSTTTableRow(data) {
@@ -238,26 +245,7 @@ function initializeTimeInputs() {
   // Initialize total minutes display
   updateSTTCosts();
 }
-// Update the initialization function to handle calculator visibility
-function initializeCalculators() {
-  const showCalculatorBtn = document.getElementById("showCalculator");
 
-  showCalculatorBtn.addEventListener("click", () => {
-    const currentTab = document.querySelector(".tab-button.active").dataset.tab;
-    const calculator =
-      currentTab === "llm"
-        ? document.getElementById("calculatorSection")
-        : document.getElementById("stt-calculator");
-
-    const isHidden = calculator.style.display === "none";
-    calculator.style.display = isHidden ? "block" : "none";
-    showCalculatorBtn.textContent = `${isHidden ? "Hide" : "Show"} Calculator`;
-
-    if (isHidden) {
-      calculator.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-  });
-}
 // Update the initializeSliders function
 function initializeSliders() {
   const inputSlider = document.getElementById("inputTokens");
@@ -374,7 +362,7 @@ function updateSortIndicators(activeColumn) {
   });
 }
 
-// Modify the initialize function to call both initialization functions
+// Update the initialize function
 async function initialize() {
   try {
     const [llmResponse, sttResponse] = await Promise.all([
@@ -385,13 +373,13 @@ async function initialize() {
     modelData = await llmResponse.json();
     sttModelData = await sttResponse.json();
 
-    initializeSliders(); // LLM sliders
-    initializeTimeInputs(); // STT time inputs
+    initializeSliders();
+    initializeTimeInputs();
     initializeTabs();
+    initializeCalculators(); // Initialize calculators first
     populateTable();
     populateSTTTable();
-    initializeCalculators();
-    
+
     // Set initial calculator button text based on active tab
     const initialTab = document.querySelector(".tab-button.active").dataset.tab;
     const button = document.getElementById("showCalculator");
@@ -423,11 +411,6 @@ async function initialize() {
 }
 
 document.addEventListener("DOMContentLoaded", initialize);
-
-// Replace the showCalculator click handler
-document
-  .getElementById("showCalculator")
-  .addEventListener("click", updateCalculatorVisibility);
 
 if ("ontouchstart" in window) {
   document.querySelectorAll("th[title]").forEach((th) => {
