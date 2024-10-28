@@ -118,6 +118,37 @@ function populateSTTTable() {
     }
   });
 }
+// Add this function to handle calculator visibility
+function updateCalculatorVisibility() {
+  const currentTab = document.querySelector('.tab-button.active').dataset.tab;
+  const llmCalculator = document.getElementById('calculatorSection');
+  const sttCalculator = document.getElementById('stt-calculator');
+  const button = document.getElementById('showCalculator');
+
+  if (currentTab === 'llm') {
+    // Handle LLM calculator
+    if (llmCalculator.style.display === 'none') {
+      llmCalculator.style.display = 'block';
+      button.textContent = 'Hide LLM Calculator';
+    } else {
+      llmCalculator.style.display = 'none';
+      button.textContent = 'Show LLM Calculator';
+    }
+    // Always hide STT calculator when on LLM tab
+    sttCalculator.style.display = 'none';
+  } else {
+    // Handle STT calculator
+    if (sttCalculator.style.display === 'none') {
+      sttCalculator.style.display = 'block';
+      button.textContent = 'Hide STT Calculator';
+    } else {
+      sttCalculator.style.display = 'none';
+      button.textContent = 'Show STT Calculator';
+    }
+    // Always hide LLM calculator when on STT tab
+    llmCalculator.style.display = 'none';
+  }
+}
 
 function createSTTTableRow(data) {
   const row = document.createElement("tr");
@@ -217,6 +248,7 @@ function initializeSliders() {
   updateSliderDisplay(currentOutputTokens, outputValue);
 }
 
+// Modify the initializeTabs function
 function initializeTabs() {
   const tabs = document.querySelectorAll('.tab-button');
 
@@ -228,6 +260,15 @@ function initializeTabs() {
       tab.classList.add('active');
       const contentId = `${tab.dataset.tab}-content`;
       document.getElementById(contentId).classList.add('active');
+
+      // Update calculator button text based on current tab
+      const button = document.getElementById('showCalculator');
+      const currentTab = tab.dataset.tab;
+      button.textContent = `Show ${currentTab.toUpperCase()} Calculator`;
+
+      // Reset calculator visibility when switching tabs
+      document.getElementById('calculatorSection').style.display = 'none';
+      document.getElementById('stt-calculator').style.display = 'none';
     });
   });
 }
@@ -291,6 +332,11 @@ async function initialize() {
 
     modelData = await llmResponse.json();
     sttModelData = await sttResponse.json();
+    
+// Set initial calculator button text based on active tab
+const initialTab = document.querySelector('.tab-button.active').dataset.tab;
+const button = document.getElementById('showCalculator');
+button.textContent = `Show ${initialTab.toUpperCase()} Calculator`;
 
     initializeSliders(); // LLM sliders
     initializeTimeInputs(); // STT time inputs
@@ -320,20 +366,8 @@ async function initialize() {
 
 document.addEventListener("DOMContentLoaded", initialize);
 
-document
-  .getElementById("showCalculator")
-  .addEventListener("click", function () {
-    const calculatorSection = document.getElementById("calculatorSection");
-    const button = document.getElementById("showCalculator");
-
-    if (calculatorSection.style.display === "none") {
-      calculatorSection.style.display = "block";
-      button.textContent = "Hide Usage Calculator";
-    } else {
-      calculatorSection.style.display = "none";
-      button.textContent = "Show Usage Calculator";
-    }
-  });
+// Replace the showCalculator click handler
+document.getElementById("showCalculator").addEventListener("click", updateCalculatorVisibility);
 
 if ("ontouchstart" in window) {
   document.querySelectorAll("th[title]").forEach((th) => {
