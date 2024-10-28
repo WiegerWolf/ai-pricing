@@ -278,34 +278,79 @@ function initializeSliders() {
   updateSliderDisplay(currentOutputTokens, outputValue);
 }
 
-// Modify the initializeTabs function
+// Update the initializeTabs function
 function initializeTabs() {
-  const tabs = document.querySelectorAll(".tab-button");
+  const tabs = document.querySelectorAll('.tab-button');
+  const contents = document.querySelectorAll('.tab-content');
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      document
-        .querySelectorAll(".tab-button")
-        .forEach((t) => t.classList.remove("active"));
-      document
-        .querySelectorAll(".tab-content")
-        .forEach((c) => c.classList.remove("active"));
+  function switchTab(targetTab) {
+    const contentId = targetTab.dataset.tab + '-content';
+    const newContent = document.getElementById(contentId);
 
-      tab.classList.add("active");
-      const contentId = `${tab.dataset.tab}-content`;
-      document.getElementById(contentId).classList.add("active");
-
-      // Update calculator button text based on current tab
-      const button = document.getElementById("showCalculator");
-      const currentTab = tab.dataset.tab;
-      button.textContent = `Show ${currentTab.toUpperCase()} Calculator`;
-
-      // Reset calculator visibility when switching tabs
-      document.getElementById("calculatorSection").style.display = "none";
-      document.getElementById("stt-calculator").style.display = "none";
+    // Remove active class from all tabs and contents
+    tabs.forEach(tab => tab.classList.remove('active'));
+    contents.forEach(content => {
+      content.classList.remove('active');
+      content.style.display = 'none';
     });
+
+    // Add active class to clicked tab
+    targetTab.classList.add('active');
+
+    // Animate new content
+    newContent.style.display = 'block';
+    newContent.classList.add('fade-enter');
+    
+    // Force reflow
+    newContent.offsetHeight;
+
+    // Add active class and start animation
+    newContent.classList.add('active');
+    newContent.classList.remove('fade-enter');
+
+    // Update calculator button text and state
+    const button = document.getElementById('showCalculator');
+    const currentTab = targetTab.dataset.tab;
+    button.textContent = `Show ${currentTab.toUpperCase()} Calculator`;
+
+    // Reset calculator visibility
+    document.getElementById('calculatorSection').style.display = 'none';
+    document.getElementById('stt-calculator').style.display = 'none';
+
+    // Update the page title
+    updatePageTitle(currentTab);
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => switchTab(tab));
+  });
+
+  // Add keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      const activeTab = document.querySelector('.tab-button.active');
+      const tabArray = Array.from(tabs);
+      const currentIndex = tabArray.indexOf(activeTab);
+      let newIndex;
+
+      if (e.key === 'ArrowLeft') {
+        newIndex = currentIndex > 0 ? currentIndex - 1 : tabArray.length - 1;
+      } else {
+        newIndex = currentIndex < tabArray.length - 1 ? currentIndex + 1 : 0;
+      }
+
+      switchTab(tabArray[newIndex]);
+    }
   });
 }
+
+// Add function to update page title
+function updatePageTitle(currentTab) {
+  const baseTitle = 'AI Model Pricing Comparison';
+  const tabTitle = currentTab === 'llm' ? 'LLM Models' : 'Speech-to-Text';
+  document.title = `${tabTitle} - ${baseTitle}`;
+}
+
 
 let sortDirections = {};
 // Add new function to format numbers

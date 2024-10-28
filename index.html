@@ -65,12 +65,29 @@
         </div>
       </div>
 
-      <div class="tabs">
-        <button class="tab-button active" data-tab="llm">LLM Models</button>
-        <button class="tab-button" data-tab="stt">Speech-to-Text</button>
+      <!-- Update the tabs section -->
+      <div class="tabs" role="tablist">
+        <button
+          class="tab-button active"
+          data-tab="llm"
+          role="tab"
+          aria-selected="true"
+          aria-controls="llm-content"
+        >
+          LLM Models
+        </button>
+        <button
+          class="tab-button"
+          data-tab="stt"
+          role="tab"
+          aria-selected="false"
+          aria-controls="stt-content"
+        >
+          Speech-to-Text
+        </button>
       </div>
 
-      <div class="tab-content active" id="llm-content">
+      <div class="tab-content active" id="llm-content" role="tabpanel" aria-labelledby="llm-tab">
         <!-- Updated LLM calculator section -->
         <div
           id="calculatorSection"
@@ -141,7 +158,7 @@
         </table>
       </div>
 
-      <div class="tab-content" id="stt-content">
+      <div class="tab-content" id="stt-content" role="tabpanel" aria-labelledby="stt-tab">
         <!-- Updated STT calculator section -->
         <div
           id="stt-calculator"
