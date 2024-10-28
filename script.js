@@ -2,21 +2,39 @@ let modelData = []; // LLM data
 let sttModelData = []; // STT data
 let currentInputTokens = 87000;
 let currentOutputTokens = 74000;
-let currentAudioMinutes = 60; // Default 1 hour of audio
+let currentAudioTime = {
+  days: 0,
+  hours: 1,
+  minutes: 0
+};
 
+// Add these preset configurations
+const timePresets = [
+  { label: '1 Hour Call', days: 0, hours: 1, minutes: 0 },
+  { label: '8 Hour Day', days: 0, hours: 8, minutes: 0 },
+  { label: 'Work Week (40h)', days: 5, hours: 0, minutes: 0 },
+  { label: 'Full Month (720h)', days: 30, hours: 0, minutes: 0 }
+];
+
+// Add this function to calculate total minutes
+function calculateTotalMinutes() {
+  return (currentAudioTime.days * 24 * 60) +
+         (currentAudioTime.hours * 60) +
+         currentAudioTime.minutes;
+}
 function calculateMonthlyCost(model, inputTokens, outputTokens) {
   const inputCost = (inputTokens / 1000000) * model.inputPrice;
   const outputCost = (outputTokens / 1000000) * model.outputPrice;
   return inputCost + outputCost;
 }
 
-// Add new calculation function for STT
-function calculateSTTMonthlyCost(model, audioMinutes) {
+// Update the calculateSTTMonthlyCost function to use the new time calculation
+function calculateSTTMonthlyCost(model, audioTime) {
+  const totalMinutes = calculateTotalMinutes();
   if (model.models) {
-    // For providers with multiple models, return the base model cost
-    return audioMinutes * model.models[0].pricePerMinute;
+    return totalMinutes * model.models[0].pricePerMinute;
   }
-  return audioMinutes * model.pricePerMinute;
+  return totalMinutes * model.pricePerMinute;
 }
 
 function updateCosts() {
@@ -103,7 +121,7 @@ function populateSTTTable() {
 
 function createSTTTableRow(data) {
   const row = document.createElement("tr");
-  const monthlyCost = calculateSTTMonthlyCost({ pricePerMinute: data.pricePerMinute }, currentAudioMinutes);
+  const monthlyCost = calculateSTTMonthlyCost({ pricePerMinute: data.pricePerMinute });
 
   row.innerHTML = `
     <td class="model-name">
@@ -124,22 +142,59 @@ function createSTTTableRow(data) {
   return row;
 }
 
+// Update the updateSTTCosts function
 function updateSTTCosts() {
+  const totalMinutes = calculateTotalMinutes();
+  document.getElementById('totalMinutes').textContent =
+    `Total: ${totalMinutes.toLocaleString()} minutes`;
+
   const rows = document.querySelectorAll("#sttTable tbody tr");
   rows.forEach((row) => {
     const pricePerMinute = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace("$", ""));
-    const monthlyCost = calculateSTTMonthlyCost({ pricePerMinute }, currentAudioMinutes);
+    const monthlyCost = calculateSTTMonthlyCost({ pricePerMinute }, totalMinutes);
     row.querySelector(".cost").textContent = `$${monthlyCost.toFixed(2)}`;
   });
 }
+function initializeTimeInputs() {
+  // Early return if we're not on the STT tab
+  if (!document.querySelector('.time-input')) {
+    return;
+  }
 
+  const timeInputs = document.querySelectorAll('.time-input');
+  
+  timeInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      const value = parseInt(e.target.value) || 0;
+      currentAudioTime[e.target.dataset.unit] = value;
+      updateSTTCosts();
+    });
+  });
+
+  // Initialize preset buttons
+  document.querySelectorAll('.time-preset').forEach(button => {
+    button.addEventListener('click', () => {
+      const preset = timePresets[parseInt(button.dataset.preset)];
+      currentAudioTime = { ...preset };
+      
+      // Update input fields
+      document.querySelector('[data-unit="days"]').value = preset.days;
+      document.querySelector('[data-unit="hours"]').value = preset.hours;
+      document.querySelector('[data-unit="minutes"]').value = preset.minutes;
+      
+      updateSTTCosts();
+    });
+  });
+
+  // Initialize total minutes display
+  updateSTTCosts();
+}
+// Modify the initializeSliders function to handle only LLM sliders
 function initializeSliders() {
   const inputSlider = document.getElementById("inputTokens");
   const outputSlider = document.getElementById("outputTokens");
   const inputValue = document.getElementById("inputTokensValue");
   const outputValue = document.getElementById("outputTokensValue");
-  const audioSlider = document.getElementById("audioMinutes");
-  const audioValue = document.getElementById("audioMinutesValue");
 
   function updateSliderDisplay(value, element) {
     element.textContent = Number(value).toLocaleString();
@@ -157,14 +212,9 @@ function initializeSliders() {
     updateCosts();
   });
 
-  audioSlider.addEventListener("input", (e) => {
-    currentAudioMinutes = parseInt(e.target.value);
-    updateSliderDisplay(currentAudioMinutes, audioValue);
-    updateSTTCosts();
-  });
+  // Initialize displays
   updateSliderDisplay(currentInputTokens, inputValue);
   updateSliderDisplay(currentOutputTokens, outputValue);
-  updateSliderDisplay(currentAudioMinutes, audioValue);
 }
 
 function initializeTabs() {
@@ -231,6 +281,7 @@ function updateSortIndicators(activeColumn) {
   });
 }
 
+// Modify the initialize function to call both initialization functions
 async function initialize() {
   try {
     const [llmResponse, sttResponse] = await Promise.all([
@@ -241,11 +292,13 @@ async function initialize() {
     modelData = await llmResponse.json();
     sttModelData = await sttResponse.json();
 
-    initializeSliders();
+    initializeSliders(); // LLM sliders
+    initializeTimeInputs(); // STT time inputs
     initializeTabs();
     populateTable();
     populateSTTTable();
 
+    // Add click handlers for sorting
     document.querySelectorAll("#modelTable th").forEach((header, index) => {
       header.addEventListener("click", () => sortTable(index, "#modelTable"));
     });
@@ -254,8 +307,12 @@ async function initialize() {
       header.addEventListener("click", () => sortTable(index, "#sttTable"));
     });
 
+    // Initial sort
     sortDirections[3] = true;
     sortTable(3, "#modelTable");
+
+    // Update initial STT costs
+    updateSTTCosts();
   } catch (error) {
     console.error('Error loading data:', error);
   }
@@ -285,3 +342,7 @@ if ("ontouchstart" in window) {
     });
   });
 }
+
+
+
+

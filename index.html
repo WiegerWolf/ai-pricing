@@ -123,9 +123,30 @@
 
       <div class="tab-content" id="stt-content">
         <div id="stt-calculator" class="calculator-section">
-          <label for="audioMinutes">Monthly Audio Minutes:</label>
-          <input type="range" id="audioMinutes" min="1" max="10000" value="60">
-          <span id="audioMinutesValue">60</span>
+          <div class="time-inputs">
+            <div class="time-input-group">
+              <div class="time-field">
+                <label for="days">Days:</label>
+                <input type="number" id="days" class="time-input" data-unit="days" min="0" max="365" value="0">
+              </div>
+              <div class="time-field">
+                <label for="hours">Hours:</label>
+                <input type="number" id="hours" class="time-input" data-unit="hours" min="0" max="23" value="1">
+              </div>
+              <div class="time-field">
+                <label for="minutes">Minutes:</label>
+                <input type="number" id="minutes" class="time-input" data-unit="minutes" min="0" max="59" value="0">
+              </div>
+            </div>
+            <div id="totalMinutes" class="total-time">Total: 60 minutes</div>
+          </div>
+          
+          <div class="time-presets">
+            <button class="time-preset" data-preset="0">1 Hour Call</button>
+            <button class="time-preset" data-preset="1">8 Hour Day</button>
+            <button class="time-preset" data-preset="2">Work Week (40h)</button>
+            <button class="time-preset" data-preset="3">Full Month (720h)</button>
+          </div>
         </div>
         <table id="sttTable">
           <thead>
