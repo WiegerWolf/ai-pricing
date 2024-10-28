@@ -1,12 +1,22 @@
-// At the top of script.js, add:
-let modelData = []; // Will hold our data
+let modelData = []; // LLM data
+let sttModelData = []; // STT data
 let currentInputTokens = 87000;
 let currentOutputTokens = 74000;
+let currentAudioMinutes = 60; // Default 1 hour of audio
 
 function calculateMonthlyCost(model, inputTokens, outputTokens) {
   const inputCost = (inputTokens / 1000000) * model.inputPrice;
   const outputCost = (outputTokens / 1000000) * model.outputPrice;
   return inputCost + outputCost;
+}
+
+// Add new calculation function for STT
+function calculateSTTMonthlyCost(model, audioMinutes) {
+  if (model.models) {
+    // For providers with multiple models, return the base model cost
+    return audioMinutes * model.models[0].pricePerMinute;
+  }
+  return audioMinutes * model.pricePerMinute;
 }
 
 function updateCosts() {
@@ -29,9 +39,7 @@ function populateTable() {
     const row = document.createElement("tr");
     row.innerHTML = `
           <td class="model-name">
-              <a href="${
-                model.pricingUrl
-              }" target="_blank" rel="noopener noreferrer" class="model-link">
+              <a href="${model.pricingUrl}" target="_blank" rel="noopener noreferrer" class="model-link">
                   ${model.model}
                   <svg class="external-link-icon" width="12" height="12" viewBox="0 0 12 12">
                       <path fill="currentColor" d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"/>
@@ -58,6 +66,73 @@ function populateTable() {
   });
 }
 
+function populateSTTTable() {
+  const tbody = document.querySelector("#sttTable tbody");
+  tbody.innerHTML = ''; // Clear existing content
+
+  sttModelData.models.forEach((provider) => {
+    if (provider.models) {
+      // Handle providers with multiple models
+      provider.models.forEach((model) => {
+        const row = createSTTTableRow({
+          provider: provider.provider,
+          model: model.name,
+          pricePerMinute: model.pricePerMinute,
+          realtime: provider.realtime,
+          languages: provider.languages,
+          freeQuota: provider.freeQuota,
+          url: provider.url
+        });
+        tbody.appendChild(row);
+      });
+    } else {
+      // Handle single model providers
+      const row = createSTTTableRow({
+        provider: provider.provider,
+        model: provider.model,
+        pricePerMinute: provider.pricePerMinute,
+        realtime: provider.realtime,
+        languages: provider.languages,
+        freeQuota: provider.freeQuota,
+        url: provider.url
+      });
+      tbody.appendChild(row);
+    }
+  });
+}
+
+function createSTTTableRow(data) {
+  const row = document.createElement("tr");
+  const monthlyCost = calculateSTTMonthlyCost({ pricePerMinute: data.pricePerMinute }, currentAudioMinutes);
+
+  row.innerHTML = `
+    <td class="model-name">
+      <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="model-link">
+        ${data.model}
+        <svg class="external-link-icon" width="12" height="12" viewBox="0 0 12 12">
+          <path fill="currentColor" d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"/>
+          <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z"/>
+        </svg>
+      </a>
+    </td>
+    <td>${data.provider}</td>
+    <td class="number">$${data.pricePerMinute.toFixed(4)}</td>
+    <td>${data.realtime ? "✓" : "-"}</td>
+    <td>${data.languages}</td>
+    <td class="number cost">$${monthlyCost.toFixed(2)}</td>
+  `;
+  return row;
+}
+
+function updateSTTCosts() {
+  const rows = document.querySelectorAll("#sttTable tbody tr");
+  rows.forEach((row) => {
+    const pricePerMinute = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace("$", ""));
+    const monthlyCost = calculateSTTMonthlyCost({ pricePerMinute }, currentAudioMinutes);
+    row.querySelector(".cost").textContent = `$${monthlyCost.toFixed(2)}`;
+  });
+}
+
 function initializeSliders() {
   const inputSlider = document.getElementById("inputTokens");
   const outputSlider = document.getElementById("outputTokens");
@@ -80,35 +155,31 @@ function initializeSliders() {
     updateCosts();
   });
 
-  // Initialize displays
   updateSliderDisplay(currentInputTokens, inputValue);
   updateSliderDisplay(currentOutputTokens, outputValue);
 }
 
-// Add this near your other initialization code
 function initializeTabs() {
   const tabs = document.querySelectorAll('.tab-button');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      // Remove active class from all tabs and content
       document.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
 
-      // Add active class to clicked tab and corresponding content
       tab.classList.add('active');
       const contentId = `${tab.dataset.tab}-content`;
       document.getElementById(contentId).classList.add('active');
     });
   });
 }
-let sortDirections = {}; // To keep track of sort direction for each column
 
-function sortTable(column) {
-  const tbody = document.querySelector("#modelTable tbody");
+let sortDirections = {};
+
+function sortTable(column, tableSelector) {
+  const tbody = document.querySelector(`${tableSelector} tbody`);
   const rows = Array.from(tbody.querySelectorAll("tr"));
 
-  // Toggle sort direction for the column
   sortDirections[column] = !sortDirections[column];
 
   rows.sort((a, b) => {
@@ -121,62 +192,64 @@ function sortTable(column) {
       .replace("✓", "1")
       .replace("-", "0");
 
-    // Convert empty/null values to 0
     if (aVal === "" || aVal === "null") aVal = "0";
     if (bVal === "" || bVal === "null") bVal = "0";
 
-    // Convert to numbers if possible
     if (!isNaN(aVal) && !isNaN(bVal)) {
       aVal = Number(aVal);
       bVal = Number(bVal);
       return sortDirections[column] ? aVal - bVal : bVal - aVal;
     }
 
-    // String comparison for non-numeric values
     return sortDirections[column]
       ? aVal.localeCompare(bVal)
       : bVal.localeCompare(aVal);
   });
 
-  // Clear and repopulate tbody
   tbody.innerHTML = "";
   rows.forEach((row) => tbody.appendChild(row));
 
-  // Update sort indicators
   updateSortIndicators(column);
 }
 
 function updateSortIndicators(activeColumn) {
   const headers = document.querySelectorAll("#modelTable th");
   headers.forEach((header, index) => {
-    // Remove existing indicators
     header.textContent = header.textContent.replace(" ▲", "").replace(" ▼", "");
 
-    // Add indicator to active column
     if (index === activeColumn) {
       header.textContent += sortDirections[activeColumn] ? " ▲" : " ▼";
     }
   });
 }
+
 async function initialize() {
   try {
-    const response = await fetch('data.json');
-    modelData = await response.json();
+    const [llmResponse, sttResponse] = await Promise.all([
+      fetch('data.json'),
+      fetch('stt-data.json')
+    ]);
+
+    modelData = await llmResponse.json();
+    sttModelData = await sttResponse.json();
 
     initializeSliders();
-    initializeTabs(); // Added this line
+    initializeTabs();
     populateTable();
+    populateSTTTable();
 
-    // Add click handlers for sorting
     document.querySelectorAll("#modelTable th").forEach((header, index) => {
-      header.addEventListener("click", () => sortTable(index));
+      header.addEventListener("click", () => sortTable(index, "#modelTable"));
     });
 
-    // Sort by coding ELO initially
+    document.querySelectorAll("#sttTable th").forEach((header, index) => {
+      header.addEventListener("click", () => sortTable(index, "#sttTable"));
+    });
+
     sortDirections[3] = true;
-    sortTable(3);
+    sortTable(3, "#modelTable");
   } catch (error) {
-    console.error('Error loading model data:', error);
+    console.error('Error loading data:', error);
   }
 }
 
@@ -197,7 +270,6 @@ document
     }
   });
 
-// Add helpful tooltips for mobile users (where hover doesn't work)
 if ("ontouchstart" in window) {
   document.querySelectorAll("th[title]").forEach((th) => {
     th.addEventListener("click", function (e) {
