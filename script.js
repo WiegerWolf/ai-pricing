@@ -88,9 +88,10 @@ function populateTable() {
   });
 }
 
+// Update the populateSTTTable function
 function populateSTTTable() {
   const tbody = document.querySelector("#sttTable tbody");
-  tbody.innerHTML = ""; // Clear existing content
+  tbody.innerHTML = '';
 
   sttModelData.models.forEach((provider) => {
     if (provider.models) {
@@ -103,7 +104,8 @@ function populateSTTTable() {
           realtime: provider.realtime,
           languages: provider.languages,
           freeQuota: provider.freeQuota,
-          url: provider.url,
+          limits: provider.limits,
+          url: provider.url
         });
         tbody.appendChild(row);
       });
@@ -116,7 +118,8 @@ function populateSTTTable() {
         realtime: provider.realtime,
         languages: provider.languages,
         freeQuota: provider.freeQuota,
-        url: provider.url,
+        limits: provider.limits,
+        url: provider.url
       });
       tbody.appendChild(row);
     }
@@ -161,6 +164,7 @@ function initializeCalculators() {
   });
 }
 
+// Update the createSTTTableRow function
 function createSTTTableRow(data) {
   const row = document.createElement("tr");
   const monthlyCost = calculateSTTMonthlyCost({
@@ -169,9 +173,7 @@ function createSTTTableRow(data) {
 
   row.innerHTML = `
     <td class="model-name">
-      <a href="${
-        data.url
-      }" target="_blank" rel="noopener noreferrer" class="model-link">
+      <a href="https://${data.url}" target="_blank" rel="noopener noreferrer" class="model-link">
         ${data.model}
         <svg class="external-link-icon" width="12" height="12" viewBox="0 0 12 12">
           <path fill="currentColor" d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"/>
@@ -181,8 +183,11 @@ function createSTTTableRow(data) {
     </td>
     <td>${data.provider}</td>
     <td class="number">$${data.pricePerMinute.toFixed(4)}</td>
-    <td>${data.realtime ? "✓" : "-"}</td>
+    <td class="number">$${(data.pricePerMinute * 60).toFixed(2)}</td>
+    <td class="center">${data.realtime ? "✓" : "-"}</td>
     <td>${data.languages}</td>
+    <td class="quota">${data.freeQuota ? data.freeQuota : "-"}</td>
+    <td class="limits">${data.limits ? data.limits : "None specified"}</td>
     <td class="number cost">$${monthlyCost.toFixed(2)}</td>
   `;
   return row;

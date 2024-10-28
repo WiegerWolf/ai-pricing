@@ -211,6 +211,24 @@ body {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+/* Add these new table-specific styles */
+.center {
+  text-align: center;
+}
+
+.quota {
+  color: var(--primary-color);
+  font-size: 0.85rem;
+}
+
+.limits {
+  font-size: 0.85rem;
+  color: #666;
+  max-width: 300px;
+  white-space: normal;
+  line-height: 1.4;
+}
+
 /* Table Styles */
 table {
   width: 100%;
@@ -234,6 +252,24 @@ th {
 td {
   padding: 0.6rem 0.75rem;
   border-bottom: 1px solid #e1e4e8;
+}
+
+/* Update table styles for better text wrapping */
+table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e1e4e8;
+  vertical-align: top;
+}
+
+/* Add tooltip styles for the info icons */
+th[title] {
+  cursor: help;
+}
+
+th[title]::after {
+  content: " ℹ️";
+  font-size: 0.8em;
+  opacity: 0.7;
 }
 
 .number {
@@ -275,4 +311,30 @@ tbody tr:hover {
     overflow-x: auto;
     white-space: nowrap;
   }
+}
+
+/* Improve mobile view */
+@media (max-width: 768px) {
+  .limits {
+    max-width: 200px;
+  }
+  
+  table {
+    font-size: 0.85rem;
+  }
+  
+  table td, table th {
+    padding: 0.5rem;
+  }
+}
+
+/* Add styles for the price columns */
+td.number {
+  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", monospace;
+  white-space: nowrap;
+}
+
+/* Add hover effect for the quota cell */
+.quota:hover {
+  color: #0256b4;
 }
