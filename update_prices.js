@@ -1,3 +1,4 @@
+#!/usr/bin/env bun
 import fs from "fs";
 
 // Map of our model names to OpenRouter model IDs
@@ -52,4 +53,10 @@ async function updatePrices() {
   }
 }
 
-updatePrices();
+// Only run if this is the main module
+if (import.meta.main) {
+  await updatePrices();
+}
+
+// Export for use as a module
+export { updatePrices };
