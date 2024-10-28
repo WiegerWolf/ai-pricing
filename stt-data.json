@@ -1,0 +1,119 @@
+{
+  "models": [
+    {
+      "provider": "Groq",
+      "model": "whisper-large-v3",
+      "pricePerHour": 0.0,
+      "pricePerMinute": 0.0,
+      "realtime": false,
+      "limits": "20 requests/minute, 2000 requests/day, 7.2k seconds/hour, 28.8k seconds/day",
+      "freeQuota": true,
+      "languages": "Multilingual",
+      "url": "console.groq.com/settings/limits"
+    },
+    {
+      "provider": "Lemonfox.ai",
+      "model": "whisper-large-v3",
+      "pricePerHour": 0.17,
+      "pricePerMinute": 0.00283,
+      "realtime": false,
+      "limits": "None specified",
+      "freeQuota": "First 30 hours free",
+      "languages": "Multilingual",
+      "url": "lemonfox.ai/apis/speech-to-text"
+    },
+    {
+      "provider": "Deepgram",
+      "models": [
+        {
+          "name": "Nova-2",
+          "pricePerHour": 0.258,
+          "pricePerMinute": 0.0043
+        },
+        {
+          "name": "Enhanced",
+          "pricePerHour": 0.87,
+          "pricePerMinute": 0.0145
+        },
+        {
+          "name": "Base",
+          "pricePerHour": 0.75,
+          "pricePerMinute": 0.0125
+        },
+        {
+          "name": "whisper-large",
+          "pricePerHour": 0.288,
+          "pricePerMinute": 0.0048
+        }
+      ],
+      "realtime": true,
+      "limits": "100 concurrent requests (Deepgram models), 5 concurrent requests (Whisper)",
+      "freeQuota": "$200 credit free",
+      "languages": "Multilingual",
+      "url": "deepgram.com/pricing"
+    },
+    {
+      "provider": "OpenAI",
+      "model": "whisper-1",
+      "pricePerHour": 0.36,
+      "pricePerMinute": 0.006,
+      "realtime": false,
+      "limits": "None specified",
+      "freeQuota": false,
+      "languages": "Multilingual",
+      "notes": "Based on whisper-large-v2",
+      "url": "platform.openai.com/docs/guides/speech-to-text/quickstart"
+    },
+    {
+      "provider": "AssemblyAI",
+      "models": [
+        {
+          "name": "Universal-1 Best",
+          "pricePerHour": 0.37,
+          "pricePerMinute": 0.00617
+        },
+        {
+          "name": "Universal-1 Nano",
+          "pricePerHour": 0.12,
+          "pricePerMinute": 0.002
+        }
+      ],
+      "realtime": true,
+      "limits": "None specified",
+      "freeQuota": "First 100 hours free",
+      "languages": "Multilingual",
+      "url": "assemblyai.com/pricing"
+    },
+    {
+      "provider": "Deepinfra",
+      "model": "whisper-large",
+      "pricePerHour": 1.8,
+      "pricePerMinute": 0.03,
+      "realtime": false,
+      "limits": "None specified",
+      "freeQuota": false,
+      "languages": "Multilingual",
+      "url": "deepinfra.com/openai/whisper-large/api"
+    },
+    {
+      "provider": "Google",
+      "models": [
+        {
+          "name": "Chirp V1",
+          "pricePerHour": 1.44,
+          "pricePerMinute": 0.024
+        },
+        {
+          "name": "Chirp V2",
+          "pricePerHour": 0.96,
+          "pricePerMinute": 0.016
+        }
+      ],
+      "realtime": true,
+      "limits": "None specified",
+      "freeQuota": "1 hour/month free + $300 credit for new customers",
+      "languages": "Multilingual",
+      "url": "cloud.google.com/speech-to-text"
+    }
+  ]
+}

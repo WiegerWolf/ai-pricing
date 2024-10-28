@@ -18,18 +18,248 @@
 
   <body>
     <div class="container">
+      <!-- Move the GitHub link out of the header -->
       <div class="header-bar">
         <div class="title-section">
-          <h1>LLM Model Pricing Comparison</h1>
+          <h1>AI Model Pricing Comparison</h1>
           <span class="subtitle"
-            >Arena ELO & Pricing Data | Default usage: 87k input + 74k output
-            tokens/month</span
+            >Compare prices and performance across LLM and Speech-to-Text
+            models</span
           >
         </div>
         <div class="actions">
           <button id="showCalculator" class="calculator-toggle">
-            Customize Usage
+            <svg
+              class="calculator-icon"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+            >
+              <path
+                fill="currentColor"
+                d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h16V4H4zm2 2h12v2H6V6zm0 4h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zM6 14h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"
+              />
+            </svg>
+            Show LLM Calculator
           </button>
+        </div>
+      </div>
+
+      <!-- Update the tabs section -->
+      <div class="tabs" role="tablist">
+        <button
+          class="tab-button active"
+          data-tab="llm"
+          role="tab"
+          aria-selected="true"
+          aria-controls="llm-content"
+        >
+          LLM Models
+        </button>
+        <button
+          class="tab-button"
+          data-tab="stt"
+          role="tab"
+          aria-selected="false"
+          aria-controls="stt-content"
+        >
+          Speech-to-Text
+        </button>
+      </div>
+
+      <div
+        class="tab-content active"
+        id="llm-content"
+        role="tabpanel"
+        aria-labelledby="llm-tab"
+      >
+        <!-- Updated LLM calculator section -->
+        <div
+          id="calculatorSection"
+          class="calculator-section"
+          style="display: none"
+        >
+          <div class="calculator-header">
+            <h3>LLM Usage Calculator</h3>
+            <span class="calculator-subtitle">Adjust monthly token usage</span>
+          </div>
+          <div class="slider-group">
+            <div class="slider-container">
+              <label for="inputTokens">Input Tokens</label>
+              <div class="slider-with-value">
+                <input
+                  type="range"
+                  id="inputTokens"
+                  min="0"
+                  max="1000000"
+                  value="87000"
+                  step="1000"
+                />
+                <span id="inputTokensValue" class="slider-value">87,000</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <label for="outputTokens">Output Tokens</label>
+              <div class="slider-with-value">
+                <input
+                  type="range"
+                  id="outputTokens"
+                  min="0"
+                  max="1000000"
+                  value="74000"
+                  step="1000"
+                />
+                <span id="outputTokensValue" class="slider-value">74,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- For the LLM table -->
+        <div class="table-container">
+          <table id="modelTable">
+            <thead>
+              <!-- Update the table headers to use spans for icons -->
+              <!-- In the LLM table -->
+              <tr>
+                <th>Model</th>
+                <th>Provider</th>
+                <th title="General performance score from Arena leaderboard">
+                  Arena ELO<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Coding-specific performance score">
+                  Coding ELO<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Tokens processed per second">
+                  Speed<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Maximum context window size in thousands of tokens">
+                  Context (k)<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Cost per million input tokens">
+                  Input Price<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Cost per million output tokens">
+                  Output Price<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Monthly cost based on specified usage">
+                  Est. Monthly Cost<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Supports image analysis">
+                  Vision<span class="info-icon">ℹ️</span>
+                </th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Data rows will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div
+        class="tab-content"
+        id="stt-content"
+        role="tabpanel"
+        aria-labelledby="stt-tab"
+      >
+        <!-- Updated STT calculator section -->
+        <div
+          id="stt-calculator"
+          class="calculator-section"
+          style="display: none"
+        >
+          <div class="calculator-header">
+            <h3>Speech-to-Text Calculator</h3>
+            <span class="calculator-subtitle"
+              >Calculate audio processing costs</span
+            >
+          </div>
+          <div class="time-inputs">
+            <div class="time-input-group">
+              <div class="time-field">
+                <label for="days">Days</label>
+                <input
+                  type="number"
+                  id="days"
+                  class="time-input"
+                  data-unit="days"
+                  min="0"
+                  max="365"
+                  value="0"
+                />
+              </div>
+              <div class="time-field">
+                <label for="hours">Hours</label>
+                <input
+                  type="number"
+                  id="hours"
+                  class="time-input"
+                  data-unit="hours"
+                  min="0"
+                  max="23"
+                  value="1"
+                />
+              </div>
+              <div class="time-field">
+                <label for="minutes">Minutes</label>
+                <input
+                  type="number"
+                  id="minutes"
+                  class="time-input"
+                  data-unit="minutes"
+                  min="0"
+                  max="59"
+                  value="0"
+                />
+              </div>
+            </div>
+            <div id="totalMinutes" class="total-time"></div>
+          </div>
+          <div class="time-presets">
+            <button class="time-preset" data-preset="0">1h Call</button>
+            <button class="time-preset" data-preset="1">8h Day</button>
+            <button class="time-preset" data-preset="2">Work Week</button>
+            <button class="time-preset" data-preset="3">Full Month</button>
+          </div>
+        </div>
+
+        <!-- For the STT table -->
+        <div class="table-container">
+          <table id="sttTable">
+            <thead>
+              <!-- In the STT table -->
+              <tr>
+                <th>Model</th>
+                <th>Provider</th>
+                <th>Price/Minute</th>
+                <th>Price/Hour</th>
+                <th title="Supports real-time transcription">
+                  Real-time<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Available languages and features">
+                  Languages<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Free usage quota">
+                  Free Quota<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Usage limits and restrictions">
+                  Limits<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Estimated cost based on specified duration">
+                  Est. Cost<span class="info-icon">ℹ️</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Add this at the bottom of the container, after all the tab content -->
+      <footer class="footer">
+        <div class="footer-content">
           <a
             href="https://github.com/WiegerWolf/ai-pricing"
             class="github-link"
@@ -48,71 +278,10 @@
                 d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
               ></path>
             </svg>
+            <span>View on GitHub</span>
           </a>
         </div>
-      </div>
-
-      <div
-        id="calculatorSection"
-        class="calculator-section"
-        style="display: none"
-      >
-        <div class="slider-container">
-          <label
-            >Monthly Input Tokens:
-            <span id="inputTokensValue">87,000</span></label
-          >
-          <input
-            type="range"
-            id="inputTokens"
-            min="0"
-            max="1000000"
-            value="87000"
-            step="1000"
-          />
-        </div>
-        <div class="slider-container">
-          <label
-            >Monthly Output Tokens:
-            <span id="outputTokensValue">74,000</span></label
-          >
-          <input
-            type="range"
-            id="outputTokens"
-            min="0"
-            max="1000000"
-            value="74000"
-            step="1000"
-          />
-        </div>
-      </div>
-
-      <table id="modelTable">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Provider</th>
-            <th title="General performance score from Arena leaderboard">
-              Arena ELO ℹ️
-            </th>
-            <th title="Coding-specific performance score">Coding ELO ℹ️</th>
-            <th title="Tokens processed per second">Speed ℹ️</th>
-            <th title="Maximum context window size in thousands of tokens">
-              Context (k) ℹ️
-            </th>
-            <th title="Cost per million input tokens">Input Price ℹ️</th>
-            <th title="Cost per million output tokens">Output Price ℹ️</th>
-            <th title="Monthly cost based on specified usage">
-              Est. Monthly Cost ℹ️
-            </th>
-            <th title="Supports image analysis">Vision ℹ️</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Data rows will be populated by JavaScript -->
-        </tbody>
-      </table>
+      </footer>
     </div>
     <script src="script.js" type="module"></script>
   </body>
