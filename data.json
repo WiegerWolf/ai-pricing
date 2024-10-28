@@ -165,7 +165,8 @@
     "inputPrice": 0.04,
     "outputPrice": 0.04,
     "hasVision": false,
-    "notes": "8k context window, preview version, fastest model available"
+    "notes": "8k context window, preview version, fastest model available",
+    "pricingUrl": "https://groq.com/pricing/"
   },
   {
     "model": "llama-3.2-3b-preview",
@@ -177,7 +178,8 @@
     "inputPrice": 0.06,
     "outputPrice": 0.06,
     "hasVision": false,
-    "notes": "8k context window, preview version"
+    "notes": "8k context window, preview version",
+    "pricingUrl": "https://groq.com/pricing/"
   },
   {
     "model": "llama-3.1-70b-versatile",
@@ -245,30 +247,6 @@
     "pricingUrl": "https://x.ai/blog/grok-2"
   },
   {
-    "model": "Command R+",
-    "provider": "Cohere",
-    "smartsElo": 1214,
-    "codingElo": 1180,
-    "speed": 109,
-    "context": 128,
-    "inputPrice": 2.38,
-    "outputPrice": 9.5,
-    "hasVision": false,
-    "notes": ""
-  },
-  {
-    "model": "Reka-Core",
-    "provider": "Reka AI",
-    "smartsElo": 1230,
-    "codingElo": 1208,
-    "speed": null,
-    "context": 128,
-    "inputPrice": 10,
-    "outputPrice": 25,
-    "hasVision": true,
-    "notes": ""
-  },
-  {
     "model": "llama-3-8b-instruct",
     "provider": "cloudflare",
     "smartsElo": 1152,
@@ -278,6 +256,7 @@
     "inputPrice": 0,
     "outputPrice": 0,
     "hasVision": false,
-    "notes": "currently in free beta"
+    "notes": "currently in free beta",
+    "pricingUrl": "https://ai.cloudflare.com/"
   }
 ]
