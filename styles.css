@@ -472,3 +472,63 @@ th, td {
     padding: var(--spacing-sm);
   }
 }
+/* Add these new footer styles */
+.footer {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) 0;
+  border-top: 1px solid #e1e4e8;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--secondary-color);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+}
+
+.github-link:hover {
+  background-color: #f0f7ff;
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.github-link span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Update the container style to account for footer */
+.container {
+  max-width: 98%;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  min-height: calc(100vh - 100px); /* Ensure footer stays at bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add this if you want the footer to always stay at the bottom */
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Update mobile styles */
+@media (max-width: 768px) {
+  .footer {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+  }
+}
