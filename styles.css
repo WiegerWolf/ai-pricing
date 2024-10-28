@@ -358,3 +358,117 @@ td.number {
 .quota:hover {
   color: #0256b4;
 }
+
+/* Add these styles for sticky headers */
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: #f8f9fa;
+  z-index: 10;
+  /* Add box-shadow to create a separation line */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure tooltips appear above the sticky header */
+th[title]:hover::before {
+  z-index: 20;
+}
+
+/* Update table styles to ensure proper sticky behavior */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  font-size: 0.9rem;
+  overflow: visible; /* Important for sticky headers */
+}
+
+/* Add a container for the table with scroll */
+.table-container {
+  max-height: calc(100vh - 250px); /* Adjust based on your header height */
+  overflow-y: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Remove the max-height restriction */
+.table-container {
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Update container max-width to use more screen space */
+.container {
+  max-width: 98%; /* Instead of fixed 1400px */
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/* Optimize table layout for full-screen usage */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  font-size: 0.9rem;
+  overflow: visible;
+}
+
+/* Keep headers sticky but optimize for full screen */
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f8f9fa;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: #f8f9fa;
+  z-index: 10;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Optimize column widths */
+th, td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+/* Add these styles to optimize specific columns */
+.model-name {
+  min-width: 120px;
+}
+
+.provider {
+  min-width: 100px;
+}
+
+.number {
+  min-width: 80px;
+}
+
+.limits {
+  min-width: 200px;
+  max-width: none; /* Remove the previous max-width restriction */
+}
+
+/* Update mobile styles */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: var(--spacing-sm);
+  }
+}

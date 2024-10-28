@@ -135,44 +135,47 @@
           </div>
         </div>
 
-        <table id="modelTable">
-          <thead>
-            <!-- Update the table headers to use spans for icons -->
-            <!-- In the LLM table -->
-            <tr>
-              <th>Model</th>
-              <th>Provider</th>
-              <th title="General performance score from Arena leaderboard">
-                Arena ELO<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Coding-specific performance score">
-                Coding ELO<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Tokens processed per second">
-                Speed<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Maximum context window size in thousands of tokens">
-                Context (k)<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Cost per million input tokens">
-                Input Price<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Cost per million output tokens">
-                Output Price<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Monthly cost based on specified usage">
-                Est. Monthly Cost<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Supports image analysis">
-                Vision<span class="info-icon">ℹ️</span>
-              </th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Data rows will be populated by JavaScript -->
-          </tbody>
-        </table>
+        <!-- For the LLM table -->
+        <div class="table-container">
+          <table id="modelTable">
+            <thead>
+              <!-- Update the table headers to use spans for icons -->
+              <!-- In the LLM table -->
+              <tr>
+                <th>Model</th>
+                <th>Provider</th>
+                <th title="General performance score from Arena leaderboard">
+                  Arena ELO<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Coding-specific performance score">
+                  Coding ELO<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Tokens processed per second">
+                  Speed<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Maximum context window size in thousands of tokens">
+                  Context (k)<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Cost per million input tokens">
+                  Input Price<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Cost per million output tokens">
+                  Output Price<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Monthly cost based on specified usage">
+                  Est. Monthly Cost<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Supports image analysis">
+                  Vision<span class="info-icon">ℹ️</span>
+                </th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Data rows will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div
@@ -242,34 +245,36 @@
           </div>
         </div>
 
-        <!-- Update the STT table header -->
-        <table id="sttTable">
-          <thead>
-            <!-- In the STT table -->
-            <tr>
-              <th>Model</th>
-              <th>Provider</th>
-              <th>Price/Minute</th>
-              <th>Price/Hour</th>
-              <th title="Supports real-time transcription">
-                Real-time<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Available languages and features">
-                Languages<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Free usage quota">
-                Free Quota<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Usage limits and restrictions">
-                Limits<span class="info-icon">ℹ️</span>
-              </th>
-              <th title="Estimated cost based on specified duration">
-                Est. Cost<span class="info-icon">ℹ️</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <!-- For the STT table -->
+        <div class="table-container">
+          <table id="sttTable">
+            <thead>
+              <!-- In the STT table -->
+              <tr>
+                <th>Model</th>
+                <th>Provider</th>
+                <th>Price/Minute</th>
+                <th>Price/Hour</th>
+                <th title="Supports real-time transcription">
+                  Real-time<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Available languages and features">
+                  Languages<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Free usage quota">
+                  Free Quota<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Usage limits and restrictions">
+                  Limits<span class="info-icon">ℹ️</span>
+                </th>
+                <th title="Estimated cost based on specified duration">
+                  Est. Cost<span class="info-icon">ℹ️</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
     <script src="script.js" type="module"></script>
