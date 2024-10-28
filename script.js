@@ -138,6 +138,8 @@ function initializeSliders() {
   const outputSlider = document.getElementById("outputTokens");
   const inputValue = document.getElementById("inputTokensValue");
   const outputValue = document.getElementById("outputTokensValue");
+  const audioSlider = document.getElementById("audioMinutes");
+  const audioValue = document.getElementById("audioMinutesValue");
 
   function updateSliderDisplay(value, element) {
     element.textContent = Number(value).toLocaleString();
@@ -155,8 +157,14 @@ function initializeSliders() {
     updateCosts();
   });
 
+  audioSlider.addEventListener("input", (e) => {
+    currentAudioMinutes = parseInt(e.target.value);
+    updateSliderDisplay(currentAudioMinutes, audioValue);
+    updateSTTCosts();
+  });
   updateSliderDisplay(currentInputTokens, inputValue);
   updateSliderDisplay(currentOutputTokens, outputValue);
+  updateSliderDisplay(currentAudioMinutes, audioValue);
 }
 
 function initializeTabs() {
