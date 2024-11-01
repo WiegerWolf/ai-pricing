@@ -247,6 +247,14 @@ td {
   white-space: nowrap;
 }
 
+.percentage {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  min-width: 80px;
+  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", monospace;
+  white-space: nowrap;
+}
+
 .model-name { min-width: 120px; }
 .provider { min-width: 100px; }
 .limits {

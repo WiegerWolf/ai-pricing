@@ -71,6 +71,9 @@ function populateTable() {
           </td>
           <td>${model.provider}</td>
           <td class="number">${model.smartsElo || "-"}</td>
+          <td class="percentage">${
+            model.simpleBench ? model.simpleBench.toFixed(1) + "%" : "-"
+          }</td>
           <td class="number">${model.codingElo || "-"}</td>
           <td class="number">${model.speed || "-"}</td>
           <td class="number">${model.context}</td>
@@ -91,7 +94,7 @@ function populateTable() {
 // Update the populateSTTTable function
 function populateSTTTable() {
   const tbody = document.querySelector("#sttTable tbody");
-  tbody.innerHTML = '';
+  tbody.innerHTML = "";
 
   sttModelData.models.forEach((provider) => {
     if (provider.models) {
@@ -105,7 +108,7 @@ function populateSTTTable() {
           languages: provider.languages,
           freeQuota: provider.freeQuota,
           limits: provider.limits,
-          url: provider.url
+          url: provider.url,
         });
         tbody.appendChild(row);
       });
@@ -119,7 +122,7 @@ function populateSTTTable() {
         languages: provider.languages,
         freeQuota: provider.freeQuota,
         limits: provider.limits,
-        url: provider.url
+        url: provider.url,
       });
       tbody.appendChild(row);
     }
@@ -129,34 +132,38 @@ function populateSTTTable() {
 // Replace both updateCalculatorVisibility and initializeCalculators with this single function
 function initializeCalculators() {
   const showCalculatorBtn = document.getElementById("showCalculator");
-  
+
   // Remove any existing event listeners
   showCalculatorBtn.replaceWith(showCalculatorBtn.cloneNode(true));
-  
+
   // Get the new button reference after replacement
   const newShowCalculatorBtn = document.getElementById("showCalculator");
-  
+
   // Add the single event listener
   newShowCalculatorBtn.addEventListener("click", () => {
     const currentTab = document.querySelector(".tab-button.active").dataset.tab;
     const llmCalculator = document.getElementById("calculatorSection");
     const sttCalculator = document.getElementById("stt-calculator");
-    
+
     if (currentTab === "llm") {
       const isHidden = llmCalculator.style.display === "none";
       llmCalculator.style.display = isHidden ? "block" : "none";
-      newShowCalculatorBtn.textContent = `${isHidden ? "Hide" : "Show"} LLM Calculator`;
+      newShowCalculatorBtn.textContent = `${
+        isHidden ? "Hide" : "Show"
+      } LLM Calculator`;
       sttCalculator.style.display = "none";
-      
+
       if (isHidden) {
         llmCalculator.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
     } else {
       const isHidden = sttCalculator.style.display === "none";
       sttCalculator.style.display = isHidden ? "block" : "none";
-      newShowCalculatorBtn.textContent = `${isHidden ? "Hide" : "Show"} STT Calculator`;
+      newShowCalculatorBtn.textContent = `${
+        isHidden ? "Hide" : "Show"
+      } STT Calculator`;
       llmCalculator.style.display = "none";
-      
+
       if (isHidden) {
         sttCalculator.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
@@ -173,7 +180,9 @@ function createSTTTableRow(data) {
 
   row.innerHTML = `
     <td class="model-name">
-      <a href="https://${data.url}" target="_blank" rel="noopener noreferrer" class="model-link">
+      <a href="https://${
+        data.url
+      }" target="_blank" rel="noopener noreferrer" class="model-link">
         ${data.model}
         <svg class="external-link-icon" width="12" height="12" viewBox="0 0 12 12">
           <path fill="currentColor" d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"/>
@@ -285,60 +294,60 @@ function initializeSliders() {
 
 // Update the initializeTabs function
 function initializeTabs() {
-  const tabs = document.querySelectorAll('.tab-button');
-  const contents = document.querySelectorAll('.tab-content');
+  const tabs = document.querySelectorAll(".tab-button");
+  const contents = document.querySelectorAll(".tab-content");
 
   function switchTab(targetTab) {
-    const contentId = targetTab.dataset.tab + '-content';
+    const contentId = targetTab.dataset.tab + "-content";
     const newContent = document.getElementById(contentId);
 
     // Remove active class from all tabs and contents
-    tabs.forEach(tab => tab.classList.remove('active'));
-    contents.forEach(content => {
-      content.classList.remove('active');
-      content.style.display = 'none';
+    tabs.forEach((tab) => tab.classList.remove("active"));
+    contents.forEach((content) => {
+      content.classList.remove("active");
+      content.style.display = "none";
     });
 
     // Add active class to clicked tab
-    targetTab.classList.add('active');
+    targetTab.classList.add("active");
 
     // Animate new content
-    newContent.style.display = 'block';
-    newContent.classList.add('fade-enter');
-    
+    newContent.style.display = "block";
+    newContent.classList.add("fade-enter");
+
     // Force reflow
     newContent.offsetHeight;
 
     // Add active class and start animation
-    newContent.classList.add('active');
-    newContent.classList.remove('fade-enter');
+    newContent.classList.add("active");
+    newContent.classList.remove("fade-enter");
 
     // Update calculator button text and state
-    const button = document.getElementById('showCalculator');
+    const button = document.getElementById("showCalculator");
     const currentTab = targetTab.dataset.tab;
     button.textContent = `Show ${currentTab.toUpperCase()} Calculator`;
 
     // Reset calculator visibility
-    document.getElementById('calculatorSection').style.display = 'none';
-    document.getElementById('stt-calculator').style.display = 'none';
+    document.getElementById("calculatorSection").style.display = "none";
+    document.getElementById("stt-calculator").style.display = "none";
 
     // Update the page title
     updatePageTitle(currentTab);
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => switchTab(tab));
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => switchTab(tab));
   });
 
   // Add keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-      const activeTab = document.querySelector('.tab-button.active');
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      const activeTab = document.querySelector(".tab-button.active");
       const tabArray = Array.from(tabs);
       const currentIndex = tabArray.indexOf(activeTab);
       let newIndex;
 
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         newIndex = currentIndex > 0 ? currentIndex - 1 : tabArray.length - 1;
       } else {
         newIndex = currentIndex < tabArray.length - 1 ? currentIndex + 1 : 0;
@@ -351,11 +360,10 @@ function initializeTabs() {
 
 // Add function to update page title
 function updatePageTitle(currentTab) {
-  const baseTitle = 'AI Model Pricing Comparison';
-  const tabTitle = currentTab === 'llm' ? 'LLM Models' : 'Speech-to-Text';
+  const baseTitle = "AI Model Pricing Comparison";
+  const tabTitle = currentTab === "llm" ? "LLM Models" : "Speech-to-Text";
   document.title = `${tabTitle} - ${baseTitle}`;
 }
-
 
 let sortDirections = {};
 // Add new function to format numbers
@@ -436,8 +444,8 @@ async function initialize() {
     button.textContent = `Show ${initialTab.toUpperCase()} Calculator`;
 
     // Add smooth transition for calculator sections
-    document.querySelectorAll('.calculator-section').forEach(calc => {
-      calc.style.transition = 'all 0.3s ease-in-out';
+    document.querySelectorAll(".calculator-section").forEach((calc) => {
+      calc.style.transition = "all 0.3s ease-in-out";
     });
 
     // Add click handlers for sorting
