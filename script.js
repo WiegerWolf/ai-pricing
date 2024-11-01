@@ -75,10 +75,9 @@ function populateTable() {
             model.simpleBench ? model.simpleBench.toFixed(1) + "%" : "-"
           }</td>
           <td class="number">${model.codingElo || "-"}</td>
-          <td class="number">${model.speed || "-"}</td>
           <td class="number">${model.context}</td>
-          <td class="number">$${model.inputPrice || "null"}</td>
-          <td class="number">$${model.outputPrice || "null"}</td>
+          <td class="number">$${model.inputPrice || "0"}</td>
+          <td class="number">$${model.outputPrice || "0"}</td>
           <td class="number cost">$${calculateMonthlyCost(
             model,
             currentInputTokens,
