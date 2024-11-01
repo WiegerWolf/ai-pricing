@@ -21,7 +21,6 @@ body {
   line-height: 1.5;
   background: var(--background-color);
   color: var(--secondary-color);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -229,6 +228,19 @@ th {
   white-space: nowrap;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+th a {
+  cursor: pointer;
+  z-index: 11;
+  position: relative;
+}
+
+/* Update the hover state for better UX */
+th:hover {
+  background-color: #f0f7ff;
 }
 
 td {
@@ -264,16 +276,20 @@ td {
   line-height: 1.4;
 }
 
+/* Update the header-link styles */
 .header-link {
   color: inherit;
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
+  pointer-events: auto;
+  cursor: pointer !important;
 }
 
 .header-link:hover {
   color: var(--primary-color);
+  background-color: transparent;
 }
 
 .header-link .external-link-icon {
@@ -297,6 +313,13 @@ th .info-icon {
   align-items: center;
   gap: 4px;
   font-weight: 500;
+}
+
+.sort-indicator {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.8em;
+  vertical-align: middle;
 }
 
 th[title] {
@@ -336,7 +359,6 @@ tbody tr:hover {
 .footer {
   margin-top: auto;
   padding: var(--spacing-md) 0;
-  border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
@@ -413,80 +435,4 @@ tbody tr:hover {
     margin-top: var(--spacing-md);
     padding: var(--spacing-sm) 0;
   }
-}
-
-/* Add these styles */
-.sort-indicator {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 0.8em;
-}
-
-/* Update the header-link styles */
-.header-link {
-  color: inherit;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  pointer-events: auto;
-}
-
-/* Add this to ensure header content stays visible */
-th {
-  position: sticky;
-  top: 0;
-  background: var(--background-color);
-  font-weight: 600;
-  text-align: left;
-  padding: 0.75rem;
-  border-bottom: 2px solid var(--border-color);
-  white-space: nowrap;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  pointer-events: auto;
-}
-
-/* Update the sort indicator styles */
-.sort-indicator {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 0.8em;
-  vertical-align: middle;
-}
-
-/* Update header styles to better handle clickable areas */
-th {
-  position: sticky;
-  top: 0;
-  background: var(--background-color);
-  font-weight: 600;
-  text-align: left;
-  padding: 0.75rem;
-  border-bottom: 2px solid var(--border-color);
-  white-space: nowrap;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  cursor: pointer;
-}
-
-th a {
-  cursor: pointer;
-  z-index: 11;
-  position: relative;
-}
-
-/* Make sure the link doesn't inherit the th's cursor */
-.header-link {
-  cursor: pointer !important;
-}
-
-/* Update the hover state for better UX */
-th:hover {
-  background-color: #f0f7ff;
-}
-
-.header-link:hover {
-  color: var(--primary-color);
-  background-color: transparent;
 }
