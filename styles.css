@@ -1,15 +1,29 @@
+/* CSS Reset and Variables */
 :root {
-  --primary-color: #0366d6;
-  --secondary-color: #24292e;
-  --background-color: #f8f9fa;
-  --border-color: #e1e4e8;
-  --text-muted: #666;
-  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-  --hover-shadow: 0 4px 12px rgba(3, 102, 214, 0.15);
+  /* Colors */
+  --color-primary: #0366d6;
+  --color-primary-dark: #0256b4;
+  --color-text: #24292e;
+  --color-background: #f8f9fa;
+  --color-border: #e1e4e8;
+  --color-muted: #666;
+  --color-light-blue: #f0f7ff;
+  --color-tooltip-bg: rgba(0, 0, 0, 0.8);
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  
+  /* Layout */
   --border-radius: 6px;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
+  --container-width: 98%;
+  
+  /* Effects */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(3, 102, 214, 0.15);
+  --transition: all 0.2s ease;
 }
 
 /* Base Styles */
@@ -17,34 +31,33 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   margin: 0;
-  padding: 0;
   line-height: 1.5;
-  background: var(--background-color);
-  color: var(--secondary-color);
+  background: var(--color-background);
+  color: var(--color-text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .container {
-  max-width: 98%;
+  max-width: var(--container-width);
   margin: 0 auto;
-  padding: var(--spacing-md);
+  padding: var(--space-md);
   min-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
 }
 
-/* Header */
+/* Component: Header */
 .header-bar {
+  background: white;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-md);
-  box-shadow: var(--card-shadow);
 }
 
 .title-section h1 {
@@ -54,35 +67,35 @@ body {
 }
 
 .subtitle {
+  color: var(--color-muted);
   font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 0.25rem;
+  margin-top: var(--space-xs);
 }
 
-/* Buttons and Interactive Elements */
+/* Component: Calculator Toggle */
 .calculator-toggle {
-  background-color: var(--primary-color);
+  background: var(--color-primary);
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
+  padding: var(--space-sm) var(--space-md);
   border-radius: var(--border-radius);
+  border: none;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .calculator-toggle:hover {
-  background-color: #0256b4;
+  background: var(--color-primary-dark);
   transform: translateY(-1px);
 }
 
-/* Tabs */
+/* Component: Tabs */
 .tabs {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: var(--spacing-md);
-  border-bottom: 1px solid var(--border-color);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 2px;
 }
 
@@ -90,12 +103,12 @@ body {
   padding: 0.75rem 1.25rem;
   border: none;
   background: transparent;
-  cursor: pointer;
+  color: var(--color-muted);
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text-muted);
-  transition: all 0.2s ease;
+  cursor: pointer;
   position: relative;
+  transition: var(--transition);
 }
 
 .tab-button::after {
@@ -105,148 +118,139 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--primary-color);
+  background: var(--color-primary);
   transform: scaleX(0);
-  transition: transform 0.3s ease;
+  transition: var(--transition);
 }
 
-.tab-button:hover {
-  color: var(--primary-color);
-}
-
+.tab-button:hover,
 .tab-button.active {
-  color: var(--primary-color);
+  color: var(--color-primary);
 }
 
 .tab-button.active::after {
   transform: scaleX(1);
 }
 
-/* Calculator Sections */
+/* Component: Calculator Section */
 .calculator-section {
-  background: #fff;
-  padding: var(--spacing-md);
+  background: white;
+  padding: var(--space-md);
   border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-md);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-md);
 }
 
-/* Time Inputs */
 .time-input-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
 .time-field {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-xs);
 }
 
 .time-field label {
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--color-muted);
 }
 
 .time-input {
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid var(--border-color);
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   font-size: 0.9rem;
 }
 
 .total-time {
-  background: #f0f7ff;
-  padding: 0.5rem var(--spacing-md);
+  background: var(--color-light-blue);
+  padding: var(--space-sm) var(--space-md);
   border-radius: var(--border-radius);
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--color-primary);
   display: inline-block;
 }
 
+/* Time Presets */
 .time-presets {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-sm);
   flex-wrap: wrap;
-  margin-top: var(--spacing-md);
+  margin-top: var(--space-md);
 }
 
 .time-preset {
-  padding: 0.5rem 1rem;
-  background: #f0f7ff;
-  border: 1px solid var(--border-color);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-light-blue);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--primary-color);
-  transition: all 0.2s ease;
+  color: var(--color-primary);
+  transition: var(--transition);
 }
 
 .time-preset:hover {
   background: #e1ecf9;
-  border-color: var(--primary-color);
+  border-color: var(--color-primary);
   transform: translateY(-1px);
 }
 
-/* Table Styles */
+/* Component: Table */
 .table-container {
   border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--space-md);
+  overflow: auto;
 }
 
 table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background: #fff;
+  background: white;
   border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--shadow-sm);
   font-size: 0.9rem;
-  overflow: visible;
 }
 
 thead {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--background-color);
+  background: var(--color-background);
 }
 
 th {
   position: sticky;
   top: 0;
-  background: var(--background-color);
+  background: var(--color-background);
+  padding: 0.75rem;
   font-weight: 600;
   text-align: left;
-  padding: 0.75rem;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--color-border);
   white-space: nowrap;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  cursor: pointer;
 }
 
 td {
   padding: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--color-border);
   vertical-align: top;
 }
 
 /* Table Content Styles */
 .center { text-align: center; }
-.number {
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-  min-width: 80px;
-  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", monospace;
-  white-space: nowrap;
-}
-
+.number,
 .percentage {
   font-variant-numeric: tabular-nums;
   text-align: right;
@@ -260,23 +264,25 @@ td {
 .limits {
   min-width: 200px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--color-muted);
   line-height: 1.4;
 }
 
+/* Links and Headers */
 .header-link {
   color: inherit;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer !important;
 }
 
 .header-link:hover {
-  color: var(--primary-color);
+  color: var(--color-primary);
 }
 
-.header-link .external-link-icon {
+.external-link-icon {
   opacity: 0.7;
   transition: opacity 0.2s ease;
 }
@@ -285,20 +291,7 @@ td {
   opacity: 1;
 }
 
-th .info-icon {
-  margin-left: 2px;
-}
-
-/* Links and Tooltips */
-.model-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-weight: 500;
-}
-
+/* Tooltips */
 th[title] {
   cursor: help;
   position: relative;
@@ -310,10 +303,10 @@ th[title]:hover::before {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.8);
+  padding: var(--space-sm);
+  background: var(--color-tooltip-bg);
   color: white;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   font-size: 0.8rem;
   white-space: normal;
   width: max-content;
@@ -321,22 +314,24 @@ th[title]:hover::before {
   z-index: 20;
 }
 
-.info-icon {
-  font-size: 0.8em;
-  opacity: 0.7;
+/* Sort Indicators */
+.sort-indicator {
+  display: inline-block;
   margin-left: 4px;
+  font-size: 0.8em;
+  vertical-align: middle;
 }
 
 /* Row Interactions */
 tbody tr:hover {
-  background-color: #f0f7ff;
+  background: var(--color-light-blue);
 }
 
-/* Footer */
+/* Component: Footer */
 .footer {
   margin-top: auto;
-  padding: var(--spacing-md) 0;
-  border-top: 1px solid var(--border-color);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer-content {
@@ -349,16 +344,16 @@ tbody tr:hover {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--secondary-color);
+  color: var(--color-text);
   text-decoration: none;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--space-sm) var(--space-md);
   border-radius: var(--border-radius);
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .github-link:hover {
-  background-color: #f0f7ff;
-  color: var(--primary-color);
+  background: var(--color-light-blue);
+  color: var(--color-primary);
   transform: translateY(-1px);
 }
 
@@ -385,12 +380,12 @@ tbody tr:hover {
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
-    padding: var(--spacing-sm);
+    padding: var(--space-sm);
   }
 
   .header-bar {
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--space-md);
     text-align: center;
   }
 
@@ -406,87 +401,11 @@ tbody tr:hover {
   }
 
   td, th {
-    padding: 0.5rem;
+    padding: var(--space-sm);
   }
 
   .footer {
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-sm) 0;
+    margin-top: var(--space-md);
+    padding: var(--space-sm) 0;
   }
-}
-
-/* Add these styles */
-.sort-indicator {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 0.8em;
-}
-
-/* Update the header-link styles */
-.header-link {
-  color: inherit;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  pointer-events: auto;
-}
-
-/* Add this to ensure header content stays visible */
-th {
-  position: sticky;
-  top: 0;
-  background: var(--background-color);
-  font-weight: 600;
-  text-align: left;
-  padding: 0.75rem;
-  border-bottom: 2px solid var(--border-color);
-  white-space: nowrap;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  pointer-events: auto;
-}
-
-/* Update the sort indicator styles */
-.sort-indicator {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 0.8em;
-  vertical-align: middle;
-}
-
-/* Update header styles to better handle clickable areas */
-th {
-  position: sticky;
-  top: 0;
-  background: var(--background-color);
-  font-weight: 600;
-  text-align: left;
-  padding: 0.75rem;
-  border-bottom: 2px solid var(--border-color);
-  white-space: nowrap;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  cursor: pointer;
-}
-
-th a {
-  cursor: pointer;
-  z-index: 11;
-  position: relative;
-}
-
-/* Make sure the link doesn't inherit the th's cursor */
-.header-link {
-  cursor: pointer !important;
-}
-
-/* Update the hover state for better UX */
-th:hover {
-  background-color: #f0f7ff;
-}
-
-.header-link:hover {
-  color: var(--primary-color);
-  background-color: transparent;
 }
