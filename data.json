@@ -1,8 +1,8 @@
 [
   {
-    "model": "ChatGPT-4o-latest",
+    "model": "ChatGPT-4o-latest (2024-09-03)",
     "provider": "OpenAI",
-    "smartsElo": 1339,
+    "smartsElo": 1340,
     "simpleBench": 17.8,
     "codingElo": 1338,
     "speed": 69,
@@ -30,7 +30,7 @@
   {
     "model": "o1-mini",
     "provider": "OpenAI",
-    "smartsElo": 1313,
+    "smartsElo": 1308,
     "simpleBench": 18.1,
     "codingElo": 1373,
     "speed": null,
@@ -39,6 +39,20 @@
     "outputPrice": 12,
     "hasVision": true,
     "notes": "Output includes internal reasoning tokens",
+    "pricingUrl": "https://openai.com/api/pricing/"
+  },
+  {
+    "model": "GPT-4o-2024-08-06",
+    "provider": "OpenAI",
+    "smartsElo": 1264,
+    "simpleBench": 17.8,
+    "codingElo": null,
+    "speed": null,
+    "context": 128,
+    "inputPrice": 2.5,
+    "outputPrice": 10,
+    "hasVision": true,
+    "notes": "can be 50% cheaper using batch processing, also cached input tokens are 50% cheaper",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
@@ -72,7 +86,7 @@
   {
     "model": "Claude-3-5-Sonnet-20241022",
     "provider": "Anthropic",
-    "smartsElo": null,
+    "smartsElo": 1286,
     "simpleBench": 41.4,
     "codingElo": null,
     "speed": null,
@@ -113,7 +127,7 @@
   {
     "model": "Gemini-1.5-Pro-002",
     "provider": "Google AI",
-    "smartsElo": 1305,
+    "smartsElo": 1303,
     "simpleBench": 27.1,
     "codingElo": 1287,
     "speed": 52,
@@ -244,7 +258,7 @@
   {
     "model": "Grok-2-08-13",
     "provider": "xAI",
-    "smartsElo": 1291,
+    "smartsElo": 1290,
     "simpleBench": 22.7,
     "codingElo": 1287,
     "speed": null,
