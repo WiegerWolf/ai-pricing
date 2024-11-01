@@ -373,6 +373,7 @@ function formatNumber(number) {
     minimumFractionDigits: 2,
   }).format(number);
 }
+
 function sortTable(column, tableSelector) {
   const tbody = document.querySelector(`${tableSelector} tbody`);
   const rows = Array.from(tbody.querySelectorAll("tr"));
@@ -383,11 +384,13 @@ function sortTable(column, tableSelector) {
     let aVal = a.cells[column].textContent
       .replace("$", "")
       .replace("✓", "1")
-      .replace("-", "0");
+      .replace("-", "0")
+      .replace("%", ""); // Add this to handle percentage values
     let bVal = b.cells[column].textContent
       .replace("$", "")
       .replace("✓", "1")
-      .replace("-", "0");
+      .replace("-", "0")
+      .replace("%", ""); // Add this to handle percentage values
 
     if (aVal === "" || aVal === "null") aVal = "0";
     if (bVal === "" || bVal === "null") bVal = "0";
@@ -410,12 +413,23 @@ function sortTable(column, tableSelector) {
 }
 
 function updateSortIndicators(activeColumn) {
+  // Replace the existing function with this new version
   const headers = document.querySelectorAll("#modelTable th");
   headers.forEach((header, index) => {
-    header.textContent = header.textContent.replace(" ▲", "").replace(" ▼", "");
+    // Find the sort indicator span, create it if it doesn't exist
+    let sortIndicator = header.querySelector(".sort-indicator");
+    if (!sortIndicator) {
+      sortIndicator = document.createElement("span");
+      sortIndicator.className = "sort-indicator";
+      header.appendChild(sortIndicator);
+    }
 
+    // Clear previous sort indicators
+    sortIndicator.textContent = "";
+
+    // Add new sort indicator if this is the active column
     if (index === activeColumn) {
-      header.textContent += sortDirections[activeColumn] ? " ▲" : " ▼";
+      sortIndicator.textContent = sortDirections[activeColumn] ? " ▲" : " ▼";
     }
   });
 }
@@ -457,6 +471,16 @@ async function initialize() {
       header.addEventListener("click", () => sortTable(index, "#sttTable"));
     });
 
+    // Add click handlers for sorting
+    document.querySelectorAll("#modelTable th").forEach((header, index) => {
+      header.addEventListener("click", (e) => {
+        // Only sort if the click wasn't on a link
+        if (!e.target.closest("a")) {
+          sortTable(index, "#modelTable");
+        }
+      });
+    });
+    
     // Initial sort
     sortDirections[3] = true;
     sortTable(3, "#modelTable");
