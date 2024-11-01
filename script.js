@@ -413,24 +413,30 @@ function sortTable(column, tableSelector) {
 }
 
 function updateSortIndicators(activeColumn) {
-  // Replace the existing function with this new version
   const headers = document.querySelectorAll("#modelTable th");
   headers.forEach((header, index) => {
-    // Find the sort indicator span, create it if it doesn't exist
+    // Find or create sort indicator
     let sortIndicator = header.querySelector(".sort-indicator");
     if (!sortIndicator) {
       sortIndicator = document.createElement("span");
       sortIndicator.className = "sort-indicator";
-      header.appendChild(sortIndicator);
+
+      // If header contains a link, append after the link
+      const link = header.querySelector("a");
+      if (link) {
+        link.parentNode.appendChild(sortIndicator);
+      } else {
+        header.appendChild(sortIndicator);
+      }
     }
 
-    // Clear previous sort indicators
-    sortIndicator.textContent = "";
-
-    // Add new sort indicator if this is the active column
-    if (index === activeColumn) {
-      sortIndicator.textContent = sortDirections[activeColumn] ? " ▲" : " ▼";
-    }
+    // Update sort indicator
+    sortIndicator.textContent =
+      index === activeColumn
+        ? sortDirections[activeColumn]
+          ? " ▲"
+          : " ▼"
+        : "";
   });
 }
 
@@ -462,25 +468,38 @@ async function initialize() {
       calc.style.transition = "all 0.3s ease-in-out";
     });
 
-    // Add click handlers for sorting
+    // Remove the old click handlers and add the new ones
     document.querySelectorAll("#modelTable th").forEach((header, index) => {
-      header.addEventListener("click", () => sortTable(index, "#modelTable"));
+      header.addEventListener("click", (e) => {
+        // If clicking on a link or the link's icon, don't sort
+        if (e.target.closest("a") || e.target.closest(".external-link-icon")) {
+          // Let the link click event proceed normally
+          return;
+        }
+
+        // If clicking on info icon, don't sort
+        if (e.target.classList.contains("info-icon")) {
+          return;
+        }
+
+        // Otherwise, proceed with sorting
+        e.preventDefault();
+        sortTable(index, "#modelTable");
+      });
     });
 
     document.querySelectorAll("#sttTable th").forEach((header, index) => {
-      header.addEventListener("click", () => sortTable(index, "#sttTable"));
-    });
-
-    // Add click handlers for sorting
-    document.querySelectorAll("#modelTable th").forEach((header, index) => {
       header.addEventListener("click", (e) => {
-        // Only sort if the click wasn't on a link
-        if (!e.target.closest("a")) {
-          sortTable(index, "#modelTable");
+        // Only sort if not clicking on special elements
+        if (
+          !e.target.closest("a") &&
+          !e.target.classList.contains("info-icon")
+        ) {
+          sortTable(index, "#sttTable");
         }
       });
     });
-    
+
     // Initial sort
     sortDirections[3] = true;
     sortTable(3, "#modelTable");
