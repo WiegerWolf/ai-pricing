@@ -25,102 +25,116 @@ export function ColumnHeader({
     filter,
     sort
 }: ColumnHeaderProps) {
-    // Prepare the title content
+    const SortIcon = () => (
+        <svg
+            className={`ml-1 h-4 w-4 ${sort?.enabled ? 'opacity-100' : 'opacity-0'}`}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+        >
+            <path
+                fill="currentColor"
+                d="M12 3.5L7 8.5h10l-5-5zm0 17l5-5H7l5 5z"
+                className={column.getIsSorted() === "asc"
+                    ? "fill-current opacity-100"
+                    : column.getIsSorted() === "desc"
+                        ? "fill-current opacity-100"
+                        : "fill-current opacity-40"
+                }
+            />
+        </svg>
+    );
+
+    const handleHeaderClick = (e: React.MouseEvent) => {
+        if (sort?.enabled) {
+            e.preventDefault();
+            e.stopPropagation();
+            column.toggleSorting();
+        }
+    };
+
     const titleContent = (
-        <div className="flex items-center gap-1">
-            {/* Title with optional link */}
+        <div
+            className="flex items-center gap-1 cursor-pointer"
+            onClick={handleHeaderClick}
+        >
             {link ? (
-                <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                    title={link.title}
-                >
-                    {title}
-                    <ExternalLinkIcon />
-                </a>
+                <div className="flex items-center">
+                    <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                        title={link.title}
+                    >
+                        {title}
+                        <ExternalLinkIcon />
+                    </a>
+                </div>
             ) : (
-                title
+                <span>{title}</span>
             )}
 
-            {/* Sort indicator */}
-            {sort?.enabled && (
-                <span className="ml-1">
-                    {{
-                        asc: " 🔼",
-                        desc: " 🔽",
-                    }[column.getIsSorted() as string] ?? null}
-                </span>
-            )}
+            {sort?.enabled && <SortIcon />}
         </div>
     );
 
-    // Wrap content in header container
-    const headerContent = (
-        <div className="space-y-1">
-            {/* Title area (with sort if enabled) */}
-            <div
-                className="flex items-center"
-                onClick={() => sort?.enabled && column.toggleSorting()}
-                style={{ cursor: sort?.enabled ? 'pointer' : 'default' }}
-            >
-                {titleContent}
-            </div>
+    return (
+        <div>
+            {tooltip ? (
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <div>{titleContent}</div>
+                        </TooltipTrigger>
+                        <TooltipContent side="top" align="start">
+                            <p className="max-w-xs">{tooltip}</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+            ) : (
+                titleContent
+            )}
 
-            {/* Filter area */}
             {filter?.enabled && (
-                filter.type === 'range' ? (
-                    <div className="flex gap-1">
-                        <FilterInput
-                            placeholder="Min"
-                            value={(column.getFilterValue() as [string, string])?.[0] ?? ""}
-                            onChange={(value) =>
-                                column.setFilterValue((old: [string, string]) => [
-                                    value,
-                                    old?.[1] ?? "",
-                                ])
-                            }
+                <div className="mt-2">
+                    {filter.type === 'range' ? (
+                        <div className="flex gap-1">
+                            <FilterInput
+                                placeholder="Min"
+                                value={(column.getFilterValue() as [string, string])?.[0] ?? ""}
+                                onChange={(value) =>
+                                    column.setFilterValue((old: [string, string]) => [
+                                        value,
+                                        old?.[1] ?? "",
+                                    ])
+                                }
+                            />
+                            <FilterInput
+                                placeholder="Max"
+                                value={(column.getFilterValue() as [string, string])?.[1] ?? ""}
+                                onChange={(value) =>
+                                    column.setFilterValue((old: [string, string]) => [
+                                        old?.[0] ?? "",
+                                        value,
+                                    ])
+                                }
+                            />
+                        </div>
+                    ) : filter.type === 'select' ? (
+                        <SelectFilter
+                            column={column}
+                            options={filter.options || []}
+                            placeholder={`Select ${title}...`}
                         />
+                    ) : (
                         <FilterInput
-                            placeholder="Max"
-                            value={(column.getFilterValue() as [string, string])?.[1] ?? ""}
-                            onChange={(value) =>
-                                column.setFilterValue((old: [string, string]) => [
-                                    old?.[0] ?? "",
-                                    value,
-                                ])
-                            }
+                            column={column}
+                            placeholder={`Filter ${title}...`}
                         />
-                    </div>
-                ) : filter.type === 'select' ? (
-                    <SelectFilter
-                        column={column}
-                        options={filter.options || []}
-                        placeholder={`Select ${title}...`}
-                    />
-                ) : (
-                    <FilterInput
-                        column={column}
-                        placeholder={`Filter ${title}...`}
-                    />
-                )
+                    )}
+                </div>
             )}
         </div>
     );
-
-    // Wrap in tooltip if tooltip text provided
-    return tooltip ? (
-        <TooltipProvider>
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    {headerContent}
-                </TooltipTrigger>
-                <TooltipContent>
-                    <p className="max-w-xs">{tooltip}</p>
-                </TooltipContent>
-            </Tooltip>
-        </TooltipProvider>
-    ) : headerContent;
 }
