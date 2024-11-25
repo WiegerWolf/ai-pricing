@@ -65,19 +65,19 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "context",
         header: ({ column }) => <SortableHeader column={column} title="Context (k)" />,
-        sortingFn: "number",
+        sortingFn: "alphanumeric"
     },
     {
         accessorKey: "inputPrice",
         header: ({ column }) => <SortableHeader column={column} title="Input Price" />,
         cell: ({ row }) => `$${row.original.inputPrice}`,
-        sortingFn: "number",
+        sortingFn: "alphanumeric"
     },
     {
         accessorKey: "outputPrice",
         header: ({ column }) => <SortableHeader column={column} title="Output Price" />,
         cell: ({ row }) => `$${row.original.outputPrice}`,
-        sortingFn: "number",
+        sortingFn: "alphanumeric"
     },
     {
         accessorKey: "hasVision",
