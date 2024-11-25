@@ -47,7 +47,7 @@ export const columns: ColumnDef<LLMModel>[] = [
     cell: ({ row }) => row.original.codingElo || "-",
   },
   {
-    accessorKey: " ",
+    accessorKey: "context",
     header: "Context (k)",
   },
   {
