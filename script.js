@@ -169,33 +169,65 @@ function initializeCalculators() {
   });
 }
 
-// Update the createSTTTableRow function
 function createSTTTableRow(data) {
   const row = document.createElement("tr");
+  row.className = "hover:bg-gray-50 transition-colors duration-150";
+  
   const monthlyCost = calculateSTTMonthlyCost({
     pricePerMinute: data.pricePerMinute,
   });
 
   row.innerHTML = `
-    <td class="model-name">
-      <a href="https://${
-        data.url
-      }" target="_blank" rel="noopener noreferrer" class="model-link">
+    <td class="px-6 py-4 whitespace-nowrap">
+      <a 
+        href="https://${data.url}" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="text-blue-600 hover:text-blue-800 inline-flex items-center group"
+      >
         ${data.model}
-        <svg class="external-link-icon" width="12" height="12" viewBox="0 0 12 12">
+        <svg 
+          class="ml-1 w-3 h-3 text-gray-400 group-hover:text-blue-800 transition-colors duration-150" 
+          viewBox="0 0 12 12"
+        >
           <path fill="currentColor" d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"/>
           <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z"/>
         </svg>
       </a>
     </td>
-    <td>${data.provider}</td>
-    <td class="number">$${data.pricePerMinute.toFixed(4)}</td>
-    <td class="number">$${(data.pricePerMinute * 60).toFixed(2)}</td>
-    <td class="center">${data.realtime ? "✓" : "-"}</td>
-    <td>${data.languages}</td>
-    <td class="quota">${data.freeQuota ? data.freeQuota : "-"}</td>
-    <td class="limits">${data.limits ? data.limits : "None specified"}</td>
-    <td class="number cost">$${monthlyCost.toFixed(2)}</td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      ${data.provider}
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 font-medium">
+      $${data.pricePerMinute.toFixed(4)}
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 font-medium">
+      $${(data.pricePerMinute * 60).toFixed(2)}
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900">
+      ${data.realtime ? 
+        '<span class="text-green-600">✓</span>' : 
+        '<span class="text-gray-400">-</span>'
+      }
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      ${data.languages}
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      ${data.freeQuota ? 
+        `<span class="text-green-600">${data.freeQuota}</span>` : 
+        '<span class="text-gray-400">-</span>'
+      }
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      ${data.limits ? 
+        data.limits : 
+        '<span class="text-gray-400">None specified</span>'
+      }
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 font-medium">
+      $${monthlyCost.toFixed(2)}
+    </td>
   `;
   return row;
 }
