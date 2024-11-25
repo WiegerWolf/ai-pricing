@@ -219,7 +219,7 @@ export const columns: ColumnDef<LLMModel>[] = [
                 column={column}
                 title="Vision"
                 tooltip="Whether the model can process images"
-                sort={{ enabled: true }}
+                filter={{ type: 'boolean', enabled: true }}
             />
         ),
         cell: ({ row }) => (
@@ -227,6 +227,10 @@ export const columns: ColumnDef<LLMModel>[] = [
                 {row.original.hasVision ? "✓" : "-"}
             </span>
         ),
+        filterFn: (row, id, value: boolean) => {
+            if (value === undefined) return true;
+            return row.getValue(id) === value;
+        },
     },
     {
         accessorKey: "toolUse",
@@ -235,7 +239,7 @@ export const columns: ColumnDef<LLMModel>[] = [
                 column={column}
                 title="Tools"
                 tooltip="Whether the model can use tools"
-                sort={{ enabled: true }}
+                filter={{ type: 'boolean', enabled: true }}
             />
         ),
         cell: ({ row }) => (
@@ -243,6 +247,10 @@ export const columns: ColumnDef<LLMModel>[] = [
                 {row.original.toolUse ? "✓" : "-"}
             </span>
         ),
+        filterFn: (row, id, value: boolean) => {
+            if (value === undefined) return true;
+            return row.getValue(id) === value;
+        },
     },
 ];
 

@@ -3,6 +3,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { FilterInput } from "./FilterInput";
 import { ColumnHeaderProps } from "@/components/types/column-header";
 import { SelectFilter } from "./SelectFilter";
+import { CheckboxFilter } from "./CheckboxFilter";
 
 export function ColumnHeader({
     title,
@@ -105,6 +106,8 @@ export function ColumnHeader({
                             options={filter.options || []}
                             placeholder={`Filter...`}
                         />
+                    ) : filter.type === 'boolean' ? (
+                        <CheckboxFilter column={column} />
                     ) : (
                         <FilterInput
                             column={column}
