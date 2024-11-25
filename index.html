@@ -74,9 +74,11 @@
             <span class="text-gray-600">Adjust monthly token usage</span>
           </div>
           <div class="space-y-4">
-            <div>
-              <label for="inputTokens" class="block mb-2 font-medium">Input Tokens</label>
-              <div class="flex items-center gap-4">
+            <div class="relative mb-8">
+              <label for="inputTokens" class="block text-sm font-medium text-gray-700 mb-2">
+                Input Tokens
+              </label>
+              <div class="relative pt-6">
                 <input
                   type="range"
                   id="inputTokens"
@@ -84,14 +86,15 @@
                   max="100000000"
                   value="87000"
                   step="1000"
-                  class="w-full"
                 />
-                <span id="inputTokensValue" class="min-w-[80px] text-right">87,000</span>
+                <span id="inputTokensValue"></span>
               </div>
             </div>
-            <div>
-              <label for="outputTokens" class="block mb-2 font-medium">Output Tokens</label>
-              <div class="flex items-center gap-4">
+            <div class="relative mb-8">
+              <label for="outputTokens" class="block text-sm font-medium text-gray-700 mb-2">
+                Output Tokens
+              </label>
+              <div class="relative pt-6">
                 <input
                   type="range"
                   id="outputTokens"
@@ -99,9 +102,8 @@
                   max="10000000"
                   value="74000"
                   step="1000"
-                  class="w-full"
                 />
-                <span id="outputTokensValue" class="min-w-[80px] text-right">74,000</span>
+                <span id="outputTokensValue"></span>
               </div>
             </div>
           </div>
