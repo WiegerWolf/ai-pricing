@@ -4,6 +4,7 @@ import { FilterInput } from "./FilterInput";
 import { ColumnHeaderProps } from "@/components/types/column-header";
 import { SelectFilter } from "./SelectFilter";
 import { CheckboxFilter } from "./CheckboxFilter";
+import { RangeFilter } from "./RangeFilter";
 
 export function ColumnHeader({
     title,
@@ -78,28 +79,7 @@ export function ColumnHeader({
             {filter?.enabled && (
                 <div className="flex gap-0.5">
                     {filter.type === 'range' ? (
-                        <>
-                            <FilterInput
-                                placeholder="Min"
-                                value={(column.getFilterValue() as [string, string])?.[0] ?? ""}
-                                onChange={(value) =>
-                                    column.setFilterValue((old: [string, string]) => [
-                                        value,
-                                        old?.[1] ?? "",
-                                    ])
-                                }
-                            />
-                            <FilterInput
-                                placeholder="Max"
-                                value={(column.getFilterValue() as [string, string])?.[1] ?? ""}
-                                onChange={(value) =>
-                                    column.setFilterValue((old: [string, string]) => [
-                                        old?.[0] ?? "",
-                                        value,
-                                    ])
-                                }
-                            />
-                        </>
+                        <RangeFilter column={column} />
                     ) : filter.type === 'select' ? (
                         <SelectFilter
                             column={column}
