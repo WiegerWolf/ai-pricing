@@ -108,21 +108,105 @@
           </div>
         </div>
 
-        <div class="overflow-x-auto">
-          <table id="modelTable" class="w-full bg-white rounded-lg shadow-sm">
-            <thead>
-              <tr class="bg-gray-50">
+        <div class="overflow-x-auto shadow-sm rounded-lg">
+          <table id="modelTable" class="min-w-full bg-white">
+            <thead class="bg-gray-50">
+              <tr>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Provider</th>
-                <!-- ... other table headers with same classes ... -->
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" title="What people prefer (higher is better)">
+                  <a href="https://lmarena.ai/?leaderboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center hover:text-blue-600">
+                    Arena ELO
+                    <svg class="ml-1 w-2.5 h-2.5" viewBox="0 0 12 12">
+                      <path fill="currentColor" d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"/>
+                      <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z"/>
+                    </svg>
+                    <span class="ml-1">ℹ️</span>
+                  </a>
+                </th>
+                <!-- Similar pattern for other header cells -->
               </tr>
             </thead>
-            <tbody class="divide-y divide-gray-200"></tbody>
+            <tbody class="bg-white divide-y divide-gray-200"></tbody>
           </table>
         </div>
-      </div>
-
-      <!-- STT content section would follow similar patterns -->
+        
+        <div class="tab-content hidden" id="stt-content" role="tabpanel" aria-labelledby="stt-tab">
+          <div id="stt-calculator" class="bg-white rounded-lg shadow-sm p-6 mb-6 hidden">
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-gray-900">Speech-to-Text Calculator</h3>
+              <span class="text-gray-600">Calculate audio processing costs</span>
+            </div>
+            
+            <div class="space-y-6">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="space-y-2">
+                  <label for="days" class="block text-sm font-medium text-gray-700">Days</label>
+                  <input
+                    type="number"
+                    id="days"
+                    data-unit="days"
+                    min="0"
+                    max="365"
+                    value="0"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label for="hours" class="block text-sm font-medium text-gray-700">Hours</label>
+                  <input
+                    type="number"
+                    id="hours"
+                    data-unit="hours"
+                    min="0"
+                    max="23"
+                    value="1"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label for="minutes" class="block text-sm font-medium text-gray-700">Minutes</label>
+                  <input
+                    type="number"
+                    id="minutes"
+                    data-unit="minutes"
+                    min="0"
+                    max="59"
+                    value="0"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+              
+              <div id="totalMinutes" class="text-center text-gray-700 font-medium"></div>
+              
+              <div class="flex flex-wrap gap-2">
+                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" data-preset="0">1h Call</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" data-preset="1">8h Day</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" data-preset="2">Work Week</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" data-preset="3">Full Month</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="overflow-x-auto shadow-sm rounded-lg">
+            <table id="sttTable" class="min-w-full bg-white">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Provider</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price/Minute</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price/Hour</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" title="Supports real-time transcription">
+                    Real-time<span class="ml-1">ℹ️</span>
+                  </th>
+                  <!-- Similar pattern for other header cells -->
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200"></tbody>
+            </table>
+          </div>
+        </div>        
 
       <footer class="mt-8 border-t pt-8">
         <div class="flex justify-center">
