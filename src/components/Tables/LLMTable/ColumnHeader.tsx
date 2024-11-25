@@ -2,6 +2,7 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { FilterInput } from "./FilterInput";
 import { ColumnHeaderProps } from "@/components/types/column-header";
+import { SelectFilter } from "./SelectFilter";
 
 const ExternalLinkIcon = () => (
     <svg className="inline-block ml-1 w-3 h-3" viewBox="0 0 12 12">
@@ -62,7 +63,7 @@ export function ColumnHeader({
             {/* Title area (with sort if enabled) */}
             <div
                 className="flex items-center"
-                onClick={() => sort?.enabled && column.toggleSorting(sort.descFirst)}
+                onClick={() => sort?.enabled && column.toggleSorting()}
                 style={{ cursor: sort?.enabled ? 'pointer' : 'default' }}
             >
                 {titleContent}
@@ -93,6 +94,12 @@ export function ColumnHeader({
                             }
                         />
                     </div>
+                ) : filter.type === 'select' ? (
+                    <SelectFilter
+                        column={column}
+                        options={filter.options || []}
+                        placeholder={`Select ${title}...`}
+                    />
                 ) : (
                     <FilterInput
                         column={column}

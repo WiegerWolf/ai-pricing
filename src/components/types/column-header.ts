@@ -12,9 +12,10 @@ export interface ColumnHeaderProps {
         url: string;
         title: string;
     };
-    filter?: {                 // Filter configuration
-        type: 'text' | 'range';
+    filter?: {
+        type: 'text' | 'range' | 'select';
         enabled: boolean;
+        options?: string[];  // for select type
     };
     sort?: {                   // Sort configuration
         enabled: boolean;
