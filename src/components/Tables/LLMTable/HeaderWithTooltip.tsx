@@ -2,12 +2,15 @@
 import { Column } from "@tanstack/react-table";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { LLMModel } from "@/types/llm";
+import { FilterInput } from "./FilterInput";
 
 interface HeaderWithTooltipProps {
     column: Column<LLMModel, unknown>;
     title: string;
     tooltip: string;
     link?: string;
+    canFilter?: boolean;
+    isRangeFilter?: boolean;
 }
 
 const ExternalLinkIcon = () => (
@@ -23,7 +26,14 @@ const ExternalLinkIcon = () => (
     </svg>
 );
 
-export function HeaderWithTooltip({ column, title, tooltip, link }: HeaderWithTooltipProps) {
+export function HeaderWithTooltip({ 
+    column, 
+    title, 
+    tooltip, 
+    link,
+    canFilter,
+    isRangeFilter 
+}: HeaderWithTooltipProps) {
     const content = (
         <div className="flex items-center gap-1">
             {title}
@@ -49,8 +59,51 @@ export function HeaderWithTooltip({ column, title, tooltip, link }: HeaderWithTo
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger asChild>
-                    <div className="flex items-center" onClick={() => column.toggleSorting()}>
-                        {header}
+                    <div className="space-y-1">
+                        <div 
+                            className="flex items-center" 
+                            onClick={() => column.toggleSorting()}
+                        >
+                            {header}
+                            <span className="ml-2">
+                                {{
+                                    asc: " 🔼",
+                                    desc: " 🔽",
+                                }[column.getIsSorted() as string] ?? null}
+                            </span>
+                        </div>
+                        {canFilter && (
+                            <FilterInput
+                                column={column}
+                                placeholder={`Filter ${title}...`}
+                            />
+                        )}
+                        {isRangeFilter && (
+                            <div className="flex gap-1">
+                                <FilterInput
+                                    column={column}
+                                    placeholder="Min"
+                                    value={(column.getFilterValue() as [string, string])?.[0] ?? ""}
+                                    onChange={(value) =>
+                                        column.setFilterValue((old: [string, string]) => [
+                                            value,
+                                            old?.[1] ?? "",
+                                        ])
+                                    }
+                                />
+                                <FilterInput
+                                    column={column}
+                                    placeholder="Max"
+                                    value={(column.getFilterValue() as [string, string])?.[1] ?? ""}
+                                    onChange={(value) =>
+                                        column.setFilterValue((old: [string, string]) => [
+                                            old?.[0] ?? "",
+                                            value,
+                                        ])
+                                    }
+                                />
+                            </div>
+                        )}
                     </div>
                 </TooltipTrigger>
                 <TooltipContent>

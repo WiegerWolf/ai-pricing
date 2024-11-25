@@ -8,6 +8,7 @@ import googleLogo from '@/assets/google.png';
 import openaiLogo from '@/assets/openai.ico';
 import groqLogo from '@/assets/groq.png';
 import xAILogo from '@/assets/xAI.svg';
+import { HeaderWithTooltip } from "./HeaderWithTooltip";
 
 // Create a mapping of provider names to their logos
 const providerLogos: Record<string, string> = {
@@ -39,7 +40,12 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "model",
         header: ({ column }) => (
-            <SortableHeader column={column} title="Model" canFilter />
+            <HeaderWithTooltip 
+                column={column} 
+                title="Model" 
+                tooltip="Model name and version"
+                canFilter
+            />
         ),
         filterFn: "includesString",
         cell: ({ row }) => (
@@ -66,7 +72,12 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "provider",
         header: ({ column }) => (
-            <SortableHeader column={column} title="Provider" canFilter />
+            <HeaderWithTooltip
+                column={column}
+                title="Provider"
+                tooltip="The company that provides the model"
+                canFilter
+            />
         ),
         filterFn: "includesString",
         cell: ({ row }) => {
