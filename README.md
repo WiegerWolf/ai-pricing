@@ -1,6 +1,7 @@
 # AI Model Pricing Comparison
 
-An interactive web tool to compare pricing and performance metrics across AI language models (LLMs) and Speech-to-Text (STT) services.
+An interactive web tool to compare pricing and performance metrics across AI language models (LLMs)
+<!-- and Speech-to-Text (STT) services. -->
 
 ## 🌐 Live Demo
 Visit [https://ai-pricing.vercel.app/](https://ai-pricing.vercel.app/)
@@ -15,10 +16,10 @@ Visit [https://ai-pricing.vercel.app/](https://ai-pricing.vercel.app/)
   - Input/Output pricing per million tokens
   - Vision capabilities
   - Free tier availability
-- Interactive cost calculator with adjustable monthly token usage
-- Real-time cost estimates based on input/output token volume
+<!-- - Interactive cost calculator with adjustable monthly token usage -->
+<!-- - Real-time cost estimates based on input/output token volume -->
 
-### Speech-to-Text Comparison
+<!-- ### Speech-to-Text Comparison
 - Compare STT services across important metrics:
   - Per-minute and per-hour pricing
   - Real-time transcription capabilities
@@ -28,15 +29,15 @@ Visit [https://ai-pricing.vercel.app/](https://ai-pricing.vercel.app/)
 - Interactive time-based calculator with:
   - Customizable duration (days, hours, minutes)
   - Preset durations (1h call, 8h day, work week, full month)
-  - Real-time cost estimates
+  - Real-time cost estimates -->
 
 ### Common Features
 - Sortable columns for easy comparison
 - Detailed tooltips with metric explanations
 - External links to official pricing pages
 - Regular updates with latest model information
-- Mobile-responsive design
-- Keyboard navigation support
+<!-- - Mobile-responsive design -->
+<!-- - Keyboard navigation support -->
 
 ## 🔄 Data Sources
 - LLM performance metrics from [Arena ELO leaderboard](https://chat.lmsys.org/?leaderboard)
@@ -57,8 +58,6 @@ Welcome contributions for:
 MIT License - Feel free to use this data and code for your own projects
 
 ## 📫 Contact
-- GitHub Issues: [Create new issue](https://github.com/WiegerWolf/ai-pricing/issues)
-- Feature Requests: Use the issues page with the "enhancement" label
 - Data Updates: Submit a pull request with updated JSON data
 
 ## 🔄 Updates
