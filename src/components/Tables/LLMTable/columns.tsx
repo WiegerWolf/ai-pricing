@@ -176,7 +176,13 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "inputPrice",
         header: ({ column }) => (
-            <RangeFilterHeader column={column} title="Input Price" />
+            <ColumnHeader
+                column={column}
+                title="Input Price"
+                tooltip="The cost per 1,000,000 tokens sent to the model"
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
         ),
         cell: ({ row }) => (
             <span className="font-mono text-right block">
@@ -188,7 +194,13 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "outputPrice",
         header: ({ column }) => (
-            <RangeFilterHeader column={column} title="Output Price" />
+            <ColumnHeader
+                column={column}
+                title="Output Price"
+                tooltip="The cost per 1,000,000 tokens received from the model"
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
         ),
         cell: ({ row }) => (
             <span className="font-mono text-right block">
@@ -199,7 +211,14 @@ export const columns: ColumnDef<LLMModel>[] = [
     },
     {
         accessorKey: "hasVision",
-        header: "Vision",
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="Vision"
+                tooltip="Whether the model can process images"
+                sort={{ enabled: true }}
+            />
+        ),
         cell: ({ row }) => (
             <span className="text-center block">
                 {row.original.hasVision ? "✓" : "-"}
