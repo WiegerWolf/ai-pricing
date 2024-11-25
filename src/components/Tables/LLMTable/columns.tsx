@@ -131,7 +131,6 @@ export const columns: ColumnDef<LLMModel>[] = [
                 title="SimpleBench"
                 tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
                 link={{ url: "https://simple-bench.com/#leaderboardTable", title: "Simple Bench Leaderboard Table" }}
-                filter={{ type: 'range', enabled: true }}
                 sort={{ enabled: true }}
             />
         ),
