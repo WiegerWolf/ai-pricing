@@ -6,6 +6,7 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "model",
         header: "Model",
+        filterFn: "includesString",
         cell: ({ row }) => (
             <a
                 href={row.original.pricingUrl}
@@ -30,6 +31,7 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "provider",
         header: "Provider",
+        filterFn: "includesString",
         cell: ({ row }) => (
             <span className="text-gray-600">{row.original.provider}</span>
         ),
