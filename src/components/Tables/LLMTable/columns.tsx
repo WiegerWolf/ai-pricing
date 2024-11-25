@@ -1,7 +1,23 @@
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, Row } from "@tanstack/react-table";
 import { LLMModel } from "@/types/llm";
 import { SortableHeader } from "./SortableHeader";
-import { FilterInput } from "./FilterInput";
+import { RangeFilterHeader } from "./RangeFilterHeader";
+
+// Helper function for price range filtering
+const createPriceRangeFilter = (
+    row: Row<LLMModel>,
+    columnId: string,
+    value: [string, string]
+) => {
+    const price = row.getValue(columnId) as number;
+    const [min, max] = value;
+    const numMin = Number(min);
+    const numMax = Number(max);
+    if (min && max) return price >= numMin && price <= numMax;
+    if (min) return price >= numMin;
+    if (max) return price <= numMax;
+    return true;
+};
 
 export const columns: ColumnDef<LLMModel>[] = [
     {
@@ -77,43 +93,26 @@ export const columns: ColumnDef<LLMModel>[] = [
     {
         accessorKey: "inputPrice",
         header: ({ column }) => (
-            <div className="space-y-1">
-                <SortableHeader column={column} title="Input Price" />
-                <div className="flex gap-1 items-center text-xs">
-                    <FilterInput
-                        value={(column?.getFilterValue() as [string, string])?.[0] ?? ""}
-                        onChange={(value) =>
-                            column.setFilterValue((old: [string, string]) => [value, old?.[1]])
-                        }
-                        placeholder="Min"
-                    />
-                    <span>-</span>
-                    <FilterInput
-                        value={(column?.getFilterValue() as [string, string])?.[1] ?? ""}
-                        onChange={(value) =>
-                            column.setFilterValue((old: [string, string]) => [old?.[0], value])
-                        }
-                        placeholder="Max"
-                    />
-                </div>
-            </div>
+            <RangeFilterHeader column={column} title="Input Price" />
         ),
-        filterFn: (row, columnId, value: [string, string]) => {
-            const price = row.getValue<number>(columnId);
-            const [min, max] = value;
-            const numMin = Number(min);
-            const numMax = Number(max);
-            if (min && max) return price >= numMin && price <= numMax;
-            if (min) return price >= numMin;
-            if (max) return price <= numMax;
-            return true;
-        },
+        cell: ({ row }) => (
+            <span className="font-mono text-right block">
+                ${row.original.inputPrice}
+            </span>
+        ),
+        filterFn: createPriceRangeFilter,
     },
     {
         accessorKey: "outputPrice",
-        header: ({ column }) => <SortableHeader column={column} title="Output Price" />,
-        cell: ({ row }) => `$${row.original.outputPrice}`,
-        sortingFn: "alphanumeric"
+        header: ({ column }) => (
+            <RangeFilterHeader column={column} title="Output Price" />
+        ),
+        cell: ({ row }) => (
+            <span className="font-mono text-right block">
+                ${row.original.outputPrice}
+            </span>
+        ),
+        filterFn: createPriceRangeFilter,
     },
     {
         accessorKey: "hasVision",
