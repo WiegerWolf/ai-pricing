@@ -1,21 +1,24 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { LLMModel } from "../../../types/llm";
+import { LLMModel } from "@/types/llm";
 import { SortableHeader } from "./SortableHeader";
+import { FilterInput } from "./FilterInput";
 
 export const columns: ColumnDef<LLMModel>[] = [
     {
-        accessorKey: "model",
-        header: "Model",
-        filterFn: "includesString",
-        cell: ({ row }) => (
-            <a
-                href={row.original.pricingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
-            >
-                {row.original.model}
-                <svg className="h-3 w-3 text-gray-400" viewBox="0 0 12 12">
+      accessorKey: "model",
+      header: ({ column }) => (
+        <SortableHeader column={column} title="Model" canFilter />
+      ),
+      filterFn: "includesString",
+      cell: ({ row }) => (
+        <a
+          href={row.original.pricingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
+        >
+          {row.original.model}
+          <svg className="h-3 w-3 text-gray-400" viewBox="0 0 12 12">
                     <path
                         fill="currentColor"
                         d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"
@@ -24,17 +27,19 @@ export const columns: ColumnDef<LLMModel>[] = [
                         fill="currentColor"
                         d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z"
                     />
-                </svg>
-            </a>
-        ),
+          </svg>
+        </a>
+      ),
     },
     {
-        accessorKey: "provider",
-        header: "Provider",
-        filterFn: "includesString",
-        cell: ({ row }) => (
-            <span className="text-gray-600">{row.original.provider}</span>
-        ),
+      accessorKey: "provider",
+      header: ({ column }) => (
+        <SortableHeader column={column} title="Provider" canFilter />
+      ),
+      filterFn: "includesString",
+      cell: ({ row }) => (
+          <span className="text-gray-600">{row.original.provider}</span>
+      ),
     },
     {
         accessorKey: "smartsElo",
@@ -70,10 +75,39 @@ export const columns: ColumnDef<LLMModel>[] = [
         sortingFn: "alphanumeric"
     },
     {
-        accessorKey: "inputPrice",
-        header: ({ column }) => <SortableHeader column={column} title="Input Price" />,
-        cell: ({ row }) => `$${row.original.inputPrice}`,
-        sortingFn: "alphanumeric"
+      accessorKey: "inputPrice",
+      header: ({ column }) => (
+        <div className="space-y-1">
+          <SortableHeader column={column} title="Input Price" />
+          <div className="flex gap-1 items-center text-xs">
+            <FilterInput
+              value={(column?.getFilterValue() as [string, string])?.[0] ?? ""}
+              onChange={(value) => 
+                column.setFilterValue((old: [string, string]) => [value, old?.[1]])
+              }
+              placeholder="Min"
+            />
+            <span>-</span>
+            <FilterInput
+              value={(column?.getFilterValue() as [string, string])?.[1] ?? ""}
+              onChange={(value) => 
+                column.setFilterValue((old: [string, string]) => [old?.[0], value])
+              }
+              placeholder="Max"
+            />
+          </div>
+        </div>
+      ),
+      filterFn: (row, columnId, value: [string, string]) => {
+        const price = row.getValue<number>(columnId);
+        const [min, max] = value;
+        const numMin = Number(min);
+        const numMax = Number(max);
+        if (min && max) return price >= numMin && price <= numMax;
+        if (min) return price >= numMin;
+        if (max) return price <= numMax;
+        return true;
+      },
     },
     {
         accessorKey: "outputPrice",
@@ -90,4 +124,5 @@ export const columns: ColumnDef<LLMModel>[] = [
             </span>
         ),
     },
-];
+  ];
+  
