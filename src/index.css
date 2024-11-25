@@ -64,3 +64,14 @@
     @apply bg-background text-foreground;
   }
 }
+@layer base {
+  table {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.numeric-cell {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
