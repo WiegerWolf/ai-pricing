@@ -258,16 +258,55 @@ function initializeTimeInputs() {
   updateSTTCosts();
 }
 
-// Update the initializeSliders function
 function initializeSliders() {
   const inputSlider = document.getElementById("inputTokens");
   const outputSlider = document.getElementById("outputTokens");
   const inputValue = document.getElementById("inputTokensValue");
   const outputValue = document.getElementById("outputTokensValue");
 
+  // Add Tailwind classes to sliders
+  [inputSlider, outputSlider].forEach(slider => {
+    slider.className = `
+      w-full
+      h-2
+      bg-gray-200
+      rounded-lg
+      appearance-none
+      cursor-pointer
+      focus:outline-none
+      focus:ring-2
+      focus:ring-blue-500
+      focus:ring-offset-2
+      transition-all
+      duration-150
+    `.replace(/\s+/g, ' ').trim();
+  });
+
+  // Add Tailwind classes to value displays
+  [inputValue, outputValue].forEach(display => {
+    display.className = `
+      absolute
+      -top-6
+      transform
+      -translate-x-1/2
+      bg-gray-900
+      text-white
+      px-2
+      py-1
+      rounded
+      text-sm
+      font-medium
+      transition-all
+      duration-150
+    `.replace(/\s+/g, ' ').trim();
+  });
+
   function updateSliderDisplay(value, element) {
     element.textContent = Number(value).toLocaleString();
-    element.style.left = `${(value / inputSlider.max) * 100}%`;
+    // Calculate position
+    const percentage = (value / element.previousElementSibling.max) * 100;
+    // Update position with Tailwind's translate
+    element.style.left = `${percentage}%`;
   }
 
   [inputSlider, outputSlider].forEach((slider) => {
@@ -282,6 +321,14 @@ function initializeSliders() {
         currentOutputTokens = value;
       }
       updateCosts();
+
+      // Add active state styles
+      slider.classList.add('ring-2', 'ring-blue-500');
+      
+      // Remove active state after interaction
+      setTimeout(() => {
+        slider.classList.remove('ring-2', 'ring-blue-500');
+      }, 150);
     });
   });
 
@@ -290,7 +337,6 @@ function initializeSliders() {
   updateSliderDisplay(currentOutputTokens, outputValue);
 }
 
-// Update the initializeTabs function
 function initializeTabs() {
   const tabs = document.querySelectorAll("[role='tab']");
   const contents = document.querySelectorAll("[role='tabpanel']");
