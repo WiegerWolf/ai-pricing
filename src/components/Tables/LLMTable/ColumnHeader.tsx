@@ -73,7 +73,6 @@ export function ColumnHeader({
                 filter.type === 'range' ? (
                     <div className="flex gap-1">
                         <FilterInput
-                            column={column}
                             placeholder="Min"
                             value={(column.getFilterValue() as [string, string])?.[0] ?? ""}
                             onChange={(value) =>
@@ -84,7 +83,6 @@ export function ColumnHeader({
                             }
                         />
                         <FilterInput
-                            column={column}
                             placeholder="Max"
                             value={(column.getFilterValue() as [string, string])?.[1] ?? ""}
                             onChange={(value) =>
