@@ -4,6 +4,24 @@ import llmData from '@/data/llm-data.json';
 
 export default function App() {
   return (
-      <DataTable columns={columns} data={llmData} />
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-grow">
+        <DataTable columns={columns} data={llmData} />
+      </main>
+      <footer className="text-xs text-gray-500 py-4 px-4 flex items-center justify-between border-t">
+        <span>Last updated: November 1, 2024</span>
+        <span>
+          Found a mistake? Submit a PR at{" "}
+          <a
+            href="https://github.com/WiegerWolf/ai-pricing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            WiegerWolf/ai-pricing
+          </a>
+        </span>
+      </footer>
+    </div>
   );
 }
