@@ -65,10 +65,7 @@
         aria-labelledby="llm-tab"
         class="tab-content transition-opacity duration-200"
       >
-        <div
-          id="calculatorSection"
-          class="bg-white p-6 rounded-lg shadow-sm mb-6 hidden"
-        >
+      <div id="calculatorSection" class="bg-white p-6 rounded-lg shadow-sm mb-6 hidden transform transition-all duration-200">
           <div class="mb-4">
             <h3 class="text-xl font-semibold">LLM Usage Calculator</h3>
             <span class="text-gray-600">Adjust monthly token usage</span>
@@ -167,7 +164,7 @@
         </div>
         
         <div class="tab-content transition-opacity duration-200 hidden" id="stt-content" role="tabpanel" aria-labelledby="stt-tab">
-          <div id="stt-calculator" class="bg-white rounded-lg shadow-sm p-6 mb-6 hidden">
+          <div id="stt-calculator" class="bg-white rounded-lg shadow-sm p-6 mb-6 hidden transform transition-all duration-200">
             <div class="mb-6">
               <h3 class="text-xl font-semibold text-gray-900">Speech-to-Text Calculator</h3>
               <span class="text-gray-600">Calculate audio processing costs</span>
