@@ -76,10 +76,10 @@ export const columns: ColumnDef<LLMModel>[] = [
                 column={column}
                 title="Provider"
                 tooltip="The company that provides the model"
-                filter={{ 
-                    type: 'select', 
-                    enabled: true, 
-                    options: Object.keys(providerLogos) 
+                filter={{
+                    type: 'select',
+                    enabled: true,
+                    options: Object.keys(providerLogos)
                 }}
                 sort={{ enabled: true }}
             />
@@ -105,7 +105,16 @@ export const columns: ColumnDef<LLMModel>[] = [
     },
     {
         accessorKey: "smartsElo",
-        header: ({ column }) => <SortableHeader column={column} title="Arena ELO" />,
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="Arena ELO"
+                tooltip="What people prefer (higher is better)"
+                link={{ url: "https://lmarena.ai/?leaderboard", title: "LM Arena Leaderboard" }}
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
+        ),
         cell: ({ row }) => (
             <span className="font-mono text-right block">
                 {row.original.smartsElo || "-"}
@@ -116,7 +125,16 @@ export const columns: ColumnDef<LLMModel>[] = [
     },
     {
         accessorKey: "simpleBench",
-        header: ({ column }) => <SortableHeader column={column} title="SimpleBench" />,
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="SimpleBench"
+                tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
+                link={{ url: "https://simple-bench.com/#leaderboardTable", title: "Simple Bench Leaderboard Table" }}
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
+        ),
         cell: ({ row }) => (
             <span className="font-mono text-right block">
                 {row.original.simpleBench ? `${row.original.simpleBench.toFixed(1)}%` : "-"}
