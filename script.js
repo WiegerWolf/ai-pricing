@@ -292,33 +292,61 @@ function initializeSliders() {
 
 // Update the initializeTabs function
 function initializeTabs() {
-  const tabs = document.querySelectorAll(".tab-button");
-  const contents = document.querySelectorAll(".tab-content");
+  const tabs = document.querySelectorAll("[role='tab']");
+  const contents = document.querySelectorAll("[role='tabpanel']");
 
   function switchTab(targetTab) {
-    const contentId = targetTab.dataset.tab + "-content";
+    const contentId = targetTab.getAttribute('aria-controls');
     const newContent = document.getElementById(contentId);
 
-    // Remove active class from all tabs and contents
-    tabs.forEach((tab) => tab.classList.remove("active"));
-    contents.forEach((content) => {
-      content.classList.remove("active");
-      content.style.display = "none";
+    // Remove active states from all tabs
+    tabs.forEach((tab) => {
+      tab.setAttribute('aria-selected', 'false');
+      // Remove active tab styles
+      tab.classList.remove(
+        'bg-blue-600',
+        'text-white'
+      );
+      // Add inactive tab styles
+      tab.classList.add(
+        'text-gray-700',
+        'hover:bg-gray-100'
+      );
     });
 
-    // Add active class to clicked tab
-    targetTab.classList.add("active");
+    // Hide all content panels
+    contents.forEach((content) => {
+      content.classList.add('hidden');
+      content.classList.remove('block');
+    });
 
-    // Animate new content
-    newContent.style.display = "block";
-    newContent.classList.add("fade-enter");
+    // Set active tab
+    targetTab.setAttribute('aria-selected', 'true');
+    // Add active tab styles
+    targetTab.classList.remove(
+      'text-gray-700',
+      'hover:bg-gray-100'
+    );
+    targetTab.classList.add(
+      'bg-blue-600',
+      'text-white'
+    );
+
+    // Show and animate new content
+    newContent.classList.remove('hidden');
+    newContent.classList.add(
+      'block',
+      'opacity-0',
+      'transition-opacity',
+      'duration-200'
+    );
 
     // Force reflow
     newContent.offsetHeight;
 
-    // Add active class and start animation
-    newContent.classList.add("active");
-    newContent.classList.remove("fade-enter");
+    // Trigger animation
+    newContent.classList.remove('opacity-0');
+    newContent.classList.add('opacity-100');
 
     // Update calculator button text and state
     const button = document.getElementById("showCalculator");
@@ -326,13 +354,17 @@ function initializeTabs() {
     button.textContent = `Show ${currentTab.toUpperCase()} Calculator`;
 
     // Reset calculator visibility
-    document.getElementById("calculatorSection").style.display = "none";
-    document.getElementById("stt-calculator").style.display = "none";
+    const calculatorSection = document.getElementById("calculatorSection");
+    const sttCalculator = document.getElementById("stt-calculator");
+    
+    calculatorSection.classList.add('hidden');
+    sttCalculator.classList.add('hidden');
 
     // Update the page title
     updatePageTitle(currentTab);
   }
 
+  // Add click handlers
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => switchTab(tab));
   });
@@ -340,7 +372,7 @@ function initializeTabs() {
   // Add keyboard navigation
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-      const activeTab = document.querySelector(".tab-button.active");
+      const activeTab = document.querySelector("[role='tab'][aria-selected='true']");
       const tabArray = Array.from(tabs);
       const currentIndex = tabArray.indexOf(activeTab);
       let newIndex;
