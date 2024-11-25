@@ -1,0 +1,19 @@
+{
+    // use actboy168.tasks extension to add this to statusbar 
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "commit",
+            "type": "shell",
+            "command": ".vscode/commit.py",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        }
+    ]
+}
