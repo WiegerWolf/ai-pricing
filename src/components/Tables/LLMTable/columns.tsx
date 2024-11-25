@@ -145,14 +145,31 @@ export const columns: ColumnDef<LLMModel>[] = [
     },
     {
         accessorKey: "codingElo",
-        header: ({ column }) => <SortableHeader column={column} title="Coding ELO" />,
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="Coding ELO"
+                tooltip="Coding-specific performance score (higher is better)"
+                link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
+        ),
         cell: ({ row }) => row.original.codingElo || "-",
         sortDescFirst: true,
         sortUndefined: 'last'
     },
     {
         accessorKey: "context",
-        header: ({ column }) => <SortableHeader column={column} title="Context (k)" />,
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="Context, tokens, k"
+                tooltip="The maximum number of tokens the model can process at once. In thousands of tokens."
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
+        ),
         sortingFn: "alphanumeric",
         sortDescFirst: true,
     },
