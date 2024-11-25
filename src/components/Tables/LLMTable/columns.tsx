@@ -106,7 +106,7 @@ export const columns: ColumnDef<LLMModel>[] = [
         header: ({ column }) => (
             <ColumnHeader
                 column={column}
-                title="Arena ELO"
+                title="Arena"
                 tooltip="What people prefer (higher is better)"
                 link={{ url: "https://lmarena.ai/?leaderboard", title: "LM Arena Leaderboard" }}
                 filter={{ type: 'range', enabled: true }}
@@ -116,6 +116,26 @@ export const columns: ColumnDef<LLMModel>[] = [
         cell: ({ row }) => (
             <span className="font-mono text-right block">
                 {row.original.smartsElo || "-"}
+            </span>
+        ),
+        sortDescFirst: true,
+        sortUndefined: 'last'
+    },
+    {
+        accessorKey: "codingElo",
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="Coding"
+                tooltip="Coding-specific performance score (higher is better)"
+                link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
+        ),
+        cell: ({ row }) => (
+            <span className="font-mono text-right block">
+                {row.original.codingElo || "-"}
             </span>
         ),
         sortDescFirst: true,
@@ -142,32 +162,17 @@ export const columns: ColumnDef<LLMModel>[] = [
         sortUndefined: 'last'
     },
     {
-        accessorKey: "codingElo",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Coding ELO"
-                tooltip="Coding-specific performance score (higher is better)"
-                link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
-                filter={{ type: 'range', enabled: true }}
-                sort={{ enabled: true }}
-            />
-        ),
-        cell: ({ row }) => row.original.codingElo || "-",
-        sortDescFirst: true,
-        sortUndefined: 'last'
-    },
-    {
         accessorKey: "context",
         header: ({ column }) => (
             <ColumnHeader
                 column={column}
-                title="Context, tokens, k"
-                tooltip="The maximum number of tokens the model can process at once. In thousands of tokens."
+                title="Context"
+                tooltip="The maximum number of tokens the model can process at once. 'k' stands for thousands of tokens."
                 filter={{ type: 'range', enabled: true }}
                 sort={{ enabled: true }}
             />
         ),
+        cell: ({ row }) => (`${row.original.context}k`),
         sortingFn: "alphanumeric",
         sortDescFirst: true,
     },
@@ -176,7 +181,7 @@ export const columns: ColumnDef<LLMModel>[] = [
         header: ({ column }) => (
             <ColumnHeader
                 column={column}
-                title="Input Price"
+                title="Input"
                 tooltip="The cost per 1,000,000 tokens sent to the model"
                 filter={{ type: 'range', enabled: true }}
                 sort={{ enabled: true }}
@@ -194,7 +199,7 @@ export const columns: ColumnDef<LLMModel>[] = [
         header: ({ column }) => (
             <ColumnHeader
                 column={column}
-                title="Output Price"
+                title="Output"
                 tooltip="The cost per 1,000,000 tokens received from the model"
                 filter={{ type: 'range', enabled: true }}
                 sort={{ enabled: true }}
