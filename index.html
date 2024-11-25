@@ -40,12 +40,11 @@
 
       <div class="flex gap-4 mb-6" role="tablist">
         <button
-          class="px-4 py-2 font-medium rounded-lg transition-colors data-[selected=true]:bg-blue-600 data-[selected=true]:text-white"
-          data-tab="llm"
           role="tab"
           aria-selected="true"
           aria-controls="llm-content"
-          data-selected="true"
+          data-tab="llm"
+          class="px-4 py-2 font-medium rounded-lg transition-colors"
         >
           LLM Models
         </button>
@@ -61,10 +60,10 @@
       </div>
 
       <div
-        class="tab-content"
         id="llm-content"
         role="tabpanel"
         aria-labelledby="llm-tab"
+        class="tab-content transition-opacity duration-200"
       >
         <div
           id="calculatorSection"
@@ -165,7 +164,7 @@
           </table>
         </div>
         
-        <div class="tab-content hidden" id="stt-content" role="tabpanel" aria-labelledby="stt-tab">
+        <div class="tab-content transition-opacity duration-200 hidden" id="stt-content" role="tabpanel" aria-labelledby="stt-tab">
           <div id="stt-calculator" class="bg-white rounded-lg shadow-sm p-6 mb-6 hidden">
             <div class="mb-6">
               <h3 class="text-xl font-semibold text-gray-900">Speech-to-Text Calculator</h3>
