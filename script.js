@@ -590,26 +590,22 @@ function updateSortIndicators(activeColumn) {
   headers.forEach((header, index) => {
     // Find or create sort indicator
     let sortIndicator = header.querySelector("[data-sort-indicator]");
+    const headerContent = header.querySelector('div');
     
     if (!sortIndicator) {
       sortIndicator = document.createElement("span");
       sortIndicator.setAttribute('data-sort-indicator', '');
       sortIndicator.className = `
-        ml-1
+        ml-2
         inline-block
         text-gray-400
-        transition-transform
+        transition-all
         duration-200
         group-hover:text-gray-600
       `.replace(/\s+/g, ' ').trim();
 
-      // If header contains a link, append after the link
-      const link = header.querySelector("a");
-      if (link) {
-        link.parentNode.appendChild(sortIndicator);
-      } else {
-        header.appendChild(sortIndicator);
-      }
+      // Add to header content div, but after any existing links
+      headerContent.appendChild(sortIndicator);
     }
 
     // Update sort indicator and its classes
@@ -624,7 +620,7 @@ function updateSortIndicators(activeColumn) {
       
       // Add active classes
       sortIndicator.className = `
-        ml-1
+        ml-2
         inline-block
         text-blue-600
         transform
@@ -640,7 +636,7 @@ function updateSortIndicators(activeColumn) {
       
       // Reset to inactive classes
       sortIndicator.className = `
-        ml-1
+        ml-2
         inline-block
         text-gray-400
         transition-all
@@ -650,6 +646,7 @@ function updateSortIndicators(activeColumn) {
     }
   });
 }
+
 
 // Update the initialize function
 async function initialize() {
