@@ -2,6 +2,22 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 import { LLMModel } from "@/types/llm";
 import { SortableHeader } from "./SortableHeader";
 import { RangeFilterHeader } from "./RangeFilterHeader";
+import anthropicLogo from '@/assets/anthropic.png';
+import cloudflareLogo from '@/assets/cloudflare.png';
+import googleLogo from '@/assets/google.png';
+import openaiLogo from '@/assets/openai.ico';
+import groqLogo from '@/assets/groq.png';
+import xAILogo from '@/assets/xAI.svg';
+
+// Create a mapping of provider names to their logos
+const providerLogos: Record<string, string> = {
+    'Anthropic': anthropicLogo,
+    'Cloudflare': cloudflareLogo,
+    'Google AI': googleLogo,
+    'OpenAI': openaiLogo,
+    "Groq": groqLogo,
+    'xAI': xAILogo,
+};
 
 // Helper function for price range filtering
 const createPriceRangeFilter = (
@@ -53,9 +69,23 @@ export const columns: ColumnDef<LLMModel>[] = [
             <SortableHeader column={column} title="Provider" canFilter />
         ),
         filterFn: "includesString",
-        cell: ({ row }) => (
-            <span className="text-gray-600">{row.original.provider}</span>
-        ),
+        cell: ({ row }) => {
+            const provider = row.getValue<string>("provider");
+            const logo = providerLogos[provider];
+
+            return (
+                <div className="flex items-center gap-2">
+                    {logo && (
+                        <img
+                            src={logo}
+                            alt={`${provider} logo`}
+                            className="w-4 h-4 object-contain"
+                        />
+                    )}
+                    <span>{provider}</span>
+                </div>
+            );
+        },
     },
     {
         accessorKey: "smartsElo",

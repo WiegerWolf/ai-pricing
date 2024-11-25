@@ -251,7 +251,7 @@
   },
   {
     "model": "llama-3-8b-instruct",
-    "provider": "cloudflare",
+    "provider": "Cloudflare",
     "smartsElo": 1152,
     "codingElo": 1146,
     "context": 8,
