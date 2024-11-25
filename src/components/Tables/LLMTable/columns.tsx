@@ -228,5 +228,21 @@ export const columns: ColumnDef<LLMModel>[] = [
             </span>
         ),
     },
+    {
+        accessorKey: "toolUse",
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="Tools"
+                tooltip="Whether the model can use tools"
+                sort={{ enabled: true }}
+            />
+        ),
+        cell: ({ row }) => (
+            <span className="text-center block">
+                {row.original.toolUse ? "✓" : "-"}
+            </span>
+        ),
+    },
 ];
 

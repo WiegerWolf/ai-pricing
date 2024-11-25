@@ -7,7 +7,8 @@ export interface LLMModel {
     context: number;
     inputPrice: number;
     outputPrice: number;
-    hasVision: boolean;
+    hasVision?: boolean;
+    toolUse?: boolean;
     notes?: string;
     pricingUrl: string;
 }
