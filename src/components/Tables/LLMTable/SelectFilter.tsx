@@ -23,7 +23,7 @@ export function SelectFilter({ column, options, placeholder }: SelectFilterProps
                 column?.setFilterValue(value === "all" ? "" : value);
             }}
         >
-            <SelectTrigger className="h-6 w-full text-xs min-w-[100px] py-0">
+            <SelectTrigger className="h-6 w-full text-xs min-w-[30px] py-0">
                 <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent className="text-xs">
