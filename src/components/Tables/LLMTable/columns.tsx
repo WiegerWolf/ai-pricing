@@ -65,6 +65,8 @@ export const columns: ColumnDef<LLMModel>[] = [
                 {row.original.smartsElo || "-"}
             </span>
         ),
+        sortDescFirst: true,
+        sortUndefined: 'last'
     },
     {
         accessorKey: "simpleBench",
@@ -74,21 +76,22 @@ export const columns: ColumnDef<LLMModel>[] = [
                 {row.original.simpleBench ? `${row.original.simpleBench.toFixed(1)}%` : "-"}
             </span>
         ),
+        sortingFn: "alphanumeric",
+        sortDescFirst: true,
+        sortUndefined: 'last'
     },
     {
         accessorKey: "codingElo",
         header: ({ column }) => <SortableHeader column={column} title="Coding ELO" />,
         cell: ({ row }) => row.original.codingElo || "-",
-        sortingFn: (a, b) => {
-            const aValue = a.original.codingElo || 0;
-            const bValue = b.original.codingElo || 0;
-            return aValue - bValue;
-        },
+        sortDescFirst: true,
+        sortUndefined: 'last'
     },
     {
         accessorKey: "context",
         header: ({ column }) => <SortableHeader column={column} title="Context (k)" />,
-        sortingFn: "alphanumeric"
+        sortingFn: "alphanumeric",
+        sortDescFirst: true,
     },
     {
         accessorKey: "inputPrice",
