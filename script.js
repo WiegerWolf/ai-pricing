@@ -586,12 +586,22 @@ function sortTable(column, tableSelector) {
 
 function updateSortIndicators(activeColumn) {
   const headers = document.querySelectorAll("#modelTable th");
+  
   headers.forEach((header, index) => {
     // Find or create sort indicator
-    let sortIndicator = header.querySelector(".sort-indicator");
+    let sortIndicator = header.querySelector("[data-sort-indicator]");
+    
     if (!sortIndicator) {
       sortIndicator = document.createElement("span");
-      sortIndicator.className = "sort-indicator";
+      sortIndicator.setAttribute('data-sort-indicator', '');
+      sortIndicator.className = `
+        ml-1
+        inline-block
+        text-gray-400
+        transition-transform
+        duration-200
+        group-hover:text-gray-600
+      `.replace(/\s+/g, ' ').trim();
 
       // If header contains a link, append after the link
       const link = header.querySelector("a");
@@ -602,13 +612,42 @@ function updateSortIndicators(activeColumn) {
       }
     }
 
-    // Update sort indicator
-    sortIndicator.textContent =
-      index === activeColumn
-        ? sortDirections[activeColumn]
-          ? " ▲"
-          : " ▼"
-        : "";
+    // Update sort indicator and its classes
+    if (index === activeColumn) {
+      sortIndicator.innerHTML = sortDirections[activeColumn]
+        ? `<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 5l8 8H4z"/>
+           </svg>`
+        : `<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 19l-8-8h16z"/>
+           </svg>`;
+      
+      // Add active classes
+      sortIndicator.className = `
+        ml-1
+        inline-block
+        text-blue-600
+        transform
+        transition-all
+        duration-200
+        ${sortDirections[activeColumn] ? 'rotate-0' : 'rotate-180'}
+      `.replace(/\s+/g, ' ').trim();
+    } else {
+      // Reset to default state
+      sortIndicator.innerHTML = `<svg class="w-3 h-3 opacity-0 group-hover:opacity-50" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 5l8 8H4z"/>
+      </svg>`;
+      
+      // Reset to inactive classes
+      sortIndicator.className = `
+        ml-1
+        inline-block
+        text-gray-400
+        transition-all
+        duration-200
+        group-hover:text-gray-600
+      `.replace(/\s+/g, ' ').trim();
+    }
   });
 }
 
