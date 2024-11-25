@@ -16,22 +16,20 @@ interface SelectFilterProps {
 }
 
 export function SelectFilter({ column, options, placeholder }: SelectFilterProps) {
-    const currentValue = column?.getFilterValue() as string;
-
     return (
         <Select
-            value={currentValue || "all"}
+            value={column?.getFilterValue() as string || "all"}
             onValueChange={(value) => {
                 column?.setFilterValue(value === "all" ? "" : value);
             }}
         >
-            <SelectTrigger className="h-8 w-full text-xs">
-                <SelectValue placeholder={placeholder || "Select..."} />
+            <SelectTrigger className="h-6 w-full text-xs min-w-[100px] py-0">
+                <SelectValue placeholder={placeholder} />
             </SelectTrigger>
-            <SelectContent>
-                <SelectItem value="all">All Providers</SelectItem>
+            <SelectContent className="text-xs">
+                <SelectItem value="all">All</SelectItem>
                 {options.map((option) => (
-                    <SelectItem key={option} value={option}>
+                    <SelectItem key={option} value={option} className="py-0.5">
                         {option}
                     </SelectItem>
                 ))}
