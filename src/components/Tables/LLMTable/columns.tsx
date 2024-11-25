@@ -1,7 +1,5 @@
 import { ColumnDef, Row } from "@tanstack/react-table";
 import { LLMModel } from "@/types/llm";
-import { SortableHeader } from "./SortableHeader";
-import { RangeFilterHeader } from "./RangeFilterHeader";
 import anthropicLogo from '@/assets/anthropic.png';
 import cloudflareLogo from '@/assets/cloudflare.png';
 import googleLogo from '@/assets/google.png';
