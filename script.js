@@ -127,7 +127,6 @@ function populateSTTTable() {
   });
 }
 
-// Replace both updateCalculatorVisibility and initializeCalculators with this single function
 function initializeCalculators() {
   const showCalculatorBtn = document.getElementById("showCalculator");
 
@@ -137,34 +136,99 @@ function initializeCalculators() {
   // Get the new button reference after replacement
   const newShowCalculatorBtn = document.getElementById("showCalculator");
 
+  // Add Tailwind classes to button
+  newShowCalculatorBtn.className = `
+    inline-flex items-center gap-2 
+    px-4 py-2 
+    bg-blue-600 hover:bg-blue-700 
+    text-white 
+    rounded-lg 
+    transition-colors duration-200 
+    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+  `.replace(/\s+/g, ' ').trim();
+
   // Add the single event listener
   newShowCalculatorBtn.addEventListener("click", () => {
-    const currentTab = document.querySelector(".tab-button.active").dataset.tab;
+    const currentTab = document.querySelector("[role='tab'][aria-selected='true']").dataset.tab;
     const llmCalculator = document.getElementById("calculatorSection");
     const sttCalculator = document.getElementById("stt-calculator");
 
     if (currentTab === "llm") {
-      const isHidden = llmCalculator.style.display === "none";
-      llmCalculator.style.display = isHidden ? "block" : "none";
-      newShowCalculatorBtn.textContent = `${
-        isHidden ? "Hide" : "Show"
-      } LLM Calculator`;
-      sttCalculator.style.display = "none";
-
+      const isHidden = llmCalculator.classList.contains('hidden');
+      
+      // Toggle calculator visibility with animation
       if (isHidden) {
+        // Hide STT calculator
+        sttCalculator.classList.add('hidden');
+        
+        // Show LLM calculator with animation
+        llmCalculator.classList.remove('hidden');
+        llmCalculator.classList.add('opacity-0');
+        // Force reflow
+        llmCalculator.offsetHeight;
+        llmCalculator.classList.add(
+          'transition-opacity', 
+          'duration-200', 
+          'opacity-100'
+        );
+        
+        // Scroll into view
         llmCalculator.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } else {
+        // Hide with fade out animation
+        llmCalculator.classList.remove('opacity-100');
+        llmCalculator.classList.add('opacity-0');
+        
+        setTimeout(() => {
+          llmCalculator.classList.add('hidden');
+        }, 200); // Match duration-200
       }
-    } else {
-      const isHidden = sttCalculator.style.display === "none";
-      sttCalculator.style.display = isHidden ? "block" : "none";
-      newShowCalculatorBtn.textContent = `${
-        isHidden ? "Hide" : "Show"
-      } STT Calculator`;
-      llmCalculator.style.display = "none";
 
+      // Update button text
+      newShowCalculatorBtn.innerHTML = `
+        <svg class="w-4 h-4" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h16V4H4zm2 2h12v2H6V6zm0 4h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zM6 14h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/>
+        </svg>
+        ${isHidden ? "Hide" : "Show"} LLM Calculator
+      `;
+    } else {
+      const isHidden = sttCalculator.classList.contains('hidden');
+      
+      // Toggle calculator visibility with animation
       if (isHidden) {
+        // Hide LLM calculator
+        llmCalculator.classList.add('hidden');
+        
+        // Show STT calculator with animation
+        sttCalculator.classList.remove('hidden');
+        sttCalculator.classList.add('opacity-0');
+        // Force reflow
+        sttCalculator.offsetHeight;
+        sttCalculator.classList.add(
+          'transition-opacity', 
+          'duration-200', 
+          'opacity-100'
+        );
+        
+        // Scroll into view
         sttCalculator.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } else {
+        // Hide with fade out animation
+        sttCalculator.classList.remove('opacity-100');
+        sttCalculator.classList.add('opacity-0');
+        
+        setTimeout(() => {
+          sttCalculator.classList.add('hidden');
+        }, 200); // Match duration-200
       }
+
+      // Update button text
+      newShowCalculatorBtn.innerHTML = `
+        <svg class="w-4 h-4" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h16V4H4zm2 2h12v2H6V6zm0 4h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zM6 14h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/>
+        </svg>
+        ${isHidden ? "Hide" : "Show"} STT Calculator
+      `;
     }
   });
 }
