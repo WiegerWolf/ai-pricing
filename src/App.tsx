@@ -1,19 +1,22 @@
+import { useState } from "react";
 import { DataTable } from "./components/Tables/LLMTable/DataTable";
-import { columns } from "./components/Tables/LLMTable/columns";
-import { CostCalculator } from "./components/CostCalculator/CostCalculator";
+import { createColumns } from "./components/Tables/LLMTable/columns";
 import llmData from "./data/llm-data.json";
 
 export default function App() {
+  const [inputTokens, setInputTokens] = useState(100000); // Default 100k tokens
+  const [outputTokens, setOutputTokens] = useState(50000); // Default 50k tokens
+
+  const columns = createColumns(inputTokens, outputTokens, setInputTokens, setOutputTokens);
+
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="grid gap-8 md:grid-cols-[400px,1fr]">
-          <div className="md:sticky md:top-4 h-fit">
-            <CostCalculator data={llmData} />
-          </div>
-          <div>
-            <DataTable columns={columns} data={llmData} />
-          </div>
+      <main className="flex-grow py-8">
+        <div className="w-full min-w-[900px] max-w-[1400px] mx-auto px-4">
+          <DataTable 
+            columns={columns} 
+            data={llmData}
+          />
         </div>
       </main>
       <footer className="text-xs text-gray-500 py-4 px-4 flex items-center justify-between border-t">

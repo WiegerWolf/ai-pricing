@@ -1,12 +1,13 @@
 import { ColumnDef, Row } from "@tanstack/react-table";
-import { LLMModel } from "@/types/llm";
-import anthropicLogo from '@/assets/anthropic.png';
-import cloudflareLogo from '@/assets/cloudflare.png';
-import googleLogo from '@/assets/google.png';
-import openaiLogo from '@/assets/openai.ico';
-import groqLogo from '@/assets/groq.png';
-import xAILogo from '@/assets/xAI.svg';
+import { LLMModel } from "../../../types/llm";
+import anthropicLogo from '../../../assets/anthropic.png';
+import cloudflareLogo from '../../../assets/cloudflare.png';
+import googleLogo from '../../../assets/google.png';
+import openaiLogo from '../../../assets/openai.ico';
+import groqLogo from '../../../assets/groq.png';
+import xAILogo from '../../../assets/xAI.svg';
 import { ColumnHeader } from "./ColumnHeader";
+import { TokenControls } from "./TokenControls";
 
 // Create a mapping of provider names to their logos
 const providerLogos: Record<string, string> = {
@@ -34,7 +35,19 @@ const createPriceRangeFilter = (
     return true;
 };
 
-export const columns: ColumnDef<LLMModel>[] = [
+// Helper function to calculate monthly cost
+const calculateMonthlyCost = (row: LLMModel, inputTokens: number, outputTokens: number) => {
+    const inputCost = (inputTokens / 1_000_000) * row.inputPrice;
+    const outputCost = (outputTokens / 1_000_000) * row.outputPrice;
+    return inputCost + outputCost;
+};
+
+export const createColumns = (
+    inputTokens: number,
+    outputTokens: number,
+    onInputTokensChange?: (value: number) => void,
+    onOutputTokensChange?: (value: number) => void,
+): ColumnDef<LLMModel>[] => [
     {
         accessorKey: "model",
         header: ({ column }) => (
@@ -114,7 +127,7 @@ export const columns: ColumnDef<LLMModel>[] = [
             />
         ),
         cell: ({ row }) => (
-            <span className="font-mono text-right block">
+            <span className="font-mono text-right block w-16">
                 {row.original.smartsElo || "-"}
             </span>
         ),
@@ -134,7 +147,7 @@ export const columns: ColumnDef<LLMModel>[] = [
             />
         ),
         cell: ({ row }) => (
-            <span className="font-mono text-right block">
+            <span className="font-mono text-right block w-16">
                 {row.original.codingElo || "-"}
             </span>
         ),
@@ -153,7 +166,7 @@ export const columns: ColumnDef<LLMModel>[] = [
             />
         ),
         cell: ({ row }) => (
-            <span className="font-mono text-right block">
+            <span className="font-mono text-right block w-16">
                 {row.original.simpleBench ? `${row.original.simpleBench.toFixed(1)}%` : "-"}
             </span>
         ),
@@ -172,7 +185,11 @@ export const columns: ColumnDef<LLMModel>[] = [
                 sort={{ enabled: true }}
             />
         ),
-        cell: ({ row }) => (`${row.original.context}k`),
+        cell: ({ row }) => (
+            <span className="font-mono text-right block w-16">
+                {row.original.context}k
+            </span>
+        ),
         sortingFn: "alphanumeric",
         sortDescFirst: true,
     },
@@ -188,7 +205,7 @@ export const columns: ColumnDef<LLMModel>[] = [
             />
         ),
         cell: ({ row }) => (
-            <span className="font-mono text-right block">
+            <span className="font-mono text-right block w-16">
                 ${row.original.inputPrice}
             </span>
         ),
@@ -206,11 +223,33 @@ export const columns: ColumnDef<LLMModel>[] = [
             />
         ),
         cell: ({ row }) => (
-            <span className="font-mono text-right block">
+            <span className="font-mono text-right block w-16">
                 ${row.original.outputPrice}
             </span>
         ),
         filterFn: createPriceRangeFilter,
+    },
+    {
+        id: "usageCost",
+        accessorFn: (row) => calculateMonthlyCost(row, inputTokens, outputTokens),
+        header: () => (
+            <TokenControls
+                inputTokens={inputTokens}
+                outputTokens={outputTokens}
+                onInputChange={onInputTokensChange || (() => {})}
+                onOutputChange={onOutputTokensChange || (() => {})}
+            />
+        ),
+        cell: ({ getValue }) => (
+            <span className="font-mono text-right block w-20">
+                ${getValue<number>().toFixed(2)}
+            </span>
+        ),
+        sortingFn: (rowA, rowB) => {
+            const a = calculateMonthlyCost(rowA.original, inputTokens, outputTokens);
+            const b = calculateMonthlyCost(rowB.original, inputTokens, outputTokens);
+            return a - b;
+        },
     },
     {
         accessorKey: "hasVision",
@@ -223,7 +262,7 @@ export const columns: ColumnDef<LLMModel>[] = [
             />
         ),
         cell: ({ row }) => (
-            <span className="text-center block">
+            <span className="text-center block w-12">
                 {row.original.hasVision ? "✓" : "-"}
             </span>
         ),
@@ -243,7 +282,7 @@ export const columns: ColumnDef<LLMModel>[] = [
             />
         ),
         cell: ({ row }) => (
-            <span className="text-center block">
+            <span className="text-center block w-12">
                 {row.original.toolUse ? "✓" : "-"}
             </span>
         ),
@@ -253,4 +292,3 @@ export const columns: ColumnDef<LLMModel>[] = [
         },
     },
 ];
-
