@@ -9,16 +9,17 @@ import {
     useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
+import { LLMModel } from "../../../types/llm";
 
-interface DataTableProps<TData, TValue> {
-    columns: ColumnDef<TData, TValue>[];
-    data: TData[];
+interface DataTableProps {
+    columns: ColumnDef<LLMModel>[];
+    data: LLMModel[];
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable({
     columns,
     data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps) {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -34,6 +35,10 @@ export function DataTable<TData, TValue>({
             sorting,
             columnFilters,
         },
+        // Enable automatic column updates
+        autoResetAll: true,
+        // Force table to recalculate when columns change
+        enableColumnResizing: true,
     });
 
     return (
