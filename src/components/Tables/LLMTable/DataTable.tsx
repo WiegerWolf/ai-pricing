@@ -39,7 +39,7 @@ export function DataTable<TData, TValue>({
     return (
         <div className="rounded-lg border border-gray-200 shadow-sm overflow-hidden bg-white">
             <div className="overflow-x-auto relative">
-                <div className="sticky right-0 bg-gradient-to-l from-white via-white/80 to-transparent w-32 h-full absolute top-0 z-[1]" />
+                <div className="sticky right-0 bg-gradient-to-l from-white via-white/80 to-transparent w-32 h-full top-0 z-[1]" />
                 <table className="w-full border-collapse text-sm">
                     <thead>
                         {table.getHeaderGroups().map((headerGroup) => (
