@@ -1,12 +1,20 @@
-import { DataTable } from "@/components/Tables/LLMTable/DataTable";
-import { columns } from "@/components/Tables/LLMTable/columns";
-import llmData from '@/data/llm-data.json';
+import { DataTable } from "./components/Tables/LLMTable/DataTable";
+import { columns } from "./components/Tables/LLMTable/columns";
+import { CostCalculator } from "./components/CostCalculator/CostCalculator";
+import llmData from "./data/llm-data.json";
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-grow">
-        <DataTable columns={columns} data={llmData} />
+      <main className="flex-grow container mx-auto px-4 py-8">
+        <div className="grid gap-8 md:grid-cols-[400px,1fr]">
+          <div className="md:sticky md:top-4 h-fit">
+            <CostCalculator data={llmData} />
+          </div>
+          <div>
+            <DataTable columns={columns} data={llmData} />
+          </div>
+        </div>
       </main>
       <footer className="text-xs text-gray-500 py-4 px-4 flex items-center justify-between border-t">
         <span>Last updated: November 1, 2024</span>
