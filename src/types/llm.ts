@@ -13,6 +13,11 @@ export interface LLMModel {
     pricingUrl: string;
 }
 
+export interface LLMModelWithTokens extends LLMModel {
+    _inputTokens: number;
+    _outputTokens: number;
+}
+
 export interface CalculatorState {
     inputTokens: number;
     outputTokens: number;
