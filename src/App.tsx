@@ -11,14 +11,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-grow py-8">
-        <div className="w-full min-w-[900px] max-w-[1400px] mx-auto px-4">
-          <DataTable 
-            columns={columns} 
-            data={llmData}
-          />
-        </div>
-      </main>
+      <DataTable
+        columns={columns}
+        data={llmData}
+      />
       <footer className="text-xs text-gray-500 py-4 px-4 flex items-center justify-between border-t">
         <span>Last updated: November 1, 2024</span>
         <span>
