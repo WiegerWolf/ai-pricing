@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { DataTable } from "./components/Tables/LLMTable/DataTable";
 import { createColumns } from "./components/Tables/LLMTable/columns";
 import llmData from "./data/llm-data.json";
@@ -7,7 +7,11 @@ export default function App() {
   const [inputTokens, setInputTokens] = useState(100000); // Default 100k tokens
   const [outputTokens, setOutputTokens] = useState(50000); // Default 50k tokens
 
-  const columns = createColumns(inputTokens, outputTokens, setInputTokens, setOutputTokens);
+  // Create columns with token state
+  const columns = useMemo(
+    () => createColumns(inputTokens, outputTokens, setInputTokens, setOutputTokens),
+    [inputTokens, outputTokens]
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
