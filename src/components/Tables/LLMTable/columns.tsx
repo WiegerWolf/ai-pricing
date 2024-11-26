@@ -7,7 +7,6 @@ import openaiLogo from '../../../assets/openai.ico';
 import groqLogo from '../../../assets/groq.png';
 import xAILogo from '../../../assets/xAI.svg';
 import { ColumnHeader } from "./ColumnHeader";
-import { TokenControls } from "./TokenControls";
 
 // Create a mapping of provider names to their logos
 const providerLogos: Record<string, string> = {
@@ -35,260 +34,304 @@ const createPriceRangeFilter = (
     return true;
 };
 
-// Helper function to calculate monthly cost
-const calculateMonthlyCost = (row: LLMModel, inputTokens: number, outputTokens: number) => {
-    const inputCost = (inputTokens / 1_000_000) * row.inputPrice;
-    const outputCost = (outputTokens / 1_000_000) * row.outputPrice;
-    return inputCost + outputCost;
-};
+interface TokenSliderProps {
+    value: number;
+    onChange: (value: number) => void;
+    label: string;
+}
+
+function TokenSlider({ value, onChange, label }: TokenSliderProps) {
+    return (
+        <div className="mt-2 space-y-2">
+            <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-600">{label}</span>
+                <span className="text-xs text-gray-600">{value.toLocaleString()} tokens</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <input
+                    type="range"
+                    min="0"
+                    max="10000000"
+                    step="100000"
+                    value={value}
+                    onChange={(e) => onChange(Number(e.target.value))}
+                    className="flex-grow h-1.5"
+                />
+            </div>
+        </div>
+    );
+}
 
 export const createColumns = (
     inputTokens: number,
     outputTokens: number,
     onInputTokensChange?: (value: number) => void,
     onOutputTokensChange?: (value: number) => void,
-): ColumnDef<LLMModel>[] => [
-    {
-        accessorKey: "model",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Model"
-                tooltip="Model name and version"
-                filter={{ type: 'text', enabled: true }}
-            />
-        ),
-        filterFn: "includesString",
-        cell: ({ row }) => (
-            <a
-                href={row.original.pricingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
-            >
-                {row.original.model}
-                <svg className="h-3 w-3 text-gray-400" viewBox="0 0 12 12">
-                    <path
-                        fill="currentColor"
-                        d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"
-                    />
-                    <path
-                        fill="currentColor"
-                        d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z"
-                    />
-                </svg>
-            </a>
-        ),
-    },
-    {
-        accessorKey: "provider",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Provider"
-                tooltip="The company that provides the model"
-                filter={{
-                    type: 'select',
-                    enabled: true,
-                    options: Object.keys(providerLogos)
-                }}
-                sort={{ enabled: true }}
-            />
-        ),
-        filterFn: "includesString",
-        cell: ({ row }) => {
-            const provider = row.getValue<string>("provider");
-            const logo = providerLogos[provider];
+): ColumnDef<LLMModel>[] => {
+    // Helper function to calculate monthly cost with current token values
+    const calculateMonthlyCost = (row: LLMModel) => {
+        const inputCost = (inputTokens / 1_000_000) * row.inputPrice;
+        const outputCost = (outputTokens / 1_000_000) * row.outputPrice;
+        return inputCost + outputCost;
+    };
 
-            return (
-                <div className="flex items-center gap-2">
-                    {logo && (
-                        <img
-                            src={logo}
-                            alt={`${provider} logo`}
-                            className="w-4 h-4 object-contain"
+    return [
+        {
+            accessorKey: "model",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Model"
+                    tooltip="Model name and version"
+                    filter={{ type: 'text', enabled: true }}
+                />
+            ),
+            filterFn: "includesString",
+            cell: ({ row }) => (
+                <a
+                    href={row.original.pricingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
+                >
+                    {row.original.model}
+                    <svg className="h-3 w-3 text-gray-400" viewBox="0 0 12 12">
+                        <path
+                            fill="currentColor"
+                            d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"
                         />
-                    )}
-                    <span>{provider}</span>
+                        <path
+                            fill="currentColor"
+                            d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z"
+                        />
+                    </svg>
+                </a>
+            ),
+        },
+        {
+            accessorKey: "provider",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Provider"
+                    tooltip="The company that provides the model"
+                    filter={{
+                        type: 'select',
+                        enabled: true,
+                        options: Object.keys(providerLogos)
+                    }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            filterFn: "includesString",
+            cell: ({ row }) => {
+                const provider = row.getValue<string>("provider");
+                const logo = providerLogos[provider];
+
+                return (
+                    <div className="flex items-center gap-2">
+                        {logo && (
+                            <img
+                                src={logo}
+                                alt={`${provider} logo`}
+                                className="w-4 h-4 object-contain"
+                            />
+                        )}
+                        <span>{provider}</span>
+                    </div>
+                );
+            },
+        },
+        {
+            accessorKey: "smartsElo",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Arena"
+                    tooltip="What people prefer (higher is better)"
+                    link={{ url: "https://lmarena.ai/?leaderboard", title: "LM Arena Leaderboard" }}
+                    filter={{ type: 'range', enabled: true }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => (
+                <span className="font-mono text-right block w-16">
+                    {row.original.smartsElo || "-"}
+                </span>
+            ),
+            sortDescFirst: true,
+            sortUndefined: 'last'
+        },
+        {
+            accessorKey: "codingElo",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Coding"
+                    tooltip="Coding-specific performance score (higher is better)"
+                    link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
+                    filter={{ type: 'range', enabled: true }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => (
+                <span className="font-mono text-right block w-16">
+                    {row.original.codingElo || "-"}
+                </span>
+            ),
+            sortDescFirst: true,
+            sortUndefined: 'last'
+        },
+        {
+            accessorKey: "simpleBench",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="SimpleBench"
+                    tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
+                    link={{ url: "https://simple-bench.com/#leaderboardTable", title: "Simple Bench Leaderboard Table" }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => (
+                <span className="font-mono text-right block w-16">
+                    {row.original.simpleBench ? `${row.original.simpleBench.toFixed(1)}%` : "-"}
+                </span>
+            ),
+            sortingFn: "alphanumeric",
+            sortDescFirst: true,
+            sortUndefined: 'last'
+        },
+        {
+            accessorKey: "context",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Context"
+                    tooltip="The maximum number of tokens the model can process at once. 'k' stands for thousands of tokens."
+                    filter={{ type: 'range', enabled: true }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => (
+                <span className="font-mono text-right block w-16">
+                    {row.original.context}k
+                </span>
+            ),
+            sortingFn: "alphanumeric",
+            sortDescFirst: true,
+        },
+        {
+            accessorKey: "inputPrice",
+            header: ({ column }) => (
+                <div>
+                    <ColumnHeader
+                        column={column}
+                        title="Input"
+                        tooltip="The cost per 1,000,000 tokens sent to the model"
+                        filter={{ type: 'range', enabled: true }}
+                        sort={{ enabled: true }}
+                    />
+                    <TokenSlider
+                        value={inputTokens}
+                        onChange={onInputTokensChange || (() => {})}
+                        label="Monthly Input Tokens"
+                    />
                 </div>
-            );
+            ),
+            cell: ({ row }) => (
+                <span className="font-mono text-right block w-16">
+                    ${row.original.inputPrice}
+                </span>
+            ),
+            filterFn: createPriceRangeFilter,
         },
-    },
-    {
-        accessorKey: "smartsElo",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Arena"
-                tooltip="What people prefer (higher is better)"
-                link={{ url: "https://lmarena.ai/?leaderboard", title: "LM Arena Leaderboard" }}
-                filter={{ type: 'range', enabled: true }}
-                sort={{ enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="font-mono text-right block w-16">
-                {row.original.smartsElo || "-"}
-            </span>
-        ),
-        sortDescFirst: true,
-        sortUndefined: 'last'
-    },
-    {
-        accessorKey: "codingElo",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Coding"
-                tooltip="Coding-specific performance score (higher is better)"
-                link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
-                filter={{ type: 'range', enabled: true }}
-                sort={{ enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="font-mono text-right block w-16">
-                {row.original.codingElo || "-"}
-            </span>
-        ),
-        sortDescFirst: true,
-        sortUndefined: 'last'
-    },
-    {
-        accessorKey: "simpleBench",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="SimpleBench"
-                tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
-                link={{ url: "https://simple-bench.com/#leaderboardTable", title: "Simple Bench Leaderboard Table" }}
-                sort={{ enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="font-mono text-right block w-16">
-                {row.original.simpleBench ? `${row.original.simpleBench.toFixed(1)}%` : "-"}
-            </span>
-        ),
-        sortingFn: "alphanumeric",
-        sortDescFirst: true,
-        sortUndefined: 'last'
-    },
-    {
-        accessorKey: "context",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Context"
-                tooltip="The maximum number of tokens the model can process at once. 'k' stands for thousands of tokens."
-                filter={{ type: 'range', enabled: true }}
-                sort={{ enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="font-mono text-right block w-16">
-                {row.original.context}k
-            </span>
-        ),
-        sortingFn: "alphanumeric",
-        sortDescFirst: true,
-    },
-    {
-        accessorKey: "inputPrice",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Input"
-                tooltip="The cost per 1,000,000 tokens sent to the model"
-                filter={{ type: 'range', enabled: true }}
-                sort={{ enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="font-mono text-right block w-16">
-                ${row.original.inputPrice}
-            </span>
-        ),
-        filterFn: createPriceRangeFilter,
-    },
-    {
-        accessorKey: "outputPrice",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Output"
-                tooltip="The cost per 1,000,000 tokens received from the model"
-                filter={{ type: 'range', enabled: true }}
-                sort={{ enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="font-mono text-right block w-16">
-                ${row.original.outputPrice}
-            </span>
-        ),
-        filterFn: createPriceRangeFilter,
-    },
-    {
-        id: "usageCost",
-        accessorFn: (row) => calculateMonthlyCost(row, inputTokens, outputTokens),
-        header: () => (
-            <TokenControls
-                inputTokens={inputTokens}
-                outputTokens={outputTokens}
-                onInputChange={onInputTokensChange || (() => {})}
-                onOutputChange={onOutputTokensChange || (() => {})}
-            />
-        ),
-        cell: ({ getValue }) => (
-            <span className="font-mono text-right block w-20">
-                ${getValue<number>().toFixed(2)}
-            </span>
-        ),
-        sortingFn: (rowA, rowB) => {
-            const a = calculateMonthlyCost(rowA.original, inputTokens, outputTokens);
-            const b = calculateMonthlyCost(rowB.original, inputTokens, outputTokens);
-            return a - b;
+        {
+            accessorKey: "outputPrice",
+            header: ({ column }) => (
+                <div>
+                    <ColumnHeader
+                        column={column}
+                        title="Output"
+                        tooltip="The cost per 1,000,000 tokens received from the model"
+                        filter={{ type: 'range', enabled: true }}
+                        sort={{ enabled: true }}
+                    />
+                    <TokenSlider
+                        value={outputTokens}
+                        onChange={onOutputTokensChange || (() => {})}
+                        label="Monthly Output Tokens"
+                    />
+                </div>
+            ),
+            cell: ({ row }) => (
+                <span className="font-mono text-right block w-16">
+                    ${row.original.outputPrice}
+                </span>
+            ),
+            filterFn: createPriceRangeFilter,
         },
-    },
-    {
-        accessorKey: "hasVision",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Vision"
-                tooltip="Whether the model can process images"
-                filter={{ type: 'boolean', enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="text-center block w-12">
-                {row.original.hasVision ? "✓" : "-"}
-            </span>
-        ),
-        filterFn: (row, id, value: boolean) => {
-            if (value === undefined) return true;
-            return row.getValue(id) === value;
+        {
+            id: "usageCost",
+            accessorFn: (row) => calculateMonthlyCost(row),
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Usage Cost"
+                    tooltip="Estimated monthly cost based on input/output token usage"
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ getValue }) => (
+                <span className="font-mono text-right block w-20">
+                    ${getValue<number>().toFixed(2)}
+                </span>
+            ),
+            sortingFn: (rowA, rowB) => {
+                const a = calculateMonthlyCost(rowA.original);
+                const b = calculateMonthlyCost(rowB.original);
+                return a - b;
+            },
         },
-    },
-    {
-        accessorKey: "toolUse",
-        header: ({ column }) => (
-            <ColumnHeader
-                column={column}
-                title="Tools"
-                tooltip="Whether the model can use tools"
-                filter={{ type: 'boolean', enabled: true }}
-            />
-        ),
-        cell: ({ row }) => (
-            <span className="text-center block w-12">
-                {row.original.toolUse ? "✓" : "-"}
-            </span>
-        ),
-        filterFn: (row, id, value: boolean) => {
-            if (value === undefined) return true;
-            return row.getValue(id) === value;
+        {
+            accessorKey: "hasVision",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Vision"
+                    tooltip="Whether the model can process images"
+                    filter={{ type: 'boolean', enabled: true }}
+                />
+            ),
+            cell: ({ row }) => (
+                <span className="text-center block w-12">
+                    {row.original.hasVision ? "✓" : "-"}
+                </span>
+            ),
+            filterFn: (row, id, value: boolean) => {
+                if (value === undefined) return true;
+                return row.getValue(id) === value;
+            },
         },
-    },
-];
+        {
+            accessorKey: "toolUse",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Tools"
+                    tooltip="Whether the model can use tools"
+                    filter={{ type: 'boolean', enabled: true }}
+                />
+            ),
+            cell: ({ row }) => (
+                <span className="text-center block w-12">
+                    {row.original.toolUse ? "✓" : "-"}
+                </span>
+            ),
+            filterFn: (row, id, value: boolean) => {
+                if (value === undefined) return true;
+                return row.getValue(id) === value;
+            },
+        },
+    ];
+};
