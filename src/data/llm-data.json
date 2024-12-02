@@ -270,5 +270,18 @@
     "hasVision": false,
     "notes": "currently in free beta",
     "pricingUrl": "https://ai.cloudflare.com/"
+  },
+  {
+    "model": "deepseek-chat",
+    "provider": "DeepSeek",
+    "context": 64,
+    "inputPrice": 0.14,
+    "outputPrice": 0.28,
+    "inputPriceCacheHit": 0.014,
+    "smartsElo": 1258,
+    "maxOutputTokens": 4,
+    "maxOutputTokensBeta": 8,
+    "notes": "DeepSeek V2.5 model combines and upgrades DeepSeek V2 Chat and Coder V2. Beta 8K output tokens requires base_url='https://api.deepseek.com/beta'",
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/"
   }
 ]
