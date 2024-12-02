@@ -34,7 +34,13 @@ const createPriceRangeFilter = (
     return true;
 };
 
-export const columns: ColumnDef<LLMModel>[] = [
+// Get unique providers from the data
+const getUniqueProviders = (data: LLMModel[]) => {
+    const providers = new Set(data.map(model => model.provider));
+    return Array.from(providers).sort();
+};
+
+export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => [
     {
         accessorKey: "model",
         header: ({ column }) => (
@@ -77,7 +83,7 @@ export const columns: ColumnDef<LLMModel>[] = [
                 filter={{
                     type: 'select',
                     enabled: true,
-                    options: Object.keys(providerLogos)
+                    options: getUniqueProviders(data)
                 }}
                 sort={{ enabled: true }}
             />
@@ -253,4 +259,3 @@ export const columns: ColumnDef<LLMModel>[] = [
         },
     },
 ];
-

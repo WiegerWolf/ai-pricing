@@ -6,7 +6,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
-        <DataTable columns={columns} data={llmData} />
+        <DataTable columns={columns(llmData)} data={llmData} />
       </main>
       <footer className="text-xs text-gray-500 py-4 px-4 flex items-center justify-between border-t">
         <span>Last updated: Dec 3, 2024</span>
