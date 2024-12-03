@@ -3,7 +3,7 @@ export interface LLMModel {
     provider: string;
     smartsElo: number | null;
     simpleBench?: number;
-    codingElo: number | null;
+    codingElo?: number | null;
     context: number;
     inputPrice: number;
     outputPrice: number;
@@ -11,6 +11,9 @@ export interface LLMModel {
     toolUse?: boolean;
     notes?: string;
     pricingUrl: string;
+    inputPriceCacheHit?: number;
+    maxOutputTokens?: number;
+    maxOutputTokensBeta?: number;
 }
 
 export interface CalculatorState {

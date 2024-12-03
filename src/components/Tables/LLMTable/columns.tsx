@@ -6,6 +6,8 @@ import googleLogo from '@/assets/google.png';
 import openaiLogo from '@/assets/openai.ico';
 import groqLogo from '@/assets/groq.png';
 import xAILogo from '@/assets/xAI.svg';
+import deepseekLogo from '@/assets/deepseek.svg';
+import openrouterLogo from '@/assets/openrouter.png';
 import { ColumnHeader } from "./ColumnHeader";
 
 // Create a mapping of provider names to their logos
@@ -16,6 +18,8 @@ const providerLogos: Record<string, string> = {
     'OpenAI': openaiLogo,
     "Groq": groqLogo,
     'xAI': xAILogo,
+    'DeepSeek': deepseekLogo,
+    'OpenRouter': openrouterLogo,
 };
 
 // Helper function for price range filtering
@@ -34,7 +38,13 @@ const createPriceRangeFilter = (
     return true;
 };
 
-export const columns: ColumnDef<LLMModel>[] = [
+// Get unique providers from the data
+const getUniqueProviders = (data: LLMModel[]) => {
+    const providers = new Set(data.map(model => model.provider));
+    return Array.from(providers).sort();
+};
+
+export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => [
     {
         accessorKey: "model",
         header: ({ column }) => (
@@ -77,7 +87,7 @@ export const columns: ColumnDef<LLMModel>[] = [
                 filter={{
                     type: 'select',
                     enabled: true,
-                    options: Object.keys(providerLogos)
+                    options: getUniqueProviders(data)
                 }}
                 sort={{ enabled: true }}
             />
@@ -253,4 +263,3 @@ export const columns: ColumnDef<LLMModel>[] = [
         },
     },
 ];
-
