@@ -246,5 +246,15 @@
     "simpleBench": 23,
     "notes": "Also available for free tier",
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-3.1-405b-instruct"
+  },
+  {
+    "model": "llama-3.1-nemotron-70b-instruct",
+    "provider": "OpenRouter",
+    "context": 131,
+    "inputPrice": 0.35,
+    "outputPrice": 0.4,
+    "smartsElo": 1269,
+    "codingElo": 1273,
+    "pricingUrl": "https://openrouter.ai/nvidia/llama-3.1-nemotron-70b-instruct"
   }
 ]
