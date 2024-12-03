@@ -95,20 +95,6 @@
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
   },
   {
-    "model": "Claude-3-5-Sonnet-20240620",
-    "provider": "Anthropic",
-    "smartsElo": 1268,
-    "simpleBench": 27.5,
-    "codingElo": 1295,
-    "context": 200,
-    "inputPrice": 3,
-    "outputPrice": 15,
-    "hasVision": true,
-    "toolUse": true,
-    "notes": "50% discount available with Batches API",
-    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
-  },
-  {
     "model": "Claude-3-5-Haiku-20241022",
     "provider": "Anthropic",
     "smartsElo": 1248,
