@@ -222,18 +222,6 @@
     "pricingUrl": "https://x.ai/blog/grok-2"
   },
   {
-    "model": "llama-3-8b-instruct",
-    "provider": "Cloudflare",
-    "smartsElo": 1152,
-    "codingElo": 1146,
-    "context": 8,
-    "inputPrice": 0,
-    "outputPrice": 0,
-    "hasVision": false,
-    "notes": "currently in free beta",
-    "pricingUrl": "https://ai.cloudflare.com/"
-  },
-  {
     "model": "deepseek-chat",
     "provider": "DeepSeek",
     "context": 64,
