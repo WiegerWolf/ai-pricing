@@ -7,6 +7,7 @@ import openaiLogo from '@/assets/openai.ico';
 import groqLogo from '@/assets/groq.png';
 import xAILogo from '@/assets/xAI.svg';
 import deepseekLogo from '@/assets/deepseek.svg';
+import openrouterLogo from '@/assets/openrouter.png';
 import { ColumnHeader } from "./ColumnHeader";
 
 // Create a mapping of provider names to their logos
@@ -17,7 +18,8 @@ const providerLogos: Record<string, string> = {
     'OpenAI': openaiLogo,
     "Groq": groqLogo,
     'xAI': xAILogo,
-    'DeepSeek': deepseekLogo
+    'DeepSeek': deepseekLogo,
+    'OpenRouter': openrouterLogo,
 };
 
 // Helper function for price range filtering

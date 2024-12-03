@@ -284,5 +284,17 @@
     "maxOutputTokensBeta": 8,
     "notes": "DeepSeek V2.5 model combines and upgrades DeepSeek V2 Chat and Coder V2. Beta 8K output tokens requires base_url='https://api.deepseek.com/beta'",
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/"
+  },
+  {
+    "model": "Llama-3.1-405B-Instruct",
+    "provider": "OpenRouter",
+    "context": 128,
+    "inputPrice": 2.8,
+    "outputPrice": 2.8,
+    "smartsElo": 1267,
+    "codingElo": 1277,
+    "simpleBench": 23,
+    "notes": "Also available for free tier",
+    "pricingUrl": "https://openrouter.ai/meta-llama/llama-3.1-405b-instruct"
   }
 ]
