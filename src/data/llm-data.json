@@ -134,30 +134,6 @@
     "pricingUrl": "https://ai.google.dev/pricing"
   },
   {
-    "model": "llama-3-70b-instruct",
-    "provider": "Groq",
-    "smartsElo": 1206,
-    "codingElo": 1200,
-    "context": 8,
-    "inputPrice": 0.59,
-    "outputPrice": 0.79,
-    "hasVision": false,
-    "notes": "8k context window",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
-    "model": "llama-3-8b-instruct",
-    "provider": "Groq",
-    "smartsElo": 1152,
-    "codingElo": 1146,
-    "context": 8,
-    "inputPrice": 0.05,
-    "outputPrice": 0.08,
-    "hasVision": false,
-    "notes": "",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
     "model": "llama-3.2-1b-preview",
     "provider": "Groq",
     "smartsElo": 1054,
