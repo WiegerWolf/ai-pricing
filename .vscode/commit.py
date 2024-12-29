@@ -16,7 +16,7 @@ AI_PROVIDER = os.getenv("AI_PROVIDER", "groq")  # Default to "groq" if not set
 # Groq AI Provider settings
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "sk-6knU2kzDd2WxEaIe42825bA9D11240AeAd871aDc9cF14cF8")
 GROQ_API_URL = os.getenv("GROQ_API_URL", "http://192.168.68.160:3000/v1/chat/completions")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-70b-versatile")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # fn to get the default gateway IP (for use in determining the Ollama API URL)
 def get_default_gateway_ip():
