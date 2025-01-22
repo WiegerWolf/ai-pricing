@@ -49,6 +49,56 @@
       "question_id": 10,
       "prompt": "A luxury sports-car is traveling north at 30km/h over a roadbridge, 250m long, which runs over a river that is flowing at 5km/h eastward. The wind is blowing at 1km/h westward, slow enough not to bother the pedestrians snapping photos of the car from both sides of the roadbridge as the car passes. A glove was stored in the trunk of the car, but slips out of a hole and drops out when the car is half-way over the bridge. Assume the car continues in the same direction at the same speed, and the wind and river continue to move as stated. 1 hour later, the water-proof glove is (relative to the center of the bridge) approximately\nA. 4km eastward\nB. <1 km northward\nC. >30km away north-westerly\nD. 30 km northward\nE. >30 km away north-easterly.\nF. 5 km+ eastward\n",
       "answer": "B"
+    },
+    {
+      "question_id": 11,
+      "prompt": "Philip hangs upside-down from a roof beam, and keeps his body straight and in this position throughout the evening, and his face stays looking down toward his adoring audience. He is about to perform four stunts for the audience. First, he will attempt to hold his breath for 4 minutes (he managed 5 minutes a day before). Second, he will attempt to juggle 5 balls, which will be thrown from chest-level (where his hands will stay) to flying down past his head (he juggled 9 standing on stage last night). Third, he will attempt to pronounce the longest word in the dictionary (he has it memorized). Fourth, he will attempt to guess an audience member's card at random (standard 52-card deck, no jokers). Which of the acts is most likely to fail?\nA) breath-holding\nB) juggling\nC) long word\nD) card-guess\nE) all will probably fail\nF) none will likely fail",
+      "answer": "B"
+    },
+    {
+      "question_id": 12,
+      "prompt": "A pencil is placed in the middle of a square piece of paper, which is wider than the pencil. Two opposite corners of the paper are brought together such that they touch and line up at the starting location of one of the corners, and then the top of the paper is pressed such that a light crease is made (visually, the new top of the paper is of course now half the area). The piece of paper is then picked up and turned 180 degrees. How many layers of paper must someone who picks the paper up now need to tear or unfold, if they wanted to free the pencil?\nA) 4\nB) 3\nC) 2\nD) 1\nE) 0\nF) 8",
+      "answer": "E"
+    },
+    {
+      "question_id": 13,
+      "prompt": "Husain types a letter on a normal laptop screen, and he can see any letters on the screen clearly. Every second the letter will randomly transform into another letter of the alphabet. Husain is in a park and slowly inches back from the laptop, but has just one item with him: a remote controller so he can increase the font size of the changing letters by exactly as much as he wants. Husain has always had trouble distinguishing w's from m's, so when he is a couple of football field lengths away, controller in hand, he has a [ _ ] probability of correctly guessing the current letter.\nA) 96%\nB) 95%\nC) 97%\nD) 1/26\nE) 0%\nF) ½",
+      "answer": "D"
+    },
+    {
+      "question_id": 14,
+      "prompt": "Naomi puts her rucksack on its side on the grass, and places her a thin metal pole through both straps, and lodging the pole immovably into the ground. Can the rucksack be removed from the pole? Assume the rucksack straps (or body) will not break in any way, the pole cannot be bent or broken, nor dislodged.\nA) Yes by pulling it inside out\nB) Yes by removing its contents\nC) Yes, start by gripping it\nD) No, but it can be pulled away a bit by stretching\nE) Yes, by passing one strap through the other strap\nF) Yes, by climbing on the pole",
+      "answer": "C"
+    },
+    {
+      "question_id": 15,
+      "prompt": "A soldier and a librarian are in a library chatting. 'How have things been lately, Emily?' Mike asked. 'Well, you know how it is at work ... ' Which of the following would not be the subject of the continuation? - pick one of the subjects below, or the statement about the subjects.\nA) The summer reading programs coming up.\nB) The new book inventory system.\nC) The quietness that's both a blessing and a curse.\nD) The never-ending shelving of returned books.\nE) Patrolling the local base's perimeter all night last week.\nF) All of the above are appropriate or plausible subjects for the continuation of the reply.",
+      "answer": "F"
+    },
+    {
+      "question_id": 16,
+      "prompt": "Vernor, 34 and a US marine, is a prisoner-of-war trying to reach a button to open the door of the cell he is standing in. But both his hands are tied unbreakably to a rope, 5m in length, whose other end is tied unbreakably to an immovable pipe 6m from the 10cm square button on the door handle opposite. The rope has a maximum of 2cm of give (stretch) in it, and the rope is also unbreakable, so Vernor [ _ ]\nA) cannot press the button, and cannot reach the door,\nB) can press the button but cannot touch the pipe\nC) can press the button and escape the cell\nD) can press the button but cannot escape the cell\nE) cannot press the button but can easily escape the cell\nF) can only escape the cell by climbing at least 4 meters up",
+      "answer": "D"
+    },
+    {
+      "question_id": 17,
+      "prompt": "Hanifa, a high school teacher, aimed to wake up at 4.30am but was distressed to realize her faulty alarm had not gone off and saw the time was 4.55am. Hanifa is later caught in conversation with an upset boss - who has spilled coffee onto his laptop - when Hanifa arrives at work at 5.30am, over thirty minutes later than she normally does and eighty-nine minutes before her first work obligation of any kind. Hanifa tells the upset boss about her faulty alarm and then addresses the coffee spill. Hanifa should definitely [ _ ].\nA) apologize for her lateness\nB) apologize for the coffee spill\nC) not apologize for today’s lateness or the spill\nD) apologize for both her lateness and the coffee spill\nE) not apologize for lateness to work if it is caused by a faulty alarm\nF) kindly offer to spend 90 minutes cleaning the laptop, even though it is not strictly an obligation.",
+      "answer": "C"
+    },
+    {
+      "question_id": 18,
+      "prompt": "Cassandra, 28, is a typical, healthy adult female, is in sandals, and is standing upright. Cassandra leans to put her right palm on the back of the thigh of her left leg and her left palm on the back of the thigh of her right leg. Can Cassandra move in this position?\nA) She could step a few inches forward but not backward at all\nB) She could step forward as much as she likes but no more than a few inches backward\nC) She could not step forward or backward without falling\nD) She can step forward or backward as much as she likes\nE) She could step backward a few inches but not forward\nF) She could step backward as much as she likes but no more than a few inches forward",
+      "answer": "D"
+    },
+    {
+      "question_id": 19,
+      "prompt": "Riddle: A father and his son were in a car accident where the mother (in all senses of the word) of the son - and wife of the father - was killed. The ambulance brought the son to the hospital. He needed immediate surgery. In the operating room, a doctor enters and looked at the little boy and said I can't operate on him, he is my son. The doctor is the boy's [ _ ].\nA) mother\nB) aunt\nC) father\nD) grandparent\nE) great grandfather\nF) son.\nPick the most likely answer.",
+      "answer": "C"
+    },
+    {
+      "question_id": 20,
+      "prompt": "Broke admin assistant Sangita, 23 and British, is frustrated with Jeanine. Jeanine has reneged on her idea to car-pool with Sangita, verbally attacked the previous boss' color choices for office paint, and neglected her Secret-Santa duties as CEO. Most likely, Sangita will [ _ ].\nA) pretend to like Jeanine and say nothing about them.\nB) ask Jeanine privately to 'get her **ing act together'\nC) write a strongly worded email to Jenny and the company about her feelings\nD) fire Jeanine with cause\nE) resign immediately\nF) express her concerns to human resources or management about Jeanine's unprofessional behavior",
+      "answer": "A"
     }
   ]
 }
