@@ -226,7 +226,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => [
         ),
         cell: ({ row }) => (
             <span className="font-mono text-right block">
-                ${row.original.inputPrice}
+                {row.original.inputPrice === 0 ? 'free' : row.original.inputPrice === undefined ? '-' : `$${row.original.inputPrice}`}
             </span>
         ),
         filterFn: createPriceRangeFilter,
@@ -244,7 +244,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => [
         ),
         cell: ({ row }) => (
             <span className="font-mono text-right block">
-                ${row.original.outputPrice}
+                {row.original.outputPrice === 0 ? 'free' : row.original.outputPrice === undefined ? '-' : `$${row.original.outputPrice}`}
             </span>
         ),
         filterFn: createPriceRangeFilter,
