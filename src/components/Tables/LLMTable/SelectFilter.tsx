@@ -49,16 +49,7 @@ export function SelectFilter({ column, options, placeholder }: SelectFilterProps
             }}
         >
             <SelectTrigger className="h-6 w-full text-xs min-w-[30px] py-0 pl-2 pr-6">
-                <div className="flex items-center gap-2 truncate">
-                    {filterValue && filterValue !== "all" && providerImages[filterValue.toLowerCase()] && (
-                        <img
-                            src={providerImages[filterValue.toLowerCase()]}
-                            alt={`${filterValue} logo`}
-                            className="w-3.5 h-3.5 object-contain flex-shrink-0"
-                        />
-                    )}
-                    <SelectValue placeholder={placeholder} className="truncate" />
-                </div>
+                <SelectValue placeholder={placeholder} className="truncate" />
             </SelectTrigger>
             <SelectContent className="text-xs">
                 <SelectItem value="all" className="pl-2 pr-6">All</SelectItem>
