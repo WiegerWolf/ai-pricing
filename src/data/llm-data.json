@@ -186,6 +186,18 @@
     "simpleBench": 31.1
   },
   {
+    "model": "Gemini-2.0-Flash-Thinking-Exp-2025-01-21",
+    "provider": "Google AI",
+    "developer": "Google AI",
+    "smartsElo": 1384,
+    "codingElo": 1359,
+    "context": 1000,
+    "toolUse": true,
+    "inputPrice": 0,
+    "outputPrice": 0,
+    "modelUrl": "https://deepmind.google/technologies/gemini/flash-thinking/"
+  },
+  {
     "model": "Gemini 2.0 Flash Exp",
     "provider": "Google AI",
     "developer": "Google AI",
