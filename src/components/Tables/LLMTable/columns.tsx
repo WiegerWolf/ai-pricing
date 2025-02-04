@@ -5,6 +5,7 @@ import cloudflareLogo from '@/assets/cloudflare.png';
 import googleLogo from '@/assets/google.png';
 import openaiLogo from '@/assets/openai.ico';
 import groqLogo from '@/assets/groq.png';
+import metaLogo from '@/assets/meta.svg';
 import xAILogo from '@/assets/xAI.svg';
 import deepseekLogo from '@/assets/deepseek.svg';
 import openrouterLogo from '@/assets/openrouter.png';
@@ -18,6 +19,7 @@ const providerLogos: Record<string, string> = {
     'OpenAI': openaiLogo,
     "Groq": groqLogo,
     'xAI': xAILogo,
+    'Meta': metaLogo,
     'DeepSeek': deepseekLogo,
     'OpenRouter': openrouterLogo,
 };
@@ -182,7 +184,10 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => [
                 sort={{ enabled: true }}
             />
         ),
-        cell: ({ row }) => (`${row.original.context}k`),
+        cell: ({ row }) => {
+            const context = row.original.context;
+            return context ? `${context}k` : "-";
+        },
         sortingFn: "alphanumeric",
         sortDescFirst: true,
     },
