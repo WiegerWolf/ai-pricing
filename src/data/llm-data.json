@@ -1,6 +1,7 @@
 [
   {
     "model": "ChatGPT-4o-latest (2024-11-20)",
+    "developer": "OpenAI",
     "provider": "OpenAI",
     "smartsElo": 1361,
     "simpleBench": 17.8,
@@ -15,6 +16,7 @@
   {
     "model": "o1-preview",
     "provider": "OpenAI",
+    "developer": "OpenAI",
     "smartsElo": 1334,
     "simpleBench": 41.7,
     "codingElo": 1355,
@@ -28,6 +30,7 @@
   {
     "model": "o1-mini",
     "provider": "OpenAI",
+    "developer": "OpenAI",
     "smartsElo": 1308,
     "simpleBench": 18.1,
     "codingElo": 1365,
@@ -41,6 +44,7 @@
   {
     "model": "GPT-4o-2024-08-06",
     "provider": "OpenAI",
+    "developer": "OpenAI",
     "smartsElo": 1264,
     "simpleBench": 17.8,
     "codingElo": null,
@@ -55,6 +59,7 @@
   {
     "model": "GPT-4o-mini-2024-07-18",
     "provider": "OpenAI",
+    "developer": "OpenAI",
     "smartsElo": 1273,
     "simpleBench": 10.7,
     "codingElo": 1284,
@@ -67,8 +72,21 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
+    "model": "o1-2024-12-17 (high)",
+    "provider": "OpenAI",
+    "developer": "OpenAI",
+    "simpleBench": 40.1
+  },
+  {
+    "model": "o1-2024-12-17 (med)",
+    "provider": "OpenAI",
+    "developer": "OpenAI",
+    "simpleBench": 36.7
+  },
+  {
     "model": "gpt-4-turbo-2024-04-09",
     "provider": "OpenAI",
+    "developer": "OpenAI",
     "smartsElo": 1250,
     "simpleBench": 25.1,
     "codingElo": 1254,
@@ -83,6 +101,7 @@
   {
     "model": "Claude-3-5-Sonnet-20241022",
     "provider": "Anthropic",
+    "developer": "Anthropic",
     "smartsElo": 1282,
     "simpleBench": 41.4,
     "codingElo": 1319,
@@ -95,8 +114,21 @@
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
   },
   {
+    "model": "Claude-3-5-Sonnet-20240602",
+    "provider": "Anthropic",
+    "developer": "Anthropic",
+    "simpleBench": 27.5
+  },
+  {
+    "model": "Claude 3 Opus",
+    "provider": "Anthropic",
+    "developer": "Anthropic",
+    "simpleBench": 23.5
+  },
+  {
     "model": "Claude-3-5-Haiku-20241022",
     "provider": "Anthropic",
+    "developer": "Anthropic",
     "smartsElo": 1248,
     "codingElo": 1250,
     "context": 200,
@@ -109,6 +141,7 @@
   {
     "model": "Gemini-1.5-Pro-002",
     "provider": "Google AI",
+    "developer": "Google AI",
     "smartsElo": 1301,
     "simpleBench": 27.1,
     "codingElo": 1289,
@@ -123,6 +156,7 @@
   {
     "model": "Gemini-1.5-Flash-002",
     "provider": "Google AI",
+    "developer": "Google AI",
     "smartsElo": 1271,
     "codingElo": 1253,
     "context": 1000,
@@ -134,8 +168,15 @@
     "pricingUrl": "https://ai.google.dev/pricing"
   },
   {
+    "model": "Gemini-exp-1206",
+    "provider": "Google AI",
+    "developer": "Google AI",
+    "simpleBench": 31.1
+  },
+  {
     "model": "llama-3.2-1b-preview",
     "provider": "Groq",
+    "developer": "Meta",
     "smartsElo": 1054,
     "codingElo": 1047,
     "context": 8,
@@ -148,6 +189,7 @@
   {
     "model": "llama-3.2-3b-preview",
     "provider": "Groq",
+    "developer": "Meta",
     "smartsElo": 1100,
     "codingElo": 1090,
     "context": 8,
@@ -160,6 +202,7 @@
   {
     "model": "llama-3.1-70b-versatile",
     "provider": "Groq",
+    "developer": "Meta",
     "smartsElo": 1206,
     "codingElo": 1200,
     "context": 128,
@@ -172,6 +215,7 @@
   {
     "model": "llama-3.1-8b-instant",
     "provider": "Groq",
+    "developer": "Meta",
     "smartsElo": 1152,
     "codingElo": 1146,
     "context": 128,
@@ -185,6 +229,7 @@
   {
     "model": "llama-3-70b-tool-use",
     "provider": "Groq",
+    "developer": "Meta",
     "smartsElo": 1210,
     "codingElo": 1205,
     "context": 8,
@@ -198,6 +243,7 @@
   {
     "model": "llama-guard-3-8b",
     "provider": "Groq",
+    "developer": "Meta",
     "smartsElo": 1140,
     "codingElo": 1130,
     "context": 8,
@@ -210,6 +256,7 @@
   {
     "model": "Grok-2-08-13",
     "provider": "xAI",
+    "developer": "xAI",
     "smartsElo": 1290,
     "simpleBench": 22.7,
     "codingElo": 1287,
@@ -224,6 +271,7 @@
   {
     "model": "deepseek-reasoner",
     "provider": "DeepSeek",
+    "developer": "DeepSeek",
     "context": 64,
     "inputPrice": 0.55,
     "outputPrice": 2.19,
@@ -238,6 +286,7 @@
   {
     "model": "deepseek-chat",
     "provider": "DeepSeek",
+    "developer": "DeepSeek",
     "context": 64,
     "inputPrice": 0.14,
     "outputPrice": 0.28,
@@ -252,6 +301,7 @@
   {
     "model": "Llama-3.1-405B-Instruct",
     "provider": "OpenRouter",
+    "developer": "Meta",
     "context": 128,
     "inputPrice": 2.8,
     "outputPrice": 2.8,
@@ -259,16 +309,19 @@
     "codingElo": 1277,
     "simpleBench": 23,
     "notes": "Also available for free tier",
+    "modelUrl": "https://ai.meta.com/blog/meta-llama-3-1/",
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-3.1-405b-instruct"
   },
   {
     "model": "llama-3.1-nemotron-70b-instruct",
     "provider": "OpenRouter",
+    "developer": "Nvidia",
     "context": 131,
     "inputPrice": 0.35,
     "outputPrice": 0.4,
     "smartsElo": 1269,
     "codingElo": 1273,
+    "modelUrl": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
     "pricingUrl": "https://openrouter.ai/nvidia/llama-3.1-nemotron-70b-instruct"
   }
 ]

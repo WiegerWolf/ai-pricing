@@ -14,6 +14,8 @@ export interface LLMModel {
     inputPriceCacheHit?: number;
     maxOutputTokens?: number;
     maxOutputTokensBeta?: number;
+    modelUrl?: string;
+    developer: string;
 }
 
 export interface CalculatorState {
