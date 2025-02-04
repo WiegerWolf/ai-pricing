@@ -8,6 +8,8 @@ import xAILogo from '@/assets/xAI.svg';
 import deepseekLogo from '@/assets/deepseek.svg';
 import openrouterLogo from '@/assets/openrouter.png';
 import nvidiaLogo from '@/assets/nvidia.ico';
+import cohereLogo from '@/assets/Cohere.png';
+import mistralLogo from '@/assets/mistral.png';
 
 // Create a mapping of provider names to their logos
 export const providerLogos: Record<string, string> = {
@@ -20,6 +22,8 @@ export const providerLogos: Record<string, string> = {
     'Meta': metaLogo,
     'DeepSeek': deepseekLogo,
     'OpenRouter': openrouterLogo,
+    'Mistral': mistralLogo,
+    'Cohere': cohereLogo,
 };
 
 // Add developer logos mapping (using same logos as providers)
@@ -31,4 +35,6 @@ export const developerLogos: Record<string, string> = {
     'xAI': xAILogo,
     'DeepSeek': deepseekLogo,
     'Nvidia': nvidiaLogo,
+    'Mistral': mistralLogo,
+    'Cohere': cohereLogo,
 };
