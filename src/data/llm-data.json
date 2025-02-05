@@ -24,6 +24,7 @@
     "inputPrice": 15,
     "outputPrice": 60,
     "hasVision": true,
+    "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "notes": "Output includes internal reasoning tokens",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
@@ -38,6 +39,7 @@
     "inputPrice": 3,
     "outputPrice": 12,
     "hasVision": true,
+    "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "notes": "Output includes internal reasoning tokens",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
@@ -75,25 +77,53 @@
     "model": "o1-2024-12-17 (high)",
     "provider": "OpenAI",
     "developer": "OpenAI",
-    "simpleBench": 40.1
+    "simpleBench": 40.1,
+    "smartsElo": 1352,
+    "codingElo": 1361,
+    "inputPrice": 15,
+    "outputPrice": 60,
+    "hasVision": true,
+    "context": 200,
+    "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
+    "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
     "model": "o1-2024-12-17 (med)",
     "provider": "OpenAI",
     "developer": "OpenAI",
-    "simpleBench": 36.7
+    "simpleBench": 36.7,
+    "smartsElo": 1352,
+    "codingElo": 1361,
+    "inputPrice": 15,
+    "outputPrice": 60,
+    "hasVision": true,
+    "context": 200,
+    "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
+    "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
     "model": "o3-mini (high)",
     "provider": "OpenAI",
     "developer": "OpenAI",
-    "simpleBench": 22.8
+    "inputPrice": 1.1,
+    "outputPrice": 4.4,
+    "simpleBench": 22.8,
+    "toolUse": true,
+    "context": 200,
+    "modelUrl": "https://platform.openai.com/docs/models#o3-mini",
+    "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
     "model": "o3-mini",
     "provider": "OpenAI",
     "developer": "OpenAI",
-    "simpleBench": 18.1
+    "modelUrl": "https://platform.openai.com/docs/models#o3-mini",
+    "simpleBench": 18.1,
+    "inputPrice": 1.1,
+    "context": 200,
+    "toolUse": true,
+    "outputPrice": 4.4,
+    "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
     "model": "gpt-4-turbo-2024-04-09",
