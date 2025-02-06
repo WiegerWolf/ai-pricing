@@ -213,25 +213,12 @@
     "pricingUrl": "https://ai.google.dev/pricing"
   },
   {
-    "model": "Gemini-1.5-Flash-002",
-    "provider": "Google AI",
-    "developer": "Google AI",
-    "smartsElo": 1271,
-    "codingElo": 1253,
-    "context": 1000,
-    "inputPrice": 0.07,
-    "outputPrice": 0.3,
-    "hasVision": true,
-    "toolUse": true,
-    "notes": "these prices are for <128k context, for more see pricing page, no free tier in EU",
-    "pricingUrl": "https://ai.google.dev/pricing"
-  },
-  {
     "model": "Gemini-exp-1206",
     "provider": "Google AI",
     "developer": "Google AI",
     "simpleBench": 31.1,
-    "pricingUrl": "https://ai.google.dev/pricing"
+    "pricingUrl": "https://ai.google.dev/pricing",
+    "modelUrl": "https://ai.google.dev/gemini-api/docs/models/experimental-models"
   },
   {
     "model": "Gemini-2.0-Pro-Exp-02-05",
@@ -242,6 +229,7 @@
     "inputPrice": 0,
     "outputPrice": 0,
     "hasVision": true,
+    "context": 2000,
     "toolUse": true,
     "knowledgeCutoff": "2024-08",
     "pricingUrl": "https://ai.google.dev/pricing"
@@ -272,8 +260,6 @@
     "context": 1000,
     "hasVision": true,
     "toolUse": true,
-    "knowledgeCutoff": "2024-08",
-    "rateLimitRPM": 2000,
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
     "pricingUrl": "https://ai.google.dev/pricing"
   },
@@ -287,8 +273,6 @@
     "context": 1000,
     "hasVision": true,
     "toolUse": true,
-    "knowledgeCutoff": "2024-08",
-    "rateLimitRPM": 10,
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
     "pricingUrl": "https://ai.google.dev/pricing"
   },
@@ -416,9 +400,9 @@
     "model": "Grok-2-08-13",
     "provider": "xAI",
     "developer": "xAI",
-    "smartsElo": 1290,
+    "smartsElo": 1288,
     "simpleBench": 22.7,
-    "codingElo": 1287,
+    "codingElo": 1282,
     "context": 131,
     "inputPrice": 5,
     "outputPrice": 15,
