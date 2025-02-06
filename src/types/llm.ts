@@ -1,12 +1,12 @@
 export interface LLMModel {
     model: string;
     provider: string;
-    smartsElo: number | null;
+    smartsElo?: number | null;
     simpleBench?: number;
     codingElo?: number | null;
-    context: number;
-    inputPrice: number;
-    outputPrice: number;
+    context?: number;
+    inputPrice?: number;
+    outputPrice?: number;
     hasVision?: boolean;
     toolUse?: boolean;
     notes?: string;
@@ -14,6 +14,8 @@ export interface LLMModel {
     inputPriceCacheHit?: number;
     maxOutputTokens?: number;
     maxOutputTokensBeta?: number;
+    modelUrl?: string;
+    developer: string;
 }
 
 export interface CalculatorState {
