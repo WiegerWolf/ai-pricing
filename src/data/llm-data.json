@@ -144,40 +144,57 @@
     "model": "Claude-3-5-Sonnet-20241022",
     "provider": "Anthropic",
     "developer": "Anthropic",
-    "smartsElo": 1282,
+    "smartsElo": 1283,
     "simpleBench": 41.4,
-    "codingElo": 1319,
+    "codingElo": 1324,
     "context": 200,
     "inputPrice": 3,
     "outputPrice": 15,
     "hasVision": true,
     "toolUse": true,
     "notes": "50% discount available with Batches API",
-    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
+    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
+    "modelUrl": "https://www.anthropic.com/claude/sonnet"
   },
   {
     "model": "Claude-3-5-Sonnet-20240602",
     "provider": "Anthropic",
     "developer": "Anthropic",
-    "simpleBench": 27.5
+    "context": 200,
+    "inputPrice": 3,
+    "outputPrice": 15,
+    "simpleBench": 27.5,
+    "toolUse": true,
+    "hasVision": true,
+    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
+    "modelUrl": "https://www.anthropic.com/claude/sonnet"
   },
   {
     "model": "Claude 3 Opus",
     "provider": "Anthropic",
     "developer": "Anthropic",
-    "simpleBench": 23.5
+    "simpleBench": 23.5,
+    "smartsElo": 1247,
+    "codingElo": 1250,
+    "inputPrice": 15,
+    "outputPrice": 75,
+    "context": 200,
+    "hasVision": true,
+    "toolUse": true,
+    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
   },
   {
     "model": "Claude-3-5-Haiku-20241022",
     "provider": "Anthropic",
     "developer": "Anthropic",
-    "smartsElo": 1248,
-    "codingElo": 1250,
+    "smartsElo": 1237,
+    "codingElo": 1265,
     "context": 200,
     "inputPrice": 0.25,
     "outputPrice": 1.25,
     "toolUse": true,
     "notes": "Fastest model, 50% discount available with Batches API",
+    "modelUrl": "https://www.anthropic.com/claude/haiku",
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
   },
   {
@@ -213,7 +230,8 @@
     "model": "Gemini-exp-1206",
     "provider": "Google AI",
     "developer": "Google AI",
-    "simpleBench": 31.1
+    "simpleBench": 31.1,
+    "pricingUrl": "https://ai.google.dev/pricing"
   },
   {
     "model": "Gemini-2.0-Flash-Thinking-Exp-2025-01-21",
@@ -225,7 +243,8 @@
     "toolUse": true,
     "inputPrice": 0,
     "outputPrice": 0,
-    "modelUrl": "https://deepmind.google/technologies/gemini/flash-thinking/"
+    "modelUrl": "https://deepmind.google/technologies/gemini/flash-thinking/",
+    "pricingUrl": "https://ai.google.dev/pricing"
   },
   {
     "model": "Gemini 2.0 Flash Exp",
@@ -239,7 +258,8 @@
     "context": 1000,
     "hasVision": true,
     "toolUse": true,
-    "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2"
+    "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
+    "pricingUrl": "https://ai.google.dev/pricing"
   },
   {
     "model": "Llama 3.3 70b instruct",
