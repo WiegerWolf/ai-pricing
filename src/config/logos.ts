@@ -10,6 +10,8 @@ import openrouterLogo from '@/assets/openrouter.png';
 import nvidiaLogo from '@/assets/nvidia.ico';
 import cohereLogo from '@/assets/Cohere.png';
 import mistralLogo from '@/assets/mistral.png';
+import qwenLogo from '@/assets/qwen.png';
+import alibabaLogo from '@/assets/alibaba.png';
 
 // Create a mapping of provider names to their logos
 export const providerLogos: Record<string, string> = {
@@ -24,6 +26,7 @@ export const providerLogos: Record<string, string> = {
     'OpenRouter': openrouterLogo,
     'Mistral': mistralLogo,
     'Cohere': cohereLogo,
+    'Alibaba': alibabaLogo,
 };
 
 // Add developer logos mapping (using same logos as providers)
@@ -37,4 +40,5 @@ export const developerLogos: Record<string, string> = {
     'Nvidia': nvidiaLogo,
     'Mistral': mistralLogo,
     'Cohere': cohereLogo,
+    'Qwen': qwenLogo,
 };

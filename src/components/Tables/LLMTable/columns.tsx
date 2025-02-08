@@ -176,6 +176,26 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => [
         sortUndefined: 'last'
     },
     {
+        accessorKey: "webdevElo",
+        header: ({ column }) => (
+            <ColumnHeader
+                column={column}
+                title="WebDev"
+                tooltip="Web development specific performance score (higher is better)"
+                link={{ url: "https://web.lmarena.ai/leaderboard", title: "Web Arena Leaderboard" }}
+                filter={{ type: 'range', enabled: true }}
+                sort={{ enabled: true }}
+            />
+        ),
+        cell: ({ row }) => (
+            <span className="font-mono text-right block">
+                {row.original.webdevElo || "-"}
+            </span>
+        ),
+        sortDescFirst: true,
+        sortUndefined: 'last'
+    },
+    {
         accessorKey: "simpleBench",
         header: ({ column }) => (
             <ColumnHeader
