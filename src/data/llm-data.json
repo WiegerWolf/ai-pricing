@@ -225,6 +225,8 @@
     "developer": "Google AI",
     "simpleBench": 31.1,
     "webdevElo": 1025,
+    "inputPrice": 0,
+    "outputPrice": 0,
     "pricingUrl": "https://ai.google.dev/pricing",
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/experimental-models"
   },
