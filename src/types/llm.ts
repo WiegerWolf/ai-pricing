@@ -4,6 +4,7 @@ export interface LLMModel {
     smartsElo?: number | null;
     simpleBench?: number;
     codingElo?: number | null;
+    webdevElo?: number | null;
     context?: number;
     inputPrice?: number;
     outputPrice?: number;
