@@ -421,6 +421,24 @@
     "simpleBench": 17.4
   },
   {
+    "model": "early-grok-3",
+    "provider": "xAI",
+    "developer": "xAI",
+    "webdevElo": 1148,
+    "modelUrl": "https://x.ai/blog/grok-3",
+    "smartsElo": 1403,
+    "codingElo": 1403
+  },
+  {
+    "model": "Grok-2-12-12",
+    "provider": "OpenRouter",
+    "developer": "xAI",
+    "inputPrice": 2,
+    "outputPrice": 10,
+    "context": 131,
+    "pricingUrl": "https://openrouter.ai/x-ai/grok-2-1212"
+  },
+  {
     "model": "Grok-2-08-13",
     "provider": "xAI",
     "developer": "xAI",
@@ -433,7 +451,7 @@
     "hasVision": false,
     "toolUse": true,
     "notes": "Not yet publicly available in EU",
-    "pricingUrl": "https://x.ai/blog/grok-2"
+    "modelUrl": "https://x.ai/blog/grok-2"
   },
   {
     "model": "DeepSeek R1",
