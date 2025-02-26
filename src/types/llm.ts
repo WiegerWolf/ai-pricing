@@ -11,7 +11,7 @@ export interface LLMModel {
     hasVision?: boolean;
     toolUse?: boolean;
     notes?: string;
-    pricingUrl: string;
+    pricingUrl?: string;  // Changed from required to optional
     inputPriceCacheHit?: number;
     maxOutputTokens?: number;
     maxOutputTokensBeta?: number;
