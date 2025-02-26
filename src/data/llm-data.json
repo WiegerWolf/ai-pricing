@@ -149,6 +149,7 @@
     "provider": "Anthropic",
     "developer": "Anthropic",
     "simpleBench": 44.9,
+    "webdevElo": 1363,
     "modelUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
     "context": 200,
