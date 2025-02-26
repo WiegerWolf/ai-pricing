@@ -145,6 +145,17 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
+    "model": "Claude 3.7 Sonnet",
+    "provider": "Anthropic",
+    "developer": "Anthropic",
+    "simpleBench": 44.9,
+    "modelUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
+    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
+    "context": 200,
+    "inputPrice": 3,
+    "outputPrice": 15
+  },
+  {
     "model": "Claude-3-5-Sonnet-20241022",
     "provider": "Anthropic",
     "developer": "Anthropic",
