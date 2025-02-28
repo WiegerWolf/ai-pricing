@@ -9,7 +9,7 @@ export default function App() {
         <DataTable columns={columns(llmData)} data={llmData} />
       </main>
       <footer className="text-xs text-gray-500 py-4 px-4 flex items-center justify-between border-t">
-        <span>Last updated: Feb 26, 2025</span>
+        <span>Last updated: Feb 28, 2025</span>
         <span>
           Found a mistake? Submit a PR at{" "}
           <a
