@@ -13,7 +13,7 @@ export interface ColumnHeaderProps {
         title: string;
     };
     filter?: {
-        type: 'text' | 'range' | 'select' | 'boolean';  // Add boolean type
+        type: 'text' | 'range' | 'select' | 'boolean' | 'multi-select';  // Add multi-select type
         enabled: boolean;
         options?: string[];  // for select type
     };

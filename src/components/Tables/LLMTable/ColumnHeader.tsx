@@ -5,6 +5,7 @@ import { ColumnHeaderProps } from "@/components/types/column-header";
 import { SelectFilter } from "./SelectFilter";
 import { CheckboxFilter } from "./CheckboxFilter";
 import { RangeFilter } from "./RangeFilter";
+import { MultiSelectFilter } from "./MultiSelectFilter";
 
 export function ColumnHeader({
     title,
@@ -87,6 +88,12 @@ export function ColumnHeader({
                         <RangeFilter column={column} />
                     ) : filter.type === 'select' ? (
                         <SelectFilter
+                            column={column}
+                            options={filter.options || []}
+                            placeholder={`Filter...`}
+                        />
+                    ) : filter.type === 'multi-select' ? (
+                        <MultiSelectFilter
                             column={column}
                             options={filter.options || []}
                             placeholder={`Filter...`}

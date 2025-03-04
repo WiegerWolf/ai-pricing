@@ -97,14 +97,17 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="Provider"
                     tooltip="The company that provides the model"
                     filter={{
-                        type: 'select',
+                        type: 'multi-select',
                         enabled: true,
                         options: getUniqueProviders(data)
                     }}
                     sort={{ enabled: true }}
                 />
             ),
-            filterFn: "includesString",
+            filterFn: (row, id, value) => {
+                if (!value || (Array.isArray(value) && value.length === 0)) return true;
+                return Array.isArray(value) && value.includes(row.getValue(id));
+            },
             cell: ({ row }) => {
                 const provider = row.getValue<string>("provider");
                 const logo = providerLogos[provider];
