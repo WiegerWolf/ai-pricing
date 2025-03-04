@@ -267,7 +267,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     <div 
                         style={getCellBackground(value, contextRange.min, contextRange.max, {
                             useLog: true, // Add logarithmic scaling for context
-                            color: 'rgb(243 232 255)' // Keep purple for non-price metrics
+                            color: 'rgb(219 234 254)' // Light blue for context window size
                         })}
                         className="font-mono text-right block px-2 py-1"
                     >
