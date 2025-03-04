@@ -35,6 +35,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     const contextRange = getColumnMinMax(data, 'context');
     const inputPriceRange = getColumnMinMax(data, 'inputPrice');
     const outputPriceRange = getColumnMinMax(data, 'outputPrice');
+    const aiderBenchRange = getColumnMinMax(data, 'aiderBench');
 
     return [
         {
@@ -221,6 +222,33 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     </div>
                 );
             },
+            sortDescFirst: true,
+            sortUndefined: 'last'
+        },
+        {
+            accessorKey: "aiderBench",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Aider"
+                    tooltip="Polyglot benchmark measuring ability to edit code across multiple languages (higher is better)"
+                    link={{ url: "https://aider.chat/docs/leaderboards/", title: "Aider LLM Benchmarks" }}
+                    filter={{ type: 'range', enabled: true }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => {
+                const value = row.original.aiderBench;
+                return (
+                    <div 
+                        style={getCellBackground(value, aiderBenchRange.min, aiderBenchRange.max)}
+                        className="font-mono text-right block px-2 py-1"
+                    >
+                        {value ? `${value.toFixed(1)}%` : "-"}
+                    </div>
+                );
+            },
+            sortingFn: "alphanumeric",
             sortDescFirst: true,
             sortUndefined: 'last'
         },

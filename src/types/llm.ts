@@ -3,6 +3,7 @@ export interface LLMModel {
     provider: string;
     smartsElo?: number | null;
     simpleBench?: number;
+    aiderBench?: number;  // Add the new property
     codingElo?: number | null;
     webdevElo?: number | null;
     context?: number;
