@@ -65,6 +65,11 @@ export function ColumnHeader({
                             ) : (
                                 <span>{title}</span>
                             )}
+                            {tooltip && (
+                                <span className="ml-1 text-gray-400 text-xs rounded-full border border-gray-300 inline-flex items-center justify-center w-3.5 h-3.5">
+                                    ?
+                                </span>
+                            )}
                             {sort?.enabled && <SortIcon />}
                         </div>
                     </TooltipTrigger>
