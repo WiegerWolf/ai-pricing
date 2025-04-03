@@ -283,6 +283,23 @@
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
   },
   {
+    "model": "Gemini-2.5-Pro-Exp-03-25",
+    "provider": "Google AI",
+    "developer": "Google AI",
+    "smartsElo": 1440,
+    "codingElo": 1425,
+    "simpleBench": 51.6,
+    "aiderBench": 72.9,
+    "webdevElo": 1268,
+    "inputPrice": 0,
+    "outputPrice": 0,
+    "context": 1048,
+    "hasVision": true,
+    "toolUse": true,
+    "pricingUrl":"https://ai.google.dev/pricing",
+    "modelUrl": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/"
+  },
+  {
     "model": "Gemini-1.5-Pro-002",
     "provider": "Google AI",
     "developer": "Google AI",
