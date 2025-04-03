@@ -31,6 +31,19 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
+    "model": "ChatGPT-4o-latest (2025-03-26)",
+    "developer": "OpenAI",
+    "provider": "OpenAI",
+    "smartsElo": 1406,
+    "codingElo": 1425,
+    "context": 128,
+    "inputPrice": 2.5,
+    "outputPrice": 10,
+    "hasVision": true,
+    "notes": "can be 50% cheaper using batch processing",
+    "pricingUrl": "https://openai.com/api/pricing/"
+  },
+  {
     "model": "ChatGPT-4o-latest (2025-01-29)",
     "developer": "OpenAI",
     "provider": "OpenAI",
