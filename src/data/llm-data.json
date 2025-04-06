@@ -502,7 +502,8 @@
     "webdevElo": 1148,
     "modelUrl": "https://x.ai/blog/grok-3",
     "smartsElo": 1403,
-    "codingElo": 1403
+    "codingElo": 1403,
+    "toolUse": true
   },
   {
     "model": "Grok-2-12-12",
