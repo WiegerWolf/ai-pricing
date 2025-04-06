@@ -262,7 +262,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 <ColumnHeader
                     column={column}
                     title="MCBench"
-                    tooltip="Multi-choice benchmark score (higher is better)"
+                    tooltip="Minecraft benchmark measuring ability to build 3D structures (higher is better)"
                     link={{ url: "https://mcbench.ai/leaderboard", title: "MCBench Leaderboard" }}
                     filter={{ type: 'range', enabled: true }}
                     sort={{ enabled: true }}
