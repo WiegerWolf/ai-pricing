@@ -422,8 +422,8 @@
     "smartsElo": 1054,
     "codingElo": 1047,
     "context": 8,
-    "inputPrice": 0,
-    "outputPrice": 0,
+    "inputPrice": 0.04,
+    "outputPrice": 0.04,
     "hasVision": false,
     "notes": "8k context window, preview version, fastest model available",
     "pricingUrl": "https://groq.com/pricing/"
