@@ -456,20 +456,6 @@
     "pricingUrl": "https://groq.com/pricing/"
   },
   {
-    "model": "llama-3-70b-tool-use",
-    "provider": "Groq",
-    "developer": "Meta",
-    "smartsElo": 1210,
-    "codingElo": 1205,
-    "context": 8,
-    "inputPrice": 0,
-    "outputPrice": 0,
-    "hasVision": false,
-    "toolUse": true,
-    "notes": "preview version with tool use capabilities",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
     "model": "llama-guard-3-8b",
     "provider": "Groq",
     "developer": "Meta",
