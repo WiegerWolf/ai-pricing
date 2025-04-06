@@ -442,19 +442,6 @@
     "pricingUrl": "https://groq.com/pricing/"
   },
   {
-    "model": "llama-3.1-70b-versatile",
-    "provider": "Groq",
-    "developer": "Meta",
-    "smartsElo": 1206,
-    "codingElo": 1200,
-    "context": 128,
-    "inputPrice": 0,
-    "outputPrice": 0,
-    "hasVision": false,
-    "notes": "",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
     "model": "llama-3.1-8b-instant",
     "provider": "Groq",
     "developer": "Meta",
