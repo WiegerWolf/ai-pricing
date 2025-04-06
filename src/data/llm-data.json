@@ -43,8 +43,7 @@
     "outputPrice": 10,
     "hasVision": true,
     "notes": "can be 50% cheaper using batch processing",
-    "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 717
+    "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
     "model": "ChatGPT-4o-latest (2025-01-29)",
@@ -84,8 +83,7 @@
     "hasVision": true,
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "notes": "Output includes internal reasoning tokens",
-    "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 904
+    "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
     "model": "o1-mini",
@@ -102,7 +100,8 @@
     "hasVision": true,
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "notes": "Output includes internal reasoning tokens",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 904
   },
   {
     "model": "GPT-4o-2024-08-06",
@@ -134,7 +133,8 @@
     "hasVision": true,
     "toolUse": true,
     "notes": "can be 50% cheaper using batch processing",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 717
   },
   {
     "model": "o1-2024-12-17 (high)",
