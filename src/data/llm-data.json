@@ -462,8 +462,8 @@
     "smartsElo": 1140,
     "codingElo": 1130,
     "context": 8,
-    "inputPrice": 0,
-    "outputPrice": 0,
+    "inputPrice": 0.20,
+    "outputPrice": 0.20,
     "hasVision": false,
     "notes": "specialized for content moderation to work in pair with other llamas",
     "pricingUrl": "https://groq.com/pricing/"
