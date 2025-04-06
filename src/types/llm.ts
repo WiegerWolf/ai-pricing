@@ -2,10 +2,11 @@ export interface LLMModel {
     model: string;
     provider: string;
     smartsElo?: number | null;
-    simpleBench?: number;
-    aiderBench?: number;  // Add the new property
+    simpleBench?: number | null; // Allow null
+    aiderBench?: number | null;  // Allow null
     codingElo?: number | null;
     webdevElo?: number | null;
+    mcBenchElo?: number | null; // Add mcBenchElo and allow null
     context?: number;
     inputPrice?: number;
     outputPrice?: number;

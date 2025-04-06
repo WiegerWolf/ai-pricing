@@ -36,7 +36,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     const inputPriceRange = getColumnMinMax(data, 'inputPrice');
     const outputPriceRange = getColumnMinMax(data, 'outputPrice');
     const aiderBenchRange = getColumnMinMax(data, 'aiderBench');
-    const mcBenchEloRange = getColumnMinMax(data, 'mcBenchElo');
+    const mcBenchEloRange = getColumnMinMax(data, 'mcBenchElo'); // Ensure this uses the correct key
 
     return [
         {
