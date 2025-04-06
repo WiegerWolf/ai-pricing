@@ -159,7 +159,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="Arena"
                     tooltip="What people prefer (higher is better)"
                     link={{ url: "https://lmarena.ai/?leaderboard", title: "LM Arena Leaderboard" }}
-                    filter={{ type: 'range', enabled: true }}
                     sort={{ enabled: true }}
                 />
             ),
@@ -185,7 +184,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="Coding"
                     tooltip="Coding-specific performance score (higher is better)"
                     link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
-                    filter={{ type: 'range', enabled: true }}
                     sort={{ enabled: true }}
                 />
             ),
@@ -211,7 +209,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="WebDev"
                     tooltip="Web development specific performance score (higher is better)"
                     link={{ url: "https://web.lmarena.ai/leaderboard", title: "Web Arena Leaderboard" }}
-                    filter={{ type: 'range', enabled: true }}
                     sort={{ enabled: true }}
                 />
             ),
@@ -237,7 +234,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="Aider"
                     tooltip="Polyglot benchmark measuring ability to edit code across multiple languages (higher is better)"
                     link={{ url: "https://aider.chat/docs/leaderboards/", title: "Aider LLM Benchmarks" }}
-                    filter={{ type: 'range', enabled: true }}
                     sort={{ enabled: true }}
                 />
             ),
@@ -264,7 +260,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="MCBench"
                     tooltip="Minecraft benchmark measuring ability to build 3D structures (higher is better)"
                     link={{ url: "https://mcbench.ai/leaderboard", title: "MCBench Leaderboard" }}
-                    filter={{ type: 'range', enabled: true }}
                     sort={{ enabled: true }}
                 />
             ),
