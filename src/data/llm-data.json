@@ -13,7 +13,8 @@
     "modelUrl": "https://openai.com/index/introducing-gpt-4-5/",
     "context": 128,
     "toolUse": true,
-    "hasVision": true
+    "hasVision": true,
+    "mcBenchElo": 1220
   },
   {
     "model": "ChatGPT-4o-latest (2024-11-20)",
@@ -28,7 +29,8 @@
     "outputPrice": 10,
     "hasVision": true,
     "notes": "can be 50% cheaper using batch processing",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 1043
   },
   {
     "model": "ChatGPT-4o-latest (2025-03-26)",
@@ -41,7 +43,8 @@
     "outputPrice": 10,
     "hasVision": true,
     "notes": "can be 50% cheaper using batch processing",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 717
   },
   {
     "model": "ChatGPT-4o-latest (2025-01-29)",
@@ -81,7 +84,8 @@
     "hasVision": true,
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "notes": "Output includes internal reasoning tokens",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 904
   },
   {
     "model": "o1-mini",
@@ -113,7 +117,8 @@
     "hasVision": true,
     "toolUse": true,
     "notes": "can be 50% cheaper using batch processing, also cached input tokens are 50% cheaper",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 971
   },
   {
     "model": "GPT-4o-mini-2024-07-18",
@@ -144,7 +149,8 @@
     "hasVision": true,
     "context": 200,
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 1051
   },
   {
     "model": "o1-2024-12-17 (med)",
@@ -174,7 +180,8 @@
     "toolUse": true,
     "context": 200,
     "modelUrl": "https://platform.openai.com/docs/models#o3-mini",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 1123
   },
   {
     "model": "o3-mini",
@@ -190,7 +197,8 @@
     "context": 200,
     "toolUse": true,
     "outputPrice": 4.4,
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "mcBenchElo": 988
   },
   {
     "model": "gpt-4-turbo-2024-04-09",
@@ -220,7 +228,8 @@
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
     "context": 200,
     "inputPrice": 3,
-    "outputPrice": 15
+    "outputPrice": 15,
+    "mcBenchElo": 1332
   },
   {
     "model": "Claude 3.7 Sonnet (thinking)",
@@ -250,7 +259,8 @@
     "toolUse": true,
     "notes": "50% discount available with Batches API",
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
-    "modelUrl": "https://www.anthropic.com/claude/sonnet"
+    "modelUrl": "https://www.anthropic.com/claude/sonnet",
+    "mcBenchElo": 1210
   },
   {
     "model": "Claude-3-5-Sonnet-20240602",
@@ -277,7 +287,8 @@
     "context": 200,
     "hasVision": true,
     "toolUse": true,
-    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
+    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
+    "mcBenchElo": 1071
   },
   {
     "model": "Claude-3-5-Haiku-20241022",
@@ -293,7 +304,8 @@
     "toolUse": true,
     "notes": "Fastest model, 50% discount available with Batches API",
     "modelUrl": "https://www.anthropic.com/claude/haiku",
-    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api"
+    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
+    "mcBenchElo": 811
   },
   {
     "model": "Gemini-2.5-Pro-Exp-03-25",
@@ -354,7 +366,8 @@
     "context": 2000,
     "toolUse": true,
     "knowledgeCutoff": "2024-08",
-    "pricingUrl": "https://ai.google.dev/pricing"
+    "pricingUrl": "https://ai.google.dev/pricing",
+    "mcBenchElo": 1064
   },
   {
     "model": "Gemini-2.0-Flash-Thinking-Exp-2025-01-21",
@@ -371,7 +384,8 @@
     "knowledgeCutoff": "2024-08",
     "rateLimitRPM": 10,
     "modelUrl": "https://deepmind.google/technologies/gemini/flash-thinking/",
-    "pricingUrl": "https://ai.google.dev/pricing"
+    "pricingUrl": "https://ai.google.dev/pricing",
+    "mcBenchElo": 1088
   },
   {
     "model": "Gemini 2.0 Flash 001",
@@ -385,7 +399,8 @@
     "hasVision": true,
     "toolUse": true,
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
-    "pricingUrl": "https://ai.google.dev/pricing"
+    "pricingUrl": "https://ai.google.dev/pricing",
+    "mcBenchElo": 1094
   },
   {
     "model": "Gemini 2.0 Flash Exp",
@@ -414,7 +429,8 @@
     "context": 128,
     "toolUse": true,
     "modelUrl": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
-    "pricingUrl": "https://groq.com/pricing/"
+    "pricingUrl": "https://groq.com/pricing/",
+    "mcBenchElo": 744
   },
   {
     "model": "llama-3.2-1b-preview",
@@ -480,7 +496,8 @@
     "outputPrice": 6,
     "smartsElo": 1252,
     "codingElo": 1269,
-    "simpleBench": 22.5
+    "simpleBench": 22.5,
+    "mcBenchElo": 875
   },
   {
     "model": "Command R+",
@@ -512,7 +529,8 @@
     "inputPrice": 2,
     "outputPrice": 10,
     "context": 131,
-    "pricingUrl": "https://openrouter.ai/x-ai/grok-2-1212"
+    "pricingUrl": "https://openrouter.ai/x-ai/grok-2-1212",
+    "mcBenchElo": 829
   },
   {
     "model": "Grok-2-08-13",
@@ -544,7 +562,8 @@
     "simpleBench": 30.9,
     "maxOutputTokens": 8,
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "modelUrl": "https://github.com/deepseek-ai/DeepSeek-R1"
+    "modelUrl": "https://github.com/deepseek-ai/DeepSeek-R1",
+    "mcBenchElo": 1079
   },
   {
     "model": "DeepSeek V3",
@@ -562,7 +581,8 @@
     "maxOutputTokens": 4,
     "maxOutputTokensBeta": 8,
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/",
-    "modelUrl": "https://github.com/deepseek-ai/DeepSeek-V3"
+    "modelUrl": "https://github.com/deepseek-ai/DeepSeek-V3",
+    "mcBenchElo": 948
   },
   {
     "model": "Qwen2.5-Max",
@@ -576,7 +596,8 @@
     "inputPrice": 1.6,
     "outputPrice": 6.4,
     "pricingUrl": "https://openrouter.ai/qwen/qwen-max",
-    "modelUrl": "https://qwenlm.github.io/blog/qwen2.5/"
+    "modelUrl": "https://qwenlm.github.io/blog/qwen2.5/",
+    "mcBenchElo": 938
   },
   {
     "model": "Qwen2.5-Coder-32B-Instruct",
@@ -590,7 +611,8 @@
     "outputPrice": 0.16,
     "context": 33,
     "pricingUrl": "https://openrouter.ai/qwen/qwen-2.5-coder-32b-instruct",
-    "modelUrl": "https://qwenlm.github.io/blog/qwen2.5/"
+    "modelUrl": "https://qwenlm.github.io/blog/qwen2.5/",
+    "mcBenchElo": 1029
   },
   {
     "model": "Llama-3.1-405B-Instruct",
@@ -605,7 +627,8 @@
     "simpleBench": 23,
     "notes": "Also available for free tier",
     "modelUrl": "https://ai.meta.com/blog/meta-llama-3-1/",
-    "pricingUrl": "https://openrouter.ai/meta-llama/llama-3.1-405b-instruct"
+    "pricingUrl": "https://openrouter.ai/meta-llama/llama-3.1-405b-instruct",
+    "mcBenchElo": 743
   },
   {
     "model": "llama-3.1-nemotron-70b-instruct",

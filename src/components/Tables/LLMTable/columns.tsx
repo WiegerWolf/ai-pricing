@@ -36,6 +36,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     const inputPriceRange = getColumnMinMax(data, 'inputPrice');
     const outputPriceRange = getColumnMinMax(data, 'outputPrice');
     const aiderBenchRange = getColumnMinMax(data, 'aiderBench');
+    const mcBenchEloRange = getColumnMinMax(data, 'mcBenchElo');
 
     return [
         {
@@ -252,6 +253,32 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 );
             },
             sortingFn: "alphanumeric",
+            sortDescFirst: true,
+            sortUndefined: 'last'
+        },
+        {
+            accessorKey: "mcBenchElo",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="MCBench"
+                    tooltip="Multi-choice benchmark score (higher is better)"
+                    link={{ url: "https://mcbench.ai/leaderboard", title: "MCBench Leaderboard" }}
+                    filter={{ type: 'range', enabled: true }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => {
+                const value = row.original.mcBenchElo;
+                return (
+                    <div
+                        style={getCellBackground(value, mcBenchEloRange.min, mcBenchEloRange.max)}
+                        className="font-mono text-right block px-2 py-1"
+                    >
+                        {value || "-"}
+                    </div>
+                );
+            },
             sortDescFirst: true,
             sortUndefined: 'last'
         },
