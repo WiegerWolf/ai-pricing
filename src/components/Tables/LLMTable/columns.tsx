@@ -430,5 +430,25 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 return row.getValue(id) === value;
             },
         },
+        {
+            accessorKey: "hasReasoning",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Reasoning"
+                    tooltip="Whether the model has an explicit 'thinking' or 'reasoning' mode"
+                    filter={{ type: 'boolean', enabled: true }}
+                />
+            ),
+            cell: ({ row }) => (
+                <span className="text-center block">
+                    {row.original.hasReasoning ? "✓" : "-"}
+                </span>
+            ),
+            filterFn: (row, id, value: boolean) => {
+                if (value === undefined) return true;
+                return row.getValue(id) === value;
+            },
+        },
     ];
 };

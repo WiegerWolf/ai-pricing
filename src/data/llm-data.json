@@ -83,7 +83,8 @@
     "hasVision": true,
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "notes": "Output includes internal reasoning tokens",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "hasReasoning": true
   },
   {
     "model": "o1-mini",
@@ -101,7 +102,8 @@
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "notes": "Output includes internal reasoning tokens",
     "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 904
+    "mcBenchElo": 904,
+    "hasReasoning": true
   },
   {
     "model": "GPT-4o-2024-08-06",
@@ -150,7 +152,8 @@
     "context": 200,
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
     "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 1051
+    "mcBenchElo": 1051,
+    "hasReasoning": true
   },
   {
     "model": "o1-2024-12-17 (med)",
@@ -164,7 +167,8 @@
     "hasVision": true,
     "context": 200,
     "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
-    "pricingUrl": "https://openai.com/api/pricing/"
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "hasReasoning": true
   },
   {
     "model": "o3-mini (high)",
@@ -181,7 +185,8 @@
     "context": 200,
     "modelUrl": "https://platform.openai.com/docs/models#o3-mini",
     "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 1123
+    "mcBenchElo": 1123,
+    "hasReasoning": true
   },
   {
     "model": "o3-mini",
@@ -198,7 +203,8 @@
     "toolUse": true,
     "outputPrice": 4.4,
     "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 988
+    "mcBenchElo": 988,
+    "hasReasoning": true
   },
   {
     "model": "gpt-4-turbo-2024-04-09",
@@ -241,7 +247,8 @@
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
     "context": 200,
     "inputPrice": 3,
-    "outputPrice": 15
+    "outputPrice": 15,
+    "hasReasoning": true
   },
   {
     "model": "Claude-3-5-Sonnet-20241022",
@@ -385,7 +392,8 @@
     "rateLimitRPM": 10,
     "modelUrl": "https://deepmind.google/technologies/gemini/flash-thinking/",
     "pricingUrl": "https://ai.google.dev/pricing",
-    "mcBenchElo": 1088
+    "mcBenchElo": 1088,
+    "hasReasoning": true
   },
   {
     "model": "Gemini 2.0 Flash 001",
@@ -563,7 +571,8 @@
     "maxOutputTokens": 8,
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
     "modelUrl": "https://github.com/deepseek-ai/DeepSeek-R1",
-    "mcBenchElo": 1079
+    "mcBenchElo": 1079,
+    "hasReasoning": true
   },
   {
     "model": "DeepSeek-V3-0324",

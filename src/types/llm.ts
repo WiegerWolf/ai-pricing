@@ -18,6 +18,7 @@ export interface LLMModel {
     maxOutputTokensBeta?: number;
     modelUrl?: string;
     developer: string;
+    hasReasoning?: boolean; // Add the new property for thinking/reasoning mode
 }
 
 export interface CalculatorState {
