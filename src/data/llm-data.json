@@ -630,7 +630,7 @@
     "aiderBench": null,
     "webdevElo": null,
     "hasVision": true,
-    "toolUse": false,
+    "toolUse": true,
     "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick"
   },
@@ -642,6 +642,7 @@
     "outputPrice": 0.77,
     "smartsElo": 1417,
     "codingElo": 1428,
+    "toolUse": true,
     "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
     "pricingUrl": "https://groq.com/pricing/"
   }
