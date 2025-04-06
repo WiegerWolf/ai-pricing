@@ -618,6 +618,23 @@
     "pricingUrl": "https://openrouter.ai/nvidia/llama-3.1-nemotron-70b-instruct"
   },
   {
+    "model": "Llama 4 Maverick",
+    "provider": "OpenRouter",
+    "developer": "Meta",
+    "context": 131,
+    "inputPrice": 0.2,
+    "outputPrice": 0.6,
+    "smartsElo": null,
+    "codingElo": null,
+    "simpleBench": null,
+    "aiderBench": null,
+    "webdevElo": null,
+    "hasVision": true,
+    "toolUse": false,
+    "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+    "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick"
+  },
+  {
     "model": "Llama-4-Maverick-03-26-Experimental",
     "developer": "Meta",
     "provider": "Groq",
