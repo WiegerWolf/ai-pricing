@@ -566,6 +566,24 @@
     "mcBenchElo": 1079
   },
   {
+    "model": "DeepSeek-V3-0324",
+    "provider": "DeepSeek",
+    "developer": "DeepSeek",
+    "context": 64, // Assuming same as DeepSeek V3
+    "inputPrice": 0.27, // Assuming same as DeepSeek V3
+    "outputPrice": 1.1, // Assuming same as DeepSeek V3
+    "inputPriceCacheHit": 0.014, // Assuming same as DeepSeek V3
+    "smartsElo": 1370,
+    "webdevElo": 1208,
+    "codingElo": 1387,
+    "simpleBench": 27.2,
+    "mcBenchElo": 1163,
+    "maxOutputTokens": 4, // Assuming same as DeepSeek V3
+    "maxOutputTokensBeta": 8, // Assuming same as DeepSeek V3
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/", // Assuming same as DeepSeek V3
+    "modelUrl": "https://github.com/deepseek-ai/DeepSeek-V3" // Assuming same as DeepSeek V3
+  },
+  {
     "model": "DeepSeek V3",
     "provider": "DeepSeek",
     "developer": "DeepSeek",
