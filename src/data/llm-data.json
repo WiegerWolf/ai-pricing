@@ -643,5 +643,16 @@
     "codingElo": 1273,
     "modelUrl": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
     "pricingUrl": "https://openrouter.ai/nvidia/llama-3.1-nemotron-70b-instruct"
+  },
+  {
+    "model": "Llama-4-Maverick-03-26-Experimental",
+    "developer": "Meta",
+    "provider": "Groq",
+    "inputPrice": 0.50,
+    "outputPrice": 0.77,
+    "smartsElo": 1417,
+    "codingElo": 1428,
+    "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+    "pricingUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/"
   }
 ]
