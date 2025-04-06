@@ -241,6 +241,8 @@
     "model": "Claude 3.7 Sonnet (thinking)",
     "provider": "Anthropic",
     "developer": "Anthropic",
+    "smartsElo": 1305,
+    "codingElo": 1337,
     "simpleBench": 46.4,
     "aiderBench": 64.9,
     "modelUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
