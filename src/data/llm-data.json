@@ -569,19 +569,18 @@
     "model": "DeepSeek-V3-0324",
     "provider": "DeepSeek",
     "developer": "DeepSeek",
-    "context": 64, // Assuming same as DeepSeek V3
-    "inputPrice": 0.27, // Assuming same as DeepSeek V3
-    "outputPrice": 1.1, // Assuming same as DeepSeek V3
-    "inputPriceCacheHit": 0.014, // Assuming same as DeepSeek V3
+    "context": 64,
+    "inputPrice": 0.27,
+    "toolUse": true,
+    "aiderBench": 55.1,
+    "outputPrice": 1.1,
     "smartsElo": 1370,
     "webdevElo": 1208,
     "codingElo": 1387,
     "simpleBench": 27.2,
     "mcBenchElo": 1163,
-    "maxOutputTokens": 4, // Assuming same as DeepSeek V3
-    "maxOutputTokensBeta": 8, // Assuming same as DeepSeek V3
-    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/", // Assuming same as DeepSeek V3
-    "modelUrl": "https://github.com/deepseek-ai/DeepSeek-V3" // Assuming same as DeepSeek V3
+    "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "modelUrl": "https://api-docs.deepseek.com/news/news250325"
   },
   {
     "model": "DeepSeek V3",
