@@ -330,7 +330,8 @@
     "toolUse": true,
     "notes": "Pricing is $1.25/$10.00 (input/output) for prompts <= 200k tokens, $2.50/$15.00 for > 200k tokens. Free tier still available.",
     "pricingUrl":"https://ai.google.dev/pricing",
-    "modelUrl": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/"
+    "modelUrl": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/",
+    "hasReasoning": true
   },
   {
     "model": "Gemini-1.5-Pro-002",
