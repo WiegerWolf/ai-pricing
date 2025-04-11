@@ -311,7 +311,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     column={column}
                     title="Fiction"
                     tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better)"
-                    link={{ url: "https://fiction.live/benchmark", title: "Fiction.LiveBench Methodology" }} // Assuming this URL, adjust if needed
+                    link={{ url: "https://fiction.live/stories/Fiction-liveBench-Mar-25-2025/oQdzQvKHw8JyXbN87", title: "Fiction.LiveBench Methodology" }}
                     sort={{ enabled: true }}
                 />
             ),
