@@ -37,11 +37,11 @@ export function DataTable<TData, TValue>({
     });
 
     return (
-        <div className="border border-gray-200 rounded-sm shadow-sm overflow-hidden">
+        <div className="border border-gray-200 rounded-sm shadow-sm overflow-auto max-h-[calc(100vh-theme(spacing.16))]"> {/* Adjust max-h as needed, considering footer height */}
             <table className="w-full border-collapse text-sm">
-                <thead>
+                <thead className="sticky top-0 z-10"> {/* Make the thead sticky */}
                     {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id} className="bg-gray-50 border-b border-gray-200">
+                        <tr key={headerGroup.id} className="bg-gray-50 border-b border-gray-200"> {/* Ensure background for sticky header */}
                             {headerGroup.headers.map((header) => (
                                 <th
                                     key={header.id}
