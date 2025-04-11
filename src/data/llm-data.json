@@ -545,6 +545,17 @@
     "modelUrl": "https://x.ai/blog/grok-3"
   },
   {
+    "model": "Grok 3 Mini Beta",
+    "provider": "OpenRouter",
+    "developer": "xAI",
+    "inputPrice": 0.3,
+    "outputPrice": 0.5,
+    "context": 131,
+    "pricingUrl": "https://openrouter.ai/x-ai/grok-3-mini-beta",
+    "modelUrl": "https://x.ai/blog/grok-3",
+    "hasReasoning": true
+  },
+  {
     "model": "Grok-2-12-12",
     "provider": "OpenRouter",
     "developer": "xAI",
