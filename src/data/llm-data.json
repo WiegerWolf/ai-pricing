@@ -524,17 +524,6 @@
     "simpleBench": 17.4
   },
   {
-    "model": "early-grok-3",
-    "provider": "xAI",
-    "developer": "xAI",
-    "webdevElo": 1148,
-    "modelUrl": "https://x.ai/blog/grok-3",
-    "smartsElo": 1403,
-    "codingElo": 1403,
-    "toolUse": true,
-    "hasReasoning": true
-  },
-  {
     "model": "Grok 3 Beta",
     "provider": "OpenRouter",
     "developer": "xAI",
@@ -545,16 +534,21 @@
     "outputPrice": 15,
     "simpleBench": 36.1,
     "mcBenchElo": 962,
+    "aiderBench": 53.3,
+    "hasReasoning": true,
+    "toolUse": true,
     "context": 131,
     "pricingUrl": "https://openrouter.ai/x-ai/grok-3-beta",
     "modelUrl": "https://x.ai/blog/grok-3"
   },
   {
-    "model": "Grok 3 Mini Beta",
+    "model": "Grok 3 Mini (high)",
     "provider": "OpenRouter",
     "developer": "xAI",
     "inputPrice": 0.3,
     "outputPrice": 0.5,
+    "aiderBench": 49.3,
+    "mcBenchElo": 959,
     "context": 131,
     "pricingUrl": "https://openrouter.ai/x-ai/grok-3-mini-beta",
     "modelUrl": "https://x.ai/blog/grok-3",
