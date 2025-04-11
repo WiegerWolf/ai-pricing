@@ -3,6 +3,7 @@ export interface LLMModel {
     provider: string;
     smartsElo?: number | null;
     simpleBench?: number | null; // Allow null
+    fictionLiveBench?: number | null; // Add Fiction.LiveBench
     aiderBench?: number | null;  // Allow null
     codingElo?: number | null;
     webdevElo?: number | null;

@@ -32,6 +32,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     const codingEloRange = getColumnMinMax(data, 'codingElo');
     const webdevEloRange = getColumnMinMax(data, 'webdevElo');
     const simpleBenchRange = getColumnMinMax(data, 'simpleBench');
+    const fictionLiveBenchRange = getColumnMinMax(data, 'fictionLiveBench');
     const contextRange = getColumnMinMax(data, 'context');
     const inputPriceRange = getColumnMinMax(data, 'inputPrice');
     const outputPriceRange = getColumnMinMax(data, 'outputPrice');
@@ -296,6 +297,32 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                         className="font-mono text-right block px-2 py-1"
                     >
                         {value ? `${value.toFixed(1)}%` : "-"}
+                    </div>
+                );
+            },
+            sortingFn: "alphanumeric",
+            sortDescFirst: true,
+            sortUndefined: 'last'
+        },
+        {
+            accessorKey: "fictionLiveBench",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="Fiction"
+                    tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better)"
+                    link={{ url: "https://fiction.live/benchmark", title: "Fiction.LiveBench Methodology" }} // Assuming this URL, adjust if needed
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => {
+                const value = row.original.fictionLiveBench;
+                return (
+                    <div
+                        style={getCellBackground(value, fictionLiveBenchRange.min, fictionLiveBenchRange.max)}
+                        className="font-mono text-right block px-2 py-1"
+                    >
+                        {value ? `${value.toFixed(1)}%` : "-"} 
                     </div>
                 );
             },

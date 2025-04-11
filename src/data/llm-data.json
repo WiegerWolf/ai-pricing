@@ -8,6 +8,7 @@
     "smartsElo": 1411,
     "codingElo": 1426,
     "simpleBench": 34.5,
+    "fictionLiveBench": null,
     "aiderBench": 44.9,
     "pricingUrl": "https://openai.com/api/pricing/",
     "modelUrl": "https://openai.com/index/introducing-gpt-4-5/",
@@ -28,6 +29,7 @@
     "inputPrice": 2.5,
     "outputPrice": 10,
     "hasVision": true,
+    "fictionLiveBench": null,
     "notes": "can be 50% cheaper using batch processing",
     "pricingUrl": "https://openai.com/api/pricing/",
     "mcBenchElo": 1043
@@ -42,6 +44,7 @@
     "inputPrice": 2.5,
     "outputPrice": 10,
     "hasVision": true,
+    "fictionLiveBench": null,
     "notes": "can be 50% cheaper using batch processing",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
