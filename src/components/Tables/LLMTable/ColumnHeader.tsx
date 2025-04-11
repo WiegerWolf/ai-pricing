@@ -13,7 +13,8 @@ export function ColumnHeader({
     tooltip,
     link,
     filter,
-    sort
+    sort,
+    verticalText // Add verticalText prop
 }: ColumnHeaderProps) {
     const SortIcon = () => (
         <svg
@@ -46,8 +47,9 @@ export function ColumnHeader({
             <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
+                        {/* Apply vertical writing mode and rotation if verticalText is true */}
                         <div
-                            className="flex items-center gap-0.5 hover:bg-gray-50 p-0.5 rounded cursor-pointer select-none"
+                            className={`flex items-center gap-0.5 hover:bg-gray-50 p-0.5 rounded cursor-pointer select-none ${verticalText ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap justify-center h-20' : ''}`}
                             onClick={handleHeaderClick}
                         >
                             {link ? (
@@ -71,7 +73,8 @@ export function ColumnHeader({
                                     ?
                                 </span>
                             )}
-                            {sort?.enabled && <SortIcon />}
+                            {/* Adjust sort icon position for vertical text */}
+                            {sort?.enabled && <span className={verticalText ? 'mt-1' : 'ml-0.5'}><SortIcon /></span>}
                         </div>
                     </TooltipTrigger>
                     {tooltip && (

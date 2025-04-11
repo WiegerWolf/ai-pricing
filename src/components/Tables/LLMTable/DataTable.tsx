@@ -47,7 +47,8 @@ export function DataTable<TData, TValue>({
                             {headerGroup.headers.map((header) => (
                                 <th
                                     key={header.id}
-                                    className="text-left font-medium text-gray-500 p-1 first:pl-2 last:pr-2" // Reduced padding
+                                    // Adjust height and vertical alignment for header cells
+                                    className="text-left align-bottom font-medium text-gray-500 p-1 first:pl-2 last:pr-2 h-28" 
                                 >
                                     {header.isPlaceholder
                                         ? null

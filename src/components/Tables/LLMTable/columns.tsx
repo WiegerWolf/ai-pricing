@@ -161,6 +161,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="What people prefer (higher is better)"
                     link={{ url: "https://lmarena.ai/?leaderboard", title: "LM Arena Leaderboard" }}
                     sort={{ enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -186,6 +187,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Coding-specific performance score (higher is better)"
                     link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
                     sort={{ enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -211,6 +213,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Web development specific performance score (higher is better)"
                     link={{ url: "https://web.lmarena.ai/leaderboard", title: "Web Arena Leaderboard" }}
                     sort={{ enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -236,6 +239,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Polyglot benchmark measuring ability to edit code across multiple languages (higher is better)"
                     link={{ url: "https://aider.chat/docs/leaderboards/", title: "Aider LLM Benchmarks" }}
                     sort={{ enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -262,6 +266,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Minecraft benchmark measuring ability to build 3D structures (higher is better)"
                     link={{ url: "https://mcbench.ai/leaderboard", title: "MCBench Leaderboard" }}
                     sort={{ enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -287,6 +292,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
                     link={{ url: "https://simple-bench.com/#leaderboardTable", title: "Simple Bench Leaderboard Table" }}
                     sort={{ enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -313,6 +319,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better). We use the 60k context length score here."
                     link={{ url: "https://fiction.live/stories/Fiction-liveBench-Mar-25-2025/oQdzQvKHw8JyXbN87", title: "Fiction.LiveBench Methodology" }}
                     sort={{ enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {

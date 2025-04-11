@@ -21,4 +21,5 @@ export interface ColumnHeaderProps {
         enabled: boolean;
         descFirst?: boolean;
     };
+    verticalText?: boolean;    // Display header text vertically
 }
