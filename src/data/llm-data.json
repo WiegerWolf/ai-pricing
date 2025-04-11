@@ -715,6 +715,7 @@
     "developer": "Unknown",
     "inputPrice": 0,
     "outputPrice": 0,
+    "mcBenchElo": 1394,
     "context": 1000,
     "maxOutputTokens": 32,
     "pricingUrl": "https://openrouter.ai/openrouter/optimus-alpha",
