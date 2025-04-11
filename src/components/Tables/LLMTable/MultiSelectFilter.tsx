@@ -22,9 +22,10 @@ export function MultiSelectFilter({ column, options, placeholder }: MultiSelectF
     useEffect(() => {
         if (isOpen && buttonRef.current) {
             const rect = buttonRef.current.getBoundingClientRect();
+            // Use viewport-relative coordinates directly for fixed positioning
             setPosition({
-                top: rect.bottom + window.scrollY,
-                left: rect.left + window.scrollX,
+                top: rect.bottom, // Position below the button relative to viewport
+                left: rect.left,  // Position horizontally aligned with the button relative to viewport
                 width: rect.width
             });
         }
