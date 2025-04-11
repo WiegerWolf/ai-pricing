@@ -49,7 +49,7 @@ export function ColumnHeader({
                     <TooltipTrigger asChild>
                         <div
                             className={`hover:bg-gray-50 p-0.5 rounded cursor-pointer select-none ${verticalText
-                                ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap h-16 flex flex-col items-start justify-center gap-1' // Reduced height for vertical text
+                                ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap h-12 flex flex-col items-start justify-center gap-1' // Further reduced height for vertical text
                                 : 'flex items-center gap-0.5' // Horizontal layout: flex, items-center
                                 }`}
                             onClick={handleHeaderClick}
