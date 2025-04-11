@@ -541,7 +541,7 @@
     "inputPrice": 3,
     "outputPrice": 15,
     "simpleBench": 36.1,
-    "mcBench": 50.5,
+    "mcBenchElo": 962,
     "context": 131,
     "pricingUrl": "https://openrouter.ai/x-ai/grok-3-beta",
     "modelUrl": "https://x.ai/blog/grok-3"
