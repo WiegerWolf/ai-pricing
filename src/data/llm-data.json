@@ -710,6 +710,18 @@
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick"
   },
   {
+    "model": "Optimus Alpha",
+    "provider": "OpenRouter",
+    "developer": "Unknown",
+    "inputPrice": 0,
+    "outputPrice": 0,
+    "context": 1000,
+    "maxOutputTokens": 32,
+    "pricingUrl": "https://openrouter.ai/openrouter/optimus-alpha",
+    "modelUrl": "https://openrouter.ai/openrouter/optimus-alpha",
+    "notes": "All prompts and completions for this model are logged by the provider and may be used to improve the model."
+  },
+  {
     "model": "Llama-4-Maverick-03-26-Experimental",
     "developer": "Meta",
     "provider": "Groq",
