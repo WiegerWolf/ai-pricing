@@ -48,7 +48,7 @@ export function DataTable<TData, TValue>({
                                 <th
                                     key={header.id}
                                     // Adjust height and vertical alignment for header cells
-                                    className="text-left align-bottom font-medium text-gray-500 p-1 first:pl-2 last:pr-2 h-28" 
+                                    className="text-left align-bottom font-medium text-gray-500 p-1 first:pl-2 last:pr-2 h-24" // Reduced height
                                 >
                                     {header.isPlaceholder
                                         ? null
