@@ -47,12 +47,15 @@ export function ColumnHeader({
             <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        {/* Apply vertical writing mode and rotation if verticalText is true */}
                         <div
-                            className={`flex items-center gap-0.5 hover:bg-gray-50 p-0.5 rounded cursor-pointer select-none ${verticalText ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap justify-center h-20' : ''}`}
+                            className={`hover:bg-gray-50 p-0.5 rounded cursor-pointer select-none ${verticalText
+                                ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap h-20 flex flex-col items-center justify-center gap-1' // Vertical layout: flex-col, center items, add gap
+                                : 'flex items-center gap-0.5' // Horizontal layout: flex, items-center
+                                }`}
                             onClick={handleHeaderClick}
                         >
-                            {link ? (
+                            {/* Title or Link (without icon for vertical) */}
+                            {link && !verticalText ? (
                                 <a
                                     href={link.url}
                                     target="_blank"
@@ -61,6 +64,7 @@ export function ColumnHeader({
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     {title}
+                                    {/* Link icon for horizontal layout */}
                                     <svg className="w-2.5 h-2.5 ml-0.5 opacity-50" viewBox="0 0 12 12">
                                         <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z" />
                                     </svg>
@@ -68,17 +72,36 @@ export function ColumnHeader({
                             ) : (
                                 <span>{title}</span>
                             )}
-                            {tooltip && (
-                                <span className="ml-1 text-gray-400 text-xs rounded-full border border-gray-300 inline-flex items-center justify-center w-3.5 h-3.5">
-                                    ?
-                                </span>
-                            )}
-                            {/* Adjust sort icon position for vertical text */}
-                            {sort?.enabled && <span className={verticalText ? 'mt-1' : 'ml-0.5'}><SortIcon /></span>}
+
+                            {/* Icons container (horizontal for normal, vertical for verticalText due to writing-mode) */}
+                            <div className={`flex items-center ${verticalText ? 'gap-1' : 'gap-0.5'}`}>
+                                {/* Link icon for vertical layout */}
+                                {link && verticalText && (
+                                    <a
+                                        href={link.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <svg className="w-2.5 h-2.5 opacity-50 hover:opacity-80" viewBox="0 0 12 12">
+                                            <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z" />
+                                        </svg>
+                                    </a>
+                                )}
+                                {/* Tooltip Icon */}
+                                {tooltip && (
+                                    <span className="text-gray-400 text-xs rounded-full border border-gray-300 inline-flex items-center justify-center w-3.5 h-3.5">
+                                        ?
+                                    </span>
+                                )}
+                                {/* Sort Icon */}
+                                {sort?.enabled && <span><SortIcon /></span>}
+                            </div>
                         </div>
                     </TooltipTrigger>
                     {tooltip && (
-                        <TooltipContent side="top" align="start" className="text-xs">
+                        <TooltipContent side={verticalText ? "left" : "top"} align="start" className="text-xs"> {/* Adjust tooltip side for vertical */}
                             <p className="max-w-xs">{tooltip}</p>
                         </TooltipContent>
                     )}
