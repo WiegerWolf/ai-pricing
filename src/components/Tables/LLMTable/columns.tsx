@@ -427,6 +427,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="Vision"
                     tooltip="Whether the model can process images"
                     filter={{ type: 'boolean', enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => (
@@ -447,6 +448,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="Tools"
                     tooltip="Whether the model can use tools"
                     filter={{ type: 'boolean', enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => (
@@ -467,6 +469,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     title="Reasoning"
                     tooltip="Whether the model has an explicit 'thinking' or 'reasoning' mode"
                     filter={{ type: 'boolean', enabled: true }}
+                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => (
