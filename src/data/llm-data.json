@@ -535,6 +535,16 @@
     "hasReasoning": true
   },
   {
+    "model": "Grok 3 Beta",
+    "provider": "OpenRouter",
+    "developer": "xAI",
+    "inputPrice": 3,
+    "outputPrice": 15,
+    "context": 131,
+    "pricingUrl": "https://openrouter.ai/x-ai/grok-3-beta",
+    "modelUrl": "https://x.ai/blog/grok-3"
+  },
+  {
     "model": "Grok-2-12-12",
     "provider": "OpenRouter",
     "developer": "xAI",
