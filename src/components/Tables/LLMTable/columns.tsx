@@ -309,8 +309,8 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             header: ({ column }) => (
                 <ColumnHeader
                     column={column}
-                    title="Fiction"
-                    tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better)"
+                    title="Fiction@60k"
+                    tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better). We use the 60k context length score here."
                     link={{ url: "https://fiction.live/stories/Fiction-liveBench-Mar-25-2025/oQdzQvKHw8JyXbN87", title: "Fiction.LiveBench Methodology" }}
                     sort={{ enabled: true }}
                 />
