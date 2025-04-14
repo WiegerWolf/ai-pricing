@@ -67,8 +67,8 @@
     "provider": "OpenAI",
     "context": 128,
     "aiderBench": 27.1,
-    "inputPrice": 2.5,
-    "outputPrice": 10,
+    "inputPrice": 5.00,
+    "outputPrice": 15.00,
     "hasVision": true,
     "notes": "can be 50% cheaper using batch processing",
     "pricingUrl": "https://openai.com/api/pricing/"
