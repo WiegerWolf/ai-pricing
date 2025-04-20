@@ -204,7 +204,7 @@
     "mcBenchElo": 811
   },
   {
-    "model": "Gemini-2.5-Pro-Exp-03-25",
+    "model": "Gemini-2.5-Pro",
     "provider": "Google AI",
     "developer": "Google AI",
     "smartsElo": 1440,
