@@ -153,58 +153,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             },
         },
         {
-            accessorKey: "smartsElo",
-            header: ({ column }) => (
-                <ColumnHeader
-                    column={column}
-                    title="Arena"
-                    tooltip="What people prefer (higher is better)"
-                    link={{ url: "https://lmarena.ai/?leaderboard", title: "LM Arena Leaderboard" }}
-                    sort={{ enabled: true }}
-                    verticalText={true} // Add this line
-                />
-            ),
-            cell: ({ row }) => {
-                const value = row.original.smartsElo;
-                return (
-                    <div 
-                        style={getCellBackground(value, smartsEloRange.min, smartsEloRange.max)}
-                        className="font-mono text-right block px-2 py-1"
-                    >
-                        {value || "-"}
-                    </div>
-                );
-            },
-            sortDescFirst: true,
-            sortUndefined: 'last'
-        },
-        {
-            accessorKey: "codingElo",
-            header: ({ column }) => (
-                <ColumnHeader
-                    column={column}
-                    title="Coding"
-                    tooltip="Coding-specific performance score (higher is better)"
-                    link={{ url: "https://openlm.ai/chatbot-arena/", title: "OpenLM Chatbot Arena" }}
-                    sort={{ enabled: true }}
-                    verticalText={true} // Add this line
-                />
-            ),
-            cell: ({ row }) => {
-                const value = row.original.codingElo;
-                return (
-                    <div 
-                        style={getCellBackground(value, codingEloRange.min, codingEloRange.max)}
-                        className="font-mono text-right block px-2 py-1"
-                    >
-                        {value || "-"}
-                    </div>
-                );
-            },
-            sortDescFirst: true,
-            sortUndefined: 'last'
-        },
-        {
             accessorKey: "webdevElo",
             header: ({ column }) => (
                 <ColumnHeader
