@@ -28,8 +28,6 @@ const getUniqueProviders = (data: LLMModel[]) => {
 
 export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     // Calculate min/max values for numerical columns
-    const smartsEloRange = getColumnMinMax(data, 'smartsElo');
-    const codingEloRange = getColumnMinMax(data, 'codingElo');
     const webdevEloRange = getColumnMinMax(data, 'webdevElo');
     const simpleBenchRange = getColumnMinMax(data, 'simpleBench');
     const fictionLiveBenchRange = getColumnMinMax(data, 'fictionLiveBench');
