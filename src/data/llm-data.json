@@ -430,59 +430,6 @@
     "mcBenchElo": 744
   },
   {
-    "model": "llama-3.2-1b-preview",
-    "provider": "Groq",
-    "developer": "Meta",
-    "smartsElo": 1054,
-    "codingElo": 1047,
-    "context": 8,
-    "inputPrice": 0.04,
-    "outputPrice": 0.04,
-    "hasVision": false,
-    "notes": "8k context window, preview version, fastest model available",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
-    "model": "llama-3.2-3b-preview",
-    "provider": "Groq",
-    "developer": "Meta",
-    "smartsElo": 1100,
-    "codingElo": 1090,
-    "context": 8,
-    "inputPrice": 0.06,
-    "outputPrice": 0.06,
-    "hasVision": false,
-    "notes": "8k context window, preview version",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
-    "model": "llama-3.1-8b-instant",
-    "provider": "Groq",
-    "developer": "Meta",
-    "smartsElo": 1152,
-    "codingElo": 1146,
-    "context": 128,
-    "inputPrice": 0.05,
-    "outputPrice": 0.08,
-    "hasVision": false,
-    "toolUse": true,
-    "notes": "",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
-    "model": "llama-guard-3-8b",
-    "provider": "Groq",
-    "developer": "Meta",
-    "smartsElo": 1140,
-    "codingElo": 1130,
-    "context": 8,
-    "inputPrice": 0.20,
-    "outputPrice": 0.20,
-    "hasVision": false,
-    "notes": "specialized for content moderation to work in pair with other llamas",
-    "pricingUrl": "https://groq.com/pricing/"
-  },
-  {
     "model": "Mistral Large v2",
     "provider": "OpenRouter",
     "developer": "Mistral",
@@ -627,18 +574,6 @@
     "mcBenchElo": 743
   },
   {
-    "model": "llama-3.1-nemotron-70b-instruct",
-    "provider": "OpenRouter",
-    "developer": "Nvidia",
-    "context": 131,
-    "inputPrice": 0.35,
-    "outputPrice": 0.4,
-    "smartsElo": 1269,
-    "codingElo": 1273,
-    "modelUrl": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
-    "pricingUrl": "https://openrouter.ai/nvidia/llama-3.1-nemotron-70b-instruct"
-  },
-  {
     "model": "Llama 4 Maverick",
     "provider": "OpenRouter",
     "developer": "Meta",
@@ -655,31 +590,5 @@
     "toolUse": true,
     "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick"
-  },
-  {
-    "model": "Optimus Alpha",
-    "provider": "OpenRouter",
-    "developer": "Unknown",
-    "inputPrice": 0,
-    "outputPrice": 0,
-    "mcBenchElo": 1394,
-    "aiderBench": 52.9,
-    "context": 1000,
-    "maxOutputTokens": 32,
-    "pricingUrl": "https://openrouter.ai/openrouter/optimus-alpha",
-    "modelUrl": "https://openrouter.ai/openrouter/optimus-alpha",
-    "notes": "All prompts and completions for this model are logged by the provider and may be used to improve the model."
-  },
-  {
-    "model": "Llama-4-Maverick-03-26-Experimental",
-    "developer": "Meta",
-    "provider": "Groq",
-    "inputPrice": 0.50,
-    "outputPrice": 0.77,
-    "smartsElo": 1417,
-    "codingElo": 1428,
-    "toolUse": true,
-    "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
-    "pricingUrl": "https://groq.com/pricing/"
   }
 ]
