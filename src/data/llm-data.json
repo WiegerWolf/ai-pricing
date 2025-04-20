@@ -45,24 +45,6 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
-    "model": "gpt-4.5",
-    "provider": "OpenAI",
-    "developer": "OpenAI",
-    "inputPrice": 75,
-    "outputPrice": 150,
-    "smartsElo": 1411,
-    "codingElo": 1426,
-    "simpleBench": 34.5,
-    "fictionLiveBench": 66.7,
-    "aiderBench": 44.9,
-    "pricingUrl": "https://openai.com/api/pricing/",
-    "modelUrl": "https://openai.com/index/introducing-gpt-4-5/",
-    "context": 128,
-    "toolUse": true,
-    "hasVision": true,
-    "mcBenchElo": 1220
-  },
-  {
     "model": "ChatGPT-4o-latest",
     "developer": "OpenAI",
     "provider": "OpenAI",
@@ -248,23 +230,6 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
-    "model": "Claude 3.7 Sonnet",
-    "provider": "Anthropic",
-    "developer": "Anthropic",
-    "simpleBench": 44.9,
-    "fictionLiveBench": 44.4,
-    "aiderBench": 60.4,
-    "webdevElo": 1363,
-    "codingElo": 1364,
-    "smartsElo": 1309,
-    "modelUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
-    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
-    "context": 200,
-    "inputPrice": 3,
-    "outputPrice": 15,
-    "mcBenchElo": 1332
-  },
-  {
     "model": "Claude 3.7 Sonnet (thinking)",
     "provider": "Anthropic",
     "developer": "Anthropic",
@@ -272,6 +237,7 @@
     "codingElo": 1337,
     "simpleBench": 46.4,
     "fictionLiveBench": 69.4,
+    "mcBenchElo": 1260,
     "aiderBench": 64.9,
     "modelUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
