@@ -8,7 +8,7 @@
     "toolUse": true,
     "inputPrice": 2,
     "outputPrice": 8,
-    "mcBenchElo": 1296,
+    "mcBenchElo": 1204,
     "webdevElo": 1286,
     "aiderBench": 52.4,
     "simpleBench": 27,
@@ -25,7 +25,7 @@
     "toolUse": true,
     "inputPrice": 0.4,
     "outputPrice": 1.6,
-    "mcBenchElo": 1181,
+    "mcBenchElo": 1029,
     "webdevElo": 1186,
     "aiderBench": 32.4,
     "fictionLiveBench": 38.9,
@@ -41,7 +41,7 @@
     "toolUse": true,
     "inputPrice": 0.1,
     "outputPrice": 0.4,
-    "mcBenchElo": 900,
+    "mcBenchElo": 891,
     "aiderBench": 8.9,
     "fictionLiveBench": 36.1,
     "modelUrl": "https://openai.com/index/gpt-4-1/",
@@ -62,7 +62,7 @@
     "fictionLiveBench": 55.6,
     "notes": "can be 50% cheaper using batch processing",
     "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 1043
+    "mcBenchElo": 1122
   },
   {
     "model": "o3",
@@ -78,7 +78,7 @@
     "outputPrice": 40,
     "aiderBench": 83.7,
     "simpleBench": 53.1,
-    "mcBenchElo": 1108,
+    "mcBenchElo": 1213,
     "fictionLiveBench": 83.3
   },
   {
@@ -147,7 +147,7 @@
     "context": 200,
     "modelUrl": "https://platform.openai.com/docs/models#o3-mini",
     "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 1123,
+    "mcBenchElo": 934,
     "hasReasoning": true
   },
   {
@@ -158,7 +158,7 @@
     "codingElo": 1337,
     "simpleBench": 46.4,
     "fictionLiveBench": 69.4,
-    "mcBenchElo": 1260,
+    "mcBenchElo": 1288,
     "aiderBench": 64.9,
     "modelUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
@@ -234,7 +234,7 @@
     "toolUse": true,
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
     "pricingUrl": "https://ai.google.dev/pricing",
-    "mcBenchElo": 1094
+    "mcBenchElo": 1036
   },
   {
     "model": "Llama 3.3 70b instruct",
@@ -306,7 +306,7 @@
     "outputPrice": 0.5,
     "fictionLiveBench": 72.2,
     "aiderBench": 49.3,
-    "mcBenchElo": 959,
+    "mcBenchElo": 990,
     "context": 131,
     "pricingUrl": "https://openrouter.ai/x-ai/grok-3-mini-beta",
     "modelUrl": "https://x.ai/blog/grok-3",
@@ -329,7 +329,7 @@
     "maxOutputTokens": 8,
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
     "modelUrl": "https://github.com/deepseek-ai/DeepSeek-R1",
-    "mcBenchElo": 1079,
+    "mcBenchElo": 1046,
     "hasReasoning": true
   },
   {
@@ -346,7 +346,7 @@
     "codingElo": 1387,
     "simpleBench": 27.2,
     "fictionLiveBench": 55.6,
-    "mcBenchElo": 1163,
+    "mcBenchElo": 1126,
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/",
     "modelUrl": "https://api-docs.deepseek.com/news/news250325"
   },
@@ -363,7 +363,7 @@
     "outputPrice": 6.4,
     "pricingUrl": "https://openrouter.ai/qwen/qwen-max",
     "modelUrl": "https://qwenlm.github.io/blog/qwen2.5/",
-    "mcBenchElo": 938
+    "mcBenchElo": 949
   },
   {
     "model": "Qwen2.5-Coder-32B-Instruct",
