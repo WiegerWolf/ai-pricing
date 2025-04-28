@@ -132,25 +132,6 @@
     "mcBenchElo": 717
   },
   {
-    "model": "o1 (high)",
-    "provider": "OpenAI",
-    "developer": "OpenAI",
-    "simpleBench": 40.1,
-    "smartsElo": 1352,
-    "aiderBench": 61.7,
-    "codingElo": 1361,
-    "inputPrice": 15,
-    "outputPrice": 60,
-    "webdevElo": 1045,
-    "fictionLiveBench": 72.2,
-    "hasVision": true,
-    "context": 200,
-    "modelUrl": "https://openai.com/index/introducing-openai-o1-preview/",
-    "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 1051,
-    "hasReasoning": true
-  },
-  {
     "model": "o3-mini (high)",
     "provider": "OpenAI",
     "developer": "OpenAI",
