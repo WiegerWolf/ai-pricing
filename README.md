@@ -4,7 +4,7 @@ An interactive web tool to compare pricing and performance metrics across AI lan
 <!-- and Speech-to-Text (STT) services. -->
 
 ## 🌐 Live Demo
-Visit [https://ai-pricing.vercel.app/](https://ai-pricing.vercel.app/)
+Visit [ai.tsatsin.com](https://ai.tsatsin.com/)
 
 ## 📊 Features
 
@@ -40,7 +40,7 @@ Visit [https://ai-pricing.vercel.app/](https://ai-pricing.vercel.app/)
 <!-- - Keyboard navigation support -->
 
 ## 🔄 Data Sources
-- LLM performance metrics from [Arena ELO leaderboard](https://chat.lmsys.org/?leaderboard)
+- LLM performance metrics from various benchmarks
 - Pricing information from official provider documentation
 - Regular updates based on provider announcements
 - Community feedback and contributions
