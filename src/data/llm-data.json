@@ -161,6 +161,7 @@
     "outputPrice": 75,
     "hasVision": true,
     "toolUse": true,
+    "hasReasoning": true,
     "notes": "50% discount with batch processing, prompt caching: write $18.75/MTok, read $1.50/MTok"
   },
   {
@@ -174,6 +175,7 @@
     "outputPrice": 15,
     "hasVision": true,
     "toolUse": true,
+    "hasReasoning": true,
     "notes": "50% discount with batch processing, prompt caching: write $3.75/MTok, read $0.30/MTok"
   },
   {
