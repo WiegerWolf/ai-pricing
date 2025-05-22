@@ -151,21 +151,30 @@
     "hasReasoning": true
   },
   {
-    "model": "Claude 3.7 Sonnet (thinking)",
+    "model": "Claude 4 Opus",
     "provider": "Anthropic",
     "developer": "Anthropic",
-    "smartsElo": 1305,
-    "codingElo": 1337,
-    "simpleBench": 46.4,
-    "fictionLiveBench": 69.4,
-    "mcBenchElo": 1288,
-    "aiderBench": 64.9,
-    "modelUrl": "https://www.anthropic.com/news/claude-3-7-sonnet",
+    "modelUrl": "https://www.anthropic.com/news/claude-4",
+    "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
+    "context": 200,
+    "inputPrice": 15,
+    "outputPrice": 75,
+    "hasVision": true,
+    "toolUse": true,
+    "notes": "50% discount with batch processing, prompt caching: write $18.75/MTok, read $1.50/MTok"
+  },
+  {
+    "model": "Claude 4 Sonnet",
+    "provider": "Anthropic",
+    "developer": "Anthropic",
+    "modelUrl": "https://www.anthropic.com/news/claude-4",
     "pricingUrl": "https://www.anthropic.com/pricing#anthropic-api",
     "context": 200,
     "inputPrice": 3,
     "outputPrice": 15,
-    "hasReasoning": true
+    "hasVision": true,
+    "toolUse": true,
+    "notes": "50% discount with batch processing, prompt caching: write $3.75/MTok, read $0.30/MTok"
   },
   {
     "model": "Claude-3-5-Haiku-20241022",
