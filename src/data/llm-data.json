@@ -162,6 +162,7 @@
     "hasVision": true,
     "toolUse": true,
     "hasReasoning": true,
+    "fictionLiveBench": 55.6,
     "notes": "50% discount with batch processing, prompt caching: write $18.75/MTok, read $1.50/MTok"
   },
   {
@@ -176,6 +177,7 @@
     "hasVision": true,
     "toolUse": true,
     "hasReasoning": true,
+    "fictionLiveBench": 37.5,
     "notes": "50% discount with batch processing, prompt caching: write $3.75/MTok, read $0.30/MTok"
   },
   {
