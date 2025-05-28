@@ -163,7 +163,8 @@
     "toolUse": true,
     "hasReasoning": true,
     "fictionLiveBench": 55.6,
-    "notes": "50% discount with batch processing, prompt caching: write $18.75/MTok, read $1.50/MTok"
+    "notes": "50% discount with batch processing, prompt caching: write $18.75/MTok, read $1.50/MTok",
+    "aiderBench": 72.0
   },
   {
     "model": "Claude 4 Sonnet",
@@ -178,7 +179,8 @@
     "toolUse": true,
     "hasReasoning": true,
     "fictionLiveBench": 37.5,
-    "notes": "50% discount with batch processing, prompt caching: write $3.75/MTok, read $0.30/MTok"
+    "notes": "50% discount with batch processing, prompt caching: write $3.75/MTok, read $0.30/MTok",
+    "aiderBench": 61.3
   },
   {
     "model": "Claude-3-5-Haiku-20241022",
