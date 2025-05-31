@@ -342,7 +342,7 @@
     "smartsElo": 1361,
     "webdevElo": 1210,
     "codingElo": 1364,
-    "simpleBench": 30.9,
+    "simpleBench": 40.8,
     "maxOutputTokens": 8,
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing",
     "modelUrl": "https://github.com/deepseek-ai/DeepSeek-R1",
