@@ -165,7 +165,8 @@
     "fictionLiveBench": 55.6,
     "notes": "50% discount with batch processing, prompt caching: write $18.75/MTok, read $1.50/MTok",
     "aiderBench": 72.0,
-    "simpleBench": 58.8
+    "simpleBench": 58.8,
+    "mcBenchElo": 1285
   },
   {
     "model": "Claude 4 Sonnet",
@@ -182,7 +183,8 @@
     "fictionLiveBench": 37.5,
     "notes": "50% discount with batch processing, prompt caching: write $3.75/MTok, read $0.30/MTok",
     "aiderBench": 61.3,
-    "simpleBench": 45.5
+    "simpleBench": 45.5,
+    "mcBenchElo": 1181
   },
   {
     "model": "Claude-3-5-Haiku-20241022",
@@ -219,7 +221,8 @@
     "notes": "Pricing is $1.25/$10.00 (input/output) for prompts <= 200k tokens, $2.50/$15.00 for > 200k tokens. Free tier still available.",
     "pricingUrl":"https://ai.google.dev/pricing",
     "modelUrl": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/",
-    "hasReasoning": true
+    "hasReasoning": true,
+    "mcBenchElo": 1284
   },
   {
     "model": "Gemini-1.5-Pro-002",
