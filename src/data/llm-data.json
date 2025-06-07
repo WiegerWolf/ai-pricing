@@ -224,7 +224,7 @@
     "pricingUrl":"https://ai.google.dev/pricing",
     "modelUrl": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/",
     "hasReasoning": true,
-    "mcBenchElo": 1284
+    "mcBenchElo": 1425
   },
   {
     "model": "Gemini-1.5-Pro-002",
