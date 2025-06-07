@@ -60,14 +60,17 @@ export function ColumnHeader({
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:underline inline-flex items-center"
+                                    className="hover:underline inline-flex items-center group"
                                     onClick={(e) => e.stopPropagation()}
+                                    style={{ minHeight: 24 }} // Make the link area a bit taller
                                 >
                                     {title}
                                     {/* Link icon for horizontal layout */}
-                                    <svg className="w-2.5 h-2.5 ml-0.5 opacity-50" viewBox="0 0 12 12">
-                                        <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z" />
-                                    </svg>
+                                    <span className="ml-0.5 flex items-center justify-center rounded hover:bg-gray-200 transition p-1 group-hover:bg-gray-200" style={{ minWidth: 24, minHeight: 24 }}>
+                                        <svg className="w-4 h-4 opacity-50" viewBox="0 0 12 12">
+                                            <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z" />
+                                        </svg>
+                                    </span>
                                 </a>
                             ) : (
                                 <span>{title}</span>
@@ -81,10 +84,11 @@ export function ColumnHeader({
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center"
+                                        className="inline-flex items-center justify-center rounded hover:bg-gray-200 transition p-1"
                                         onClick={(e) => e.stopPropagation()}
+                                        style={{ minWidth: 24, minHeight: 24 }}
                                     >
-                                        <svg className="w-2.5 h-2.5 opacity-50 hover:opacity-80" viewBox="0 0 12 12">
+                                        <svg className="w-4 h-4 opacity-50 hover:opacity-80" viewBox="0 0 12 12">
                                             <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z" />
                                         </svg>
                                     </a>
