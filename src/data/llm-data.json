@@ -200,20 +200,6 @@
     "mcBenchElo": 1036
   },
   {
-    "model": "Llama 3.3 70b instruct",
-    "provider": "Groq",
-    "developer": "Meta",
-    "simpleBench": 19.9,
-    "inputPrice": 0.59,
-    "outputPrice": 0.79,
-    "fictionLiveBench": 33.3,
-    "context": 128,
-    "toolUse": true,
-    "modelUrl": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
-    "pricingUrl": "https://groq.com/pricing/",
-    "mcBenchElo": 744
-  },
-  {
     "model": "Grok 3 Beta",
     "provider": "OpenRouter",
     "developer": "xAI",
@@ -277,6 +263,20 @@
     "mcBenchElo": 1126,
     "pricingUrl": "https://api-docs.deepseek.com/quick_start/pricing/",
     "modelUrl": "https://api-docs.deepseek.com/news/news250325"
+  },
+  {
+    "model": "Llama 3.3 70b instruct",
+    "provider": "Groq",
+    "developer": "Meta",
+    "simpleBench": 19.9,
+    "inputPrice": 0.59,
+    "outputPrice": 0.79,
+    "fictionLiveBench": 33.3,
+    "context": 128,
+    "toolUse": true,
+    "modelUrl": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+    "pricingUrl": "https://groq.com/pricing/",
+    "mcBenchElo": 744
   },
   {
     "model": "Llama-3.1-405B-Instruct",
