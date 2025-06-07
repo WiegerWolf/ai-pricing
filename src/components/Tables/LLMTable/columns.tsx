@@ -289,13 +289,21 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 <ColumnHeader
                     column={column}
                     title="Context"
-                    tooltip="The maximum number of tokens the model can process at once. 'k' stands for thousands of tokens."
+                    tooltip="The maximum number of tokens the model can process at once. 'k' stands for thousands of tokens. 'M' stands for millions of tokens."
                     filter={{ type: 'range', enabled: true }}
                     sort={{ enabled: true }}
                 />
             ),
             cell: ({ row }) => {
                 const value = row.original.context;
+                let displayValue = "-";
+                if (value) {
+                    if (value >= 1000) {
+                        displayValue = "1M";
+                    } else {
+                        displayValue = `${value}k`;
+                    }
+                }
                 return (
                     <div 
                         style={getCellBackground(value, contextRange.min, contextRange.max, {
@@ -304,7 +312,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                         })}
                         className="font-mono text-right block px-2 py-1"
                     >
-                        {value ? `${value}k` : "-"}
+                        {displayValue}
                     </div>
                 );
             },
