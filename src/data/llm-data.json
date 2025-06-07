@@ -167,7 +167,7 @@
     "aiderBench": 72.0,
     "simpleBench": 58.8,
     "mcBenchElo": 1285,
-    "webdevElo": 1416
+    "webdevElo": 1411
   },
   {
     "model": "Claude 4 Sonnet",
@@ -186,7 +186,7 @@
     "aiderBench": 61.3,
     "simpleBench": 45.5,
     "mcBenchElo": 1181,
-    "webdevElo": 1386
+    "webdevElo": 1389
   },
   {
     "model": "Claude-3-5-Haiku-20241022",
