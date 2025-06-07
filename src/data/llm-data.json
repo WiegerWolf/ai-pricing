@@ -296,7 +296,7 @@
     "model": "Llama 4 Maverick",
     "provider": "OpenRouter",
     "developer": "Meta",
-    "context": 131,
+    "context": 1048,
     "inputPrice": 0.2,
     "outputPrice": 0.6,
     "aiderBench": 15.6,
