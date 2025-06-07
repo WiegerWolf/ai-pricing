@@ -324,32 +324,6 @@
     "modelUrl": "https://api-docs.deepseek.com/news/news250325"
   },
   {
-    "model": "Qwen2.5-Max",
-    "provider": "Alibaba",
-    "developer": "Qwen",
-    "webdevElo": 981,
-    "context": 33,
-    "aiderBench": 21.8,
-    "inputPrice": 1.6,
-    "outputPrice": 6.4,
-    "pricingUrl": "https://openrouter.ai/qwen/qwen-max",
-    "modelUrl": "https://qwenlm.github.io/blog/qwen2.5/",
-    "mcBenchElo": 949
-  },
-  {
-    "model": "Qwen2.5-Coder-32B-Instruct",
-    "provider": "OpenRouter",
-    "developer": "Qwen",
-    "webdevElo": 904,
-    "aiderBench": 16.4,
-    "inputPrice": 0.07,
-    "outputPrice": 0.16,
-    "context": 33,
-    "pricingUrl": "https://openrouter.ai/qwen/qwen-2.5-coder-32b-instruct",
-    "modelUrl": "https://qwenlm.github.io/blog/qwen2.5/",
-    "mcBenchElo": 1029
-  },
-  {
     "model": "Llama-3.1-405B-Instruct",
     "provider": "OpenRouter",
     "developer": "Meta",
