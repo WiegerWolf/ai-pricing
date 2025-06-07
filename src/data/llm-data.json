@@ -48,21 +48,6 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
-    "model": "ChatGPT-4o-latest",
-    "developer": "OpenAI",
-    "provider": "OpenAI",
-    "webdevElo": 964,
-    "context": 128,
-    "aiderBench": 27.1,
-    "inputPrice": 5.00,
-    "outputPrice": 15.00,
-    "hasVision": true,
-    "fictionLiveBench": 55.6,
-    "notes": "can be 50% cheaper using batch processing",
-    "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 1122
-  },
-  {
     "model": "o3",
     "provider": "OpenAI",
     "developer": "OpenAI",
