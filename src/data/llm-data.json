@@ -259,29 +259,6 @@
     "mcBenchElo": 744
   },
   {
-    "model": "Mistral Large v2",
-    "provider": "OpenRouter",
-    "developer": "Mistral",
-    "modelUrl": "https://mistral.ai/news/mistral-large-2407/",
-    "pricingUrl": "https://openrouter.ai/mistralai/mistral-large-2407",
-    "context": 128,
-    "inputPrice": 2,
-    "outputPrice": 6,
-    "simpleBench": 22.5,
-    "mcBenchElo": 875
-  },
-  {
-    "model": "Command R+",
-    "provider": "OpenRouter",
-    "developer": "Cohere",
-    "modelUrl": "https://docs.cohere.com/docs/command-r-plus#model-details",
-    "pricingUrl": "https://docs.cohere.com/docs/command-r-plus#model-details",
-    "context": 128,
-    "inputPrice": 2.375,
-    "outputPrice": 9.5,
-    "simpleBench": 17.4
-  },
-  {
     "model": "Grok 3 Beta",
     "provider": "OpenRouter",
     "developer": "xAI",
