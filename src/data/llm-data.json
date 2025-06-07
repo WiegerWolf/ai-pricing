@@ -97,36 +97,6 @@
     "fictionLiveBench": 66.7
   },
   {
-    "model": "GPT-4o-2024-08-06",
-    "provider": "OpenAI",
-    "developer": "OpenAI",
-    "simpleBench": 17.8,
-    "context": 128,
-    "aiderBench": 23.1,
-    "inputPrice": 2.5,
-    "outputPrice": 10,
-    "hasVision": true,
-    "toolUse": true,
-    "notes": "can be 50% cheaper using batch processing, also cached input tokens are 50% cheaper",
-    "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 971
-  },
-  {
-    "model": "GPT-4o-mini-2024-07-18",
-    "provider": "OpenAI",
-    "developer": "OpenAI",
-    "simpleBench": 10.7,
-    "context": 128,
-    "inputPrice": 0.15,
-    "aiderBench": 3.6,
-    "outputPrice": 0.6,
-    "hasVision": true,
-    "toolUse": true,
-    "notes": "can be 50% cheaper using batch processing",
-    "pricingUrl": "https://openai.com/api/pricing/",
-    "mcBenchElo": 717
-  },
-  {
     "model": "o3-mini (high)",
     "provider": "OpenAI",
     "developer": "OpenAI",
