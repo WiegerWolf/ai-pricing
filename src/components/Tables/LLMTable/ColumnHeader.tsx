@@ -43,12 +43,12 @@ export function ColumnHeader({
     };
 
     return (
-        <div className="space-y-0.5 text-xs">
+        <div className="text-xs">
             <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <div
-                            className={`hover:bg-gray-50 p-0.5 rounded cursor-pointer select-none ${verticalText
+                            className={`hover:bg-gray-50 rounded cursor-pointer select-none ${verticalText
                                 ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap h-12 flex flex-col items-start justify-center gap-1' // Further reduced height for vertical text
                                 : 'flex items-center gap-0.5' // Horizontal layout: flex, items-center
                                 }`}

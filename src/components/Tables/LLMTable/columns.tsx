@@ -88,6 +88,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     content
                 );
             },
+            minSize: 250,
         },
         {
             accessorKey: "provider",
@@ -159,7 +160,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Web development specific performance score (higher is better)"
                     link={{ url: "https://web.lmarena.ai/leaderboard", title: "Web Arena Leaderboard" }}
                     sort={{ enabled: true }}
-                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -185,7 +185,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Polyglot benchmark measuring ability to edit code across multiple languages (higher is better)"
                     link={{ url: "https://aider.chat/docs/leaderboards/", title: "Aider LLM Benchmarks" }}
                     sort={{ enabled: true }}
-                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -212,7 +211,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Minecraft benchmark measuring ability to build 3D structures (higher is better)"
                     link={{ url: "https://mcbench.ai/leaderboard", title: "MCBench Leaderboard" }}
                     sort={{ enabled: true }}
-                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -238,7 +236,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
                     link={{ url: "https://simple-bench.com/#leaderboardTable", title: "Simple Bench Leaderboard Table" }}
                     sort={{ enabled: true }}
-                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -265,7 +262,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                     tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better). We use the 60k context length score here."
                     link={{ url: "https://fiction.live/stories/Fiction-liveBench-Mar-25-2025/oQdzQvKHw8JyXbN87", title: "Fiction.LiveBench Methodology" }}
                     sort={{ enabled: true }}
-                    verticalText={true} // Add this line
                 />
             ),
             cell: ({ row }) => {
@@ -304,18 +300,20 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                         displayValue = `${value}k`;
                     }
                 }
+                const cellStyle = getCellBackground(row.original.context, contextRange.min, contextRange.max, {
+                    useLog: true,
+                    color: 'rgb(219 234 254)'
+                });
                 return (
-                    <div 
-                        style={getCellBackground(value, contextRange.min, contextRange.max, {
-                            useLog: true, // Add logarithmic scaling for context
-                            color: 'rgb(219 234 254)' // Light blue for context window size
-                        })}
+                    <div
+                        style={cellStyle}
                         className="font-mono text-right block px-2 py-1"
                     >
                         {displayValue}
                     </div>
                 );
             },
+            maxSize: 150,
             sortingFn: "alphanumeric",
             sortDescFirst: true,
         },
@@ -332,18 +330,20 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             ),
             cell: ({ row }) => {
                 const value = row.original.inputPrice;
+                const cellStyle = value === 0 ? {} : getCellBackground(value, inputPriceRange.min, inputPriceRange.max, {
+                    useLog: true,
+                    color: 'rgb(254 226 226)'
+                });
                 return (
-                    <div 
-                        style={value === 0 ? {} : getCellBackground(value, inputPriceRange.min, inputPriceRange.max, {
-                            useLog: true, // Use logarithmic scaling for prices
-                            color: 'rgb(254 226 226)' // Light red for prices
-                        })}
+                    <div
+                        style={cellStyle}
                         className="font-mono text-right block px-2 py-1"
                     >
-                        {value === 0 ? 'free' : value === undefined ? '-' : `$${value}`}
+                        {value === 0 ? 'free' : value === undefined ? '-' : `$${value.toFixed(2)}`}
                     </div>
                 );
             },
+            maxSize: 150,
             filterFn: createPriceRangeFilter,
         },
         {
@@ -359,18 +359,20 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             ),
             cell: ({ row }) => {
                 const value = row.original.outputPrice;
+                const cellStyle = value === 0 ? {} : getCellBackground(value, outputPriceRange.min, outputPriceRange.max, {
+                    useLog: true,
+                    color: 'rgb(254 226 226)'
+                });
                 return (
-                    <div 
-                        style={value === 0 ? {} : getCellBackground(value, outputPriceRange.min, outputPriceRange.max, {
-                            useLog: true, // Use logarithmic scaling for prices
-                            color: 'rgb(254 226 226)' // Light red for prices
-                        })}
+                    <div
+                        style={cellStyle}
                         className="font-mono text-right block px-2 py-1"
                     >
-                        {value === 0 ? 'free' : value === undefined ? '-' : `$${value}`}
+                        {value === 0 ? 'free' : value === undefined ? '-' : `$${value.toFixed(2)}`}
                     </div>
                 );
             },
+            maxSize: 150,
             filterFn: createPriceRangeFilter,
         },
         {
@@ -393,6 +395,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 if (value === undefined) return true;
                 return row.getValue(id) === value;
             },
+            maxSize: 50,
         },
         {
             accessorKey: "toolUse",
@@ -414,6 +417,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 if (value === undefined) return true;
                 return row.getValue(id) === value;
             },
+            maxSize: 50,
         },
         {
             accessorKey: "hasReasoning",
@@ -435,6 +439,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 if (value === undefined) return true;
                 return row.getValue(id) === value;
             },
+            maxSize: 50,
         },
     ];
 };
