@@ -187,21 +187,6 @@
     "mcBenchElo": 1425
   },
   {
-    "model": "Gemini-1.5-Pro-002",
-    "provider": "Google AI",
-    "developer": "Google AI",
-    "simpleBench": 27.1,
-    "codingElo": 1289,
-    "webdevElo": 894,
-    "context": 2000,
-    "inputPrice": 1.25,
-    "outputPrice": 5,
-    "hasVision": true,
-    "toolUse": true,
-    "notes": "these prices are for <128k context, for more see pricing page, no free tier in EU",
-    "pricingUrl": "https://ai.google.dev/pricing"
-  },
-  {
     "model": "Gemini 2.0 Flash 001",
     "provider": "Google AI",
     "developer": "Google AI",
