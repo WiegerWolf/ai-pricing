@@ -9,6 +9,7 @@ export interface LLMModel {
     context?: number;
     inputPrice?: number;
     outputPrice?: number;
+    costAAIndex?: number;
     hasVision?: boolean;
     toolUse?: boolean;
     notes?: string;

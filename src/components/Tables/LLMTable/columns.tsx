@@ -34,6 +34,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     const contextRange = getColumnMinMax(data, 'context');
     const inputPriceRange = getColumnMinMax(data, 'inputPrice');
     const outputPriceRange = getColumnMinMax(data, 'outputPrice');
+    const costRange = getColumnMinMax(data, 'costAAIndex');
     const aiderBenchRange = getColumnMinMax(data, 'aiderBench');
     const mcBenchEloRange = getColumnMinMax(data, 'mcBenchElo'); // Ensure this uses the correct key
 
@@ -369,6 +370,36 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                         className="font-mono text-right block px-2 py-1"
                     >
                         {value === 0 ? 'free' : value === undefined ? '-' : `$${value.toFixed(2)}`}
+                    </div>
+                );
+            },
+            maxSize: 150,
+            filterFn: createPriceRangeFilter,
+        },
+        {
+            accessorKey: "costAAIndex",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="CostAAIndex"
+                    tooltip="Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index"
+                    link={{ url: "https://artificialanalysis.ai/models#cost-to-run-artificial-analysis-intelligence-index", title: "Cost to run Artificial Analysis Intelligence Index" }}
+                    filter={{ type: 'range', enabled: true }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => {
+                const value = row.original.costAAIndex;
+                const cellStyle = value === 0 ? {} : getCellBackground(value, costRange.min, costRange.max, {
+                    useLog: true,
+                    color: 'rgb(254 226 226)'
+                });
+                return (
+                    <div
+                        style={cellStyle}
+                        className="font-mono text-right block px-2 py-1"
+                    >
+                        {value === undefined ? '-' : `$${value.toFixed(2)}`}
                     </div>
                 );
             },
