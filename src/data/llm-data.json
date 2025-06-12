@@ -216,6 +216,22 @@
     "mcBenchElo": 1036
   },
   {
+    "model": "Gemini-2.5-Flash-Preview",
+    "provider": "Google AI",
+    "developer": "Google AI",
+    "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
+    "pricingUrl": "https://ai.google.dev/pricing",
+    "context": 1000,
+    "inputPrice": 0.15,
+    "outputPrice": 0.6,
+    "hasVision": true,
+    "toolUse": true,
+    "hasReasoning": true,
+    "aiderBench": 55.1,
+    "notes": "Hybrid reasoning model with 1M token context window and thinking budgets. Output price for 'thinking' mode: $3.50/1M tokens. Context caching: $0.0375/1M tokens (text/image/video). Preview model, pricing and features may change. Free tier available. See pricing page for audio and TTS rates.",
+    "webdevElo": 1311.55
+  },
+  {
     "model": "Grok 3 Beta",
     "provider": "OpenRouter",
     "developer": "xAI",
@@ -323,20 +339,5 @@
     "toolUse": true,
     "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick"
-  },
-  {
-    "model": "Gemini-2.5-Flash-Preview",
-    "provider": "Google AI",
-    "developer": "Google AI",
-    "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
-    "pricingUrl": "https://ai.google.dev/pricing",
-    "context": 1000,
-    "inputPrice": 0.15,
-    "outputPrice": 0.6,
-    "hasVision": true,
-    "toolUse": true,
-    "hasReasoning": true,
-    "notes": "Hybrid reasoning model with 1M token context window and thinking budgets. Output price for 'thinking' mode: $3.50/1M tokens. Context caching: $0.0375/1M tokens (text/image/video). Preview model, pricing and features may change. Free tier available. See pricing page for audio and TTS rates.",
-    "webdevElo": 1311.55
   }
 ]
