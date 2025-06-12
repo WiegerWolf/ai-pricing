@@ -187,13 +187,14 @@
     "mcBenchElo": 1425
   },
   {
-    "model": "Gemini 2.0 Flash 001",
+    "model": "Gemini 2.0 Flash",
     "provider": "Google AI",
     "developer": "Google AI",
     "fictionLiveBench": 47.2,
     "inputPrice": 0.1,
     "outputPrice": 0.4,
     "context": 1000,
+    "aiderBench": 22.2,
     "hasVision": true,
     "webdevElo": 1039,
     "toolUse": true,
