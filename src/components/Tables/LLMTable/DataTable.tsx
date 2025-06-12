@@ -37,56 +37,52 @@ export function DataTable<TData, TValue>({
     });
 
     return (
-        // Removed overflow-auto and max-h-[] from this div. Scrolling is handled by the page structure in App.tsx
-        <div className="border border-gray-200 rounded-sm shadow-sm"> 
-            <table className="w-full border-collapse text-sm">
-                {/* thead remains sticky relative to the nearest scroll container (likely main or viewport) */}
-                <thead className="sticky top-0 z-10"> 
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id} className="bg-gray-50 border-b border-gray-200"> {/* Ensure background for sticky header */}
-                            {headerGroup.headers.map((header) => (
-                                <th
-                                    key={header.id}
-                                    // Adjust height and vertical alignment for header cells
-                                    className="text-left align-bottom font-medium text-gray-500 p-1 first:pl-2 last:pr-2 h-20" // Further reduced height
+        <table className="w-full border-collapse text-sm">
+            <thead className="sticky top-0 z-10">
+                {table.getHeaderGroups().map((headerGroup) => (
+                    <tr key={headerGroup.id} className="bg-gray-50">
+                        {headerGroup.headers.map((header) => (
+                            <th
+                                key={header.id}
+                                className="text-left align-bottom font-medium text-gray-500 first:pl-2 last:pr-2"
+                                style={{ width: `${header.getSize()}px` }}
+                            >
+                                {header.isPlaceholder
+                                    ? null
+                                    : flexRender(
+                                        header.column.columnDef.header,
+                                        header.getContext()
+                                    )}
+                            </th>
+                        ))}
+                    </tr>
+                ))}
+            </thead>
+            <tbody className="bg-white">
+                {table.getRowModel().rows?.length ? (
+                    table.getRowModel().rows.map((row) => (
+                        <tr
+                            key={row.id}
+                            className="border-b border-gray-100 last:border-0 hover:bg-gray-50"
+                        >
+                            {row.getVisibleCells().map((cell) => (
+                                <td
+                                    key={cell.id}
+                                    className="p-2 first:pl-4 last:pr-4"
                                 >
-                                    {header.isPlaceholder
-                                        ? null
-                                        : flexRender(
-                                            header.column.columnDef.header,
-                                            header.getContext()
-                                        )}
-                                </th>
+                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                </td>
                             ))}
                         </tr>
-                    ))}
-                </thead>
-                <tbody className="bg-white">
-                    {table.getRowModel().rows?.length ? (
-                        table.getRowModel().rows.map((row) => (
-                            <tr
-                                key={row.id}
-                                className="border-b border-gray-100 last:border-0 hover:bg-gray-50"
-                            >
-                                {row.getVisibleCells().map((cell) => (
-                                    <td
-                                        key={cell.id}
-                                        className="p-2 first:pl-4 last:pr-4"
-                                    >
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan={columns.length} className="p-2 text-center text-gray-500">
-                                No results.
-                            </td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-        </div>
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan={columns.length} className="p-2 text-center text-gray-500">
+                            No results.
+                        </td>
+                    </tr>
+                )}
+            </tbody>
+        </table>
     );
 }
