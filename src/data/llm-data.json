@@ -57,12 +57,26 @@
     "hasVision": true,
     "toolUse": true,
     "context": 1028,
-    "inputPrice": 10,
-    "outputPrice": 40,
+    "inputPrice": 2,
+    "outputPrice": 8,
     "aiderBench": 83.7,
     "simpleBench": 53.1,
     "mcBenchElo": 1213,
     "fictionLiveBench": 83.3
+  },
+  {
+    "model": "o3-pro",
+    "provider": "OpenAI",
+    "developer": "OpenAI",
+    "modelUrl": "https://openai.com/index/introducing-o3-and-o4-mini/",
+    "pricingUrl": "https://openai.com/api/pricing/",
+    "hasReasoning": true,
+    "hasVision": true,
+    "toolUse": true,
+    "context": 1028,
+    "inputPrice": 20,
+    "outputPrice": 80,
+    "notes": "o3-pro is available as ‘o3-pro-2025-06-10’ in the Responses API and supports image inputs, function calling, and Structured Outputs. Designed for tough problems, some requests may take several minutes to finish. Try background mode in the Responses API."
   },
   {
     "model": "o4-mini",
