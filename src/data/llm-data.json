@@ -73,6 +73,7 @@
     "hasReasoning": true,
     "hasVision": true,
     "toolUse": true,
+    "fictionLiveBench": 94.4,
     "context": 1028,
     "inputPrice": 20,
     "outputPrice": 80,
