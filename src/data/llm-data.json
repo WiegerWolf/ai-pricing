@@ -196,6 +196,7 @@
     "context": 1000,
     "aiderBench": 22.2,
     "hasVision": true,
+    "simpleBench": 30.7,
     "webdevElo": 1039,
     "toolUse": true,
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
