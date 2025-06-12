@@ -195,6 +195,7 @@
     "outputPrice": 0.4,
     "context": 1000,
     "hasVision": true,
+    "webdevElo": 1039,
     "toolUse": true,
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
     "pricingUrl": "https://ai.google.dev/pricing",
