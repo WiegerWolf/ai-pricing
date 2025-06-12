@@ -208,6 +208,7 @@
     "pricingUrl": "https://ai.google.dev/pricing",
     "context": 1000,
     "inputPrice": 0.15,
+    "mcBenchElo": 1071,
     "outputPrice": 0.6,
     "hasVision": true,
     "toolUse": true,
