@@ -80,6 +80,7 @@
     "toolUse": true,
     "fictionLiveBench": 94.4,
     "context": 1028,
+    "aiderBench": 84.9,
     "inputPrice": 20,
     "outputPrice": 80,
     "notes": "o3-pro is available as ‘o3-pro-2025-06-10’ in the Responses API and supports image inputs, function calling, and Structured Outputs. Designed for tough problems, some requests may take several minutes to finish. Try background mode in the Responses API."
