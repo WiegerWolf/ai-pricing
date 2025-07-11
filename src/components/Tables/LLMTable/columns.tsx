@@ -376,6 +376,31 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             maxSize: 150,
             filterFn: createPriceRangeFilter,
         },
+        // AAIndex column (higher is better)
+        {
+            accessorKey: "AAIndex",
+            header: ({ column }) => (
+                <ColumnHeader
+                    column={column}
+                    title="AAIndex"
+                    tooltip="Artificial Analysis Intelligence Index (higher is better)"
+                    link={{ url: "https://artificialanalysis.ai/leaderboards/models", title: "AAIndex Benchmark" }}
+                    sort={{ enabled: true }}
+                />
+            ),
+            cell: ({ row }) => {
+                const value = row.original.AAIndex;
+                return (
+                    <div className="font-mono text-right block px-2 py-1">
+                        {value === undefined || value === null ? '-' : value}
+                    </div>
+                );
+            },
+            sortingFn: "alphanumeric",
+            sortDescFirst: true,
+            sortUndefined: 'last',
+            maxSize: 150,
+        },
         {
             accessorKey: "costAAIndex",
             header: ({ column }) => (
