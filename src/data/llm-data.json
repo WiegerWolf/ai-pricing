@@ -235,22 +235,20 @@
     "costAAIndex": 319
   },
   {
-    "model": "Grok 3 Beta",
-    "provider": "OpenRouter",
+    "model": "Grok-4",
+    "provider": "xAI",
     "developer": "xAI",
-    "webdevElo": 1148,
     "inputPrice": 3,
     "outputPrice": 15,
-    "simpleBench": 36.1,
-    "fictionLiveBench": 63.9,
-    "mcBenchElo": 962,
-    "aiderBench": 53.3,
-    "hasReasoning": true,
+    "modelUrl": "https://x.ai/news/grok-4",
+    "pricingUrl": "https://openrouter.ai/x-ai/grok-4",
+    "context": 256,
+    "hasVision": true,
     "toolUse": true,
-    "context": 131,
-    "pricingUrl": "https://openrouter.ai/x-ai/grok-3-beta",
-    "modelUrl": "https://x.ai/blog/grok-3",
-    "costAAIndex": 154
+    "hasReasoning": true,
+    "fictionLiveBench": 97.2,
+    "aiderBench": 79.6,
+    "costAAIndex": 1630
   },
   {
     "model": "Grok 3 Mini (high)",
