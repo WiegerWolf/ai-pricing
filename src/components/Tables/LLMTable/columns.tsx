@@ -376,7 +376,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             maxSize: 150,
             filterFn: createPriceRangeFilter,
         },
-        // AAIndex column (higher is better)
         {
             accessorKey: "AAIndex",
             header: ({ column }) => (

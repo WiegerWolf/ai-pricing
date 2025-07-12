@@ -4,6 +4,7 @@ export interface LLMModel {
     simpleBench?: number | null; // Allow null
     fictionLiveBench?: number | null; // Add Fiction.LiveBench
     aiderBench?: number | null;  // Allow null
+    AAIndex?: number | null; // Add AAIndex and make it optional
     webdevElo?: number | null;
     mcBenchElo?: number | null; // Add mcBenchElo and allow null
     context?: number;
