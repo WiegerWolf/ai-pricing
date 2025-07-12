@@ -35,6 +35,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     const inputPriceRange = getColumnMinMax(data, 'inputPrice');
     const outputPriceRange = getColumnMinMax(data, 'outputPrice');
     const costRange = getColumnMinMax(data, 'costAAIndex');
+    const aaIndexRange = getColumnMinMax(data, 'AAIndex'); // Add AAIndex range calculation
     const aiderBenchRange = getColumnMinMax(data, 'aiderBench');
     const mcBenchEloRange = getColumnMinMax(data, 'mcBenchElo'); // Ensure this uses the correct key
 
@@ -389,8 +390,12 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             ),
             cell: ({ row }) => {
                 const value = row.original.AAIndex;
+                // Use the AAIndex range for background color
+                const cellStyle = getCellBackground(value, aaIndexRange.min, aaIndexRange.max, {
+                    useLog: true,
+                });
                 return (
-                    <div className="font-mono text-right block px-2 py-1">
+                    <div style={cellStyle} className="font-mono text-right block px-2 py-1">
                         {value === undefined || value === null ? '-' : value}
                     </div>
                 );
