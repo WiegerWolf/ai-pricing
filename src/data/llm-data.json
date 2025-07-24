@@ -260,6 +260,7 @@
     "toolUse": true,
     "hasReasoning": true,
     "fictionLiveBench": 97.2,
+    "simpleBench": 60.5,
     "aiderBench": 79.6,
     "AAIndex": 73,
     "costAAIndex": 1630
