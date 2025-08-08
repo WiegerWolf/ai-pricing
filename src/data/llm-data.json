@@ -369,4 +369,48 @@
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick",
     "costAAIndex": 10
   }
+,
+  {
+    "model": "GPT-5",
+    "provider": "OpenAI",
+    "developer": "OpenAI",
+    "context": 400,
+    "hasVision": true,
+    "toolUse": true,
+    "hasReasoning": true,
+    "maxOutputTokens": 128,
+    "inputPrice": 1.25,
+    "outputPrice": 10,
+    "simpleBench": 56.7,
+    "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
+    "pricingUrl": "https://openai.com/api/pricing/"
+  },
+  {
+    "model": "GPT-5 mini",
+    "provider": "OpenAI",
+    "developer": "OpenAI",
+    "context": 400,
+    "hasVision": true,
+    "toolUse": true,
+    "hasReasoning": true,
+    "maxOutputTokens": 128,
+    "inputPrice": 0.25,
+    "outputPrice": 2.0,
+    "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
+    "pricingUrl": "https://openai.com/api/pricing/"
+  },
+  {
+    "model": "GPT-5 nano",
+    "provider": "OpenAI",
+    "developer": "OpenAI",
+    "context": 400,
+    "hasVision": true,
+    "toolUse": true,
+    "hasReasoning": true,
+    "maxOutputTokens": 128,
+    "inputPrice": 0.05,
+    "outputPrice": 0.4,
+    "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
+    "pricingUrl": "https://openai.com/api/pricing/"
+  }
 ]
