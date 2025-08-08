@@ -142,6 +142,7 @@
     "simpleBench": 56.7,
     "AAIndex": 69,
     "costAAIndex": 823,
+    "aiderBench": 88,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
