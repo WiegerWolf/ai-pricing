@@ -144,6 +144,7 @@
     "costAAIndex": 823,
     "aiderBench": 88,
     "fictionLiveBench": 100,
+    "webdevElo": 1479.38,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
