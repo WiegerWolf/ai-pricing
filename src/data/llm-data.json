@@ -368,8 +368,7 @@
     "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick",
     "costAAIndex": 10
-  }
-,
+  },
   {
     "model": "GPT-5",
     "provider": "OpenAI",
