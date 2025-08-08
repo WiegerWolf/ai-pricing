@@ -160,8 +160,7 @@
     "outputPrice": 2.0,
     "AAIndex": 64,
     "costAAIndex": 52,
-    "aiderBench": null,
-    "fictionLiveBench": 61.1,
+    "fictionLiveBench": 72.2,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
@@ -178,8 +177,7 @@
     "outputPrice": 0.4,
     "AAIndex": 54,
     "costAAIndex": 22,
-    "aiderBench": null,
-    "fictionLiveBench": 36.1,
+    "fictionLiveBench": 66.7,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
