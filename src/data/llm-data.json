@@ -140,6 +140,8 @@
     "inputPrice": 1.25,
     "outputPrice": 10,
     "simpleBench": 56.7,
+    "AAIndex": 69,
+    "costAAIndex": 823,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
@@ -154,6 +156,8 @@
     "maxOutputTokens": 128,
     "inputPrice": 0.25,
     "outputPrice": 2.0,
+    "AAIndex": 64,
+    "costAAIndex": 52,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
@@ -168,6 +172,8 @@
     "maxOutputTokens": 128,
     "inputPrice": 0.05,
     "outputPrice": 0.4,
+    "AAIndex": 54,
+    "costAAIndex": 22,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
   },
