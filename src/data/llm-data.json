@@ -436,6 +436,8 @@
     "outputPrice": 0.312,
     "maxOutputTokens": 82,
     "webdevElo": 1189.67,
+    "aiderBench": 59.6,
+    "simpleBench": 31.0,
     "AAIndex": 64,
     "costAAIndex": 892,
     "modelUrl": "https://qwenlm.github.io/blog/qwen3/",
