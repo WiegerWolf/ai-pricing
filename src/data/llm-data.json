@@ -436,6 +436,8 @@
     "outputPrice": 0.312,
     "maxOutputTokens": 82,
     "webdevElo": 1189.67,
+    "AAIndex": 64,
+    "costAAIndex": 892,
     "modelUrl": "https://qwenlm.github.io/blog/qwen3/",
     "pricingUrl": "https://openrouter.ai/qwen/qwen3-235b-a22b-thinking-2507",
     "notes": "Thinking-only MoE model (22B active) with enforced </think> reasoning blocks, long context (262k) and high token output (up to ~82k)."
