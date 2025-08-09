@@ -424,5 +424,25 @@
     "modelUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
     "pricingUrl": "https://openrouter.ai/meta-llama/llama-4-maverick",
     "costAAIndex": 10
+  },
+  {
+    "model": "Qwen3-235B-A22B-Thinking-2507",
+    "provider": "OpenRouter",
+    "developer": "Qwen",
+    "context": 262,
+    "hasReasoning": true,
+    "toolUse": true,
+    "inputPrice": 0.078,
+    "outputPrice": 0.312,
+    "maxOutputTokens": 82,
+    "webdevElo": 1189.67,
+    "aiderBench": 59.6,
+    "simpleBench": 31.0,
+    "fictionLiveBench": 77.8,
+    "AAIndex": 64,
+    "costAAIndex": 892,
+    "modelUrl": "https://qwenlm.github.io/blog/qwen3/",
+    "pricingUrl": "https://openrouter.ai/qwen/qwen3-235b-a22b-thinking-2507",
+    "notes": "Thinking-only MoE model (22B active) with enforced </think> reasoning blocks, long context (262k) and high token output (up to ~82k)."
   }
 ]
