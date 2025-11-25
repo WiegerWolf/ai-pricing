@@ -1,6 +1,6 @@
 [
   {
-    "model": "gpt4.1",
+    "model": "GPT 4.1",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "context": 1000,
@@ -19,7 +19,7 @@
     "costAAIndex": 65
   },
   {
-    "model": "gpt4.1-mini",
+    "model": "GPT 4.1 mini",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "context": 1000,
@@ -37,7 +37,7 @@
     "costAAIndex": 16
   },
   {
-    "model": "gpt4.1-nano",
+    "model": "GPT 4.1 nano",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "context": 1000,
@@ -74,7 +74,7 @@
     "costAAIndex": 390
   },
   {
-    "model": "o3-pro",
+    "model": "o3 pro",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "modelUrl": "https://openai.com/index/introducing-o3-and-o4-mini/",
@@ -91,7 +91,7 @@
     "notes": "o3-pro is available as ‘o3-pro-2025-06-10’ in the Responses API and supports image inputs, function calling, and Structured Outputs. Designed for tough problems, some requests may take several minutes to finish. Try background mode in the Responses API."
   },
   {
-    "model": "o4-mini",
+    "model": "o4 mini",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "modelUrl": "https://openai.com/index/introducing-o3-and-o4-mini/",
@@ -111,7 +111,7 @@
     "webdevElo": 1118.70
   },
   {
-    "model": "o3-mini (high)",
+    "model": "o3 mini",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "inputPrice": 1.1,
@@ -130,7 +130,7 @@
     "costAAIndex": 345
   },
   {
-    "model": "GPT-5",
+    "model": "GPT 5",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "context": 400,
@@ -150,7 +150,7 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
-    "model": "GPT-5 mini",
+    "model": "GPT 5 mini",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "context": 400,
@@ -167,7 +167,7 @@
     "pricingUrl": "https://openai.com/api/pricing/"
   },
   {
-    "model": "GPT-5 nano",
+    "model": "GPT 5 nano",
     "provider": "OpenAI",
     "developer": "OpenAI",
     "context": 400,
@@ -226,7 +226,7 @@
     "costAAIndex": 342
   },
   {
-    "model": "Claude-3-5-Haiku-20241022",
+    "model": "Claude 3.5 Haiku 20241022",
     "provider": "Anthropic",
     "developer": "Anthropic",
     "webdevElo": 1133.41,
@@ -243,7 +243,23 @@
     "costAAIndex": 20
   },
   {
-    "model": "Gemini-2.5-Pro",
+    "model": "Gemini 3 Pro preview",
+    "provider": "Google AI",
+    "developer": "Google AI",
+    "simpleBench": 76.4,
+    "context": 1000,
+    "inputPrice": 2,
+    "outputPrice": 12,
+    "toolUse": true,
+    "hasVision": true,
+    "hasReasoning": true,
+    "modelUrl": "https://blog.google/products/gemini/gemini-3/#gemini-3",
+    "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-preview",
+    "AAIndex": 73,
+    "costAAIndex": 1201
+  },
+  {
+    "model": "Gemini 2.5 Pro",
     "provider": "Google AI",
     "developer": "Google AI",
     "simpleBench": 62.4,
@@ -283,7 +299,7 @@
     "costAAIndex": 3
   },
   {
-    "model": "Gemini-2.5-Flash-Preview",
+    "model": "Gemini 2.5 Flash Preview",
     "provider": "Google AI",
     "developer": "Google AI",
     "modelUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-v2",
@@ -303,7 +319,7 @@
     "costAAIndex": 319
   },
   {
-    "model": "Grok-4",
+    "model": "Grok 4",
     "provider": "xAI",
     "developer": "xAI",
     "inputPrice": 3,
@@ -358,7 +374,7 @@
     "costAAIndex": 220
   },
   {
-    "model": "DeepSeek-V3-0324",
+    "model": "DeepSeek V3 0324",
     "provider": "DeepSeek",
     "developer": "DeepSeek",
     "context": 64,
@@ -392,7 +408,7 @@
     "costAAIndex": 8
   },
   {
-    "model": "Llama-3.1-405B-Instruct",
+    "model": "Llama 3.1 405B Instruct",
     "provider": "OpenRouter",
     "developer": "Meta",
     "context": 128,
@@ -426,7 +442,7 @@
     "costAAIndex": 10
   },
   {
-    "model": "Qwen3-235B-A22B-Thinking-2507",
+    "model": "Qwen3 235B A22B Thinking 2507",
     "provider": "OpenRouter",
     "developer": "Qwen",
     "context": 262,
