@@ -50,7 +50,7 @@ export function ColumnHeader({
                     <TooltipTrigger asChild>
                         <div
                             className={`hover:bg-gray-50 rounded cursor-pointer select-none ${verticalText
-                                ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap h-12 flex flex-col items-start justify-center gap-1'
+                                ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap flex flex-col items-start justify-center gap-1'
                                 : 'flex items-center gap-1' // Adjusted gap slightly for better spacing
                                 }`}
                             onClick={handleHeaderClick}
