@@ -9,12 +9,13 @@ import { MultiSelectFilter } from "./MultiSelectFilter";
 
 export function ColumnHeader({
     title,
+    subtitle,
     column,
     tooltip,
     link,
     filter,
     sort,
-    verticalText // Add verticalText prop
+    verticalText
 }: ColumnHeaderProps) {
     const SortIcon = () => (
         <svg
@@ -49,34 +50,44 @@ export function ColumnHeader({
                     <TooltipTrigger asChild>
                         <div
                             className={`hover:bg-gray-50 rounded cursor-pointer select-none ${verticalText
-                                ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap h-12 flex flex-col items-start justify-center gap-1' // Further reduced height for vertical text
-                                : 'flex items-center gap-0.5' // Horizontal layout: flex, items-center
+                                ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap h-12 flex flex-col items-start justify-center gap-1'
+                                : 'flex items-center gap-1' // Adjusted gap slightly for better spacing
                                 }`}
                             onClick={handleHeaderClick}
                         >
-                            {/* Title or Link (without icon for vertical) */}
-                            {link && !verticalText ? (
-                                <a
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:underline inline-flex items-center group"
-                                    onClick={(e) => e.stopPropagation()}
-                                    style={{ minHeight: 24 }} // Make the link area a bit taller
-                                >
-                                    {title}
-                                    {/* Link icon for horizontal layout */}
-                                    <span className="ml-0.5 flex items-center justify-center rounded hover:bg-gray-200 transition p-1 group-hover:bg-gray-200" style={{ minWidth: 24, minHeight: 24 }}>
-                                        <svg className="w-4 h-4 opacity-50" viewBox="0 0 12 12">
-                                            <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            ) : (
-                                <span>{title}</span>
-                            )}
+                            {/* Title/Subtitle Container */}
+                            <div className={`flex flex-col justify-center ${verticalText ? 'items-start' : ''}`}>
+                                {/* Title or Link (without icon for vertical) */}
+                                {link && !verticalText ? (
+                                    <a
+                                        href={link.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:underline inline-flex items-center group"
+                                        onClick={(e) => e.stopPropagation()}
+                                        style={{ minHeight: 24 }}
+                                    >
+                                        <span className="font-medium">{title}</span>
+                                        {/* Link icon for horizontal layout */}
+                                        <span className="ml-0.5 flex items-center justify-center rounded hover:bg-gray-200 transition p-1 group-hover:bg-gray-200" style={{ minWidth: 24, minHeight: 24 }}>
+                                            <svg className="w-4 h-4 opacity-50" viewBox="0 0 12 12">
+                                                <path fill="currentColor" d="M6.5 1H11v4.5L9.25 3.75 6.5 6.5 5.5 5.5l2.75-2.75L6.5 1z" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                ) : (
+                                    <span className="font-medium">{title}</span>
+                                )}
 
-                            {/* Icons container (horizontal for normal, vertical for verticalText due to writing-mode) */}
+                                {/* Subtitle Markup */}
+                                {subtitle && (
+                                    <span className={`text-[10px] text-gray-500 font-normal leading-none ${verticalText ? 'mt-1' : '-mt-0.5'} mb-1`}>
+                                        {subtitle}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Icons container */}
                             <div className={`flex items-center ${verticalText ? 'gap-1' : 'gap-0.5'}`}>
                                 {/* Link icon for vertical layout */}
                                 {link && verticalText && (
@@ -105,7 +116,7 @@ export function ColumnHeader({
                         </div>
                     </TooltipTrigger>
                     {tooltip && (
-                        <TooltipContent side={verticalText ? "left" : "top"} align="start" className="text-xs"> {/* Adjust tooltip side for vertical */}
+                        <TooltipContent side={verticalText ? "left" : "top"} align="start" className="text-xs">
                             <p className="max-w-xs">{tooltip}</p>
                         </TooltipContent>
                     )}

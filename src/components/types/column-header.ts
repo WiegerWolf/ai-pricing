@@ -4,6 +4,7 @@ import { LLMModel } from "@/types/llm";
 export interface ColumnHeaderProps {
     // Basic props (required)
     title: string;
+    subtitle?: string;
     column: Column<LLMModel, unknown>;
 
     // Optional features

@@ -1,9 +1,11 @@
 import anthropicLogo from '@/assets/anthropic.png';
 import cloudflareLogo from '@/assets/cloudflare.png';
-import googleLogo from '@/assets/google.png';
+import googleLogo from '@/assets/google.svg';
 import openaiLogo from '@/assets/openai.ico';
 import groqLogo from '@/assets/groq.png';
+import moonshotAIlogo from '@/assets/moonshotai.svg';
 import metaLogo from '@/assets/meta.svg';
+import miniMaxLogo from '@/assets/minimax.svg';
 import xAILogo from '@/assets/xAI.svg';
 import deepseekLogo from '@/assets/deepseek.svg';
 import openrouterLogo from '@/assets/openrouter.png';
@@ -36,7 +38,9 @@ export const developerLogos: Record<string, string> = {
     'Google AI': googleLogo,
     'Meta': metaLogo,
     'xAI': xAILogo,
+    'MiniMax': miniMaxLogo,
     'DeepSeek': deepseekLogo,
+    'Moonshot AI': moonshotAIlogo,
     'Nvidia': nvidiaLogo,
     'Mistral': mistralLogo,
     'Cohere': cohereLogo,
