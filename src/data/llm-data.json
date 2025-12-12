@@ -1,15 +1,13 @@
 [
   {
-    "model": "GPT 5 pro",
+    "model": "GPT 5.2",
     "developer": "OpenAI",
-    "modelUrl": "https://platform.openai.com/docs/models/gpt-5-pro",
-    "simpleBench": 61.6,
-    "GPQAdiamond": 88.4,
-    "HumLastExam": 30.7,
+    "modelUrl": "https://openai.com/index/introducing-gpt-5-2/",
     "hasReasoning": true,
     "hasVision": true,
-    "toolUse": true,
-    "ARCAGI2": 18.3
+    "SWEBench": 80,
+    "GPQAdiamond": 92.4,
+    "ARCAGI2": 52.9
   },
   {
     "model": "GPT 5.1",
@@ -155,33 +153,6 @@
     "ARCAGI2": 31.1,
     "tokenUseAAIndex": 92,
     "HumLastExam": 37.5
-  },
-  {
-    "model": "Gemini 2.5 Pro",
-    "provider": "Google AI",
-    "developer": "Google AI",
-    "simpleBench": 62.4,
-    "fictionLiveBench": 83.3,
-    "aiderBench": 83.1,
-    "webdevElo": 1403.36,
-    "VendingBench": 573.64,
-    "ARCAGI2": 4.9,
-    "AAIndex": 60,
-    "tokenUseAAIndex": 100,
-    "HumLastExam": 21.6,
-    "GPQAdiamond": 86.4,
-    "inputPrice": 1.25,
-    "outputPrice": 10,
-    "context": 1048,
-    "SWEBench": 59.6,
-    "hasVision": true,
-    "toolUse": true,
-    "notes": "Pricing is $1.25/$10.00 (input/output) for prompts <= 200k tokens, $2.50/$15.00 for > 200k tokens. Free tier still available.",
-    "pricingUrl": "https://ai.google.dev/pricing",
-    "modelUrl": "https://deepmind.google/models/gemini/",
-    "hasReasoning": true,
-    "mcBenchElo": 1425,
-    "costAAIndex": 1068
   },
   {
     "model": "Gemini 2.5 Flash",
