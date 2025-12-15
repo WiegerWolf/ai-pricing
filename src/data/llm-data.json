@@ -7,6 +7,10 @@
     "hasVision": true,
     "SWEBench": 80,
     "GPQAdiamond": 92.4,
+    "AAIndex": 73,
+    "tokenUseAAIndex": 86,
+    "VendingBench": 3951.01,
+    "costAAIndex": 1294,
     "HumLastExam": 34.5,
     "simpleBench": 45.8,
     "ARCAGI2": 52.9
