@@ -40,7 +40,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
         <ColumnHeader
           column={column}
           title="Model"
-          tooltip="Model name and version"
+          tooltip="Model name. For benchmark results, assume the highest reasoning ability."
           filter={{ type: "text", enabled: true }}
         />
       ),
@@ -132,7 +132,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           column={column}
           title="AA Index cost"
           subtitle="USD spent"
-          tooltip="Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index"
+          tooltip="Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index. Lower is better."
           link={{
             url: "https://artificialanalysis.ai/models#cost-to-run-artificial-analysis-intelligence-index",
             title: "Cost to run Artificial Analysis Intelligence Index",

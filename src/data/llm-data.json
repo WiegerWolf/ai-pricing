@@ -161,6 +161,19 @@
     "HumLastExam": 37.5
   },
   {
+    "model": "Gemini 3 Flash",
+    "developer": "Google AI",
+    "modelUrl": "https://blog.google/products/gemini/gemini-3-flash/",
+    "AAIndex": 71,
+    "costAAIndex": 524,
+    "tokenUseAAIndex": 160,
+    "GPQAdiamond": 90.4,
+    "HumLastExam": 33.7,
+    "SWEBench": 78,
+    "VendingBench": 3635,
+    "ARCAGI2": 33.6
+  },
+  {
     "model": "Gemini 2.5 Flash",
     "provider": "Google AI",
     "developer": "Google AI",
