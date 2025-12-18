@@ -23,8 +23,6 @@ const createPriceRangeFilter = (
 export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
   // Calculate min/max values for numerical columns
   const SWEBenchRange = getColumnMinMax(data, "SWEBench");
-  const GPQAdiamondRange = getColumnMinMax(data, "GPQAdiamond");
-  const HumLastExamRange = getColumnMinMax(data, "HumLastExam");
   const simpleBenchRange = getColumnMinMax(data, "simpleBench");
   const fictionLiveBenchRange = getColumnMinMax(data, "fictionLiveBench");
   const ARCAGI2Range = getColumnMinMax(data, "ARCAGI2");
@@ -195,72 +193,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
         );
       },
       maxSize: 150,
-    },
-    {
-      accessorKey: "GPQAdiamond",
-      header: ({ column }) => (
-        <ColumnHeader
-          column={column}
-          title="GPQA Diamond"
-          subtitle="no tools"
-          tooltip="A challenging multiple-choice question set in biology, chemistry, and physics, authored by PhD-level experts (Human baseline 69.7%) (higher is better)"
-          link={{
-            url: "https://epoch.ai/benchmarks/gpqa-diamond",
-            title: "AI performance on a set of Ph.D.-level science questions"
-          }}
-          sort={{ enabled: true }}
-        />
-      ),
-      cell: ({ row }) => {
-        const value = row.original.GPQAdiamond;
-        const cellStyle =
-          value === 0
-            ? {}
-            : getCellBackground(value, GPQAdiamondRange.min, GPQAdiamondRange.max);
-        return (
-          <div
-            style={cellStyle}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
-      sortDescFirst: true,
-      sortUndefined: "last",
-    },
-    {
-      accessorKey: "HumLastExam",
-      header: ({ column }) => (
-        <ColumnHeader
-          column={column}
-          title="Humanity's Last Exam"
-          subtitle="no tools"
-          tooltip="A multi-modal benchmark at the frontier of human knowledge, designed to be the final closed-ended academic benchmark of its kind with broad subject coverage (higher is better)"
-          link={{
-            url: "https://lastexam.ai/",
-            title: "2,500 challenging questions across over a hundred subjects"
-          }}
-          sort={{ enabled: true }}
-        />
-      ),
-      cell: ({ row }) => {
-        const value = row.original.HumLastExam;
-        const cellStyle =
-          value === 0
-            ? {}
-            : getCellBackground(value, HumLastExamRange.min, HumLastExamRange.max);
-        return (
-          <div
-            style={cellStyle}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
-      sortDescFirst: true,
-      sortUndefined: "last",
     },
     {
       accessorKey: "simpleBench",
