@@ -102,6 +102,7 @@
     "GPQAdiamond": 87,
     "hasReasoning": true,
     "toolUse": true,
+    "simpleBench": 62,
     "hasVision": true,
     "ARCAGI2": 37.6,
     "tokenUseAAIndex": 48
