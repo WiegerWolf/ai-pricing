@@ -48,3 +48,20 @@ export const developerLogos: Record<string, string> = {
     'Qwen': qwenLogo,
     'Z AI': zaiLogo,
 };
+
+// Country flag emojis by developer
+export const developerFlags: Record<string, string> = {
+    'Anthropic': '🇺🇸',
+    'OpenAI': '🇺🇸',
+    'Google AI': '🇺🇸',
+    'Meta': '🇺🇸',
+    'xAI': '🇺🇸',
+    'Nvidia': '🇺🇸',
+    'Mistral': '🇫🇷',
+    'DeepSeek': '🇨🇳',
+    'MiniMax': '🇨🇳',
+    'Moonshot AI': '🇨🇳',
+    'Z AI': '🇨🇳',
+    'Qwen': '🇨🇳',
+    'Cohere': '🇨🇦',
+};

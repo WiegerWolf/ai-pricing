@@ -12,6 +12,7 @@ export interface LLMModel {
     HumLastExam?: number | null; // Humanity's last exam, %
     VendingBench?: number | null; // Vending Machine Bench, USD
     ARCAGI2?: number | null; // ARC AGI 2 Benchmark, %
+    snitchBench?: number | null; // SnitchBench Gov Snitch Rate, %
     context?: number;
     inputPrice?: number;
     outputPrice?: number;

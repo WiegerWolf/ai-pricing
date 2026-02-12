@@ -1,7 +1,7 @@
 import { ColumnDef, Row } from "@tanstack/react-table";
 import { LLMModel } from "@/types/llm";
 import { ColumnHeader } from "./ColumnHeader";
-import { developerLogos } from "@/config/logos";
+import { developerLogos, developerFlags } from "@/config/logos";
 import { getCellBackground, getColumnMinMax } from "@/utils/colorScale";
 
 // Helper function for price range filtering
@@ -30,6 +30,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
   const tokenUseAAIndexRange = getColumnMinMax(data, "tokenUseAAIndex");
   const aaIndexRange = getColumnMinMax(data, "AAIndex"); // Add AAIndex range calculation
   const VendingBenchRange = getColumnMinMax(data, "VendingBench");
+  const snitchBenchRange = getColumnMinMax(data, "snitchBench");
 
   return [
     {
@@ -46,6 +47,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
       cell: ({ row }) => {
         const developer = row.original.developer;
         const logo = developerLogos[developer];
+        const flag = developerFlags[developer];
         const content = (
           <div className="flex items-center gap-2">
             {logo && (
@@ -55,6 +57,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
                 className="w-4 h-4 object-contain"
               />
             )}
+            {flag && <span>{flag}</span>}
             <span>{row.original.model}</span>
           </div>
         );
@@ -356,6 +359,39 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           </div>
         );
       },
+      sortUndefined: "last",
+    },
+    {
+      accessorKey: "snitchBench",
+      header: ({ column }) => (
+        <ColumnHeader
+          column={column}
+          title="SnitchBench"
+          subtitle="Gov %"
+          tooltip="Measures AI model whistleblowing behavior — likelihood to report corporate wrongdoing to government authorities (higher = more likely to snitch)"
+          link={{
+            url: "https://snitchbench.t3.gg/",
+            title: "SnitchBench Leaderboard",
+          }}
+          sort={{ enabled: true }}
+        />
+      ),
+      cell: ({ row }) => {
+        const value = row.original.snitchBench;
+        return (
+          <div
+            style={getCellBackground(
+              value,
+              snitchBenchRange.min,
+              snitchBenchRange.max,
+            )}
+            className="font-mono text-right block px-2 py-1"
+          >
+            {value !== undefined && value !== null ? `${value.toFixed(1)}%` : "-"}
+          </div>
+        );
+      },
+      sortDescFirst: true,
       sortUndefined: "last",
     },
     {
