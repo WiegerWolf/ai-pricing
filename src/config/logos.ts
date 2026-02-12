@@ -14,6 +14,7 @@ import cohereLogo from '@/assets/Cohere.png';
 import mistralLogo from '@/assets/mistral.png';
 import qwenLogo from '@/assets/qwen.png';
 import alibabaLogo from '@/assets/alibaba.png';
+import zaiLogo from '@/assets/zai.svg';
 
 // Create a mapping of provider names to their logos
 export const providerLogos: Record<string, string> = {
@@ -45,4 +46,5 @@ export const developerLogos: Record<string, string> = {
     'Mistral': mistralLogo,
     'Cohere': cohereLogo,
     'Qwen': qwenLogo,
+    'Z AI': zaiLogo,
 };
