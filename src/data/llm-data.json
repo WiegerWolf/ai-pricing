@@ -316,7 +316,18 @@
     "costAAIndex": 114,
     "tokenUseAAIndex": 58,
     "simpleBench": 34.7,
+    "SWEBench": 74,
     "hasReasoning": true,
     "toolUse": true
+  },
+  {
+    "model": "MiniMax M2.5",
+    "developer": "MiniMax",
+    "modelUrl": "https://www.minimax.io/news/minimax-m25",
+    "inputPrice": 0.3,
+    "outputPrice": 2.4,
+    "hasReasoning": true,
+    "toolUse": true,
+    "SWEBench": 80.2
   }
 ]
