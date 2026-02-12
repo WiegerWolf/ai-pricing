@@ -31,6 +31,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
   const aaIndexRange = getColumnMinMax(data, "AAIndex"); // Add AAIndex range calculation
   const VendingBenchRange = getColumnMinMax(data, "VendingBench");
   const snitchBenchRange = getColumnMinMax(data, "snitchBench");
+  const skateBenchRange = getColumnMinMax(data, "skateBench");
 
   return [
     {
@@ -384,6 +385,38 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
               value,
               snitchBenchRange.min,
               snitchBenchRange.max,
+            )}
+            className="font-mono text-right block px-2 py-1"
+          >
+            {value !== undefined && value !== null ? `${value.toFixed(1)}%` : "-"}
+          </div>
+        );
+      },
+      sortDescFirst: true,
+      sortUndefined: "last",
+    },
+    {
+      accessorKey: "skateBench",
+      header: ({ column }) => (
+        <ColumnHeader
+          column={column}
+          title="SkateBench"
+          tooltip="Technical skateboarding trick terminology knowledge — percentage of correct answers out of 210 tests (higher is better)"
+          link={{
+            url: "https://skatebench.t3.gg/",
+            title: "SkateBench Leaderboard",
+          }}
+          sort={{ enabled: true }}
+        />
+      ),
+      cell: ({ row }) => {
+        const value = row.original.skateBench;
+        return (
+          <div
+            style={getCellBackground(
+              value,
+              skateBenchRange.min,
+              skateBenchRange.max,
             )}
             className="font-mono text-right block px-2 py-1"
           >
