@@ -13,7 +13,8 @@
     "costAAIndex": 1294,
     "HumLastExam": 34.5,
     "simpleBench": 45.8,
-    "ARCAGI2": 52.9
+    "ARCAGI2": 52.9,
+    "fictionLiveBench": 97.2
   },
   {
     "model": "GPT 5.1",
@@ -91,6 +92,25 @@
     "toolUse": true
   },
   {
+    "model": "Claude Opus 4.6",
+    "developer": "Anthropic",
+    "modelUrl": "https://www.anthropic.com/news/introducing-claude-opus-4-6",
+    "context": 200,
+    "maxOutputTokens": 128,
+    "inputPrice": 5,
+    "outputPrice": 25,
+    "hasReasoning": true,
+    "hasVision": true,
+    "toolUse": true,
+    "AAIndex": 53,
+    "simpleBench": 67.6,
+    "SWEBench": 80.8,
+    "GPQAdiamond": 91.3,
+    "HumLastExam": 40.0,
+    "ARCAGI2": 68.8,
+    "VendingBench": 8017.59
+  },
+  {
     "model": "Claude 4.5 Opus",
     "modelUrl": "https://www.anthropic.com/news/claude-opus-4-5",
     "developer": "Anthropic",
@@ -105,7 +125,8 @@
     "simpleBench": 62,
     "hasVision": true,
     "ARCAGI2": 37.6,
-    "tokenUseAAIndex": 48
+    "tokenUseAAIndex": 48,
+    "fictionLiveBench": 97.2
   },
   {
     "model": "Claude 4.5 Sonnet",
@@ -122,7 +143,8 @@
     "ARCAGI2": 13.6,
     "tokenUseAAIndex": 42,
     "VendingBench": 3838.74,
-    "SWEBench": 77.2
+    "SWEBench": 77.2,
+    "fictionLiveBench": 88.9
   },
   {
     "model": "Claude 4.5 Haiku",
@@ -159,7 +181,8 @@
     "costAAIndex": 1201,
     "ARCAGI2": 31.1,
     "tokenUseAAIndex": 92,
-    "HumLastExam": 37.5
+    "HumLastExam": 37.5,
+    "fictionLiveBench": 100.0
   },
   {
     "model": "Gemini 3 Flash",
@@ -173,7 +196,8 @@
     "SWEBench": 78,
     "simpleBench": 61.1,
     "VendingBench": 3635,
-    "ARCAGI2": 33.6
+    "ARCAGI2": 33.6,
+    "fictionLiveBench": 96.9
   },
   {
     "model": "Gemini 2.5 Flash",
