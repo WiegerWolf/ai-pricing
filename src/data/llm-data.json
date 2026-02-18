@@ -158,6 +158,26 @@
     "fictionLiveBench": 88.9
   },
   {
+    "model": "Claude Sonnet 4.6",
+    "developer": "Anthropic",
+    "modelUrl": "https://www.anthropic.com/news/claude-sonnet-4-6",
+    "context": 1000,
+    "maxOutputTokens": 128,
+    "inputPrice": 3,
+    "outputPrice": 15,
+    "hasReasoning": true,
+    "toolUse": true,
+    "hasVision": true,
+    "AAIndex": 51,
+    "SWEBench": 79.6,
+    "GPQAdiamond": 89.9,
+    "HumLastExam": 33.2,
+    "ARCAGI2": 58.3,
+    "costAAIndex": 2089,
+    "tokenUseAAIndex": 74,
+    "VendingBench": 7204.14
+  },
+  {
     "model": "Claude Haiku 4.5",
     "developer": "Anthropic",
     "snitchBench": 0.0,
