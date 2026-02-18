@@ -366,6 +366,9 @@
     "outputPrice": 2.4,
     "hasReasoning": true,
     "toolUse": true,
-    "SWEBench": 80.2
+    "SWEBench": 80.2,
+    "AAIndex": 42,
+    "costAAIndex": 125,
+    "tokenUseAAIndex": 56
   }
 ]
