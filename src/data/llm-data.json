@@ -218,6 +218,22 @@
     "fictionLiveBench": 100.0
   },
   {
+    "model": "Gemini 3.1 Pro",
+    "developer": "Google AI",
+    "modelUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+    "simpleBench": 79.6,
+    "ARCAGI2": 77.1,
+    "GPQAdiamond": 94.3,
+    "HumLastExam": 51.4,
+    "SWEBench": 80.6,
+    "context": 1000,
+    "hasVision": true,
+    "hasReasoning": true,
+    "AAIndex": 57,
+    "costAAIndex": 892,
+    "tokenUseAAIndex": 57
+  },
+  {
     "model": "Gemini 3 Flash",
     "developer": "Google AI",
     "modelUrl": "https://blog.google/products/gemini/gemini-3-flash/",
