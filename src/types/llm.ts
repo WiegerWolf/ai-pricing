@@ -14,6 +14,7 @@ export interface LLMModel {
     ARCAGI2?: number | null; // ARC AGI 2 Benchmark, %
     snitchBench?: number | null; // SnitchBench Gov Snitch Rate, %
     skateBench?: number | null; // SkateBench Technical Trick Terminology, %
+    bullshitBench?: number | null; // BullshitBench v2 nonsense detection rate, %
     context?: number;
     inputPrice?: number;
     outputPrice?: number;
@@ -27,6 +28,7 @@ export interface LLMModel {
     maxOutputTokens?: number;
     maxOutputTokensBeta?: number;
     modelUrl?: string;
+    releaseDate?: string; // Model release date (ISO 8601, YYYY-MM-DD)
     developer: string;
     hasReasoning?: boolean; // Add the new property for thinking/reasoning mode
 }

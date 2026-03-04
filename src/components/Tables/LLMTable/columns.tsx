@@ -30,12 +30,36 @@ const createPriceRangeFilter = (
   return true;
 };
 
+const getModelAgeDays = (releaseDate?: string): number | null => {
+  if (!releaseDate) return null;
+  const releasedAt = Date.parse(`${releaseDate}T00:00:00Z`);
+  if (Number.isNaN(releasedAt)) return null;
+  const now = Date.now();
+  const age = Math.floor((now - releasedAt) / (1000 * 60 * 60 * 24));
+  return Math.max(age, 0);
+};
+
+const formatAge = (days: number): string => {
+  if (days === 0) return "today";
+  if (days < 14) return `${days}d`;
+  if (days < 60) return `${Math.floor(days / 7)}w`;
+  return `${Math.floor(days / 30)}mo`;
+};
+
+/** Returns Tailwind classes for the age pill based on freshness */
+const agePillClasses = (days: number): string => {
+  if (days <= 7)  return "bg-emerald-500/15 text-emerald-600";
+  if (days <= 30) return "bg-emerald-500/10 text-emerald-500/80";
+  if (days <= 90) return "bg-slate-500/10 text-slate-500";
+  return "bg-slate-500/8 text-slate-400";
+};
+
 // Column group definitions — used by DataTable for group headers
 export const columnGroups = [
   { label: "Model", span: 1 },
   { label: "Quality", span: 1 },
   { label: "Cost", span: 2 },
-  { label: "Benchmarks", span: 6 },
+  { label: "Benchmarks", span: 7 },
   { label: "Caps", span: 1 },
 ];
 
@@ -48,6 +72,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
   const tokenUseAAIndexRange = getColumnMinMax(data, "tokenUseAAIndex");
   const aaIndexRange = getColumnMinMax(data, "AAIndex");
   const skateBenchRange = getColumnMinMax(data, "skateBench");
+  const bullshitBenchRange = getColumnMinMax(data, "bullshitBench");
   const vendingBenchValues = data
     .map((item) => item.VendingBench)
     .filter((value): value is number => value !== null && value !== undefined);
@@ -71,19 +96,32 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
       filterFn: "includesString",
       cell: ({ row }) => {
         const developer = row.original.developer;
+        const ageDays = getModelAgeDays(row.original.releaseDate);
         const logo = developerLogos[developer];
         const flag = developerFlags[developer];
         const content = (
-          <div className="flex items-center gap-1.5">
-            {logo && (
-              <img
-                src={logo}
-                alt={`${developer} logo`}
-                className="w-4 h-4 object-contain shrink-0 rounded-sm"
-              />
-            )}
-            {flag && <span className="text-xs leading-none">{flag}</span>}
-            <span className="truncate font-medium text-[12px]">{row.original.model}</span>
+          <div className="flex items-start gap-1.5 min-w-0">
+            <div className="flex items-center gap-1 shrink-0 pt-0.5">
+              {logo && (
+                <img
+                  src={logo}
+                  alt={`${developer} logo`}
+                  className="w-4 h-4 object-contain shrink-0 rounded-sm"
+                />
+              )}
+              {flag && <span className="text-xs leading-none">{flag}</span>}
+            </div>
+            <div className="min-w-0 flex items-center gap-1.5">
+              <span className="truncate font-medium text-[12px]">{row.original.model}</span>
+              {ageDays !== null && (
+                <span
+                  className={`shrink-0 rounded px-1 py-px text-[9px] font-medium leading-tight ${agePillClasses(ageDays)}`}
+                  title={`Released ${row.original.releaseDate}`}
+                >
+                  {formatAge(ageDays)}
+                </span>
+              )}
+            </div>
           </div>
         );
 
@@ -311,6 +349,35 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           value={row.original.skateBench}
           min={skateBenchRange.min}
           max={skateBenchRange.max}
+          color={COLORS.benchmark}
+          format={(v) => `${v.toFixed(1)}%`}
+        />
+      ),
+      sortDescFirst: true,
+      sortUndefined: "last",
+    },
+
+    // ─── Benchmarks: BullshitBench v2 ───
+    {
+      accessorKey: "bullshitBench",
+      header: ({ column }) => (
+        <ColumnHeader
+          column={column}
+          title="BullshitBench"
+          subtitle="v2"
+          tooltip="Measures nonsense detection across plausible-sounding prompts in software, medical, legal, finance, and physics domains (higher is better)."
+          link={{
+            url: "https://petergpt.github.io/bullshit-benchmark/viewer/index.v2.html",
+            title: "BullshitBench v2",
+          }}
+          sort={{ enabled: true }}
+        />
+      ),
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.bullshitBench}
+          min={bullshitBenchRange.min}
+          max={bullshitBenchRange.max}
           color={COLORS.benchmark}
           format={(v) => `${v.toFixed(1)}%`}
         />
