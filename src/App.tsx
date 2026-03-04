@@ -8,7 +8,7 @@ export default function App() {
       <header className="flex items-center justify-between px-3 py-1 bg-slate-800 text-slate-300 shrink-0">
         <div className="flex items-center gap-2">
           <h1 className="text-[13px] font-semibold text-white tracking-tight">
-            AI Model Comparison
+            LLM Comparison
           </h1>
           <span className="text-[10px] text-slate-400">
             {llmData.length} models
