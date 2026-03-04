@@ -55,6 +55,7 @@
     "costAAIndex": 182,
     "GPQAdiamond": 75,
     "tokenUseAAIndex": 84,
+    "VendingBench": -31.18,
     "fictionLiveBench": 61.1,
     "modelUrl": "https://openai.com/index/gpt-5-new-era-of-work/",
     "pricingUrl": "https://openai.com/api/pricing/"
@@ -91,6 +92,7 @@
     "tokenUseAAIndex": 78,
     "HumLastExam": 14.9,
     "GPQAdiamond": 80.1,
+    "VendingBench": -21.53,
     "fictionLiveBench": 33.3,
     "simpleBench": 22.1,
     "hasReasoning": true,
@@ -191,6 +193,7 @@
     "costAAIndex": 262,
     "tokenUseAAIndex": 32,
     "GPQAdiamond": 73,
+    "VendingBench": 458.89,
     "modelUrl": "https://www.anthropic.com/news/claude-haiku-4-5"
   },
   {
@@ -230,6 +233,7 @@
     "hasVision": true,
     "hasReasoning": true,
     "AAIndex": 57,
+    "VendingBench": 911.21,
     "costAAIndex": 892,
     "tokenUseAAIndex": 57
   },
@@ -250,31 +254,22 @@
     "fictionLiveBench": 96.9
   },
   {
-    "model": "Gemini 2.5 Flash",
+    "model": "Gemini 3.1 Flash-Lite",
     "provider": "Google AI",
     "developer": "Google AI",
-    "modelUrl": "https://deepmind.google/models/gemini/flash/",
+    "modelUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/",
     "pricingUrl": "https://ai.google.dev/pricing",
-    "skateBench": 68.6,
-    "context": 1000,
-    "inputPrice": 0.15,
-    "fictionLiveBench": 63.9,
-    "mcBenchElo": 1071,
-    "AAIndex": null,
-    "ARCAGI2": 2.5,
-    "tokenUseAAIndex": 93,
-    "outputPrice": 0.6,
-    "HumLastExam": 12.1,
+    "inputPrice": 0.25,
+    "outputPrice": 1.5,
+    "AAIndex": 34,
+    "costAAIndex": 94,
+    "tokenUseAAIndex": 53,
+    "HumLastExam": 16.0,
+    "GPQAdiamond": 86.9,
     "hasVision": true,
-    "GPQAdiamond": 82.8,
-    "simpleBench": 41.2,
-    "SWEBench": 60.4,
     "toolUse": true,
     "hasReasoning": true,
-    "aiderBench": 55.1,
-    "notes": "Hybrid reasoning model with 1M token context window and thinking budgets. Output price for 'thinking' mode: $3.50/1M tokens. Context caching: $0.0375/1M tokens (text/image/video). Preview model, pricing and features may change. Free tier available. See pricing page for audio and TTS rates.",
-    "webdevElo": 1311.55,
-    "costAAIndex": 248
+    "notes": "No-caching pricing: $0.25 input / $1.50 output per 1M tokens. Reported additional benchmarks: MMMU-Pro 76.8%, CharXiv Reasoning 73.2%, Video-MMMU 84.8%, SimpleQA Verified 43.3%, FACTS Benchmark Suite 40.6%, MMMLU 88.9%, LiveCodeBench 72.0%, MRCR v2 (128k avg) 60.1%, MRCR v2 (1M pointwise) 12.3%, output speed 363 tok/s."
   },
   {
     "model": "Grok 4",
@@ -310,7 +305,7 @@
     "costAAIndex": 40,
     "tokenUseAAIndex": 53,
     "simpleBench": 56,
-    "VendingBench": 350.66,
+    "VendingBench": 1106.63,
     "AAIndex": 39,
     "ARCAGI2": 5.3
   },
@@ -385,6 +380,7 @@
     "SWEBench": 80.2,
     "AAIndex": 42,
     "costAAIndex": 125,
-    "tokenUseAAIndex": 56
+    "tokenUseAAIndex": 56,
+    "VendingBench": -23.16
   }
 ]

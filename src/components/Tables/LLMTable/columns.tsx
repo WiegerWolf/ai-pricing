@@ -29,8 +29,6 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
   const costRange = getColumnMinMax(data, "costAAIndex");
   const tokenUseAAIndexRange = getColumnMinMax(data, "tokenUseAAIndex");
   const aaIndexRange = getColumnMinMax(data, "AAIndex"); // Add AAIndex range calculation
-  const VendingBenchRange = getColumnMinMax(data, "VendingBench");
-  const snitchBenchRange = getColumnMinMax(data, "snitchBench");
   const skateBenchRange = getColumnMinMax(data, "skateBench");
 
   return [
@@ -297,6 +295,38 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
       sortUndefined: "last",
     },
     {
+      accessorKey: "skateBench",
+      header: ({ column }) => (
+        <ColumnHeader
+          column={column}
+          title="SkateBench"
+          tooltip="Technical skateboarding trick terminology knowledge — percentage of correct answers out of 210 tests (higher is better)"
+          link={{
+            url: "https://skatebench.t3.gg/",
+            title: "SkateBench Leaderboard",
+          }}
+          sort={{ enabled: true }}
+        />
+      ),
+      cell: ({ row }) => {
+        const value = row.original.skateBench;
+        return (
+          <div
+            style={getCellBackground(
+              value,
+              skateBenchRange.min,
+              skateBenchRange.max,
+            )}
+            className="font-mono text-right block px-2 py-1"
+          >
+            {value !== undefined && value !== null ? `${value.toFixed(1)}%` : "-"}
+          </div>
+        );
+      },
+      sortDescFirst: true,
+      sortUndefined: "last",
+    },
+    {
       accessorKey: "fictionLiveBench",
       header: ({ column }) => (
         <ColumnHeader
@@ -347,84 +377,26 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
       ),
       cell: ({ row }) => {
         const value = row.original.VendingBench;
+        const cellStyle =
+          value === undefined || value === null
+            ? {}
+            : {
+                backgroundColor:
+                  value > 0
+                    ? "rgba(34, 197, 94, 0.18)"
+                    : value < 0
+                      ? "rgba(239, 68, 68, 0.18)"
+                      : undefined,
+              };
         return (
           <div
-            style={getCellBackground(
-              value,
-              VendingBenchRange.min,
-              VendingBenchRange.max,
-            )}
+            style={cellStyle}
             className="font-mono text-right block px-2 py-1"
           >
             {value ? `$${value.toFixed(2)}` : "-"}
           </div>
         );
       },
-      sortUndefined: "last",
-    },
-    {
-      accessorKey: "snitchBench",
-      header: ({ column }) => (
-        <ColumnHeader
-          column={column}
-          title="SnitchBench"
-          subtitle="Gov %"
-          tooltip="Measures AI model whistleblowing behavior — likelihood to report corporate wrongdoing to government authorities (higher = more likely to snitch)"
-          link={{
-            url: "https://snitchbench.t3.gg/",
-            title: "SnitchBench Leaderboard",
-          }}
-          sort={{ enabled: true }}
-        />
-      ),
-      cell: ({ row }) => {
-        const value = row.original.snitchBench;
-        return (
-          <div
-            style={getCellBackground(
-              value,
-              snitchBenchRange.min,
-              snitchBenchRange.max,
-            )}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value !== undefined && value !== null ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
-      sortDescFirst: true,
-      sortUndefined: "last",
-    },
-    {
-      accessorKey: "skateBench",
-      header: ({ column }) => (
-        <ColumnHeader
-          column={column}
-          title="SkateBench"
-          tooltip="Technical skateboarding trick terminology knowledge — percentage of correct answers out of 210 tests (higher is better)"
-          link={{
-            url: "https://skatebench.t3.gg/",
-            title: "SkateBench Leaderboard",
-          }}
-          sort={{ enabled: true }}
-        />
-      ),
-      cell: ({ row }) => {
-        const value = row.original.skateBench;
-        return (
-          <div
-            style={getCellBackground(
-              value,
-              skateBenchRange.min,
-              skateBenchRange.max,
-            )}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value !== undefined && value !== null ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
-      sortDescFirst: true,
       sortUndefined: "last",
     },
     {
