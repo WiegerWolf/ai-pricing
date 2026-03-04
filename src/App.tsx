@@ -1,5 +1,4 @@
 import { DataTable } from "@/components/Tables/LLMTable/DataTable";
-import { columns } from "@/components/Tables/LLMTable/columns";
 import llmData from '@/data/llm-data.json';
 
 export default function App() {
@@ -27,7 +26,7 @@ export default function App() {
         </div>
       </header>
       <main className="flex-1 overflow-auto">
-        <DataTable columns={columns(llmData)} data={llmData} />
+        <DataTable data={llmData} />
       </main>
     </div>
   );

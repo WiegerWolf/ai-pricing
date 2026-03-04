@@ -1,5 +1,4 @@
 import {
-    ColumnDef,
     ColumnFiltersState,
     flexRender,
     getCoreRowModel,
@@ -8,28 +7,59 @@ import {
     SortingState,
     useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
-import { columnGroups } from "./columns";
+import { useCallback, useMemo, useState } from "react";
+import { columns as createColumns, columnGroups, ModelSortMode, MODEL_SORT_CYCLE } from "./columns";
+import { LLMModel } from "@/types/llm";
 
-interface DataTableProps<TData, TValue> {
-    columns: ColumnDef<TData, TValue>[];
-    data: TData[];
+interface DataTableProps {
+    data: LLMModel[];
 }
 
-export function DataTable<TData, TValue>({
-    columns,
-    data,
-}: DataTableProps<TData, TValue>) {
+export function DataTable({ data }: DataTableProps) {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+    const [modelSortMode, setModelSortMode] = useState<ModelSortMode>(null);
+
+    const cycleModelSort = useCallback(() => {
+        setModelSortMode((prev) => {
+            const idx = MODEL_SORT_CYCLE.indexOf(prev);
+            const next = MODEL_SORT_CYCLE[(idx + 1) % MODEL_SORT_CYCLE.length];
+            if (next) {
+                setSorting([{ id: "model", desc: false }]);
+            } else {
+                setSorting((s) => s.filter((col) => col.id !== "model"));
+            }
+            return next;
+        });
+    }, []);
+
+    const handleSortingChange = useCallback(
+        (updater: SortingState | ((prev: SortingState) => SortingState)) => {
+            setSorting((prev) => {
+                const next = typeof updater === "function" ? updater(prev) : updater;
+                // If sorting changed to a non-model column, reset model sort mode
+                const modelSort = next.find((s) => s.id === "model");
+                if (!modelSort) {
+                    setModelSortMode(null);
+                }
+                return next;
+            });
+        },
+        [],
+    );
+
+    const tableColumns = useMemo(
+        () => createColumns(data, modelSortMode, cycleModelSort),
+        [data, modelSortMode, cycleModelSort],
+    );
 
     const table = useReactTable({
         data,
-        columns,
+        columns: tableColumns,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
-        onSortingChange: setSorting,
+        onSortingChange: handleSortingChange,
         onColumnFiltersChange: setColumnFilters,
         state: {
             sorting,
@@ -109,7 +139,7 @@ export function DataTable<TData, TValue>({
                     ))
                 ) : (
                     <tr>
-                        <td colSpan={columns.length} className="p-4 text-center text-slate-400">
+                        <td colSpan={tableColumns.length} className="p-4 text-center text-slate-400">
                             No results.
                         </td>
                     </tr>

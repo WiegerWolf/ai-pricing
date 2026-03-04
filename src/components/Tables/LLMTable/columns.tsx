@@ -4,6 +4,18 @@ import { ColumnHeader } from "./ColumnHeader";
 import { developerLogos, developerFlags } from "@/config/logos";
 import { getColumnMinMax } from "@/utils/colorScale";
 import { BarCell } from "./BarCell";
+import { FilterInput } from "./FilterInput";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
+export type ModelSortMode = "date" | "developer" | "country" | null;
+
+export const MODEL_SORT_CYCLE: ModelSortMode[] = ["date", "developer", "country", null];
+
+const MODEL_SORT_LABELS: Record<string, string> = {
+  date: "by date",
+  developer: "by developer",
+  country: "by country",
+};
 
 // Color palette — semantic meaning
 const COLORS = {
@@ -63,7 +75,11 @@ export const columnGroups = [
   { label: "Caps", span: 1 },
 ];
 
-export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
+export const columns = (
+  data: LLMModel[],
+  modelSortMode: ModelSortMode = null,
+  onCycleModelSort?: () => void,
+): ColumnDef<LLMModel>[] => {
   const SWEBenchRange = getColumnMinMax(data, "SWEBench");
   const simpleBenchRange = getColumnMinMax(data, "simpleBench");
   const fictionLiveBenchRange = getColumnMinMax(data, "fictionLiveBench");
@@ -85,15 +101,74 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
     // ─── Model ───
     {
       accessorKey: "model",
-      header: ({ column }) => (
-        <ColumnHeader
-          column={column}
-          title="Model"
-          tooltip="Model name. For benchmark results, assume the highest reasoning ability."
-          filter={{ type: "text", enabled: true }}
-        />
-      ),
+      header: ({ column }) => {
+        const modeLabel = modelSortMode ? MODEL_SORT_LABELS[modelSortMode] : null;
+        return (
+          <div className="text-[11px] leading-tight">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div
+                    className="rounded cursor-pointer select-none py-0.5 hover:bg-slate-100 flex items-center gap-0.5"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      onCycleModelSort?.();
+                    }}
+                  >
+                    <div className="flex flex-col justify-center">
+                      <span className="font-semibold text-slate-600">Model</span>
+                      {modeLabel && (
+                        <span className="text-[9px] text-indigo-500 font-medium leading-none">
+                          {modeLabel}
+                        </span>
+                      )}
+                    </div>
+                    <span className={modelSortMode ? "text-indigo-500" : "text-slate-300"}>
+                      <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24">
+                        <path
+                          fill="currentColor"
+                          d="M12 3.5L7 8.5h10l-5-5z"
+                          className="opacity-20"
+                        />
+                        <path
+                          fill="currentColor"
+                          d="M12 20.5l5-5H7l5 5z"
+                          className={modelSortMode ? "opacity-100" : "opacity-20"}
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent side="top" align="start" className="text-xs max-w-xs">
+                  <p>Click to cycle sort: by date → by developer → by country → default</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <div className="mt-0.5">
+              <FilterInput column={column} placeholder="Filter..." />
+            </div>
+          </div>
+        );
+      },
       filterFn: "includesString",
+      sortingFn: (rowA, rowB) => {
+        const a = rowA.original;
+        const b = rowB.original;
+        switch (modelSortMode) {
+          case "date":
+            // Recent first: reverse date comparison (desc=false, so we negate)
+            return (b.releaseDate ?? "").localeCompare(a.releaseDate ?? "");
+          case "developer":
+            return (a.developer ?? "").localeCompare(b.developer ?? "");
+          case "country":
+            return (developerFlags[a.developer] ?? "").localeCompare(
+              developerFlags[b.developer] ?? "",
+            );
+          default:
+            return 0;
+        }
+      },
       cell: ({ row }) => {
         const developer = row.original.developer;
         const ageDays = getModelAgeDays(row.original.releaseDate);
