@@ -250,6 +250,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
         <ColumnHeader
           column={column}
           title="SimpleBench"
+          subtitle="MCQ"
           tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
           link={{
             url: "https://simple-bench.com/#leaderboardTable",
