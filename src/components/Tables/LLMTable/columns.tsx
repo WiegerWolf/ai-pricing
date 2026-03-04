@@ -325,7 +325,7 @@ export const columns = (
         <ColumnHeader
           column={column}
           title="SimpleBench"
-          subtitle="MCQ"
+          subtitle="MCQ · %"
           tooltip="Benchmark covering spatio-temporal reasoning, social intelligence, and trick questions (Human Baseline 83.7%) (higher is better)"
           link={{
             url: "https://simple-bench.com/#leaderboardTable",
@@ -340,7 +340,7 @@ export const columns = (
           min={simpleBenchRange.min}
           max={simpleBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}%`}
+          format={(v) => `${v.toFixed(1)}`}
         />
       ),
       sortingFn: "alphanumeric",
@@ -355,7 +355,7 @@ export const columns = (
         <ColumnHeader
           column={column}
           title="SWE-Bench"
-          subtitle="Verified"
+          subtitle="Verified · %"
           tooltip="A benchmark measuring the ability of an AI to edit code agentically across multiple programming languages (higher is better)"
           link={{
             url: "https://swebench.com/",
@@ -370,7 +370,7 @@ export const columns = (
           min={SWEBenchRange.min}
           max={SWEBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}%`}
+          format={(v) => `${v.toFixed(1)}`}
         />
       ),
       sortDescFirst: true,
@@ -384,6 +384,7 @@ export const columns = (
         <ColumnHeader
           column={column}
           title="ARC-AGI-2"
+          subtitle="%"
           tooltip="ARC-AGI-2 uses abstract visual puzzles to evaluate on-the-spot reasoning skills (higher is better)"
           link={{
             url: "https://arcprize.org/leaderboard",
@@ -398,7 +399,7 @@ export const columns = (
           min={ARCAGI2Range.min}
           max={ARCAGI2Range.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}%`}
+          format={(v) => `${v.toFixed(1)}`}
         />
       ),
       sortDescFirst: true,
@@ -412,6 +413,7 @@ export const columns = (
         <ColumnHeader
           column={column}
           title="SkateBench"
+          subtitle="%"
           tooltip="Technical skateboarding trick terminology knowledge — percentage of correct answers out of 210 tests (higher is better)"
           link={{
             url: "https://skatebench.t3.gg/",
@@ -426,7 +428,7 @@ export const columns = (
           min={skateBenchRange.min}
           max={skateBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}%`}
+          format={(v) => `${v.toFixed(1)}`}
         />
       ),
       sortDescFirst: true,
@@ -440,7 +442,7 @@ export const columns = (
         <ColumnHeader
           column={column}
           title="BullshitBench"
-          subtitle="v2"
+          subtitle="v2 · %"
           tooltip="Measures nonsense detection across plausible-sounding prompts in software, medical, legal, finance, and physics domains (higher is better)."
           link={{
             url: "https://petergpt.github.io/bullshit-benchmark/viewer/index.v2.html",
@@ -455,7 +457,7 @@ export const columns = (
           min={bullshitBenchRange.min}
           max={bullshitBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}%`}
+          format={(v) => `${v.toFixed(1)}`}
         />
       ),
       sortDescFirst: true,
@@ -469,7 +471,7 @@ export const columns = (
         <ColumnHeader
           column={column}
           title="Fiction.Live"
-          subtitle="@60k"
+          subtitle="@60k · %"
           tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better). We use the 60k context length score here."
           link={{
             url: "https://fiction.live/stories/Fiction-liveBench-Mar-25-2025/oQdzQvKHw8JyXbN87",
@@ -484,7 +486,7 @@ export const columns = (
           min={fictionLiveBenchRange.min}
           max={fictionLiveBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}%`}
+          format={(v) => `${v.toFixed(1)}`}
         />
       ),
       sortingFn: "alphanumeric",
