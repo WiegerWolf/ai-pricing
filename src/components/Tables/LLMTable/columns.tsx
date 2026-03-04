@@ -30,6 +30,13 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
   const tokenUseAAIndexRange = getColumnMinMax(data, "tokenUseAAIndex");
   const aaIndexRange = getColumnMinMax(data, "AAIndex"); // Add AAIndex range calculation
   const skateBenchRange = getColumnMinMax(data, "skateBench");
+  const vendingBenchValues = data
+    .map((item) => item.VendingBench)
+    .filter((value): value is number => value !== null && value !== undefined);
+  const maxPositiveVendingBench = Math.max(
+    0,
+    ...vendingBenchValues.filter((value) => value > 0),
+  );
 
   return [
     {
@@ -380,14 +387,13 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
         const cellStyle =
           value === undefined || value === null
             ? {}
-            : {
-                backgroundColor:
-                  value > 0
-                    ? "rgba(34, 197, 94, 0.18)"
-                    : value < 0
-                      ? "rgba(239, 68, 68, 0.18)"
-                      : undefined,
-              };
+            : value > 0
+              ? getCellBackground(value, 0, maxPositiveVendingBench, {
+                  color: "rgba(34, 197, 94, 0.22)",
+                })
+              : value < 0
+                ? { color: "rgb(185 28 28)" }
+                : {};
         return (
           <div
             style={cellStyle}
