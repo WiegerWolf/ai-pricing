@@ -2,7 +2,17 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 import { LLMModel } from "@/types/llm";
 import { ColumnHeader } from "./ColumnHeader";
 import { developerLogos, developerFlags } from "@/config/logos";
-import { getCellBackground, getColumnMinMax } from "@/utils/colorScale";
+import { getColumnMinMax } from "@/utils/colorScale";
+import { BarCell } from "./BarCell";
+
+// Color palette — semantic meaning
+const COLORS = {
+  quality: "rgba(99, 102, 241, 0.24)",     // indigo — intelligence/quality
+  cost: "rgba(244, 63, 94, 0.18)",         // rose — expense (lower is better)
+  tokens: "rgba(245, 158, 11, 0.20)",      // amber — resource usage
+  benchmark: "rgba(99, 102, 241, 0.16)",   // indigo lighter — benchmark scores
+  profit: "rgba(34, 197, 94, 0.24)",       // emerald — positive outcome
+};
 
 // Helper function for price range filtering
 const createPriceRangeFilter = (
@@ -20,15 +30,23 @@ const createPriceRangeFilter = (
   return true;
 };
 
+// Column group definitions — used by DataTable for group headers
+export const columnGroups = [
+  { label: "Model", span: 1 },
+  { label: "Quality", span: 1 },
+  { label: "Cost", span: 2 },
+  { label: "Benchmarks", span: 6 },
+  { label: "Caps", span: 1 },
+];
+
 export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
-  // Calculate min/max values for numerical columns
   const SWEBenchRange = getColumnMinMax(data, "SWEBench");
   const simpleBenchRange = getColumnMinMax(data, "simpleBench");
   const fictionLiveBenchRange = getColumnMinMax(data, "fictionLiveBench");
   const ARCAGI2Range = getColumnMinMax(data, "ARCAGI2");
   const costRange = getColumnMinMax(data, "costAAIndex");
   const tokenUseAAIndexRange = getColumnMinMax(data, "tokenUseAAIndex");
-  const aaIndexRange = getColumnMinMax(data, "AAIndex"); // Add AAIndex range calculation
+  const aaIndexRange = getColumnMinMax(data, "AAIndex");
   const skateBenchRange = getColumnMinMax(data, "skateBench");
   const vendingBenchValues = data
     .map((item) => item.VendingBench)
@@ -39,6 +57,7 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
   );
 
   return [
+    // ─── Model ───
     {
       accessorKey: "model",
       header: ({ column }) => (
@@ -55,16 +74,16 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
         const logo = developerLogos[developer];
         const flag = developerFlags[developer];
         const content = (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             {logo && (
               <img
                 src={logo}
                 alt={`${developer} logo`}
-                className="w-4 h-4 object-contain"
+                className="w-4 h-4 object-contain shrink-0 rounded-sm"
               />
             )}
-            {flag && <span>{flag}</span>}
-            <span>{row.original.model}</span>
+            {flag && <span className="text-xs leading-none">{flag}</span>}
+            <span className="truncate font-medium text-[12px]">{row.original.model}</span>
           </div>
         );
 
@@ -73,10 +92,10 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
             href={row.original.modelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
+            className="text-slate-700 hover:text-blue-600 hover:underline inline-flex items-center gap-0.5"
           >
             {content}
-            <svg className="h-3 w-3 text-gray-400" viewBox="0 0 12 12">
+            <svg className="h-2.5 w-2.5 text-slate-300 shrink-0 ml-0.5" viewBox="0 0 12 12">
               <path
                 fill="currentColor"
                 d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"
@@ -91,10 +110,13 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           content
         );
       },
-      minSize: 180,
+      minSize: 170,
     },
+
+    // ─── Quality: AAIndex ───
     {
       accessorKey: "AAIndex",
+      meta: { groupStart: true },
       header: ({ column }) => (
         <ColumnHeader
           column={column}
@@ -107,38 +129,30 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.AAIndex;
-        // Use the AAIndex range for background color
-        const cellStyle = getCellBackground(
-          value,
-          aaIndexRange.min,
-          aaIndexRange.max,
-          {
-            useLog: true,
-          },
-        );
-        return (
-          <div
-            style={cellStyle}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value === undefined || value === null ? "-" : value}
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.AAIndex}
+          min={aaIndexRange.min}
+          max={aaIndexRange.max}
+          color={COLORS.quality}
+          useLog
+        />
+      ),
       sortingFn: "alphanumeric",
       sortDescFirst: true,
       sortUndefined: "last",
-      maxSize: 150,
+      maxSize: 100,
     },
+
+    // ─── Cost: AA Index cost ───
     {
       accessorKey: "costAAIndex",
+      meta: { groupStart: true },
       header: ({ column }) => (
         <ColumnHeader
           column={column}
           title="AA Index cost"
-          subtitle="USD spent"
+          subtitle="USD"
           tooltip="Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index. Lower is better."
           link={{
             url: "https://artificialanalysis.ai/models#cost-to-run-artificial-analysis-intelligence-index",
@@ -148,32 +162,26 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.costAAIndex;
-        const cellStyle =
-          value === 0
-            ? {}
-            : getCellBackground(value, costRange.min, costRange.max, {
-                color: "rgb(254 226 226)",
-              });
-        return (
-          <div
-            style={cellStyle}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value === undefined ? "-" : `$${value}`}
-          </div>
-        );
-      },
-      maxSize: 200,
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.costAAIndex}
+          min={costRange.min}
+          max={costRange.max}
+          color={COLORS.cost}
+          format={(v) => (v === 0 ? "Free" : `$${v}`)}
+        />
+      ),
+      maxSize: 130,
       filterFn: createPriceRangeFilter,
     },
+
+    // ─── Cost: Token Use ───
     {
       accessorKey: "tokenUseAAIndex",
       header: ({ column }) => (
         <ColumnHeader
           column={column}
-          title="AA Index Token Use"
+          title="Token Use"
           subtitle="MTok"
           tooltip="Output Tokens Used to Run Artificial Analysis Intelligence Index, Millions (lower is better)"
           link={{
@@ -183,28 +191,23 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.tokenUseAAIndex;
-        const cellStyle =
-          value === 0
-            ? {}
-            : getCellBackground(value, tokenUseAAIndexRange.min, tokenUseAAIndexRange.max, {
-                useLog: true,
-                color: "rgba(0, 128, 128, .3)",
-              });
-        return (
-          <div
-            style={cellStyle}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value === undefined ? "-" : `${value}M`}
-          </div>
-        );
-      },
-      maxSize: 150,
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.tokenUseAAIndex}
+          min={tokenUseAAIndexRange.min}
+          max={tokenUseAAIndexRange.max}
+          color={COLORS.tokens}
+          useLog
+          format={(v) => `${v}M`}
+        />
+      ),
+      maxSize: 100,
     },
+
+    // ─── Benchmarks: SimpleBench ───
     {
       accessorKey: "simpleBench",
+      meta: { groupStart: true },
       header: ({ column }) => (
         <ColumnHeader
           column={column}
@@ -217,25 +220,21 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.simpleBench;
-        return (
-          <div
-            style={getCellBackground(
-              value,
-              simpleBenchRange.min,
-              simpleBenchRange.max,
-            )}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.simpleBench}
+          min={simpleBenchRange.min}
+          max={simpleBenchRange.max}
+          color={COLORS.benchmark}
+          format={(v) => `${v.toFixed(1)}%`}
+        />
+      ),
       sortingFn: "alphanumeric",
       sortDescFirst: true,
       sortUndefined: "last",
     },
+
+    // ─── Benchmarks: SWE-Bench ───
     {
       accessorKey: "SWEBench",
       header: ({ column }) => (
@@ -251,24 +250,20 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.SWEBench;
-        return (
-          <div
-            style={getCellBackground(
-              value,
-              SWEBenchRange.min,
-              SWEBenchRange.max,
-            )}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.SWEBench}
+          min={SWEBenchRange.min}
+          max={SWEBenchRange.max}
+          color={COLORS.benchmark}
+          format={(v) => `${v.toFixed(1)}%`}
+        />
+      ),
       sortDescFirst: true,
       sortUndefined: "last",
     },
+
+    // ─── Benchmarks: ARC-AGI-2 ───
     {
       accessorKey: "ARCAGI2",
       header: ({ column }) => (
@@ -283,24 +278,20 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.ARCAGI2;
-        return (
-          <div
-            style={getCellBackground(
-              value,
-              ARCAGI2Range.min,
-              ARCAGI2Range.max,
-            )}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.ARCAGI2}
+          min={ARCAGI2Range.min}
+          max={ARCAGI2Range.max}
+          color={COLORS.benchmark}
+          format={(v) => `${v.toFixed(1)}%`}
+        />
+      ),
       sortDescFirst: true,
       sortUndefined: "last",
     },
+
+    // ─── Benchmarks: SkateBench ───
     {
       accessorKey: "skateBench",
       header: ({ column }) => (
@@ -315,30 +306,26 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.skateBench;
-        return (
-          <div
-            style={getCellBackground(
-              value,
-              skateBenchRange.min,
-              skateBenchRange.max,
-            )}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value !== undefined && value !== null ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.skateBench}
+          min={skateBenchRange.min}
+          max={skateBenchRange.max}
+          color={COLORS.benchmark}
+          format={(v) => `${v.toFixed(1)}%`}
+        />
+      ),
       sortDescFirst: true,
       sortUndefined: "last",
     },
+
+    // ─── Benchmarks: Fiction.LiveBench ───
     {
       accessorKey: "fictionLiveBench",
       header: ({ column }) => (
         <ColumnHeader
           column={column}
-          title="Fiction.LiveBench"
+          title="Fiction.Live"
           subtitle="@60k"
           tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better). We use the 60k context length score here."
           link={{
@@ -348,84 +335,88 @@ export const columns = (data: LLMModel[]): ColumnDef<LLMModel>[] => {
           sort={{ enabled: true }}
         />
       ),
-      cell: ({ row }) => {
-        const value = row.original.fictionLiveBench;
-        return (
-          <div
-            style={getCellBackground(
-              value,
-              fictionLiveBenchRange.min,
-              fictionLiveBenchRange.max,
-            )}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value ? `${value.toFixed(1)}%` : "-"}
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.fictionLiveBench}
+          min={fictionLiveBenchRange.min}
+          max={fictionLiveBenchRange.max}
+          color={COLORS.benchmark}
+          format={(v) => `${v.toFixed(1)}%`}
+        />
+      ),
       sortingFn: "alphanumeric",
       sortDescFirst: true,
       sortUndefined: "last",
     },
+
+    // ─── Benchmarks: VendingBench ───
     {
       accessorKey: "VendingBench",
       header: ({ column }) => (
         <ColumnHeader
           column={column}
-          title="Vending Bench 2"
-          subtitle="Net worth, USD"
+          title="VendingBench"
+          subtitle="Net USD"
           tooltip="A benchmark for measuring AI model performance on running a business over a year; bank balance in the end (higher is better)"
           link={{
             url: "https://andonlabs.com/evals/vending-bench-2",
-            title: "Fiction.LiveBench Methodology",
+            title: "VendingBench 2",
           }}
           sort={{ enabled: true }}
         />
       ),
       cell: ({ row }) => {
         const value = row.original.VendingBench;
-        const cellStyle =
-          value === undefined || value === null
-            ? {}
-            : value > 0
-              ? getCellBackground(value, 0, maxPositiveVendingBench, {
-                  color: "rgba(34, 197, 94, 0.22)",
-                })
-              : value < 0
-                ? { color: "rgb(185 28 28)" }
-                : {};
+        if (value === null || value === undefined) {
+          return <div className="font-mono text-right px-1.5 py-px text-gray-300">&mdash;</div>;
+        }
+        if (value < 0) {
+          return (
+            <div className="font-mono text-right px-1.5 py-px text-[12px] leading-snug text-rose-600">
+              ${value.toFixed(0)}
+            </div>
+          );
+        }
         return (
-          <div
-            style={cellStyle}
-            className="font-mono text-right block px-2 py-1"
-          >
-            {value ? `$${value.toFixed(2)}` : "-"}
-          </div>
+          <BarCell
+            value={value}
+            min={0}
+            max={maxPositiveVendingBench}
+            color={COLORS.profit}
+            format={(v) => `$${v.toFixed(0)}`}
+          />
         );
       },
       sortUndefined: "last",
     },
+
+    // ─── Capabilities: Vision ───
     {
       accessorKey: "hasVision",
+      meta: { groupStart: true },
       header: ({ column }) => (
         <ColumnHeader
           column={column}
           title="Vision"
           tooltip="Whether the model can process images"
           filter={{ type: "boolean", enabled: true }}
-          verticalText={true} // Add this line
+          verticalText={true}
         />
       ),
       cell: ({ row }) => (
-        <span className="text-center block">
-          {row.original.hasVision ? "✓" : "-"}
+        <span className="text-center block text-[12px]">
+          {row.original.hasVision ? (
+            <span className="text-emerald-500">&#10003;</span>
+          ) : (
+            <span className="text-gray-300">&mdash;</span>
+          )}
         </span>
       ),
       filterFn: (row, id, value: boolean) => {
         if (value === undefined) return true;
         return row.getValue(id) === value;
       },
-      maxSize: 50,
+      maxSize: 44,
     },
   ];
 };

@@ -2,7 +2,7 @@ import { Column } from "@tanstack/react-table";
 import { LLMModel } from "@/types/llm";
 
 interface FilterInputProps {
-    column?: Column<LLMModel, unknown>;  // Make column optional
+    column?: Column<LLMModel, unknown>;
     value?: string;
     onChange?: (value: string) => void;
     placeholder?: string;
@@ -14,7 +14,6 @@ export const FilterInput = ({
     onChange: propOnChange,
     placeholder
 }: FilterInputProps) => {
-    // Use either direct props or column filter value
     const value = propValue ?? (column?.getFilterValue() as string) ?? '';
     const onChange = propOnChange ?? ((value: string) => column?.setFilterValue(value));
 
@@ -23,7 +22,7 @@ export const FilterInput = ({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            className="w-full bg-transparent border-b border-gray-200 focus:border-blue-500 outline-none px-1 py-0.5 text-xs"
+            className="w-full bg-white border border-slate-200 rounded-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400/30 outline-none px-1 py-0 text-[10px] h-[18px] text-slate-600 placeholder:text-slate-300"
         />
     );
 };

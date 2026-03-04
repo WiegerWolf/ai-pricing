@@ -40,11 +40,11 @@ export function getCellBackground(
 ) {
     if (value === null || value === undefined) return {};
     
-    const { useLog = false, color = 'rgb(243 232 255)' } = options;
+    const { useLog = false, color = 'rgba(139, 92, 246, 0.12)' } = options;
     const relative = getRelativeValue(value, min, max, useLog);
     
     return {
         background: `linear-gradient(to right, ${color} ${relative * 100}%, transparent ${relative * 100}%)`,
-        borderRadius: '0.25rem'
+        borderRadius: '2px'
     };
 }

@@ -1,4 +1,3 @@
-// components/Tables/LLMTable/CheckboxFilter.tsx
 import { Checkbox } from "@/components/ui/checkbox";
 import { Column } from "@tanstack/react-table";
 import { LLMModel } from "@/types/llm";
@@ -11,7 +10,7 @@ export function CheckboxFilter({ column }: CheckboxFilterProps) {
     const value = column?.getFilterValue() as boolean | undefined;
 
     return (
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
             <Checkbox
                 checked={value === true}
                 onClick={() => {
@@ -21,9 +20,9 @@ export function CheckboxFilter({ column }: CheckboxFilterProps) {
                         column?.setFilterValue(true);
                     }
                 }}
-                className="h-3 w-3"
+                className="h-3 w-3 rounded-sm"
             />
-            <span className="text-xs text-gray-500">has</span>
+            <span className="text-[10px] text-slate-400">only</span>
         </div>
     );
 }
