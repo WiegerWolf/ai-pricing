@@ -387,7 +387,7 @@ export const columns = (
         <ColumnHeader
           column={column}
           title="SkateBench"
-          subtitle="%"
+          subtitle="v2 · %"
           tooltip="Technical skateboarding trick terminology knowledge — percentage of correct answers out of 210 tests (higher is better)"
           link={{
             url: "https://skatebench.t3.gg/",
