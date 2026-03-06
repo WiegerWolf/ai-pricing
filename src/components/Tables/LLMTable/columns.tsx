@@ -71,7 +71,7 @@ export const columnGroups = [
   { label: "Model", span: 1 },
   { label: "Quality", span: 1 },
   { label: "Cost", span: 2 },
-  { label: "Benchmarks", span: 7 },
+  { label: "Benchmarks", span: 6 },
   { label: "Caps", span: 1 },
 ];
 
@@ -80,7 +80,6 @@ export const columns = (
   modelSortMode: ModelSortMode = null,
   onCycleModelSort?: () => void,
 ): ColumnDef<LLMModel>[] => {
-  const SWEBenchRange = getColumnMinMax(data, "SWEBench");
   const simpleBenchRange = getColumnMinMax(data, "simpleBench");
   const fictionLiveBenchRange = getColumnMinMax(data, "fictionLiveBench");
   const ARCAGI2Range = getColumnMinMax(data, "ARCAGI2");
@@ -344,35 +343,6 @@ export const columns = (
         />
       ),
       sortingFn: "alphanumeric",
-      sortDescFirst: true,
-      sortUndefined: "last",
-    },
-
-    // ─── Benchmarks: SWE-Bench ───
-    {
-      accessorKey: "SWEBench",
-      header: ({ column }) => (
-        <ColumnHeader
-          column={column}
-          title="SWE-Bench"
-          subtitle="Verified · %"
-          tooltip="A benchmark measuring the ability of an AI to edit code agentically across multiple programming languages (higher is better)"
-          link={{
-            url: "https://swebench.com/",
-            title: "SWEBench",
-          }}
-          sort={{ enabled: true }}
-        />
-      ),
-      cell: ({ row }) => (
-        <BarCell
-          value={row.original.SWEBench}
-          min={SWEBenchRange.min}
-          max={SWEBenchRange.max}
-          color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}`}
-        />
-      ),
       sortDescFirst: true,
       sortUndefined: "last",
     },
