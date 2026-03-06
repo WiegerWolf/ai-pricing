@@ -272,7 +272,7 @@ export const columns = (
             url: "https://artificialanalysis.ai/models#cost-to-run-artificial-analysis-intelligence-index",
             title: "Cost to run Artificial Analysis Intelligence Index",
           }}
-          filter={{ type: "range", enabled: true }}
+          filter={{ type: "range", enabled: true, showMin: false }}
           sort={{ enabled: true }}
         />
       ),
@@ -302,6 +302,7 @@ export const columns = (
             url: "https://artificialanalysis.ai/models#output-tokens-used-to-run-artificial-analysis-intelligence-index",
             title: "Tokens used to run all evaluations in the Artificial Analysis Intelligence Index",
           }}
+          filter={{ type: "range", enabled: true, showMin: false }}
           sort={{ enabled: true }}
         />
       ),
@@ -315,6 +316,7 @@ export const columns = (
           format={(v) => `${v}M`}
         />
       ),
+      filterFn: createPriceRangeFilter,
       maxSize: 100,
     },
 

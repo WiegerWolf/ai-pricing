@@ -116,7 +116,7 @@ export function ColumnHeader({
             {filter?.enabled && (
                 <div className="mt-0.5">
                     {filter.type === 'range' ? (
-                        <RangeFilter column={column} showMax={filter.showMax} />
+                        <RangeFilter column={column} showMin={filter.showMin} showMax={filter.showMax} />
                     ) : filter.type === 'select' ? (
                         <SelectFilter
                             column={column}
