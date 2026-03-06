@@ -265,12 +265,12 @@ export const columns = (
       header: ({ column }) => (
         <ColumnHeader
           column={column}
-          title="AA Index cost"
+          title="Cost to Run AAIndex"
           subtitle="USD"
           tooltip="Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index. Lower is better."
           link={{
             url: "https://artificialanalysis.ai/models#cost-to-run-artificial-analysis-intelligence-index",
-            title: "Cost to run Artificial Analysis Intelligence Index",
+            title: "Cost to Run Artificial Analysis Intelligence Index",
           }}
           filter={{ type: "range", enabled: true, showMin: false }}
           sort={{ enabled: true }}
