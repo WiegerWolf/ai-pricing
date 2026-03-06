@@ -71,7 +71,7 @@ export const columnGroups = [
   { label: "Model", span: 1 },
   { label: "Quality", span: 1 },
   { label: "Cost", span: 2 },
-  { label: "Benchmarks", span: 6 },
+  { label: "Benchmarks", span: 5 },
   { label: "Caps", span: 1 },
 ];
 
@@ -81,7 +81,6 @@ export const columns = (
   onCycleModelSort?: () => void,
 ): ColumnDef<LLMModel>[] => {
   const simpleBenchRange = getColumnMinMax(data, "simpleBench");
-  const fictionLiveBenchRange = getColumnMinMax(data, "fictionLiveBench");
   const ARCAGI2Range = getColumnMinMax(data, "ARCAGI2");
   const costRange = getColumnMinMax(data, "costAAIndex");
   const tokenUseAAIndexRange = getColumnMinMax(data, "tokenUseAAIndex");
@@ -434,36 +433,6 @@ export const columns = (
           format={(v) => `${v.toFixed(1)}`}
         />
       ),
-      sortDescFirst: true,
-      sortUndefined: "last",
-    },
-
-    // ─── Benchmarks: Fiction.LiveBench ───
-    {
-      accessorKey: "fictionLiveBench",
-      header: ({ column }) => (
-        <ColumnHeader
-          column={column}
-          title="Fiction.Live"
-          subtitle="@60k · %"
-          tooltip="Fiction.LiveBench: Evaluates performance on long complex stories across different context lengths (higher is better). We use the 60k context length score here."
-          link={{
-            url: "https://fiction.live/stories/Fiction-liveBench-Mar-25-2025/oQdzQvKHw8JyXbN87",
-            title: "Fiction.LiveBench Methodology",
-          }}
-          sort={{ enabled: true }}
-        />
-      ),
-      cell: ({ row }) => (
-        <BarCell
-          value={row.original.fictionLiveBench}
-          min={fictionLiveBenchRange.min}
-          max={fictionLiveBenchRange.max}
-          color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}`}
-        />
-      ),
-      sortingFn: "alphanumeric",
       sortDescFirst: true,
       sortUndefined: "last",
     },
