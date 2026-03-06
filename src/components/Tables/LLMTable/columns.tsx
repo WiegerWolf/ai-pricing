@@ -116,6 +116,9 @@ export const columns = (
                   >
                     <div className="flex flex-col justify-center">
                       <span className="font-semibold text-slate-600">Model</span>
+                      <span className="text-[8px] text-slate-400 leading-none">
+                        Most metrics: high · xhigh · max
+                      </span>
                       {modeLabel && (
                         <span className="text-[9px] text-indigo-500 font-medium leading-none">
                           {modeLabel}
