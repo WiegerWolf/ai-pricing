@@ -14,7 +14,7 @@ export default function App() {
           </span>
         </div>
         <div className="flex items-center gap-3 text-[10px] text-slate-400">
-          <span>Updated Mar 4, 2026</span>
+          <span>Updated Mar 6, 2026</span>
           <a
             href="https://github.com/WiegerWolf/ai-pricing"
             target="_blank"
