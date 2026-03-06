@@ -17,6 +17,7 @@ export interface ColumnHeaderProps {
         type: 'text' | 'range' | 'select' | 'boolean' | 'multi-select';  // Add multi-select type
         enabled: boolean;
         options?: string[];  // for select type
+        showMax?: boolean;
     };
     sort?: {                   // Sort configuration
         enabled: boolean;

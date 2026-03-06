@@ -238,6 +238,7 @@ export const columns = (
             url: "https://artificialanalysis.ai/leaderboards/models",
             title: "AAIndex Benchmark",
           }}
+          filter={{ type: "range", enabled: true, showMax: false }}
           sort={{ enabled: true }}
         />
       ),
@@ -253,6 +254,7 @@ export const columns = (
       sortingFn: "alphanumeric",
       sortDescFirst: true,
       sortUndefined: "last",
+      filterFn: createPriceRangeFilter,
       maxSize: 100,
     },
 
@@ -477,6 +479,7 @@ export const columns = (
             url: "https://andonlabs.com/evals/vending-bench-2",
             title: "VendingBench 2",
           }}
+          filter={{ type: "range", enabled: true, showMax: false }}
           sort={{ enabled: true }}
         />
       ),
@@ -502,6 +505,7 @@ export const columns = (
           />
         );
       },
+      filterFn: createPriceRangeFilter,
       sortUndefined: "last",
     },
 
