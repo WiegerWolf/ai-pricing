@@ -269,7 +269,7 @@
     "provider": "xAI",
     "developer": "xAI",
     "releaseDate": "2026-03-10",
-    "modelUrl": "https://artificialanalysis.ai/models/grok-4-20-beta-0309",
+    "modelUrl": "https://artificialanalysis.ai/models/grok-4-20",
     "context": 2000,
     "inputPrice": 2,
     "outputPrice": 6,
