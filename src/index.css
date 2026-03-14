@@ -57,6 +57,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  html.dark {
+    color-scheme: dark;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -76,4 +79,8 @@
 /* Group border styling */
 .group-border-l {
   border-left: 1.5px solid rgba(148, 163, 184, 0.3);
+}
+
+.dark .group-border-l {
+  border-left-color: rgba(71, 85, 105, 0.6);
 }

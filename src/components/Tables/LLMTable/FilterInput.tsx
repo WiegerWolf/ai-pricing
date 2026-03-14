@@ -22,7 +22,7 @@ export const FilterInput = ({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            className="w-full bg-white border border-slate-200 rounded-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400/30 outline-none px-1 py-0 text-[10px] h-[18px] text-slate-600 placeholder:text-slate-300"
+            className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400/30 outline-none px-1 py-0 text-[10px] h-[18px] text-slate-600 dark:text-slate-200 placeholder:text-slate-300 dark:placeholder:text-slate-600"
         />
     );
 };

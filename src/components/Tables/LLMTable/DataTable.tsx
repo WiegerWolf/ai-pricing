@@ -71,7 +71,7 @@ export function DataTable({ data }: DataTableProps) {
         <table className="w-full border-collapse text-[12px]">
             <thead className="sticky top-0 z-10">
                 {/* Column group header */}
-                <tr className="bg-slate-700 text-slate-200">
+                <tr className="bg-slate-700 text-slate-200 dark:bg-slate-900 dark:text-slate-300">
                     {columnGroups.map((group, i) => (
                         <th
                             key={group.label}
@@ -87,15 +87,15 @@ export function DataTable({ data }: DataTableProps) {
 
                 {/* Column headers */}
                 {table.getHeaderGroups().map((headerGroup) => (
-                    <tr key={headerGroup.id} className="bg-slate-50 border-b border-slate-200">
+                    <tr key={headerGroup.id} className="bg-slate-50 border-b border-slate-200 dark:bg-slate-900 dark:border-slate-800">
                         {headerGroup.headers.map((header) => {
                             const isGroupStart = (header.column.columnDef.meta as any)?.groupStart;
                             return (
                                 <th
                                     key={header.id}
-                                    className={`text-left align-bottom font-medium text-slate-500 px-1.5 py-1 ${
-                                        isGroupStart ? "group-border-l" : ""
-                                    }`}
+                                    className={`text-left align-bottom font-medium text-slate-500 dark:text-slate-400 px-1.5 py-1 ${
+                                         isGroupStart ? "group-border-l" : ""
+                                     }`}
                                     style={{ width: `${header.getSize()}px` }}
                                 >
                                     {header.isPlaceholder
@@ -116,10 +116,10 @@ export function DataTable({ data }: DataTableProps) {
                         <tr
                             key={row.id}
                             className={`
-                                border-b border-slate-100/80
-                                hover:bg-blue-50/40
+                                border-b border-slate-100/80 dark:border-slate-800/80
+                                hover:bg-blue-50/40 dark:hover:bg-slate-800/60
                                 transition-colors duration-75
-                                ${rowIndex % 2 === 1 ? "bg-slate-50/40" : "bg-white"}
+                                ${rowIndex % 2 === 1 ? "bg-slate-50/40 dark:bg-slate-900/70" : "bg-white dark:bg-slate-950"}
                             `}
                         >
                             {row.getVisibleCells().map((cell) => {
@@ -139,7 +139,7 @@ export function DataTable({ data }: DataTableProps) {
                     ))
                 ) : (
                     <tr>
-                        <td colSpan={tableColumns.length} className="p-4 text-center text-slate-400">
+                        <td colSpan={tableColumns.length} className="p-4 text-center text-slate-400 dark:text-slate-500">
                             No results.
                         </td>
                     </tr>

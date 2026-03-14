@@ -51,7 +51,7 @@ export function ColumnHeader({
                     <TooltipTrigger asChild>
                         <div
                             className={`rounded cursor-pointer select-none py-0.5 ${
-                                sort?.enabled ? "hover:bg-slate-100" : ""
+                                sort?.enabled ? "hover:bg-slate-100 dark:hover:bg-slate-800" : ""
                             } ${verticalText
                                 ? '[writing-mode:vertical-rl] rotate-180 whitespace-nowrap flex flex-col items-start justify-center gap-0.5'
                                 : 'flex items-center gap-0.5'
@@ -64,7 +64,7 @@ export function ColumnHeader({
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="hover:underline inline-flex items-center group text-slate-600 hover:text-blue-600"
+                                        className="hover:underline inline-flex items-center group text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400"
                                         onClick={(e) => e.stopPropagation()}
                                     >
                                         <span className="font-semibold">{title}</span>
@@ -73,11 +73,11 @@ export function ColumnHeader({
                                         </svg>
                                     </a>
                                 ) : (
-                                    <span className="font-semibold text-slate-600">{title}</span>
+                                    <span className="font-semibold text-slate-600 dark:text-slate-300">{title}</span>
                                 )}
 
                                 {subtitle && (
-                                    <span className={`text-[9px] text-slate-400 font-normal leading-none ${verticalText ? 'mt-0.5' : ''}`}>
+                                    <span className={`text-[9px] text-slate-400 dark:text-slate-500 font-normal leading-none ${verticalText ? 'mt-0.5' : ''}`}>
                                         {subtitle}
                                     </span>
                                 )}
@@ -98,7 +98,7 @@ export function ColumnHeader({
                                     </a>
                                 )}
                                 {sort?.enabled && (
-                                    <span className={isSorted ? "text-slate-700" : "text-slate-300"}>
+                                    <span className={isSorted ? "text-slate-700 dark:text-slate-200" : "text-slate-300 dark:text-slate-600"}>
                                         <SortIcon />
                                     </span>
                                 )}

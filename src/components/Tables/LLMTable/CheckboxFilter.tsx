@@ -22,7 +22,7 @@ export function CheckboxFilter({ column }: CheckboxFilterProps) {
                 }}
                 className="h-3 w-3 rounded-sm"
             />
-            <span className="text-[10px] text-slate-400">only</span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500">only</span>
         </div>
     );
 }

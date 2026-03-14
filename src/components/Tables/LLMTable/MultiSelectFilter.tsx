@@ -72,18 +72,18 @@ export function MultiSelectFilter({ column, options, placeholder }: MultiSelectF
         createPortal(
             <div 
                 ref={dropdownRef}
-                className="fixed z-50 bg-white border rounded shadow-lg max-h-60 overflow-auto"
+                className="fixed z-50 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded shadow-lg max-h-60 overflow-auto text-slate-700 dark:text-slate-200"
                 style={{ 
                     top: `${position.top}px`, 
                     left: `${position.left}px`, 
                     width: `${Math.max(position.width, 192)}px` 
                 }}
             >
-                <div className="sticky top-0 bg-white border-b p-1 flex justify-between items-center">
+                <div className="sticky top-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 p-1 flex justify-between items-center">
                     <span className="text-xs font-medium">Select providers</span>
                     <button 
                         onClick={clearSelections}
-                        className="text-xs text-blue-500 hover:text-blue-700"
+                        className="text-xs text-blue-500 hover:text-blue-700 dark:hover:text-blue-300"
                     >
                         Clear
                     </button>
@@ -92,7 +92,7 @@ export function MultiSelectFilter({ column, options, placeholder }: MultiSelectF
                     {options.map(option => (
                         <div 
                             key={option}
-                            className="flex items-center gap-2 p-1 hover:bg-gray-100 rounded cursor-pointer"
+                            className="flex items-center gap-2 p-1 hover:bg-gray-100 dark:hover:bg-slate-800 rounded cursor-pointer"
                             onClick={() => toggleProvider(option)}
                         >
                             <Checkbox 
@@ -120,7 +120,7 @@ export function MultiSelectFilter({ column, options, placeholder }: MultiSelectF
             <button
                 ref={buttonRef}
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-between w-full h-6 text-xs min-w-[30px] py-0 pl-2 pr-6 border rounded"
+                className="flex items-center justify-between w-full h-6 text-xs min-w-[30px] py-0 pl-2 pr-6 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 rounded"
             >
                 <span className="truncate">
                     {filterValue && filterValue.length

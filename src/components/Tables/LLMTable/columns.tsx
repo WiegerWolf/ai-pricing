@@ -61,10 +61,10 @@ const formatAge = (days: number): string => {
 
 /** Returns Tailwind classes for the age pill based on freshness */
 const agePillClasses = (days: number): string => {
-  if (days <= 7)  return "bg-emerald-500/15 text-emerald-600";
-  if (days <= 30) return "bg-emerald-500/10 text-emerald-500/80";
-  if (days <= 90) return "bg-slate-500/10 text-slate-500";
-  return "bg-slate-500/8 text-slate-400";
+  if (days <= 7)  return "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400";
+  if (days <= 30) return "bg-emerald-500/10 text-emerald-500/80 dark:text-emerald-400/90";
+  if (days <= 90) return "bg-slate-500/10 text-slate-500 dark:text-slate-400";
+  return "bg-slate-500/8 text-slate-400 dark:text-slate-500";
 };
 
 // Column group definitions — used by DataTable for group headers
@@ -110,7 +110,7 @@ export const columns = (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div
-                    className="rounded cursor-pointer select-none py-0.5 hover:bg-slate-100 flex items-center gap-0.5"
+                    className="rounded cursor-pointer select-none py-0.5 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-0.5"
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -118,8 +118,8 @@ export const columns = (
                     }}
                   >
                     <div className="flex flex-col justify-center">
-                      <span className="font-semibold text-slate-600">Model</span>
-                      <span className="text-[8px] text-slate-400 leading-none">
+                      <span className="font-semibold text-slate-600 dark:text-slate-300">Model</span>
+                      <span className="text-[8px] text-slate-400 dark:text-slate-500 leading-none">
                         Most metrics: high · xhigh · max
                       </span>
                       {modeLabel && (
@@ -128,7 +128,7 @@ export const columns = (
                         </span>
                       )}
                     </div>
-                    <span className={modelSortMode ? "text-indigo-500" : "text-slate-300"}>
+                    <span className={modelSortMode ? "text-indigo-500" : "text-slate-300 dark:text-slate-600"}>
                       <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24">
                         <path
                           fill="currentColor"
@@ -209,10 +209,10 @@ export const columns = (
             href={row.original.modelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-700 hover:text-blue-600 hover:underline inline-flex items-center gap-0.5"
+            className="text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline inline-flex items-center gap-0.5"
           >
             {content}
-            <svg className="h-2.5 w-2.5 text-slate-300 shrink-0 ml-0.5" viewBox="0 0 12 12">
+            <svg className="h-2.5 w-2.5 text-slate-300 dark:text-slate-600 shrink-0 ml-0.5" viewBox="0 0 12 12">
               <path
                 fill="currentColor"
                 d="M3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V6h1v2.5A1.5 1.5 0 0 1 8.5 10h-5A1.5 1.5 0 0 1 2 8.5v-5A1.5 1.5 0 0 1 3.5 2H6v1H3.5z"
@@ -498,7 +498,7 @@ export const columns = (
       cell: ({ row }) => {
         const value = row.original.VendingBench;
         if (value === null || value === undefined) {
-          return <div className="font-mono text-right px-1.5 py-px text-gray-300">&mdash;</div>;
+          return <div className="font-mono text-right px-1.5 py-px text-gray-300 dark:text-slate-600">&mdash;</div>;
         }
         if (value < 0) {
           return (
@@ -539,7 +539,7 @@ export const columns = (
           {row.original.hasVision ? (
             <span className="text-emerald-500">&#10003;</span>
           ) : (
-            <span className="text-gray-300">&mdash;</span>
+              <span className="text-gray-300 dark:text-slate-600">&mdash;</span>
           )}
         </span>
       ),

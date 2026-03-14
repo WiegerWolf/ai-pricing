@@ -25,10 +25,10 @@ export function SelectFilter({ column, options, placeholder }: SelectFilterProps
                 column?.setFilterValue(value === "all" ? "" : value);
             }}
         >
-            <SelectTrigger className="h-[18px] w-full text-[10px] min-w-[30px] py-0 pl-1.5 pr-5 rounded-sm border-slate-200">
+            <SelectTrigger className="h-[18px] w-full text-[10px] min-w-[30px] py-0 pl-1.5 pr-5 rounded-sm border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200">
                 <SelectValue placeholder={placeholder} className="truncate" />
             </SelectTrigger>
-            <SelectContent className="text-xs">
+            <SelectContent className="text-xs bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700">
                 <SelectItem value="all" className="pl-2 pr-6">All</SelectItem>
                 {options.map((option) => (
                     <SelectItem

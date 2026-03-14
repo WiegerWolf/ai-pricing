@@ -21,7 +21,7 @@ export function BarCell({
 }: BarCellProps) {
   if (value === null || value === undefined) {
     return (
-      <div className="font-mono text-right px-1.5 py-px text-gray-300">
+      <div className="font-mono text-right px-1.5 py-px text-gray-300 dark:text-slate-600">
         &mdash;
       </div>
     );
