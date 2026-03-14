@@ -22,6 +22,7 @@ const COLORS = {
   quality: "rgba(99, 102, 241, 0.24)",     // indigo — intelligence/quality
   cost: "rgba(244, 63, 94, 0.18)",         // rose — expense (lower is better)
   tokens: "rgba(245, 158, 11, 0.20)",      // amber — resource usage
+  speed: "rgba(14, 165, 233, 0.22)",       // sky — throughput/performance
   benchmark: "rgba(99, 102, 241, 0.16)",   // indigo lighter — benchmark scores
   profit: "rgba(34, 197, 94, 0.24)",       // emerald — positive outcome
 };
@@ -71,6 +72,7 @@ export const columnGroups = [
   { label: "Model", span: 1 },
   { label: "Quality", span: 1 },
   { label: "Cost", span: 2 },
+  { label: "Performance", span: 1 },
   { label: "Benchmarks", span: 5 },
   { label: "Caps", span: 1 },
 ];
@@ -84,6 +86,7 @@ export const columns = (
   const ARCAGI2Range = getColumnMinMax(data, "ARCAGI2");
   const costRange = getColumnMinMax(data, "costAAIndex");
   const tokenUseAAIndexRange = getColumnMinMax(data, "tokenUseAAIndex");
+  const outputSpeedRange = getColumnMinMax(data, "outputSpeed");
   const aaIndexRange = getColumnMinMax(data, "AAIndex");
   const skateBenchRange = getColumnMinMax(data, "skateBench");
   const bullshitBenchRange = getColumnMinMax(data, "bullshitBench");
@@ -284,7 +287,7 @@ export const columns = (
           min={costRange.min}
           max={costRange.max}
           color={COLORS.cost}
-          format={(v) => (v === 0 ? "Free" : `$${v}`)}
+          format={(v) => (v === 0 ? "Free" : `$${Math.round(v)}`)}
         />
       ),
       maxSize: 130,
@@ -322,6 +325,41 @@ export const columns = (
       maxSize: 100,
     },
 
+    // ─── Performance: Output Speed ───
+    {
+      accessorKey: "outputSpeed",
+      meta: { groupStart: true },
+      header: ({ column }) => (
+        <ColumnHeader
+          column={column}
+          title="Speed"
+          subtitle="t/s"
+          tooltip="Output speed in tokens per second while the model is generating after the first token (higher is better)"
+          link={{
+            url: "https://artificialanalysis.ai/leaderboards/models",
+            title: "Artificial Analysis Model Leaderboard",
+          }}
+          filter={{ type: "range", enabled: true, showMax: false }}
+          sort={{ enabled: true }}
+        />
+      ),
+      cell: ({ row }) => (
+        <BarCell
+          value={row.original.outputSpeed}
+          min={outputSpeedRange.min}
+          max={outputSpeedRange.max}
+          color={COLORS.speed}
+          useLog
+          format={(v) => `${Math.round(v)}`}
+        />
+      ),
+      sortingFn: "alphanumeric",
+      sortDescFirst: true,
+      sortUndefined: "last",
+      filterFn: createPriceRangeFilter,
+      maxSize: 95,
+    },
+
     // ─── Benchmarks: SimpleBench ───
     {
       accessorKey: "simpleBench",
@@ -345,7 +383,7 @@ export const columns = (
           min={simpleBenchRange.min}
           max={simpleBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}`}
+          format={(v) => `${Math.round(v)}`}
         />
       ),
       sortingFn: "alphanumeric",
@@ -375,7 +413,7 @@ export const columns = (
           min={ARCAGI2Range.min}
           max={ARCAGI2Range.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}`}
+          format={(v) => `${Math.round(v)}`}
         />
       ),
       sortDescFirst: true,
@@ -404,7 +442,7 @@ export const columns = (
           min={skateBenchRange.min}
           max={skateBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}`}
+          format={(v) => `${Math.round(v)}`}
         />
       ),
       sortDescFirst: true,
@@ -433,7 +471,7 @@ export const columns = (
           min={bullshitBenchRange.min}
           max={bullshitBenchRange.max}
           color={COLORS.benchmark}
-          format={(v) => `${v.toFixed(1)}`}
+          format={(v) => `${Math.round(v)}`}
         />
       ),
       sortDescFirst: true,
