@@ -35,7 +35,7 @@ export function BarCell({
     <div className="relative px-1.5 py-px">
       <div
         className="absolute inset-y-0 left-0 rounded-[2px] bar-fill"
-        style={{ width: `${pct}%`, backgroundColor: color }}
+        style={{ width: `${pct}%`, minWidth: '3px', maxWidth: '100%', backgroundColor: color }}
       />
       <span
         className="relative font-mono text-right block text-[12px] leading-snug"

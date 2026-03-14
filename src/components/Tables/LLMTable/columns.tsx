@@ -334,7 +334,7 @@ export const columns = (
           column={column}
           title="Speed"
           subtitle="t/s"
-          tooltip="Output speed in tokens per second while the model is generating after the first token (higher is better)"
+          tooltip="Output speed in tokens per second while the model is generating after the first token (higher is better). Values marked with * come from a provider-specific source."
           link={{
             url: "https://artificialanalysis.ai/leaderboards/models",
             title: "Artificial Analysis Model Leaderboard",
@@ -344,14 +344,19 @@ export const columns = (
         />
       ),
       cell: ({ row }) => (
-        <BarCell
-          value={row.original.outputSpeed}
-          min={outputSpeedRange.min}
-          max={outputSpeedRange.max}
-          color={COLORS.speed}
-          useLog
-          format={(v) => `${Math.round(v)}`}
-        />
+        <div title={row.original.outputSpeedSource ? `Speed source: ${row.original.outputSpeedSource}` : undefined}>
+          <BarCell
+            value={row.original.outputSpeed}
+            min={outputSpeedRange.min}
+            max={outputSpeedRange.max}
+            color={COLORS.speed}
+            useLog
+            format={(v) => {
+              const rounded = `${Math.round(v)}`;
+              return row.original.outputSpeedSource ? `${rounded}*` : rounded;
+            }}
+          />
+        </div>
       ),
       sortingFn: "alphanumeric",
       sortDescFirst: true,

@@ -15,6 +15,7 @@ import mistralLogo from '@/assets/mistral.png';
 import qwenLogo from '@/assets/qwen.png';
 import alibabaLogo from '@/assets/alibaba.png';
 import zaiLogo from '@/assets/zai.svg';
+import xiaomiLogo from '@/assets/xiaomi.svg';
 
 // Create a mapping of provider names to their logos
 export const providerLogos: Record<string, string> = {
@@ -30,6 +31,7 @@ export const providerLogos: Record<string, string> = {
     'Mistral': mistralLogo,
     'Cohere': cohereLogo,
     'Alibaba': alibabaLogo,
+    'Xiaomi': xiaomiLogo,
 };
 
 // Add developer logos mapping (using same logos as providers)
@@ -47,6 +49,7 @@ export const developerLogos: Record<string, string> = {
     'Cohere': cohereLogo,
     'Qwen': qwenLogo,
     'Z AI': zaiLogo,
+    'Xiaomi': xiaomiLogo,
 };
 
 // Country flag emojis by developer
@@ -64,4 +67,5 @@ export const developerFlags: Record<string, string> = {
     'Z AI': '🇨🇳',
     'Qwen': '🇨🇳',
     'Cohere': '🇨🇦',
+    'Xiaomi': '🇨🇳',
 };

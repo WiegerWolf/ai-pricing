@@ -21,6 +21,7 @@ export interface LLMModel {
     costAAIndex?: number; // Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index
     tokenUseAAIndex?: number; // Output Tokens Used to Run Artificial Analysis Intelligence Index, Millions
     outputSpeed?: number | null; // Output speed in tokens per second
+    outputSpeedSource?: string;
     hasVision?: boolean;
     toolUse?: boolean;
     notes?: string;
