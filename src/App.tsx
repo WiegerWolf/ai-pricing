@@ -63,7 +63,7 @@ export default function App() {
               </svg>
             )}
           </button>
-          <span>Updated Mar 14, 2026</span>
+          <span>Updated Mar 19, 2026</span>
           <a
             href="https://github.com/WiegerWolf/ai-pricing"
             target="_blank"

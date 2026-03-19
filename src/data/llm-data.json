@@ -455,6 +455,24 @@
     "VendingBench": -23.16
   },
   {
+    "model": "MiniMax M2.7",
+    "developer": "MiniMax",
+    "releaseDate": "2026-03-18",
+    "modelUrl": "https://www.minimax.io/news/minimax-m27-en",
+    "context": 205,
+    "inputPrice": 0.3,
+    "outputPrice": 1.2,
+    "hasReasoning": true,
+    "toolUse": true,
+    "AAIndex": 50,
+    "outputSpeed": 48.6,
+    "costAAIndex": 175.51,
+    "tokenUseAAIndex": 87,
+    "GPQAdiamond": 87,
+    "HumLastExam": 28,
+    "notes": "Official MiniMax launch post says M2.7 is available on MiniMax Agent and the MiniMax API Platform, with native agent-team workflows and dynamic tool search. Reported benchmarks include SWE-Pro 56.22%, VIBE-Pro 55.6%, Terminal Bench 2 57.0%, GDPval-AA 1495 Elo, Toolathon 46.3%, and MM Claw 62.7%, plus a 97% skill adherence rate across 40 complex skills. Artificial Analysis reports this reasoning model is text-only, proprietary, and available via two API providers; its model page lists a 205k context window and 3.31s TTFT, while the FAQ rounds context to 200k and blended pricing to $0.53 per 1M tokens."
+  },
+  {
     "model": "DeepSeek V3.2",
     "developer": "DeepSeek",
     "releaseDate": "2025-12-01",
