@@ -65,7 +65,7 @@ export default function App() {
           </button>
           <span>Updated Mar 19, 2026</span>
           <a
-            href="https://github.com/WiegerWolf/ai-pricing"
+            href="https://github.com/nuxdie/ai-pricing"
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-400 hover:text-white dark:text-slate-500 dark:hover:text-slate-200 transition-colors"

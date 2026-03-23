@@ -8,6 +8,12 @@ Live demo: [ai.tsatsin.com](https://ai.tsatsin.com/)
 
 When you're comparing models across providers, the information is usually scattered across pricing pages, benchmark sites, and launch posts. This project pulls the useful bits into one place so you can scan tradeoffs quickly instead of opening ten tabs.
 
+Useful when you want to answer questions like:
+- Which model gives the best price/performance tradeoff right now?
+- How much more do you pay for a larger context window or better coding scores?
+- Which providers have vision support, free tiers, or unusually fast output?
+- Which model is worth testing before wiring it into a product or workflow?
+
 ## What you can compare
 
 ### LLM metrics
